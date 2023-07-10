@@ -82,7 +82,7 @@ public class Main {
 */
 
 // Napisz program, który sumuje liczby z zakresu 1-40 ale tylko te które są podzielne przez 3
-/*
+
         int sum = 0;
         for (int i = 1; i <= 40; i++) {
             if (i % 3 == 0) {
@@ -90,21 +90,54 @@ public class Main {
             }
         }
         System.out.println(sum);
-/*
+
 // Zadeklaruj tablicę intów długości 5 i wypełnij ja dowolnymi liczbami. Wyświetl całą tablice w pętli for lub while.
-/*
+
         int[] tablica = {3, 6, 9, 2, 7};
         for (int i = 0; i < tablica.length; i++) {
             System.out.print(tablica[i] + " ");
         }
-/*
+        System.out.println();
 // Zadeklaruj tablice stringów dlugosci 4, dodaj do niej 4 wyrazy. W petli przypisz każdy wyraz do wcześniej
 // utworzonej zmiennej typu string. Wyświetl tą zmienną
+
+        String[] words = {"pies", "kot", "wiewiorka", "zegarek"};
+        String result = "";
+
+
+        for (int i = 0; i < words.length; i++) {
+            result += words[i] + " ";
+        }
+
+        System.out.println(result);
+
 
 
 // Zadeklaruj dwie tablice intów róznej dlugosci. Przypisz obu na indeksie 0 jakas liczbe.
 // Wyswietl tę tablicę która jest dłuższa (oczywiście zmiana długości danej tablicy
 // powinna wpływać na wypisanie tablic)
 
+        int[] table1 = new int[10];
+        int[] table2 = new int[20];
+
+        table1[0] = 12;
+        table2[0] = 5;
+
+        if (table1.length > table2.length) {
+            drukujTablice(table1);
+        }
+        else if (table1.length == table2.length) {
+            System.out.println("tablice sa tej samej dlugosci");
+        }
+        else {
+            drukujTablice(table2);
+        }
     }
+    public static void drukujTablice(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
 }
