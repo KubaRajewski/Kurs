@@ -9,7 +9,7 @@ public class Main {
 
 // Napisz program, który oblicza potęgę 2n, gdzie liczbę naturalną n podaje użytkownik. Dla n = 10, wynik to 2^10 = 1024
         Scanner scanner = new Scanner(System.in);
-/*
+
 
         System.out.print("n: ");
         int n = scanner.nextInt();
@@ -22,7 +22,7 @@ public class Main {
 
         System.out.println("Wynik to 2^" + n + " = " + wynik);
 
-*/
+
 // Napisz program drukujacy na ekranie prostokat z literek X. Wysokosc i szerokosc prostokata wczytujemy z klawiatury.
 // Dla szerokosci = 10 oraz wysokosci = 4 tak powinien wygladac prostokat:
 //
@@ -30,7 +30,7 @@ public class Main {
 //                                          X        X
 //                                          X        X
 //                                          XXXXXXXXXX
-/*
+
         System.out.print("Height: ");
         int height = scanner.nextInt();
         System.out.print("Width: ");
@@ -48,13 +48,13 @@ public class Main {
         }
 
 
-/*
+
 // Napisz program, który oblicza średnią arytmetyczną liczb naturalnych od 5 do liczby podanej przez użytkownika.
 // Wypisać obliczoną średnią na konsoli.
 // Dla n = 9 program ma wypisać (5+6+7+8+9)/5 = 35/5= 7
-/*
+
         System.out.print("n: ");
-        int n = scanner.nextInt();
+        int m = scanner.nextInt();
 
         // chcielibysmy miec niezdefiniowana tablice, zrobic petle od 5 do n i za kazda iteracja dodawac ta liczbe do
         // tablicy w ktorej pierwszym wyrazem bedzie 5, potem policzyc srednia czyli dodac do siebie wszystkie elementy
@@ -64,7 +64,7 @@ public class Main {
         ArrayList<Integer> array = new ArrayList<>();
 
         // Dodawanie liczb od 5 do n do tablicy
-        for (int i = 5; i <= n; i++) {
+        for (int i = 5; i <= m; i++) {
             array.add(i);
         }
 
@@ -79,17 +79,17 @@ public class Main {
 
         System.out.println("Suma: " + sum);
         System.out.println("Średnia: " + average);
-*/
+
 
 // Napisz program, który sumuje liczby z zakresu 1-40 ale tylko te które są podzielne przez 3
 
-        int sum = 0;
+        int sum2 = 0;
         for (int i = 1; i <= 40; i++) {
             if (i % 3 == 0) {
-                sum = sum + i;
+                sum2 = sum2 + i;
             }
         }
-        System.out.println(sum);
+        System.out.println(sum2);
 
 // Zadeklaruj tablicę intów długości 5 i wypełnij ja dowolnymi liczbami. Wyświetl całą tablice w pętli for lub while.
 
@@ -98,6 +98,7 @@ public class Main {
             System.out.print(tablica[i] + " ");
         }
         System.out.println();
+
 // Zadeklaruj tablice stringów dlugosci 4, dodaj do niej 4 wyrazy. W petli przypisz każdy wyraz do wcześniej
 // utworzonej zmiennej typu string. Wyświetl tą zmienną
 
@@ -110,8 +111,6 @@ public class Main {
         }
 
         System.out.println(result);
-
-
 
 // Zadeklaruj dwie tablice intów róznej dlugosci. Przypisz obu na indeksie 0 jakas liczbe.
 // Wyswietl tę tablicę która jest dłuższa (oczywiście zmiana długości danej tablicy

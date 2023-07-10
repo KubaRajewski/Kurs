@@ -33,6 +33,7 @@ public class Main {
                 System.out.println("Nieznany miesiąc");
         }
         System.out.println();
+
 // Sprawdz czy podana liczba typu double jest dodatnia, czy jest rowna 0, czy
 // jest ujemna
 

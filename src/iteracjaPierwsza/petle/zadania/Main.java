@@ -23,7 +23,7 @@ public class Main {
         System.out.println();
         System.out.println();
 
-// Za pomocą pętli while, wypisz liczby od 1 do 10, dla kazdej liczby powyzej 5 dodaj napis'duża i'
+// Za pomocą pętli while, wypisz liczby od 1 do 10, dla kazdej liczby powyzej 5 dodaj napis 'duża liczba'
 
         int a = 1;
         while (a <= 10) {
@@ -68,6 +68,7 @@ public class Main {
             wynik *= i;
         }
         System.out.println(liczba + "! = " + wynik);
+        System.out.println();
 
 // Napisac program, ktory liczy pole kwadratu dla boku n, który przyjmuje wartosci od 1 do 10, uzyc petli while
 

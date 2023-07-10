@@ -104,6 +104,8 @@ public class Main {
             System.out.println("Nie działa");
         }
 
+        System.out.println();
+
 //      Masz dwa stringi i chcesz je porównac, jak to zrobimy? co sie stanie jak zrobimy str1 == str2? googlowanko
 
         String x = "Kuba";

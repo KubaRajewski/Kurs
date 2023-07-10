@@ -10,7 +10,7 @@ public class Main {
         for (int i = 0; i < tablica.length; i++) {
             tablica[i] = i + 1;
         }
-        System.out.println();
+
 
 // wypiszmy te tablice odwrotnie, czyli od 20 do 1
 
@@ -38,6 +38,7 @@ public class Main {
             }
         }
         System.out.println();
+        System.out.println();
 
 // Oblicz sume elementow tablicy doubli ale tylko tych ktore sa wieksze niz 3.8
 
@@ -49,6 +50,7 @@ public class Main {
             }
         }
         System.out.println("suma wynosi: " + sum);
+        System.out.println();
 
 // oblicz sumę elementów ktore sa podzielne przez 3
 
@@ -59,6 +61,7 @@ public class Main {
             }
         }
         System.out.println("suma elementow podzielnych przez 3 wynosi: " + sum2);
+        System.out.println();
 
 // Oblicz sume elementow ale tylko tych ktore stoja na nieparzystych indeksach
 
@@ -68,6 +71,7 @@ public class Main {
         }
 
         System.out.println("Suma elementów na nieparzystych indeksach: " + sum3);
+        System.out.println();
     }
 }
 

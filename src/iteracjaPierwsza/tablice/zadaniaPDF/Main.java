@@ -15,7 +15,7 @@ public class Main {
 
 // Oblicz iloczyn liczb podanych w tablicy intów
 
-        int[] t5 = {1, 2, 3};
+        int[] t5 = {1, 2, 3, 6};
 
         int iloczyn = 1;
 
@@ -30,7 +30,7 @@ public class Main {
 
 //                                      {4, 5, 6} → {0, 0, 0, 0, 0, 6}
 
-        int[] t = {4, 5, 6};
+        int[] t = {4, 5, 6, 9};
 
         int last = t[t.length - 1];
         int length = (t.length) * 2;
