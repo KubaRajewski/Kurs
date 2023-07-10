@@ -11,6 +11,19 @@ public class Main {
             sum = sum + table[i];
         }
         System.out.println(sum);
+        System.out.println();
+
+// Oblicz iloczyn liczb podanych w tablicy intów
+
+        int[] t5 = {1, 2, 3};
+
+        int iloczyn = 1;
+
+        for (int i = 0; i < t5.length; i++) {
+            iloczyn *= t5[i];
+        }
+        System.out.println(iloczyn);
+        System.out.println();
 
 // Napisz program, który dla danej tablicy intów długości 3 wyświetli tablicę 2 razy dłuższą,
 // wypełnioną wartością 0 poza ostatnim elementem, ostatni element tablicy ma mieć wartość odpowiadającą długości tablicy.
@@ -27,6 +40,7 @@ public class Main {
             System.out.print(t2[i] + " ");
         }
         System.out.println();
+        System.out.println();
 
 // Napisz program, który dla danej tablicy intów zwraca sume elementów po lewej od zadanego indeksu. Np. dla danych:
 // {1,2,3,4,5} i indeksu = 2 suma wynosi 3 bo 1 + 2 = 3
@@ -39,6 +53,7 @@ public class Main {
             sum3 += t3[i];
         }
         System.out.println(sum3);
+        System.out.println();
 
 // Zadeklaruj tablice stringów dlugosci 4, dodaj do niej 4 wyrazy.
 // W pętli przypisz każdy wyraz do wcześniej utworzonej zmiennej typu String. Wyświetl tą zmienną.
@@ -52,6 +67,7 @@ public class Main {
         }
 
         System.out.println(result);
+        System.out.println();
 
 
 // Zadeklaruj dwie tablice intów róznej długości. Przypisz obu na indeksie 0 jakąś liczbę.
@@ -108,17 +124,36 @@ public class Main {
             System.out.println("liczb podzielnych przez 3 jest wiecej niz liczb dodatnich, liczby podzielne przez 3: " + podzielne
                     + "liczby dodatnie: " + dodatnie);
         }
+        System.out.println();
 
 // Z podanej tablicy Stringów wypisz te których długość jest większ niż 7 (długość Stringa zwróci nam metoda length(),
 // czyli np dla Stringa imie = ”Ania”; imie.length() zwraca 4)
 
-
-// Oblicz iloczyn liczb podanych w tablicy intów
-
+        String[] s1 = {"kuba", "gosia", "warszawa", "katowice", "pies"};
+        for (int i = 0; i < s1.length; i++) {
+            if (s1[i].length() > 7) {
+                System.out.println(s1[i]);
+            }
+        }
+        System.out.println();
 
 // Dla podanej tablicy Stringów, wypisz te, które kończą się na literę ‘a’, (metoda charAt() lub endsWith(), wygoogluj
 // co one robią i jak działają)
 
-    }
+        // Wersja z endsWith
+        for (int i = 0; i < s1.length; i++) {
+            if (s1[i].endsWith("a")) {
+                System.out.println(s1[i]);
+            }
+        }
 
+        System.out.println();
+
+        // Wersja z charAt
+        for (int i = 0; i < s1.length; i++) {
+            if (s1[i].charAt(s1[i].length() - 1) == 'a') {
+                System.out.println(s1[i]);
+            }
+        }
+    }
 }
