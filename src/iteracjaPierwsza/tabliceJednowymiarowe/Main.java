@@ -1,4 +1,4 @@
-package iteracjaPierwsza.tablice;
+package iteracjaPierwsza.tabliceJednowymiarowe;
 
 public class Main {
     public static void main(String[] args) {

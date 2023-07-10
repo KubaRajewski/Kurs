@@ -1,4 +1,4 @@
-package iteracjaPierwsza.tablice.zadaniaPDF;
+package iteracjaPierwsza.tabliceJednowymiarowe.zadaniaPDF;
 
 public class Main {
     public static void main(String[] args) {
