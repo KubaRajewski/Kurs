@@ -16,7 +16,7 @@ public class Main {
 
 */
 // 2) Napisz program w którym deklarujesz 3 zmienne typu int (różne od siebie) i program wyświetli najmniejszą z nich.
-
+        System.out.println("Zadanie 2 - najmniejsza zmienna");
         int a = 9;
         int b = 3;
         int c = 6;
@@ -32,8 +32,10 @@ public class Main {
         }
 
         System.out.println("Najmniejsza zmienna to: " + najmniejsza);
+        System.out.println();
 
 // 3) Napisz program w którym deklarujesz 2 zmienne typu int. Sprawdź czy są sobie równe
+        System.out.println( "Zadanie 3 - czy zmienne sa rowne");
 
         int d = 3;
         int e = 3;
@@ -41,7 +43,9 @@ public class Main {
         if (d == e) {
             System.out.println("sa rowne");
         }
+        System.out.println();
 // 4) Napisz program który sprawdzi czy średnia dwóch liczb typu double jest większa od 5.
+        System.out.println("Zadanie 4 - czy srednia jest wieksza od 5");
 
         double x = 5;
         double y = 15;
@@ -49,8 +53,11 @@ public class Main {
         if (((x + y) / 2) > 5) {
             System.out.println("średnia jest wieksza niz 5");
         }
+        System.out.println();
 
 // 5*) Napisz program w którym deklarujesz 3 zmienne typu int (różne od siebie). Program ma wyświetlić je posortowane rosnąco
+
+        System.out.println("Zadanie 5 - sortowanie rosnaco");
 
         if (a <= b && a <= c) {
             if (b <= c) {

@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
 // Napisz program, który dla danej tablicy intów oblicza sumę elementów tej tablicy
+        System.out.println("Zadanie 1 - oblicz sume elementow tablicy");
 
         int[] table = {1, 3, 5, 7, 9, 2, 4, 6, 8, 0};
         int sum = 0;
@@ -14,6 +15,7 @@ public class Main {
         System.out.println();
 
 // Oblicz iloczyn liczb podanych w tablicy intów
+        System.out.println("Zadanie 2 - oblicz iloczyn elementow tablicy");
 
         int[] t5 = {1, 2, 3, 6};
 
@@ -27,6 +29,7 @@ public class Main {
 
 // Napisz program, który dla danej tablicy intów długości 3 wyświetli tablicę 2 razy dłuższą,
 // wypełnioną wartością 0 poza ostatnim elementem, ostatni element tablicy ma mieć wartość odpowiadającą długości tablicy.
+        System.out.println("Zadanie 3 - tablice dwa razy dluzsza wypelniona zerami poza ostatnim elementem");
 
 //                                      {4, 5, 6} → {0, 0, 0, 0, 0, 6}
 
@@ -44,6 +47,7 @@ public class Main {
 
 // Napisz program, który dla danej tablicy intów zwraca sume elementów po lewej od zadanego indeksu. Np. dla danych:
 // {1,2,3,4,5} i indeksu = 2 suma wynosi 3 bo 1 + 2 = 3
+        System.out.println("Zadanie 4 - suma elementow po lewej od zadanego indeksu");
 
         int[] t3 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int indx = 2;
@@ -57,6 +61,7 @@ public class Main {
 
 // Zadeklaruj tablice stringów dlugosci 4, dodaj do niej 4 wyrazy.
 // W pętli przypisz każdy wyraz do wcześniej utworzonej zmiennej typu String. Wyświetl tą zmienną.
+        System.out.println("Zadanie 5 - tablica stringow");
 
         String[] words = {"pies", "kot", "wiewiorka", "zegarek"};
         String result = "";
@@ -72,6 +77,7 @@ public class Main {
 
 // Zadeklaruj dwie tablice intów róznej długości. Przypisz obu na indeksie 0 jakąś liczbę.
 // Wyświetl tę tablicę, która jest dłuzsza (oczywiscie zmiana długosci danej tablicy powinna wpływać na wypisanie tablic).
+        System.out.println("Zadanie 6 - dwie tablice intow roznej dlugosci");
 
         int[] table1 = new int[5];
         int[] table2 = new int[10];
@@ -97,6 +103,7 @@ public class Main {
         System.out.println();
 
 // Dla podanej tablicy intow oblicz czy więcej jest elementów dodatnich czy podzielnych przez 3
+        System.out.println("Zadanie 7 - wiecej elementow dodatnich czy podzielnych przez 3");
 
         int[] t4 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -128,6 +135,7 @@ public class Main {
 
 // Z podanej tablicy Stringów wypisz te których długość jest większ niż 7 (długość Stringa zwróci nam metoda length(),
 // czyli np dla Stringa imie = ”Ania”; imie.length() zwraca 4)
+        System.out.println("Zadanie 8 - wypisz te ktorych dlugosc jest wieksza niz 7");
 
         String[] s1 = {"kuba", "gosia", "warszawa", "katowice", "pies"};
         for (int i = 0; i < s1.length; i++) {
@@ -139,6 +147,7 @@ public class Main {
 
 // Dla podanej tablicy Stringów, wypisz te, które kończą się na literę ‘a’, (metoda charAt() lub endsWith(), wygoogluj
 // co one robią i jak działają)
+        System.out.println("Zadanie 9 - wypisz te ktore koncza sie na litere a");
 
         // Wersja z endsWith
         for (int i = 0; i < s1.length; i++) {

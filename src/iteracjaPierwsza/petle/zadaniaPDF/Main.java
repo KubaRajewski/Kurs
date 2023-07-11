@@ -9,7 +9,7 @@ public class Main {
 
 // Napisz program, który oblicza potęgę 2n, gdzie liczbę naturalną n podaje użytkownik. Dla n = 10, wynik to 2^10 = 1024
         Scanner scanner = new Scanner(System.in);
-
+        System.out.println("zadanie 1 - potega 2n");
 
         System.out.print("n: ");
         int n = scanner.nextInt();
@@ -25,6 +25,7 @@ public class Main {
 
 // Napisz program drukujacy na ekranie prostokat z literek X. Wysokosc i szerokosc prostokata wczytujemy z klawiatury.
 // Dla szerokosci = 10 oraz wysokosci = 4 tak powinien wygladac prostokat:
+        System.out.println("zadanie 2 - prostokat z X");
 //
 //                                          XXXXXXXXXX
 //                                          X        X
@@ -52,6 +53,7 @@ public class Main {
 // Napisz program, który oblicza średnią arytmetyczną liczb naturalnych od 5 do liczby podanej przez użytkownika.
 // Wypisać obliczoną średnią na konsoli.
 // Dla n = 9 program ma wypisać (5+6+7+8+9)/5 = 35/5= 7
+        System.out.println("zadanie 3 - srednia arytmetyczna");
 
         System.out.print("n: ");
         int m = scanner.nextInt();
@@ -82,6 +84,7 @@ public class Main {
 
 
 // Napisz program, który sumuje liczby z zakresu 1-40 ale tylko te które są podzielne przez 3
+        System.out.println("zadanie 4 - suma liczb podzielnych przez 3");
 
         int sum2 = 0;
         for (int i = 1; i <= 40; i++) {
@@ -92,6 +95,7 @@ public class Main {
         System.out.println(sum2);
 
 // Zadeklaruj tablicę intów długości 5 i wypełnij ja dowolnymi liczbami. Wyświetl całą tablice w pętli for lub while.
+        System.out.println("zadanie 5 - tablica intow");
 
         int[] tablica = {3, 6, 9, 2, 7};
         for (int i = 0; i < tablica.length; i++) {
@@ -101,6 +105,7 @@ public class Main {
 
 // Zadeklaruj tablice stringów dlugosci 4, dodaj do niej 4 wyrazy. W petli przypisz każdy wyraz do wcześniej
 // utworzonej zmiennej typu string. Wyświetl tą zmienną
+        System.out.println("zadanie 6 - tablica stringow");
 
         String[] words = {"pies", "kot", "wiewiorka", "zegarek"};
         String result = "";
@@ -115,6 +120,7 @@ public class Main {
 // Zadeklaruj dwie tablice intów róznej dlugosci. Przypisz obu na indeksie 0 jakas liczbe.
 // Wyswietl tę tablicę która jest dłuższa (oczywiście zmiana długości danej tablicy
 // powinna wpływać na wypisanie tablic)
+        System.out.println("zadanie 7 - tablice intow");
 
         int[] table1 = new int[10];
         int[] table2 = new int[20];

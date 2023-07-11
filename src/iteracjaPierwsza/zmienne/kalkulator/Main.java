@@ -6,6 +6,7 @@
 //Roznica 4 i 8 wynosi -4
 
 package zmienne.kalkulator;
+
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -15,12 +16,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Get and validate user input
-        System.out.print("A: ");
-        double a = scanner.nextInt();
+        while (true) {
+            System.out.print("A: ");
+            double a = scanner.nextInt();
+            // if a not a valid int break the loop
 
-        System.out.print("B: ");
-        double b = scanner.nextInt();
-
+            System.out.print("B: ");
+            double b = scanner.nextInt();
+            // if  not a valid int break the loop
+        }
         scanner.nextLine(); // Consume the newline character
 
         // Check for the operator and keep promting the user if it's incorrect
@@ -46,19 +50,27 @@ public class Main {
         System.out.println("B: " + b);
         System.out.println("Operator: " + operator);
     */
+        while (true) {
+            if (Objects.equals(operator, "+")) {
+                System.out.println("a + b = " + (a + b));
+                break;
+            } else if (Objects.equals(operator, "-")) {
+                System.out.println("a - b = " + (a - b));
+                break;
+            } else if (Objects.equals(operator, "*")) {
+                System.out.println("a * b = " + (a * b));
+                break;
+            } else if ((Objects.equals(operator, "/")) && (b == 0)) {
+                System.out.println("Cannot divide by zero.");
+            } else if (Objects.equals(operator, "/")) {
+                System.out.println("a / b = " + (a / b));
+                break;
+            } else {
+                System.out.println("Something went wrong.");
+                break;
+            }
+        }
 
-        if (Objects.equals(operator, "+")) {
-            System.out.println("a + b = " + (a + b));
-        }
-        else if (Objects.equals(operator, "-")) {
-            System.out.println("a - b = " + (a - b));
-        }
-        else if (Objects.equals(operator, "*")) {
-            System.out.println("a * b = " + (a * b));
-        }
-        else if (Objects.equals(operator, "/")) {
-            System.out.println("a / b = " + (a / b));
-        }
     }
 }
 

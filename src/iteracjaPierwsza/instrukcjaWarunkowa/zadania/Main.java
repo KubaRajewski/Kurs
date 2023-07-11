@@ -6,6 +6,8 @@ public class Main {
 // Zrób intstrukcje switch case, dla wartosci String niech bedzie to reprezentacja miesiecy i w zaleznosci od
 // podanego miesiaca podac klimat
 
+        System.out.println("Zadanie 1 - klimat");
+
         String miesiac = "Styczeń";
 
         switch (miesiac) {
@@ -36,7 +38,7 @@ public class Main {
 
 // Sprawdz czy podana liczba typu double jest dodatnia, czy jest rowna 0, czy
 // jest ujemna
-
+        System.out.println("Zadanie 2 - liczba dodatnia, rowna 0, ujemna");
         double a = 9;
         if (a > 0) {
             System.out.println("dodatnia");
@@ -49,7 +51,7 @@ public class Main {
 
 // Zadeklaruj 2 zmienne typu int, wyswietl która z tych dwoch liczb jest
 // wieszka i o ile, np dla 4 i 1 chcemy wyswietlic: 4 jest wieksze od 1 o 3
-
+        System.out.println("Zadanie 3 - liczba wieksza o ile");
         int b = -30;
         int c = 15;
 
@@ -63,7 +65,7 @@ public class Main {
         System.out.println();
 
 // Napisz program sprawdzajacy czy podana liczba jest parzysta
-
+        System.out.println("Zadanie 4 - liczba parzysta");
         double liczba = 7;
 
         if (liczba % 2 == 0) {
@@ -75,7 +77,7 @@ public class Main {
 
 // Sprawdzmy czy zadeklarowana liczba typu double, nalezy do przedzialu (1,4)
 // czy moze [6,8], czy jest spoza przedzialu
-
+        System.out.println("Zadanie 5 - liczba nalezy do przedzialu");
         boolean nalezy = false;
 
         if (liczba > 4 && liczba < 1) {
@@ -90,7 +92,7 @@ public class Main {
         System.out.println();
 
 // Sprawdz czy srednia dwoch liczb typu double jest wieksza od 4
-
+        System.out.println("Zadanie 6 - srednia wieksza od 4");
         double liczba2 = 14;
         if ((liczba + liczba2) / 2 > 4) {
             System.out.println("Średnia jest wieksza od 4");
@@ -100,7 +102,7 @@ public class Main {
         System.out.println();
 
 // Sprawdz czy suma 3 liczb jest podzielna przez 3
-
+        System.out.println( "Zadanie 7 - suma 3 liczb podzielna przez 3");
         double liczba3 = 15;
         boolean jestPodzielna = false;
 
@@ -113,7 +115,7 @@ public class Main {
         System.out.println();
 
 // Sprawdz czy dlugosc podanego Stringa jest wieksza od 5
-
+        System.out.println( "Zadanie 8 - dlugosc stringa wieksza od 5");
         String str = "czesc!";
         if (str.length() > 5) {
             System.out.println("dlugosc stringa jest wieksza od 5");
@@ -124,7 +126,7 @@ public class Main {
         System.out.println();
 
 // Sprawdz czy pierwszy znak stringa to literka A
-
+        System.out.println( "Zadanie 9 - pierwszy znak to litera A");
         char firstChar = str.charAt(0);
 
         if (Character.toString(firstChar).equals("A")) {
@@ -135,7 +137,7 @@ public class Main {
         System.out.println();
 
 // sprawdz czy string zawiera literke a
-
+        System.out.println( "Zadanie 10 - string zawiera litere a");
         if (str.contains("a")) {
             System.out.println("String zawiera literę 'a'");
         } else {

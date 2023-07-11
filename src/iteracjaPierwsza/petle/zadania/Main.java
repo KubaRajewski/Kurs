@@ -6,13 +6,14 @@ public class Main {
     public static void main(String[] args) {
 
 // Wypisz na konsoli liczby od 1 do 20
-
+        System.out.println("Zadanie 1 - liczby od 1 do 20");
         for (int i = 1; i <= 20; i++) {
             System.out.println(i);
         }
         System.out.println();
 
 // Wypisz na konsoli liczby od 1 do 20 oddzielone przecinkiem
+        System.out.println("Zadanie 2 - liczby od 1 do 20 oddzielone przecinkiem");
 
         for (int i = 1; i <= 20; i++) {
             System.out.print(i);
@@ -24,6 +25,7 @@ public class Main {
         System.out.println();
 
 // Za pomocą pętli while, wypisz liczby od 1 do 10, dla kazdej liczby powyzej 5 dodaj napis 'duża liczba'
+        System.out.println("Zadanie 3 - duza liczba'");
 
         int a = 1;
         while (a <= 10) {
@@ -37,6 +39,7 @@ public class Main {
         System.out.println();
 
 //Napisz program liczacy sume liczb z zakresu od 1 do 100
+        System.out.println("Zadanie 4 - suma liczb z zakresu od 1 do 100");
 
         int sum = 0;
         for (int i = 1; i <= 100; i++) {
@@ -46,6 +49,7 @@ public class Main {
         System.out.println();
 
 //Wypisz wszystkie liczby parzyste z zakresu 1-30
+        System.out.println("Zadanie 5 - liczby parzyste z zakresu 1-30");
 
         for (int i = 1; i <= 30; i++) {
             if (i % 2 == 0) {
@@ -55,6 +59,7 @@ public class Main {
         System.out.println();
 
 // wszystkie liczby nieparzyste od -10 do 40.
+        System.out.println("Zadanie 6 - liczby nieparzyste od -10 do 40");
 
         for (int i = -9; i <= 39; i += 2) {
             System.out.println(i);
@@ -62,6 +67,7 @@ public class Main {
         System.out.println();
 
 //Napisz program liczacy silnie, np 5! = 1*2*3*4*5
+        System.out.println("Zadanie 7 - silnia");
         int liczba = 5;
         int wynik = 1;
         for (int i = 1; i <= liczba; i++) {
@@ -71,6 +77,7 @@ public class Main {
         System.out.println();
 
 // Napisac program, ktory liczy pole kwadratu dla boku n, który przyjmuje wartosci od 1 do 10, uzyc petli while
+        System.out.println("Zadanie 8 - pole kwadratu");
 
         Scanner scanner = new Scanner(System.in);
         int bok = 0;
