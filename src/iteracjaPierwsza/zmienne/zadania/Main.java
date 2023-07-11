@@ -37,6 +37,7 @@ public class Main {
 
  */
 //      Stwórz zmienna typu String. Wyswietl jej dlugosc (metoda length()->wygoogluj)
+        System.out.println("Zadanie 1 - długość stringa");
 
         String str = "czesc";
         int length = str.length();
@@ -44,7 +45,7 @@ public class Main {
         System.out.println();
 
 //		Stwórz zmienna typu String i wyswietl jej pierwszy i trzeci znak (metoda charAt() -> wygoogluj)
-
+        System.out.println("Zadanie 2 - pierwszy i trzeci znak");
         char pierwszy = str.charAt(0);
         char trzeci = str.charAt(2);
 
@@ -53,12 +54,14 @@ public class Main {
         System.out.println();
 
 //		Stwórz zmienna typu String i wyswietl tego stringa od 1 do 3 znaku (metoda substring() -> wygoogluj)
+        System.out.println("Zadanie 3 - fragment od 1 do 3 znaku");
 
         String substring = str.substring(0, 3);
         System.out.println("Fragment od 1 do 3 znaku: " + substring);
         System.out.println();
 
 //      Stwórz zmienna typu String i sprawdz czy zawiera ciag znakow "abc" (metoda contains())
+        System.out.println("Zadanie 4 - czy zawiera ciąg znaków 'abc'");
         boolean containsABC = str.contains("abc");
 
         if (containsABC) {
@@ -70,6 +73,7 @@ public class Main {
 
 //		Stwórz zmienne imie, nazwisko, adres, wiek i wypisz informacje które w nich
 //		przechowujesz w jednym syso ale tak zeby kazda informacja byla w nowej linijce
+        System.out.println("Zadanie 5 - informacje o osobie");
 
         String imie = "Kuba";
         String nazwisko = "Rajewski";
@@ -85,6 +89,7 @@ public class Main {
 
 //		Stwórz dwie zmienne typu int i w jednej linii wypisz ich sume, roznice,
 //		iloczyn i iloraz, uzyj znakow specjalnych
+        System.out.println("Zadanie 6 - suma, różnica, iloczyn, iloraz");
 
         int a = 9;
         int b = 3;
@@ -94,6 +99,7 @@ public class Main {
         System.out.println();
 
 //      Zalozmy ze masz String liczba = "10" i chcemy tego Stringa zamienic na inta mmetoda parseInt() -> wygoogluj
+        System.out.println("Zadanie 7 - zamiana Stringa na inta");
 
         String liczba = "10";
         int liczbaInt = Integer.parseInt(liczba);
@@ -107,6 +113,7 @@ public class Main {
         System.out.println();
 
 //      Masz dwa stringi i chcesz je porównac, jak to zrobimy? co sie stanie jak zrobimy str1 == str2? googlowanko
+        System.out.println("Zadanie 8 - porównanie Stringów");
 
         String x = "Kuba";
         String y = "Gosia";

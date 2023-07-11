@@ -1,76 +1,65 @@
-//Stworzyc prosty kalkulator, zadeklaruj dwie zmienne typu double
-//Stworzyc mozliwosc wypisania na konsoli dzialan matematycznych +,-,*,/
-//double x=4, y=8;
-//double suma=x+y; syso(suma)
-//Suma 4 i 8 wynosi 12
-//Roznica 4 i 8 wynosi -4
-
-package zmienne.kalkulator;
-
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        double a, b;
 
-        // Get and validate user input
+        System.out.println("Kalkulator");
+        System.out.println("Podaj pierwszą liczbę");
+
         while (true) {
-            System.out.print("A: ");
-            double a = scanner.nextInt();
-            // if a not a valid int break the loop
+            try {
+                System.out.print("A: ");
+                a = Double.parseDouble(scanner.nextLine());
 
-            System.out.print("B: ");
-            double b = scanner.nextInt();
-            // if  not a valid int break the loop
+                System.out.println("Podaj drugą liczbę");
+                System.out.print("B: ");
+                b = Double.parseDouble(scanner.nextLine());
+
+                break; // Exit the loop if valid numbers are entered
+            } catch (NumberFormatException e) {
+                System.out.println("Zły format, Podaj liczbe");
+            }
         }
-        scanner.nextLine(); // Consume the newline character
 
-        // Check for the operator and keep promting the user if it's incorrect
-        String operator = "";
-        String[] validOperators = {"*", "/", "+", "-"};
+        String operator;
+
         while (true) {
-            System.out.print("Operator: ");
-            String op = scanner.nextLine();
+            System.out.println("Podaj operator:");
+            System.out.print("(+, -, *, /): ");
+            operator = scanner.nextLine();
 
-            if (Arrays.asList(validOperators).contains(op)) {
-                operator = op;
+            if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
                 break; // Exit the loop if a valid operator is entered
             } else {
-                System.out.println("Invalid operator. Try again.");
+                System.out.println("Nieprawidłowy operator, podaj jeden z tych: +, -, *, /");
             }
         }
 
         scanner.close();
 
-    /* Check if the data is correct
-
-        System.out.println("A: " + a);
-        System.out.println("B: " + b);
-        System.out.println("Operator: " + operator);
-    */
-        while (true) {
-            if (Objects.equals(operator, "+")) {
-                System.out.println("a + b = " + (a + b));
+        System.out.print("Wynik: ");
+        switch (operator) {
+            case "+":
+                System.out.println("Suma: " + (a + b));
                 break;
-            } else if (Objects.equals(operator, "-")) {
-                System.out.println("a - b = " + (a - b));
+            case "-":
+                System.out.println("Różnica: " + (a - b));
                 break;
-            } else if (Objects.equals(operator, "*")) {
-                System.out.println("a * b = " + (a * b));
+            case "*":
+                System.out.println("Iloczyn: " + (a * b));
                 break;
-            } else if ((Objects.equals(operator, "/")) && (b == 0)) {
-                System.out.println("Cannot divide by zero.");
-            } else if (Objects.equals(operator, "/")) {
-                System.out.println("a / b = " + (a / b));
+            case "/":
+                if (b == 0) {
+                    System.out.println("Nie mozna dzielic przez zero.");
+                } else {
+                    System.out.println("Iloraz: " + (a / b));
+                }
                 break;
-            } else {
-                System.out.println("Something went wrong.");
+            default:
+                System.out.println("Coś poszło nie tak.");
                 break;
-            }
         }
-
     }
 }
-
