@@ -79,20 +79,15 @@ public class Main {
 // Napisac program, ktory liczy pole kwadratu dla boku n, który przyjmuje wartosci od 1 do 10, uzyc petli while
         System.out.println("Zadanie 8 - pole kwadratu");
 
-        Scanner scanner = new Scanner(System.in);
-        int bok = 0;
-        while (true) {
-            System.out.println("Bok: ");
-            int b = Integer.parseInt(scanner.nextLine());
-
-            if (b >= 1 && b <= 10) {
-                bok = b;
-                break;
-            } else {
-                System.out.println("niepoprawna dlugosc boku");
-            }
+        int bok = 1;
+        while (bok <= 10) {
+            System.out.println("bok: " + bok + ", pole: " + bok * bok);
+            bok++;
         }
-        System.out.println("pole kwadratu o boku: " + bok + " = " + (bok * bok));
+
+
+
+
+
     }
 }
-

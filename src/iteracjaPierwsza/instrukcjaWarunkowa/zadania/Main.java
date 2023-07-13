@@ -39,7 +39,7 @@ public class Main {
 // Sprawdz czy podana liczba typu double jest dodatnia, czy jest rowna 0, czy
 // jest ujemna
         System.out.println("Zadanie 2 - liczba dodatnia, rowna 0, ujemna");
-        double a = 9;
+        double a = 0;
         if (a > 0) {
             System.out.println("dodatnia");
         } else if (a == 0) {

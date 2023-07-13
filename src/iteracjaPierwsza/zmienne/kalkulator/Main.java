@@ -1,3 +1,5 @@
+package iteracjaPierwsza.zmienne.kalkulator;
+
 import java.util.Scanner;
 
 public class Main {
@@ -6,18 +8,24 @@ public class Main {
         double a, b;
 
         System.out.println("Kalkulator");
-        System.out.println("Podaj pierwszą liczbę");
 
+        System.out.println("Podaj pierwszą liczbę");
         while (true) {
             try {
                 System.out.print("A: ");
                 a = Double.parseDouble(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Zły format, Podaj liczbe");
+            }
+        }
 
-                System.out.println("Podaj drugą liczbę");
+        System.out.println("Podaj drugą liczbę");
+        while (true) {
+            try {
                 System.out.print("B: ");
                 b = Double.parseDouble(scanner.nextLine());
-
-                break; // Exit the loop if valid numbers are entered
+                break;
             } catch (NumberFormatException e) {
                 System.out.println("Zły format, Podaj liczbe");
             }
@@ -31,7 +39,7 @@ public class Main {
             operator = scanner.nextLine();
 
             if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
-                break; // Exit the loop if a valid operator is entered
+                break;
             } else {
                 System.out.println("Nieprawidłowy operator, podaj jeden z tych: +, -, *, /");
             }

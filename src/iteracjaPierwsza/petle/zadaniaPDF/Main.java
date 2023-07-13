@@ -22,7 +22,7 @@ public class Main {
 
         System.out.println("Wynik to 2^" + n + " = " + wynik);
 
-
+        System.out.println();
 // Napisz program drukujacy na ekranie prostokat z literek X. Wysokosc i szerokosc prostokata wczytujemy z klawiatury.
 // Dla szerokosci = 10 oraz wysokosci = 4 tak powinien wygladac prostokat:
         System.out.println("zadanie 2 - prostokat z X");
@@ -49,7 +49,7 @@ public class Main {
         }
 
 
-
+        System.out.println();
 // Napisz program, który oblicza średnią arytmetyczną liczb naturalnych od 5 do liczby podanej przez użytkownika.
 // Wypisać obliczoną średnią na konsoli.
 // Dla n = 9 program ma wypisać (5+6+7+8+9)/5 = 35/5= 7
@@ -58,31 +58,31 @@ public class Main {
         System.out.print("n: ");
         int m = scanner.nextInt();
 
-        // chcielibysmy miec niezdefiniowana tablice, zrobic petle od 5 do n i za kazda iteracja dodawac ta liczbe do
+        // chcielibysmy miec pusta tablice, zrobic petle od 5 do n i za kazda iteracja dodawac ta liczbe do
         // tablicy w ktorej pierwszym wyrazem bedzie 5, potem policzyc srednia czyli dodac do siebie wszystkie elementy
         // i podzielic przez ilosc elementow w tablicy
 
-        // Tworzenie pustej tablicy z dynamicznym rozmiarem
-        ArrayList<Integer> array = new ArrayList<>();
+        // Tworzenie pustej tablicy
+        ArrayList<Integer> liczby = new ArrayList<>();
 
         // Dodawanie liczb od 5 do n do tablicy
         for (int i = 5; i <= m; i++) {
-            array.add(i);
+            liczby.add(i);
         }
 
         // Obliczanie sumy elementów w tablicy
         int sum = 0;
-        for (int num : array) {
+        for (int num : liczby) {
             sum += num;
         }
 
         // Obliczanie średniej
-        double average = (double) sum / array.size();
+        double average = (double) sum / liczby.size();
 
         System.out.println("Suma: " + sum);
         System.out.println("Średnia: " + average);
 
-
+        System.out.println();
 // Napisz program, który sumuje liczby z zakresu 1-40 ale tylko te które są podzielne przez 3
         System.out.println("zadanie 4 - suma liczb podzielnych przez 3");
 
@@ -93,14 +93,16 @@ public class Main {
             }
         }
         System.out.println(sum2);
-
+        System.out.println();
 // Zadeklaruj tablicę intów długości 5 i wypełnij ja dowolnymi liczbami. Wyświetl całą tablice w pętli for lub while.
+
         System.out.println("zadanie 5 - tablica intow");
 
         int[] tablica = {3, 6, 9, 2, 7};
         for (int i = 0; i < tablica.length; i++) {
             System.out.print(tablica[i] + " ");
         }
+        System.out.println();
         System.out.println();
 
 // Zadeklaruj tablice stringów dlugosci 4, dodaj do niej 4 wyrazy. W petli przypisz każdy wyraz do wcześniej
@@ -116,7 +118,7 @@ public class Main {
         }
 
         System.out.println(result);
-
+        System.out.println();
 // Zadeklaruj dwie tablice intów róznej dlugosci. Przypisz obu na indeksie 0 jakas liczbe.
 // Wyswietl tę tablicę która jest dłuższa (oczywiście zmiana długości danej tablicy
 // powinna wpływać na wypisanie tablic)
@@ -138,8 +140,8 @@ public class Main {
             drukujTablice(table2);
         }
     }
-    public static void drukujTablice(int[] array) {
-        for (int num : array) {
+    public static void drukujTablice(int[] tablica) {
+        for (int num : tablica) {
             System.out.print(num + " ");
         }
         System.out.println();
