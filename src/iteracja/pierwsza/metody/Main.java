@@ -1,140 +1,294 @@
 package iteracja.pierwsza.metody;
 
+//// metoda typu void - nic nie zwraca
+//public static void wyswietlSlowo() {
+//        System.out.println("witam");
+//        }
+//
+//// metoda ktora deklaruje typ zwracany
+//public static String zwrocSlowo() {
+//        return "siema";
+//        }
+//
+//// przeciazanie metod
+//public static double obliczPensje(int liczbaGodzin, double stawka) {
+//        return liczbaGodzin * stawka;
+//        }
+
 public class Main {
     public static void main(String[] args) {
-        wyswietlSlowo();
-        System.out.println(zwrocSlowo());
+        // Testy dla funkcji obliczPensje()
+        System.out.println("obliczPensje()");
+        System.out.println(obliczPensje(40, 15.50, 100)); // Powinno wyświetlić: 720.0
+        System.out.println(obliczPensje(30, 20, 50)); // Powinno wyświetlić: 650.0
+        System.out.println();
 
-        String s = zwrocSlowo();
+        // Testy dla funkcji dzienDobry()
+        System.out.println("dzienDobry()");
+        System.out.println(dzienDobry("Jan")); // Powinno wyświetlić: Dzień dobry Jan
+        System.out.println(dzienDobry("Anna")); // Powinno wyświetlić: Dzień dobry Anna
+        System.out.println();
 
-        System.out.println(obliczPensje(160, 45));
-        System.out.println(obliczPensje(150, 30, 2000));
+        // Testy dla funkcji suma()
+        System.out.println("suma()");
+        System.out.println(suma(5, 10)); // Powinno wyświetlić: 15
+        System.out.println(suma(-3, 7)); // Powinno wyświetlić: 4
+        System.out.println();
 
-        System.out.println(dzienDobry("kuba"));
-        System.out.println(suma(2, 2));
-        System.out.println(dlugosc("kuba"));
-        System.out.println(dluzszy("kuba", "gosia"));
+        // Testy dla funkcji dlugosc()
+        System.out.println("dlugosc()");
+        System.out.println(dlugosc("Hello")); // Powinno wyświetlić: 5
+        System.out.println(dlugosc("Lorem ipsum dolor sit amet")); // Powinno wyświetlić: 27
+        System.out.println();
+
+        // Testy dla funkcji dluzszy()
+        System.out.println("dluzszy()");
+        System.out.println(dluzszy("Kot", "Pies")); // Powinno wyświetlić: Pies
+        System.out.println(dluzszy("Programowanie", "Java")); // Powinno wyświetlić: Programowanie
+        System.out.println();
+
+        // Testy dla funkcji wieksza()
+        System.out.println("wieksza()");
+        System.out.println(wieksza(10.5, 8.2)); // Powinno wyświetlić: 10.5
+        System.out.println(wieksza(5.5, 5.5)); // Powinno wyświetlić: 0
+        System.out.println(wieksza(7.8, 9.1)); // Powinno wyświetlić: 9.1
+        System.out.println();
+
+        // Testy dla funkcji mnozenie()
+        System.out.println("mnozenie()");
+        System.out.println(mnozenie(2, 3, 4)); // Powinno wyświetlić: 20
+        System.out.println(mnozenie(-5, 2, 3)); // Powinno wyświetlić: -9
+        System.out.println();
+
+        // Testy dla funkcji czyParzysta()
+        System.out.println("czyParzysta()");
+        System.out.println(czyParzysta(10)); // Powinno wyświetlić: true
+        System.out.println(czyParzysta(7)); // Powinno wyświetlić: false
+        System.out.println();
+
+        // Testy dla funkcji sumaZUwaga()
+        System.out.println("sumaZUwaga()");
+        System.out.println(sumaZUwaga(5, 15)); // Powinno wyświetlić: 19
+        System.out.println(sumaZUwaga(10, 20)); // Powinno wyświetlić: 30
+        System.out.println(sumaZUwaga(15, 25)); // Powinno wyświetlić: 19
+        System.out.println();
+
+        // Testy dla funkcji zzzYyy()
+        System.out.println("zzzYyy()");
+        System.out.println(zzzYyy("zddy")); // Powinno wyświetlić: zzyy
+        System.out.println(zzzYyy("zasd")); // Powinno wyświetlić: zzz
+        System.out.println(zzzYyy("asdy")); // Powinno wyświetlić: yyy
+        System.out.println(zzzYyy("pusty string")); // Powinno wyświetlić: pusty string
+        System.out.println(zzzYyy("z")); // Powinno wyświetlić: zzz
+        System.out.println(zzzYyy("y")); // Powinno wyświetlić: yyy
+        System.out.println(zzzYyy("zy")); // Powinno wyświetlić: zzyy
+        System.out.println(zzzYyy("a")); // Powinno wyświetlić: a
+        System.out.println(zzzYyy("bb")); // Powinno wyświetlić: bb
+        System.out.println();
+
+        // Testy dla funkcji czyZawieraBad()
+        System.out.println("czyZawieraBad()");
+        System.out.println(czyZawieraBad("xbadxxx")); // Powinno wyświetlić: true
+        System.out.println(czyZawieraBad("badxxx")); // Powinno wyświetlić: true
+        System.out.println(czyZawieraBad("xxbadxx")); // Powinno wyświetlić: false
+        System.out.println();
+
+        // Testy dla funkcji ileRazy()
+        System.out.println("ileRazy()");
+        System.out.println(ileRazy("Hello World", 'o')); // Powinno wyświetlić: 2
+        System.out.println(ileRazy("abracadabra", 'a')); // Powinno wyświetlić: 4
+        System.out.println();
+
+        // Testy dla funkcji silnia()
+        System.out.println("silnia()");
+        System.out.println(silnia(5)); // Powinno wyświetlić: 120
+        System.out.println(silnia(0)); // Powinno wyświetlić: 1
+        System.out.println();
+
+        // Testy dla funkcji czyWiekszaCyfraJednosci()
+        System.out.println("czyWiekszaCyfraJednosci()");
+        System.out.println(czyWiekszaCyfraJednosci(45)); // Powinno wyświetlić: true
+        System.out.println(czyWiekszaCyfraJednosci(23)); // Powinno wyświetlić: false
+        System.out.println();
+
+
+        // Testy dla funkcji sumaCyfr()
+        System.out.println("sumaCyfr()");
+        System.out.println(sumaCyfr(123)); // Powinno wyświetlić: 6
+        System.out.println(sumaCyfr(98765)); // Powinno wyświetlić: 35
+        System.out.println();
+
+        // Testy dla funkcji potega()
+        System.out.println("potega()");
+        System.out.println(potega(2, 3)); // Powinno wyświetlić: 8.0
+        System.out.println(potega(5, -2)); // Powinno wyświetlić: 0.04
+        System.out.println();
+
+        // Testy dla funkcji czyKwadrat()
+        System.out.println("czyKwadrat()");
+        System.out.println(czyKwadrat(16)); // Powinno wyświetlić: true
+        System.out.println(czyKwadrat(17)); // Powinno wyświetlić: false
+        System.out.println();
+
+        // Testy dla funkcji wypiszDzielniki()
+        System.out.println("wypiszDzielniki()");
+        wypiszDzielniki(16); // Powinno wyświetlić: 1, 2, 4, 8, 16
+        System.out.println();
+        wypiszDzielniki(27); // Powinno wyświetlić: 1, 3, 9, 27
     }
 
-    // metoda typu void - nic nie zwraca
-    public static void wyswietlSlowo() {
-        System.out.println("witam");
-    }
-
-    // metoda ktora deklaruje typ zwracany
-    public static String zwrocSlowo() {
-        return "siema";
-    }
-
-    // przeciazanie metod
-    public static double obliczPensje(int liczbaGodzin, double stawka) {
-        return liczbaGodzin * stawka;
-    }
 
     public static double obliczPensje(int liczbaGodzin, double stawka, double bonus) {
         return liczbaGodzin * stawka + bonus;
     }
 
-    // Napisz metode, ktora dodaje do Stringa podanego jako parametr napis "dzien dobry"
+// Napisz metodę, która dodaje do Stringa podanego jako parametr napis "dzien dobry"
 
     public static String dzienDobry(String imie) {
         return "Dzień dobry " + imie;
     }
 
-    // Stworz metode ktora liczy sume dwoch liczb ktore sa podane jako parametr
+// Stwórz metodę, która liczy sumę dwóch liczb, które są podane jako parametr
 
     public static int suma(int a, int b) {
         return a + b;
     }
 
-    // Stwórz metode ktora zwraca dlugosc Stringa podanego jako parametr
+// Stwórz metodę, która zwraca długość Stringa podanego jako parametr
 
     public static int dlugosc(String slowo) {
         return slowo.length();
     }
 
-    // Stworz metode ktora zwraca dluszzy z dwoch podanych jako parametr Stringow
+// Stwórz metodę, która zwraca dłuższy z dwóch podanych jako parametr Stringów
 
     public static String dluzszy(String slowo1, String slowo2) {
-        // warunek   ? co gdy true : co gdy false
         return slowo1.length() > slowo2.length() ? slowo1 : slowo2;
-
-//        if (slowo1.length() > slowo2.length()) {
-//            return slowo1;
-//        }
-//        return slowo2;
-
     }
 
-    // Stworz metode ktora zwraca wieksza z dwoch podanych liczb typu double jako
-    // parametr gdy liczby są równe zwracamy 0
+// Stwórz metodę, która zwraca większą z dwóch podanych liczb typu double jako
+// parametr. Gdy liczby są równe, zwracamy 0.
 
     public static double wieksza(double a, double b) {
         return a > b ? a : a == b ? 0 : b;
-//        if (a > b) {
-//            return a;
-//        } else if (a == b) {
-//            return 0;
-//        }
-//        return b;
     }
 
-
-    // Napisz metode ktora jako argument (parametr) przyjmuje
-
-    // 3 zmienne typu int i liczy sume pierwszej i drugiej i mnozy przez trzecia
+// Napisz metodę, która jako argument (parametr) przyjmuje
+// 3 zmienne typu int i liczy sumę pierwszej i drugiej, a następnie mnoży przez trzecią
 
     public static int mnozenie(int x, int y, int z) {
         return (x + y) * z;
     }
 
-    // Napisz metode ktora przyjmuje jako argument liczbe i sprawdza czy jest to liczba parzysta
+// Napisz metodę, która przyjmuje jako argument liczbę i sprawdza, czy jest to liczba parzysta
 
-    // Napisz metode ktora zwraca sume dwoch liczb ale z uwaga ze jesli ktoras z podanych liczb jest z przedzialu [13,19]
-    // to zwrocona wartosc to zawsze 19
+    public static boolean czyParzysta(int liczba) {
+        return liczba % 2 == 0;
+    }
 
-    //Napisz metode ktora przyjmuje jako parametr Stringa, jesli String zaczyna sie na z zwroc napis zzz, jesli konczy sie na y zwroc napis yyy
-    // jesli zaczyna sie na z i konczy na y zwroc zzyy, w kazdym innym przypadku zwroc stringa niezmienionego
-    // metoda startsWith() i endsWith() <- sprawdzenie czy string konczy/zaczyna sie na dany literał łancuchowy
+// Napisz metodę, która zwraca sumę dwóch liczb, ale z uwagą, że jeśli któraś z podanych liczb jest z przedziału [13,19],
+// to zwrócona wartość to zawsze 19
 
-    // zddy -> zzyy
-    // zasd -> zzz
-    // asdy -> yyy
-    // pusty string -> pusty string
-    // z -> zzz
-    // y -> yyy
-    // zy -> zzyy
-    // a -> a
-    // bb -> bb
+    public static int sumaZUwaga(int a, int b) {
+        return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) ? 19 : a + b;
+    }
 
-    //Sprawdz czy podany String jako parametr zaczynajac od 0 lub 1 indeksu ma w sobie slowo bad
-    //xbadxxx - true
-    //badxxx - true
-    //xxbadxx - false
+// Napisz metodę, która jako parametr przyjmuje Stringa. Jeśli String zaczyna się na "z", zwróć napis "zzz".
+// Jeśli kończy się na "y", zwróć napis "yyy". Jeśli zaczyna się na "z" i kończy na "y", zwróć "zzyy".
+// W każdym innym przypadku zwróć niezmieniony String.
 
-    // Napisz metode ktora liczy ile razy podany znak wystepuje w podanym Stringu.
+    public static String zzzYyy(String s) {
+        if (s.startsWith("z") && s.endsWith("y")) {
+            return "zzyy";
+        } else if (s.startsWith("z")) {
+            return "zzz";
+        } else if (s.endsWith("y")) {
+            return "yyy";
+        }
+        return s;
+    }
 
-    //Napisz metodę obliczająca silnię z podanej liczby
+// Sprawdź, czy podany String jako parametr, zaczynając od indeksu 0 lub 1, zawiera słowo "bad"
 
-    // napisz metoda ktora sprawdza czy podana liczba dwucyfrowa ma wieksza cyfre
-    // jednosci od cyfry dziesiatek
+    public static boolean czyZawieraBad(String s) {
+        return s.startsWith("bad", 0) || s.startsWith("bad", 1);
+    }
 
-    // Napisz funkcję, która wyznacza sumę cyfr podanej liczby całkowitej.
+// Napisz metodę, która liczy ile razy podany znak występuje w podanym Stringu.
 
-    // Napisz metode ktora jako argument przyjmuje dwie liczby i liczy ich potegi,
-    // dla argumentow 3^4 ma obliczyc 3*3*3*3 = 81
-    // uwzglednic ze a^0 = 1
-    // uwzglednic ze a^-b = 1/(a^b)
+    public static int ileRazy(String s, char c) {
+        int licznik = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == c) {
+                licznik++;
+            }
+        }
+        return licznik;
+    }
 
-    // Napisz funkcje, ktora stwierdza, czy zadana jako parametr liczba calkowita
-    // jest kwadratem
-    // pewnej liczby calkowitej. Liczby bedace kwadratami liczb calkowitych to 1, 4,
-    // 9, 16 itd.
-    // Wartosci funkcji ma byc prawda, jesli liczba spelnia warunek oraz falsz w
-    // przeciwnym wypadku. Math.sqrt(x) zwraca pierwiastek z x
-    // sqrt(16) = 4 czyli ok bo liczba całkowita
-    // sqrt(17) - 4.2 czyli nie ok bo liczba niecałkowita :)
+// Napisz metodę obliczającą silnię z podanej liczby
 
-    // Wypisz dzielniki liczby naturalnej podanej jako parametr
-    // np dla 16 wynik to 1,2,4,8,16
+    public static int silnia(int n) {
+        int wynik = 1;
+        for (int i = 1; i <= n; i++) {
+            wynik *= i;
+        }
+        return wynik;
+    }
+
+// Napisz metodę, która sprawdza, czy podana liczba dwucyfrowa ma większą cyfrę jedności od cyfry dziesiątek
+
+    public static boolean czyWiekszaCyfraJednosci(int liczba) {
+        int jednosci = liczba % 10;
+        int dziesiatki = liczba / 10;
+        return jednosci > dziesiatki;
+    }
+
+// Napisz funkcję, która wyznacza sumę cyfr podanej liczby całkowitej.
+
+    public static int sumaCyfr(int liczba) {
+        int suma = 0;
+        while (liczba > 0) {
+            suma += liczba % 10;
+            liczba /= 10;
+        }
+        return suma;
+    }
+
+// Napisz metodę, która jako argumenty przyjmuje dwie liczby i liczy ich potęgi,
+// dla argumentów 3^4 ma obliczyć 3*3*3*3 = 81
+// Uwzględnij, że a^0 = 1 oraz a^-b = 1/(a^b)
+
+    public static double potega(double a, int b) {
+        if (b == 0) {
+            return 1;
+        } else if (b < 0) {
+            return 1 / potega(a, -b);
+        }
+        double wynik = 1;
+        for (int i = 0; i < b; i++) {
+            wynik *= a;
+        }
+        return wynik;
+    }
+
+// Napisz funkcję, która stwierdza, czy podana jako parametr liczba całkowita
+// jest kwadratem pewnej liczby całkowitej. Liczby będące kwadratami liczb całkowitych to 1, 4, 9, 16 itd.
+// Wartość funkcji ma być prawda, jeśli liczba spełnia warunek oraz fałsz w przeciwnym wypadku.
+
+    public static boolean czyKwadrat(int liczba) {
+        double pierwiastek = Math.sqrt(liczba);
+        return pierwiastek == (int) pierwiastek;
+    }
+
+// Wypisz dzielniki liczby naturalnej podanej jako parametr
+// np. dla 16 wynik to 1, 2, 4, 8, 16
+
+    public static void wypiszDzielniki(int liczba) {
+        for (int i = 1; i <= liczba; i++) {
+            if (liczba % i == 0) {
+                System.out.println(i);
+            }
+        }
+    }
 }
