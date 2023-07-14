@@ -137,7 +137,6 @@ public class Main {
         wypiszDzielniki(27); // Powinno wyświetlić: 1, 3, 9, 27
     }
 
-
     public static double obliczPensje(int liczbaGodzin, double stawka, double bonus) {
         return liczbaGodzin * stawka + bonus;
     }

@@ -9,47 +9,34 @@ public class Main {
 
         System.out.println("Kalkulator");
 
-        System.out.println("Podaj pierwszą liczbę");
-
+        System.out.println("Podaj pierwszą liczbę (A):");
         boolean flag = true;
-        while (true) {
+        while (flag) {
             try {
-                if(flag){
-                    System.out.print("A: ");
-                    a = Double.parseDouble(scanner.nextLine());
-                    flag = false;
-                }
-                System.out.print("B: ");
-                b = Double.parseDouble(scanner.nextLine());
-
-                break;
+                a = Double.parseDouble(scanner.nextLine());
+                flag = false;
             } catch (NumberFormatException e) {
-                System.out.println("Zły format, Podaj liczbe");
+                System.out.println("Zły format, podaj liczbę");
             }
         }
 
-//        System.out.println("Podaj drugą liczbę");
-//        while (true) {
-//            try {
-//
-//                break;
-//            } catch (NumberFormatException e) {
-//                System.out.println("Zły format, Podaj liczbe");
-//            }
-//        }
-
-        String operator;
-
-        while (true) {
-            System.out.println("Podaj operator:");
-            System.out.print("(+, -, *, /): ");
-            operator = scanner.nextLine();
-
-            if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
-                break;
-            } else {
-                System.out.println("Nieprawidłowy operator, podaj jeden z tych: +, -, *, /");
+        System.out.println("Podaj drugą liczbę (B):");
+        flag = true;
+        while (flag) {
+            try {
+                b = Double.parseDouble(scanner.nextLine());
+                flag = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Zły format, podaj liczbę");
             }
+        }
+
+        System.out.println("Podaj operator (+, -, *, /):");
+        String operator = scanner.nextLine();
+
+        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator.equals("/")) {
+            System.out.println("Nieprawidłowy operator, podaj jeden z tych: +, -, *, /");
+            operator = scanner.nextLine();
         }
 
         scanner.close();
@@ -57,19 +44,19 @@ public class Main {
         System.out.print("Wynik: ");
         switch (operator) {
             case "+":
-                System.out.println("Suma: " + (a + b));
+                System.out.println("Suma (A + B): " + (a + b));
                 break;
             case "-":
-                System.out.println("Różnica: " + (a - b));
+                System.out.println("Różnica (A - B): " + (a - b));
                 break;
             case "*":
-                System.out.println("Iloczyn: " + (a * b));
+                System.out.println("Iloczyn (A * B): " + (a * b));
                 break;
             case "/":
                 if (b == 0) {
-                    System.out.println("Nie mozna dzielic przez zero.");
+                    System.out.println("Nie można dzielić przez zero.");
                 } else {
-                    System.out.println("Iloraz: " + (a / b));
+                    System.out.println("Iloraz (A / B): " + (a / b));
                 }
                 break;
             default:
