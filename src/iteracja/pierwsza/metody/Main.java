@@ -137,6 +137,11 @@ public class Main {
         wypiszDzielniki(27); // Powinno wyświetlić: 1, 3, 9, 27
     }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Napisz metodę ktora oblicza pensje pracownika na podstawie liczby przepracowanych godzin, stawki godzinowej oraz bonusu
     public static double obliczPensje(int liczbaGodzin, double stawka, double bonus) {
         return liczbaGodzin * stawka + bonus;
     }
@@ -248,8 +253,8 @@ public class Main {
     public static int sumaCyfr(int liczba) {
         int suma = 0;
         while (liczba > 0) {
-            suma += liczba % 10;
-            liczba /= 10;
+            suma += liczba % 10; // dodajemy ostatnia cyfre
+            liczba /= 10; // zmniejszamy liczbe o ostatnia cyfre
         }
         return suma;
     }
@@ -259,11 +264,13 @@ public class Main {
 // Uwzględnij, że a^0 = 1 oraz a^-b = 1/(a^b)
 
     public static double potega(double a, int b) {
+
         if (b == 0) {
             return 1;
         } else if (b < 0) {
             return 1 / potega(a, -b);
         }
+
         double wynik = 1;
         for (int i = 0; i < b; i++) {
             wynik *= a;
@@ -284,6 +291,7 @@ public class Main {
 // np. dla 16 wynik to 1, 2, 4, 8, 16
 
     public static void wypiszDzielniki(int liczba) {
+        System.out.println("Dzielniki liczby " + liczba + ":");
         for (int i = 1; i <= liczba; i++) {
             if (liczba % i == 0) {
                 System.out.println(i);

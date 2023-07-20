@@ -31,17 +31,10 @@ public class Main {
         }
 
         reader.close();
-
+        System.out.println();
         // Stwórz plik z 10 liczbami, wczytaj je i przypisz do tablicy, wyświetl całą tablicę
 
         File file2 = new File(folder, "liczby.txt");
-        FileWriter fileWriter2 = new FileWriter(file2);
-
-        for (int i = 1; i <= 10; i++) {
-            fileWriter2.write(i + "\n");
-        }
-
-        fileWriter2.close();
 
         FileReader fileReader2 = new FileReader(file2);
         BufferedReader reader2 = new BufferedReader(fileReader2);
@@ -49,6 +42,7 @@ public class Main {
         int[] tab = new int[10];
         int i = 0;
         String line2;
+        System.out.println("Liczby z pliku: ");
         while ((line2 = reader2.readLine()) != null) {
             tab[i] = Integer.parseInt(line2);
             i++;
