@@ -32,6 +32,7 @@ public class Main {
 
         reader.close();
         System.out.println();
+
         // Stwórz plik z 10 liczbami, wczytaj je i przypisz do tablicy, wyświetl całą tablicę
 
         File file2 = new File(folder, "liczby.txt");

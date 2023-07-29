@@ -215,7 +215,7 @@ public class Main {
 // Sprawdź, czy podany String jako parametr, zaczynając od indeksu 0 lub 1, zawiera słowo "bad"
 
     public static boolean czyZawieraBad(String s) {
-        return s.startsWith("bad", 0) || s.startsWith("bad", 1);
+        return s.startsWith("bad") || s.startsWith("bad", 1);
     }
 
 // Napisz metodę, która liczy ile razy podany znak występuje w podanym Stringu.
@@ -272,7 +272,7 @@ public class Main {
         }
 
         double wynik = 1;
-        for (int i = 0; i < b; i++) {
+        for (int i = 0; i < Math.abs(b); i++) {
             wynik *= a;
         }
         return wynik;
