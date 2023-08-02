@@ -356,7 +356,7 @@ public class Main {
         int licznik = 0;
 
         for (String s : imiona) {
-            if (s == imie) {
+            if (s.equals(imie)) {
                 licznik++;
             }
         }
@@ -392,7 +392,7 @@ public class Main {
 
         for (String s : lista1) {
             for (String s1 : lista2) {
-                if (s == s1) {
+                if (Objects.equals(s, s1)) {
                     listaWspolna.add(s);
                 }
             }
@@ -410,8 +410,7 @@ public class Main {
         for (Integer i : liczby) {
             if (i > max) {
                 max = i;
-            }
-            if (i < min) {
+            } else if (i < min) {
                 min = i;
             }
         }
@@ -464,6 +463,7 @@ public class Main {
     // 18) majac liste intow zwróc liste intow tych ktore te ktore koncza sie na cyfre
     // podana jako porametr
 
+    //todo czy bezpieczne jest porownywanie inta z integerem
     public static List<Integer> konczaSieNa(List<Integer> liczby, int cyfra) {
         List<Integer> konczaSieNa = new ArrayList<>();
 
@@ -480,8 +480,10 @@ public class Main {
 
     public static int powtorki(List<String> strs) {
         int licznik = 0;
+        List<Integer> sprawdzane = new ArrayList<>();
         for (int i = 0; i < strs.size(); i++) {
-            for (int j = i + 1; j < strs.size(); j++) {
+            sprawdzane.add(i);
+            for (int j = 0; j < sprawdzane.size(); j++) {
                 if (strs.get(i) == strs.get(j)) {
                     licznik++;
                 }
@@ -610,4 +612,6 @@ public class Main {
         }
         return suma;
     }
+
+    //todo napisz metode ktora liczy mediane liczb
 }
