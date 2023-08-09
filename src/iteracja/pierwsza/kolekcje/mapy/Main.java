@@ -176,7 +176,7 @@ public class Main {
         System.out.println();
 
         // Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
-        // wyswietlic ile razy jaki element byl dodany
+        // wyswietlic ile razy jaki s byl dodany
 
         System.out.println("Zadanie 11 - dodawanie slow do mapy");
         HashMap<String, Integer> mapa = dodajWyrazy();
@@ -212,20 +212,35 @@ public class Main {
         // po Angielsku to mother. Program dziala dopoki uzytkownik nie zrezygnuje (cancel)
 
         System.out.println("Słownik: " + utworzSlownik());
+        System.out.println();
 
 
         // W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
         // (same nazwiska jako Stringi) które uczeszczaja do klasy.
+
+        List<String> nazwiska = new ArrayList<>(Arrays.asList(
+                "Kowalski", "Nowak", "Wisniewski", "Wojcik", "Kowalczyk", "Kaminski", "Lewandowski", "Zielinski", "Szymanski", "Wozniak",
+                "Dabrowski", "Kozlowski", "Jankowski", "Mazur", "Wojciechowski", "Kwiatkowski", "Krawczyk", "Piotrowski", "Grabowski", "Nowakowski",
+                "Pawlak", "Michalski", "Adamczyk", "Nowicki", "Dudek", "Zajac", "Wieczorek", "Jablonski", "Krol", "Majewski",
+                "Olszewski", "Jaworski", "Wrobel", "Malinowski", "Pawlak", "Witkowski", "Walczak", "Stepien", "Gorski", "Rutkowski",
+                "Michalak", "Sikora", "Nowicka", "Kaczmarek", "Zalewski", "Wojcik", "Swiderski", "Borkowski", "Czarnecki", "Szymczak",
+                "Jakubowski", "Piekarski", "Tomczak", "Wroblewski", "Marciniak", "Zawadzki", "Kubiak", "Szewczyk", "Brzezinski", "Bartoszewska"
+        ));
+
+        List<String> Klasa1a = new ArrayList<>(nazwiska.subList(0, 20));
+        List<String> Klasa1b = new ArrayList<>(nazwiska.subList(20, 40));
+        List<String> Klasa1c = new ArrayList<>(nazwiska.subList(40, 60));
+
         // 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
+        System.out.println("Najdluższe nazwiska w klasie 1a: " + najdluzszeImionaWKlasach(Klasa1a, 3));
+        System.out.println("Najdluższe nazwiska w klasie 1b: " + najdluzszeImionaWKlasach(Klasa1b, 3));
+        System.out.println("Najdluższe nazwiska w klasie 1c: " + najdluzszeImionaWKlasach(Klasa1c, 3));
+
         // 2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
-
-        List<String> Klasa1a = new ArrayList<>();
-        List<String> Klasa1b = new ArrayList<>();
-        List<String> Klasa1c = new ArrayList<>();
-
-
+        System.out.println("Najdluższe imie w szkole: " + znajdzNajdluzszyString(Klasa1a, Klasa1b, Klasa1c));
 
     }
+
 
     // Napisz metodę, która dla danej HashMapy wyświetli wszystkie klucze (imiona) znajdujące się w niej.
     public static void wyswietlKlucze(HashMap<String, Integer> hashMap) {
@@ -435,7 +450,7 @@ public class Main {
     }
 
     // Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
-    // wyswietlic ile razy jaki element byl dodany
+    // wyswietlic ile razy jaki s byl dodany
 
     public static HashMap<String, Integer> dodajWyrazy() {
         Scanner scanner = new Scanner(System.in);
@@ -520,12 +535,36 @@ public class Main {
 
     // W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
     // (same nazwiska jako Stringi) które uczeszczaja do klasy.
+
     // 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
+
+    public static List<String> najdluzszeImionaWKlasach(List<String> klasa, Integer limit) {
+        List<String> Najdluzsze = new ArrayList<>(limit);
+
+        for (Integer i = 0; i < limit; i++) {
+            String najdluzsze = "";
+            for (String s : klasa) {
+                if (s.length() > najdluzsze.length()) {
+                    najdluzsze = s;
+                }
+            }
+            Najdluzsze.add(najdluzsze);
+            klasa.remove(najdluzsze);
+        }
+        return Najdluzsze;
+    }
+
     // 2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
+    public static String znajdzNajdluzszyString(List<String>... listy) {
+        String najdluzszy = "";
 
-
+        for (List<String> list : listy) {
+            for (String s : list) {
+                if (s.length() >= najdluzszy.length()) {
+                    najdluzszy = s;
+                }
+            }
+        }
+        return najdluzszy;
+    }
 }
-
-
-
-

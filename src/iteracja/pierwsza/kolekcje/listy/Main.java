@@ -613,5 +613,14 @@ public class Main {
         return suma;
     }
 
-    //todo napisz metode ktora liczy mediane liczb
+    // 27) Napisz metode ktora przyjmuje jako parametr liste intow i zwraca mediane
+
+    public static int mediana(List<Integer> nums) {
+        Collections.sort(nums);
+        if (nums.size() % 2 == 0) {
+            return (nums.get(nums.size() / 2) + nums.get(nums.size() / 2 - 1)) / 2;
+        } else {
+            return nums.get(nums.size() / 2);
+        }
+    }
 }
