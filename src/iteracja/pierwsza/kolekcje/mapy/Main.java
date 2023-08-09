@@ -160,7 +160,53 @@ public class Main {
         System.out.println("Output: " + wiekDoKwadratu(wiek));
         System.out.println();
 
+//   Napisz metoda która dodaje słowa do mapy. Kluczem maja byc kolejen liczby
+//   naturalne zaczynajac od 0.
 
+        HashMap<Integer, String> imiona2 = new HashMap<>();
+//        imiona2.put(0, "Jan");
+//        imiona2.put(1, "Anna");
+//        imiona2.put(2, "Kasia");
+//        imiona2.put(3, "Piotr");
+        System.out.println("Zadanie 10 - dodawanie slow do mapy");
+        System.out.println("Imiona: " + imiona2);
+        System.out.println("Output: " + dodajSlowo(imiona2, "Basia"));
+        System.out.println();
+
+// Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
+// wyswietlic ile razy jaki element byl dodany
+
+        System.out.println("Zadanie 11 - dodawanie slow do mapy");
+        HashMap<String, Integer> mapa = dodajWyrazy();
+        System.out.println(mapa);
+        System.out.println();
+
+// Napisz program, ktory losuje liczby w duzym lotku bez powtorzen, zakres liczb 1-45
+
+        System.out.println("Zadanie 12 - losowanie liczb");
+        System.out.println("Output: " + duzyLotek());
+
+// napisz metode ktora przyjmuje Mape<Integer, String>, zamien wartosci ktorych
+// klucze sa parzystych wartosci na słowo "parzyste"
+
+        System.out.println("Zadanie 13 - zamiana wartosci");
+        HashMap<Integer, String> mapa2 = new HashMap<>();
+        mapa2.put(0, "Jan");
+        mapa2.put(1, "Anna");
+        mapa2.put(2, "Kasia");
+        mapa2.put(3, "Piotr");
+        mapa2.put(4, "Marek");
+        mapa2.put(5, "Krzysztof");
+        mapa2.put(6, "Tomek");
+        mapa2.put(7, "Kamil");
+        mapa2.put(8, "Kuba");
+        mapa2.put(9, "Ola");
+        System.out.println("Mapa: " + mapa2);
+        System.out.println("Output: " + zamienParzyste(mapa2));
+        System.out.println();
+
+
+        System.out.println("Słownik: " + utworzSlownik());
     }
 
     //Napisz metodę, która dla danej HashMapy wyświetli wszystkie klucze (imiona) znajdujące się w niej.
@@ -361,25 +407,99 @@ public class Main {
 
             return wiekDoKwadratu;
         }
+
+    // Napisz metoda która dodaje słowa do mapy. Kluczem maja byc kolejen liczby
+    // naturalne zaczynajac od 0.
+
+    public static HashMap dodajSlowo(HashMap<Integer, String> mapa, String slowo) {
+        mapa.put(mapa.size(), slowo);
+        return mapa;
+    }
+
+    // Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
+    // wyswietlic ile razy jaki element byl dodany
+
+    public static HashMap<String, Integer> dodajWyrazy() {
+        Scanner scanner = new Scanner(System.in);
+        HashMap<String, Integer> mapa = new HashMap<>();
+
+        String slowo;
+        do {
+            System.out.print("Podaj słowo (wpisz 'koniec' aby zakończyć): ");
+            slowo = scanner.nextLine();
+            if (!slowo.equalsIgnoreCase("koniec")) {
+                mapa.put(slowo, mapa.getOrDefault(slowo, 0) + 1);
+            }
+        } while (!slowo.equalsIgnoreCase("koniec"));
+
+        return mapa;
+    }
+
+
+    // Napisz program, ktory losuje liczby w duzym lotku bez powtorzen, zakres liczb 1-45
+
+    public static List<Integer> duzyLotek() {
+        List<Integer> liczby = new ArrayList<>();
+        Random random = new Random();
+
+        while (liczby.size() < 6) {
+            int losowaLiczba = random.nextInt(45) + 1;
+            if (!liczby.contains(losowaLiczba)) {
+                liczby.add(losowaLiczba);
+            }
+        }
+
+        return liczby;
+    }
+
+    // napisz metode ktora przyjmuje Mape<Integer, String>, zamien wartosci ktorych
+    // klucze sa parzystych wartosci na słowo "parzyste"
+
+    public static HashMap<Integer, String> zamienParzyste(HashMap<Integer, String> mapa) {
+        HashMap<Integer, String> nowaMapa = new HashMap<>();
+
+        for (Integer i : mapa.keySet()) {
+            if (i % 2 == 0) {
+                nowaMapa.put(i, "parzyste");
+            } else {
+                nowaMapa.put(i, mapa.get(i));
+            }
+        }
+
+        return nowaMapa;
+    }
+
+    // Napisz program, ktory symuluje dzialanie slownika
+    // polsko-angielskiego. Przykładowy program: Podaj slowko po Polsku: mama Slowko
+    // po Angielsku to mother. Program dziala dopoki uzytkownik nie zrezygnuje (cancel)
+
+    public static Map<String, String> utworzSlownik() {
+        Map<String, String> slownik = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Witaj w słowniku polsko-angielskim!");
+
+        while (true) {
+            System.out.print("Podaj słowo po Polsku (lub wpisz 'cancel' aby zrezygnować): ");
+            String slowoPolskie = scanner.nextLine();
+
+            if (slowoPolskie.equalsIgnoreCase("cancel")) {
+                System.out.println("Zrezygnowano z korzystania ze słownika.");
+                break;
+            }
+
+            if (slownik.containsKey(slowoPolskie)) {
+                System.out.println("To słowo już istnieje w słowniku.");
+            } else {
+                System.out.print("Podaj tłumaczenie słowa '" + slowoPolskie + "' po Angielsku: ");
+                String slowoAngielskie = scanner.nextLine();
+                slownik.put(slowoPolskie, slowoAngielskie);
+                System.out.println("Dodano nowe tłumaczenie do słownika.");
+            }
+        }
+        return slownik;
+    }
 }
-
-// w tych dwoch metodach jedno wywolanie metody dodaje jedo slowo do mapy
-// Napisz metoda która dodaje słowa do mapy. Kluczem maja byc kolejen liczby
-// naturalne zaczynajac od 0
-
-// Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
-// wyswietlic ile razy jaki element byl dodany
-
-// Napisz program, ktory losuje liczby w duzym lotku bez powtorzen, zakres liczb 1-45
-
-// napisz metode ktora przyjmuje Mape<Integer, String>, zamien wartosci ktorych
-// klucze sa parzystych wartosci
-// na słowo "parzyste"
-
-// Napisz program, ktory symuluje dzialanie slownika
-// polsko-angielskiego. Przykładowy program: Podaj slowko po Polsku: mama Slowko
-// po Angielsku to mother. Program dziala dopoki uzytkownik nie zrezygnuje
-// (cancel)
 
 // W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
 // (same nazwiska jako Stringi) które uczeszczaja do klasy.

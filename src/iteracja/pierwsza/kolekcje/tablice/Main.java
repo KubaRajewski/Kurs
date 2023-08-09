@@ -1,4 +1,4 @@
-package iteracja.pierwsza.metody.tablice;
+package iteracja.pierwsza.kolekcje.tablice;
 
 public class Main {
     public static void main(String[] args) {
