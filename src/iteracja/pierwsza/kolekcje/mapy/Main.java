@@ -1,36 +1,36 @@
-package iteracja.pierwsza.hashMapy;
+package iteracja.pierwsza.kolekcje.mapy;
 
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-//    //Stwórz HashMapę, w której kluczami będą imiona (String), a wartościami będą wieki (Integer) osób. Dodaj do niej kilka par imię-wiek.
-//
-//        HashMap<String, Integer> ludzie = new HashMap<String, Integer>();
-//
-//        ludzie.put("Maciek", 3);
-//        ludzie.put("Gosia", 19);
-//        ludzie.put("Kuba", 20);
-//        ludzie.put("Asia", 33);
-//
-//
-//        System.out.println("Cała hashmapa");
-//        System.out.println(ludzie);
-//        System.out.println();
-//        System.out.println("Tylko klucze");
-//        wyswietlKlucze(ludzie);
-//        System.out.println();
-//        System.out.println("Tylko wartosci");
-//        wyswietlWartosci(ludzie);
-//        System.out.println();
-//
-//        System.out.println("ile ma lat");
-//        ileMaLat(ludzie, "Maciek");
-//        System.out.println();
+        //Stwórz HashMapę, w której kluczami będą imiona (String), a wartościami będą wieki (Integer) osób. Dodaj do niej kilka par imię-wiek.
+/*
+        HashMap<String, Integer> ludzie = new HashMap<String, Integer>();
 
-//    Stwórz metodę, która jako parametr przyjmuje listę Stringów i zwraca mapę, gdzie kluczem jest unikalne imię,
-//    a wartością jest liczba wystąpień tego imienia w liście.
+        ludzie.put("Maciek", 3);
+        ludzie.put("Gosia", 19);
+        ludzie.put("Kuba", 20);
+        ludzie.put("Asia", 33);
+
+
+        System.out.println("Cała hashmapa");
+        System.out.println(ludzie);
+        System.out.println();
+        System.out.println("Tylko klucze");
+        wyswietlKlucze(ludzie);
+        System.out.println();
+        System.out.println("Tylko wartosci");
+        wyswietlWartosci(ludzie);
+        System.out.println();
+
+        System.out.println("ile ma lat");
+        ileMaLat(ludzie, "Maciek");
+        System.out.println();
+*/
+        // Stwórz metodę, która jako parametr przyjmuje listę Stringów i zwraca mapę, gdzie kluczem jest unikalne imię,
+        // a wartością jest liczba wystąpień tego imienia w liście.
 
         List<String> imiona = new ArrayList<>();
 
@@ -54,8 +54,9 @@ public class Main {
         System.out.println();
 
 
-//    Napisz funkcję, która jako parametr przyjmuje listę liczb całkowitych i zwraca mapę, gdzie kluczem jest liczba,
-//    a wartością jest lista indeksów, pod którymi ta liczba występuje w oryginalnej liście.
+        // Napisz funkcję, która jako parametr przyjmuje listę liczb całkowitych i zwraca mapę, gdzie kluczem jest liczba,
+        // a wartością jest lista indeksów, pod którymi ta liczba występuje w oryginalnej liście.
+
         List<Integer> Liczby = new ArrayList<>();
 
         Liczby.add(16);
@@ -74,15 +75,16 @@ public class Main {
         System.out.println("Output: " + indeksyLiczb(Liczby));
         System.out.println();
 
-//    Stwórz funkcję, która jako parametr przyjmuje listę Stringów i zwraca mapę, gdzie kluczem
-//    jest pierwsza litera każdego imienia (jako String), a wartością jest lista imion rozpoczynających się tą literą.
+        // Stwórz funkcję, która jako parametr przyjmuje listę Stringów i zwraca mapę, gdzie kluczem
+        // jest pierwsza litera każdego imienia (jako String), a wartością jest lista imion rozpoczynających się tą literą.
+
         System.out.println("Zadanie 3 - imiona od litery");
         System.out.println("imiona: " + imiona);
         System.out.println("output: " + ImionaOdLitery(imiona));
         System.out.println();
 
-//    Napisz metodę, która jako parametr przyjmuje mapę z wartościami numerycznymi i zwraca nową mapę, gdzie kluczem
-//    jest liczba z pierwotnej mapy, a wartością jest jej pierwiastek kwadratowy zaokrąglony do dwóch miejsc po przecinku.
+        // Napisz metodę, która jako parametr przyjmuje mapę z wartościami numerycznymi i zwraca nową mapę, gdzie kluczem
+        // jest liczba z pierwotnej mapy, a wartością jest jej pierwiastek kwadratowy zaokrąglony do dwóch miejsc po przecinku.
 
         System.out.println("Zadanie 4 - pierwiastek kwadratowy");
         HashMap<Integer, Integer> liczby2 = new HashMap<>();
@@ -97,51 +99,51 @@ public class Main {
         System.out.println("Output: " + pierwiastekKwadratowy(liczby2));
         System.out.println();
 
-//    Stwórz funkcję, która jako parametr przyjmuje listę liczb całkowitych i zwraca mapę, gdzie kluczem jest liczba,
-//    a wartością jest informacja, czy liczba jest liczbą pierwszą.
+        // Stwórz funkcję, która jako parametr przyjmuje listę liczb całkowitych i zwraca mapę, gdzie kluczem jest liczba,
+        // a wartością jest informacja, czy liczba jest liczbą pierwszą.
 
         System.out.println("Zadanie 5 - czy liczba jest pierwsza");
         System.out.println("Liczby: " + Liczby);
         System.out.println("Output: " + czyPierwsza(Liczby));
         System.out.println();
 
-//    Napisz metodę, która jako parametr przyjmuje listę Stringów reprezentujących nazwy kolorów (np. "czerwony", "zielony", "niebieski")
-//    i zwraca mapę, gdzie kluczem jest kolor, a wartością jest liczba jego wystąpień.
+        // Napisz metodę, która jako parametr przyjmuje listę Stringów reprezentujących nazwy kolorów (np. "czerwony", "zielony", "niebieski")
+        // i zwraca mapę, gdzie kluczem jest kolor, a wartością jest liczba jego wystąpień.
 
-            System.out.println("Zadanie 6 - ile kolorow");
-            List<String> kolory = new ArrayList<>();
-            kolory.add("czerwony");
-            kolory.add("zielony");
-            kolory.add("niebieski");
-            kolory.add("czerwony");
-            kolory.add("czerwony");
-            kolory.add("niebieski");
-            kolory.add("czerwony");
-            kolory.add("zielony");
-            kolory.add("niebieski");
+        System.out.println("Zadanie 6 - ile kolorow");
+        List<String> kolory = new ArrayList<>();
+        kolory.add("czerwony");
+        kolory.add("zielony");
+        kolory.add("niebieski");
+        kolory.add("czerwony");
+        kolory.add("czerwony");
+        kolory.add("niebieski");
+        kolory.add("czerwony");
+        kolory.add("zielony");
+        kolory.add("niebieski");
 
-            System.out.println("Kolory: " + kolory);
-            System.out.println("Output: " + ileKolorow(kolory));
-            System.out.println();
+        System.out.println("Kolory: " + kolory);
+        System.out.println("Output: " + ileKolorow(kolory));
+        System.out.println();
 
-//    Napisz metodę, która jako parametr przyjmuje listę Stringów i zwraca mapę, gdzie kluczem jest imię, a wartością
-//    jest zbiór liter występujących w danym imieniu (bez powtórzeń).
+        // Napisz metodę, która jako parametr przyjmuje listę Stringów i zwraca mapę, gdzie kluczem jest imię, a wartością
+        // jest zbiór liter występujących w danym imieniu (bez powtórzeń).
 
         System.out.println("Zadanie 7 - zbior liter");
         System.out.println("imiona: " + imiona);
         System.out.println("Output: " + literyImion(imiona));
         System.out.println();
 
-//    Stwórz funkcję, która jako parametr przyjmuje mapę z wartościami liczbowymi i zwraca listę wartości,
-//    które są liczbami pierwszymi.
+        // Stwórz funkcję, która jako parametr przyjmuje mapę z wartościami liczbowymi i zwraca listę wartości,
+        // które są liczbami pierwszymi.
 
         System.out.println("Zadanie 8 - liczby pierwsze");
         System.out.println("Liczby: " + liczby2);
         System.out.println("Output: " + liczbyPierwsze(liczby2));
         System.out.println();
 
-//    Napisz metodę, która jako parametr przyjmuje mapę zawierającą imiona jako klucze i wiek jako wartości,
-//    a następnie zwraca nową mapę, gdzie kluczem jest imię osoby, a wartością jest jej wiek podniesiony do kwadratu.
+        // Napisz metodę, która jako parametr przyjmuje mapę zawierającą imiona jako klucze i wiek jako wartości,
+        // a następnie zwraca nową mapę, gdzie kluczem jest imię osoby, a wartością jest jej wiek podniesiony do kwadratu.
 
         System.out.println("Zadanie 9 - wiek do kwadratu");
         HashMap<String, Integer> wiek = new HashMap<>();
@@ -160,8 +162,8 @@ public class Main {
         System.out.println("Output: " + wiekDoKwadratu(wiek));
         System.out.println();
 
-//   Napisz metoda która dodaje słowa do mapy. Kluczem maja byc kolejen liczby
-//   naturalne zaczynajac od 0.
+        // Napisz metoda która dodaje słowa do mapy. Kluczem maja byc kolejen liczby
+        // naturalne zaczynajac od 0.
 
         HashMap<Integer, String> imiona2 = new HashMap<>();
 //        imiona2.put(0, "Jan");
@@ -173,21 +175,21 @@ public class Main {
         System.out.println("Output: " + dodajSlowo(imiona2, "Basia"));
         System.out.println();
 
-// Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
-// wyswietlic ile razy jaki element byl dodany
+        // Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
+        // wyswietlic ile razy jaki element byl dodany
 
         System.out.println("Zadanie 11 - dodawanie slow do mapy");
         HashMap<String, Integer> mapa = dodajWyrazy();
         System.out.println(mapa);
         System.out.println();
 
-// Napisz program, ktory losuje liczby w duzym lotku bez powtorzen, zakres liczb 1-45
+        // Napisz program, ktory losuje liczby w duzym lotku bez powtorzen, zakres liczb 1-45
 
         System.out.println("Zadanie 12 - losowanie liczb");
         System.out.println("Output: " + duzyLotek());
 
-// napisz metode ktora przyjmuje Mape<Integer, String>, zamien wartosci ktorych
-// klucze sa parzystych wartosci na słowo "parzyste"
+        // napisz metode ktora przyjmuje Mape<Integer, String>, zamien wartosci ktorych
+        // klucze sa parzystych wartosci na słowo "parzyste"
 
         System.out.println("Zadanie 13 - zamiana wartosci");
         HashMap<Integer, String> mapa2 = new HashMap<>();
@@ -205,16 +207,32 @@ public class Main {
         System.out.println("Output: " + zamienParzyste(mapa2));
         System.out.println();
 
+        // Napisz program, ktory symuluje dzialanie slownika
+        // polsko-angielskiego. Przykładowy program: Podaj slowko po Polsku: mama Slowko
+        // po Angielsku to mother. Program dziala dopoki uzytkownik nie zrezygnuje (cancel)
 
         System.out.println("Słownik: " + utworzSlownik());
+
+
+        // W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
+        // (same nazwiska jako Stringi) które uczeszczaja do klasy.
+        // 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
+        // 2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
+
+        List<String> Klasa1a = new ArrayList<>();
+        List<String> Klasa1b = new ArrayList<>();
+        List<String> Klasa1c = new ArrayList<>();
+
+
+
     }
 
-    //Napisz metodę, która dla danej HashMapy wyświetli wszystkie klucze (imiona) znajdujące się w niej.
+    // Napisz metodę, która dla danej HashMapy wyświetli wszystkie klucze (imiona) znajdujące się w niej.
     public static void wyswietlKlucze(HashMap<String, Integer> hashMap) {
         System.out.println(hashMap.keySet());
     }
 
-    //Napisz metodę, która dla danej HashMapy wyświetli wszystkie wartości (wiek) znajdujące się w niej.
+    // Napisz metodę, która dla danej HashMapy wyświetli wszystkie wartości (wiek) znajdujące się w niej.
     public static void wyswietlWartosci(HashMap<String, Integer> hashMap) {
         System.out.println(hashMap.values());
     }
@@ -499,9 +517,15 @@ public class Main {
         }
         return slownik;
     }
+
+    // W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
+    // (same nazwiska jako Stringi) które uczeszczaja do klasy.
+    // 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
+    // 2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
+
+
 }
 
-// W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
-// (same nazwiska jako Stringi) które uczeszczaja do klasy.
-// 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
-// 2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
+
+
+
