@@ -361,6 +361,27 @@ public class Main {
 
             return wiekDoKwadratu;
         }
-
-
 }
+
+// w tych dwoch metodach jedno wywolanie metody dodaje jedo slowo do mapy
+// Napisz metoda która dodaje słowa do mapy. Kluczem maja byc kolejen liczby
+// naturalne zaczynajac od 0
+
+// Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
+// wyswietlic ile razy jaki element byl dodany
+
+// Napisz program, ktory losuje liczby w duzym lotku bez powtorzen, zakres liczb 1-45
+
+// napisz metode ktora przyjmuje Mape<Integer, String>, zamien wartosci ktorych
+// klucze sa parzystych wartosci
+// na słowo "parzyste"
+
+// Napisz program, ktory symuluje dzialanie slownika
+// polsko-angielskiego. Przykładowy program: Podaj slowko po Polsku: mama Slowko
+// po Angielsku to mother. Program dziala dopoki uzytkownik nie zrezygnuje
+// (cancel)
+
+// W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
+// (same nazwiska jako Stringi) które uczeszczaja do klasy.
+// 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
+// 2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
