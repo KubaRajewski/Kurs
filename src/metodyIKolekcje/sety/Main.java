@@ -1,9 +1,6 @@
 package metodyIKolekcje.sety;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +9,7 @@ public class Main {
 
         List<Integer> lista = Arrays.asList(3, 24, 3, 0, 55, 55, 24, 0, 7, 67, 23);
         List<Integer> lista2 = Arrays.asList(33, 4, 31, 0, 535, 55, 4, 3, 67, 3, 87);
+        List<String> lista3 = Arrays.asList("kuba", "natan", "ala", "tomek");
 
 // 1. Usuwanie duplikatów
 
@@ -33,37 +31,44 @@ public class Main {
 
 // 4. Anagramy
 
-            System.out.println("Anagramy: ");
-            System.out.println("output: " + anagramy("kot", "tok"));
-            System.out.println();
+        System.out.println("Anagramy: ");
+        System.out.println("output: " + anagramy("kot", "tok"));
+        System.out.println();
 
 // 5. Usuwanie powtórzeń w tekście
 
-            System.out.println("Usuwanie powtorzen w tekscie: ");
-            System.out.println("output: " + usuwaniePowtorzen("ala ma kota a kot ma ale no i ala nie ma psa"));
-            System.out.println();
+        System.out.println("Usuwanie powtorzen w tekscie: ");
+        System.out.println("output: " + usuwaniePowtorzen("ala ma kota a kot ma ale no i ala nie ma psa"));
+        System.out.println();
 
+// 6. Suma zbiorów
+        System.out.println("suma dwoch list jako zbior");
+        System.out.println("lista 1: " + lista);
+        System.out.println("lista 2: " + lista2);
+        System.out.println("suma: " + sumaZbiorow(lista, lista2));
+        System.out.println();
+
+// 7. Zbiór znaków
+        System.out.println("Znaki z danego Stringa ");
+        System.out.println("String: Kuba" );
+        System.out.println("Set: " + zbiorZnakow("Kuba"));
+        System.out.println();
+
+// 8. Palindromy
+        System.out.println("Palidromy");
+        System.out.println("Lista: " + lista3);
+        System.out.println("Palidromy: " + palidromy(lista3));
+
+
+// todo
 // 6. Zbiór osób
 // Stwórz klasę Person z polami name (imię) i age (wiek). Następnie utwórz zbiór osób
 // i sprawdź, czy istnieje w nim osoba o podanym imieniu i wieku.
-
+// todo
 // 7. Zbiór książek
 // Stwórz klasę Book z polami title (tytuł) i author (autor). Utwórz zbiór książek i zaimplementuj funkcję,
 // która znajdzie i wyświetli wszystkich autorów, którzy mają więcej niż jedną książkę w zbiorze.
 
-// 8. Suma zbiorów
-// Napisz funkcję, która przyjmuje dwie listy liczb całkowitych i zwraca zbiór zawierający wszystkie unikalne elementy z obu list.
-
-// 9. Przecięcie zbiorów
-// Napisz funkcję, która przyjmuje dwie listy liczb całkowitych i zwraca zbiór zawierający tylko elementy, które występują w obu listach.
-
-// 10. Zbiór znaków
-// Stwórz program, który wczytuje łańcuch znaków od użytkownika i tworzy zbiór zawierający wszystkie unikalne znaki (litery) w łańcuchu.
-
-// Trudniejsze zadania:
-
-// 1. Palindromy
-// Napisz funkcję, która przyjmuje listę łańcuchów znaków i zwraca zbiór palindromów (słów, które czytane od przodu i od tyłu są identyczne).
 
 // 2. Podzbiory
 // Napisz funkcję, która generuje wszystkie możliwe podzbiory zbioru liczb całkowitych i zwraca je jako zbiór zbiorów.
@@ -110,15 +115,15 @@ public class Main {
 // 2. Wspólne elementy
 // Napisz funkcję, która przyjmuje dwie listy liczb całkowitych i zwraca zbiór zawierający elementy występujące w obu listach.
 
-        public static Set<Integer> wspolneElementy(List<Integer> lista, List<Integer> lista2) {
-            Set<Integer> set = new HashSet<>();
-            for (Integer i : lista) {
-                if (lista2.contains(i)) {
-                    set.add(i);
-                }
+    public static Set<Integer> wspolneElementy(List<Integer> lista, List<Integer> lista2) {
+        Set<Integer> set = new HashSet<>();
+        for (Integer i : lista) {
+            if (lista2.contains(i)) {
+                set.add(i);
             }
-            return set;
         }
+        return set;
+    }
 
 // 3. Zliczanie słów
 // Napisz program, który wczytuje ciąg słów od użytkownika i tworzy zbiór unikalnych słów.
@@ -161,4 +166,45 @@ public class Main {
         }
         return set.toString();
     }
+
+// 6. Suma zbiorów
+// Napisz funkcję, która przyjmuje dwie listy liczb całkowitych i zwraca zbiór zawierający wszystkie unikalne elementy z obu list.
+
+    public static Set<Integer> sumaZbiorow(List<Integer> list1, List<Integer> list2) {
+        Set<Integer> suma = new HashSet<>();
+        for (Integer i : list1) {
+            suma.add(i);
+        }
+        for (Integer i : list2) {
+            suma.add(i);
+        }
+        return suma;
+    }
+
+// 7. Zbiór znaków
+// Stwórz program, który wczytuje łańcuch znaków od użytkownika i tworzy zbiór zawierający wszystkie unikalne znaki (litery) w łańcuchu.
+
+    public static Set<String> zbiorZnakow(String str) {
+        Set<String> znaki = new HashSet<>();
+        for (int i = 0; i < str.length(); i++) {
+            znaki.add(String.valueOf(str.charAt(i)));
+        }
+        return znaki;
+    }
+
+
+// 8. Palindromy
+// Napisz funkcję, która przyjmuje listę łańcuchów znaków i zwraca zbiór palindromów (słów, które czytane od przodu i od tyłu są identyczne).
+
+    public static Set<String> palidromy(List<String> list) {
+        Set<String> palidromy = new HashSet<>();
+        for (String s : list) {
+            StringBuffer sb = new StringBuffer(s);
+            if (s.equals(sb.reverse().toString())) {
+                palidromy.add(s);
+            }
+        }
+        return palidromy;
+    }
+
 }
