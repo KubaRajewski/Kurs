@@ -218,26 +218,28 @@ public class Main {
         // W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
         // (same nazwiska jako Stringi) które uczeszczaja do klasy.
 
-        List<String> nazwiska = new ArrayList<>(Arrays.asList(
-                "Kowalski", "Nowak", "Wisniewski", "Wojcik", "Kowalczyk", "Kaminski", "Lewandowski", "Zielinski", "Szymanski", "Wozniak",
-                "Dabrowski", "Kozlowski", "Jankowski", "Mazur", "Wojciechowski", "Kwiatkowski", "Krawczyk", "Piotrowski", "Grabowski", "Nowakowski",
-                "Pawlak", "Michalski", "Adamczyk", "Nowicki", "Dudek", "Zajac", "Wieczorek", "Jablonski", "Krol", "Majewski",
-                "Olszewski", "Jaworski", "Wrobel", "Malinowski", "Pawlak", "Witkowski", "Walczak", "Stepien", "Gorski", "Rutkowski",
-                "Michalak", "Sikora", "Nowicka", "Kaczmarek", "Zalewski", "Wojcik", "Swiderski", "Borkowski", "Czarnecki", "Szymczak",
-                "Jakubowski", "Piekarski", "Tomczak", "Wroblewski", "Marciniak", "Zawadzki", "Kubiak", "Szewczyk", "Brzezinski", "Bartoszewska"
-        ));
+        List<String> klasa1a = List.of("Kowalski", "Nowak", "Wisniewski", "Wojcik", "Kowalczyk",
+                "Kaminski", "Lewandowski", "Zielinski", "Szymanski", "Wozniak", "Dabrowski",
+                "Kozlowski", "Jankowski", "Mazur", "Wojciechowski", "Kwiatkowski", "Krawczyk",
+                "Piotrowski", "Grabowski", "Nowakowski");
 
-        List<String> Klasa1a = new ArrayList<>(nazwiska.subList(0, 20));
-        List<String> Klasa1b = new ArrayList<>(nazwiska.subList(20, 40));
-        List<String> Klasa1c = new ArrayList<>(nazwiska.subList(40, 60));
+
+        List<String> klasa1b = List.of("Pawlak", "Michalski", "Adamczyk", "Nowicki", "Dudek", "Zajac",
+                "Wieczorek", "Jablonski", "Krol", "Majewski", "Olszewski", "Jaworski", "Wrobel", "Malinowski",
+                "Pawlak", "Witkowski", "Walczak", "Stepien", "Gorski", "Rutkowski");
+
+        List<String> klasa1c = List.of("Michalak", "Sikora", "Nowicka", "Kaczmarek", "Zalewski", "Wojcik",
+                "Swiderski", "Borkowski", "Czarnecki", "Szymczak", "Jakubowski", "Piekarski", "Tomczak", "Wroblewski",
+                "Marciniak", "Zawadzki", "Kubiak", "Szewczyk", "Brzezinski", "Bartoszewska");
 
         // 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
-        System.out.println("Najdluższe nazwiska w klasie 1a: " + najdluzszeImionaWKlasach(Klasa1a, 3));
-        System.out.println("Najdluższe nazwiska w klasie 1b: " + najdluzszeImionaWKlasach(Klasa1b, 3));
-        System.out.println("Najdluższe nazwiska w klasie 1c: " + najdluzszeImionaWKlasach(Klasa1c, 3));
+        System.out.println("Najdluższe nazwiska w klasie 1a: " + najdluzszeImionaWKlasach(klasa1a, 3));
+        System.out.println("Najdluższe nazwiska w klasie 1b: " + najdluzszeImionaWKlasach(klasa1b, 3));
+        System.out.println("Najdluższe nazwiska w klasie 1c: " + najdluzszeImionaWKlasach(klasa1c, 3));
 
         // 2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
-        System.out.println("Najdluższe imie w szkole: " + znajdzNajdluzszyString(Klasa1a, Klasa1b, Klasa1c));
+//        System.out.println("Najdluższe imie w szkole: " + znajdzNajdluzszyString(klasa1a, klasa1b, klasa1c));
+        System.out.println(najdluzszeImiona(klasa1a, klasa1b, klasa1c));
 
     }
 
@@ -538,33 +540,44 @@ public class Main {
 
     // 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
 
-    public static List<String> najdluzszeImionaWKlasach(List<String> klasa, Integer limit) {
+    public static List<String> najdluzszeImionaWKlasach(List<String> klasa, int limit) {
         List<String> Najdluzsze = new ArrayList<>(limit);
 
-        for (Integer i = 0; i < limit; i++) {
+        List<String> klasaCopy = new ArrayList<>(klasa);
+
+        for (int i = 0; i < limit; i++) {
             String najdluzsze = "";
-            for (String s : klasa) {
+            for (String s : klasaCopy) {
                 if (s.length() > najdluzsze.length()) {
                     najdluzsze = s;
                 }
             }
             Najdluzsze.add(najdluzsze);
-            klasa.remove(najdluzsze);
+            klasaCopy.remove(najdluzsze);
         }
         return Najdluzsze;
     }
 
-    // 2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
-    public static String znajdzNajdluzszyString(List<String>... listy) {
-        String najdluzszy = "";
 
-        for (List<String> list : listy) {
-            for (String s : list) {
-                if (s.length() >= najdluzszy.length()) {
-                    najdluzszy = s;
+
+    //   2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
+    @SafeVarargs
+    public static List<String> najdluzszeImiona(List<String>... lists) {
+        List<String> najdluzszeImiona = new ArrayList<>();
+        int maks = 0;
+
+        for (List<String> list : lists) {
+            for (String str : list) {
+                if (str.length() > maks) {
+                    najdluzszeImiona.clear();
+                    najdluzszeImiona.add(str);
+                    maks = str.length();
+                } else if (str.length() == maks) {
+                    najdluzszeImiona.add(str);
                 }
             }
         }
-        return najdluzszy;
+
+        return najdluzszeImiona;
     }
 }
