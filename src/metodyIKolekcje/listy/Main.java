@@ -463,7 +463,6 @@ public class Main {
     // 18) majac liste intow zwróc liste intow tych ktore te ktore koncza sie na cyfre
     // podana jako porametr
 
-    //todo czy bezpieczne jest porownywanie inta z integerem
     public static List<Integer> konczaSieNa(List<Integer> liczby, int cyfra) {
         List<Integer> konczaSieNa = new ArrayList<>();
 
