@@ -1,4 +1,4 @@
-package metodyIKolekcje.metody;
+package metody.i.kolekcje.metody;
 
 //// metoda typu void - nic nie zwraca
 //public static void wyswietlSlowo() {

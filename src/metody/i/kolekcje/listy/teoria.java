@@ -1,4 +1,4 @@
-package metodyIKolekcje.listy;
+package metody.i.kolekcje.listy;
 
 import java.util.ArrayList;
 import java.util.Arrays;

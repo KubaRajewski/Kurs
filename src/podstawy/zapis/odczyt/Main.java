@@ -1,4 +1,4 @@
-package podstawy.zapisOdczyt;
+package podstawy.zapis.odczyt;
 
 import java.io.*;
 import java.util.Scanner;

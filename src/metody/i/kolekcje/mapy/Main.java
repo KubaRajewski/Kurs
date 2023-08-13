@@ -1,4 +1,4 @@
-package metodyIKolekcje.mapy;
+package metody.i.kolekcje.mapy;
 
 import java.util.*;
 
@@ -179,7 +179,7 @@ public class Main {
         // wyswietlic ile razy jaki s byl dodany
 
         System.out.println("Zadanie 11 - dodawanie slow do mapy");
-        HashMap<String, Integer> mapa = dodajWyrazy();
+        HashMap<String, Integer> mapa = (HashMap<String, Integer>) dodajWyrazy();
         System.out.println(mapa);
         System.out.println();
 
@@ -433,8 +433,8 @@ public class Main {
 //    Napisz metodę, która jako parametr przyjmuje mapę zawierającą imiona jako klucze i wiek jako wartości,
 //    a następnie zwraca nową mapę, gdzie kluczem jest imię osoby, a wartością jest jej wiek podniesiony do kwadratu.
 
-        public static HashMap<String, Integer> wiekDoKwadratu(HashMap<String, Integer> wiek) {
-            HashMap<String, Integer> wiekDoKwadratu = new HashMap<>();
+        public static Map<String, Integer> wiekDoKwadratu(HashMap<String, Integer> wiek) {
+            Map<String, Integer> wiekDoKwadratu = new HashMap<>();
 
             for (String imie : wiek.keySet()) {
                 wiekDoKwadratu.put(imie, wiek.get(imie) * wiek.get(imie));
@@ -446,7 +446,7 @@ public class Main {
     // Napisz metoda która dodaje słowa do mapy. Kluczem maja byc kolejen liczby
     // naturalne zaczynajac od 0.
 
-    public static HashMap dodajSlowo(HashMap<Integer, String> mapa, String slowo) {
+    public static Map<Integer, String> dodajSlowo(HashMap<Integer, String> mapa, String slowo) {
         mapa.put(mapa.size(), slowo);
         return mapa;
     }
@@ -454,9 +454,9 @@ public class Main {
     // Napisz metode ktora pozwala dodawac do mapy kolejne wyrazy. Na koncu ma
     // wyswietlic ile razy jaki s byl dodany
 
-    public static HashMap<String, Integer> dodajWyrazy() {
+    public static Map<String, Integer> dodajWyrazy() {
         Scanner scanner = new Scanner(System.in);
-        HashMap<String, Integer> mapa = new HashMap<>();
+        Map<String, Integer> mapa = new HashMap<>();
 
         String slowo;
         do {
@@ -538,7 +538,32 @@ public class Main {
     // W systemie przechowujemy nazwe klasy (szkolnej, np 1a, 2b) oraz listę osób
     // (same nazwiska jako Stringi) które uczeszczaja do klasy.
 
-    // 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
+//    // 1) Napisz metode ktora zwraca liste osob o najdluzszych nazwiskach z kazdej klasy
+//    public static String najdluzszyString(List<String> list){
+//        String najdluzszy = "";
+//        for (String s : list) {
+//            if (s.length() > najdluzszy.length()) {
+//                najdluzszy = s;
+//            }
+//        }
+//        return najdluzszy;
+//    }
+//
+//    public static List<String> najdluzszeImiona(Map<String, List<String>> mapa) {
+//        List<String> najdluzszeImiona = new ArrayList<>();
+//
+//        for (List<String> list : mapa.values()) {
+//            najdluzszeImiona.add(najdluzszyString(list));
+//        }
+//        return najdluzszeImiona;
+//    }
+//
+//    //   2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
+//    public static String najdluzszeNazwisko (Map<String, List<String>> mapa) {
+//        return najdluzszyString(najdluzszeImiona(mapa));
+//    }
+
+
 
     public static List<String> najdluzszeImionaWKlasach(List<String> klasa, int limit) {
         List<String> Najdluzsze = new ArrayList<>(limit);
@@ -559,9 +584,6 @@ public class Main {
     }
 
 
-
-    //   2) Napisz metode która zwraca osobe o najdluzszym nazwisku ze wzystkich klas
-    @SafeVarargs
     public static List<String> najdluzszeImiona(List<String>... lists) {
         List<String> najdluzszeImiona = new ArrayList<>();
         int maks = 0;

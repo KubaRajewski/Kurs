@@ -1,4 +1,4 @@
-package dalszePodstawy.wyjatki;
+package dalsze.podstawy.wyjatki;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package metodyIKolekcje.listy;
+package metody.i.kolekcje.listy;
 
 import java.util.ArrayList;
 import java.util.*;
@@ -392,7 +392,7 @@ public class Main {
 
         for (String s : lista1) {
             for (String s1 : lista2) {
-                if (Objects.equals(s, s1)) {
+                if (s.equals(s1)) {
                     listaWspolna.add(s);
                 }
             }

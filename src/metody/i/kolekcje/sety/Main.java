@@ -1,4 +1,4 @@
-package metodyIKolekcje.sety;
+package metody.i.kolekcje.sety;
 
 import java.util.*;
 
