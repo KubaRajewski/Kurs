@@ -1,4 +1,4 @@
-package obiektowosc.podstawy;
+package obiektowosc.podstawy.samochod;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class Samochod {
     }
 
     // metoda klasowa (statyczna) wywolujemy ja na klasie
-    // w tego typu metodach nie dzialamy bezposrednio na eksntesji
+    // w tego typu metodach nie dzialamy bezposrednio na ekstensji
     public static Samochod najstarszeAuto(List<Samochod> lista) {
         if (lista == null || lista.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
@@ -100,17 +100,82 @@ public class Samochod {
 
     // napisz metode ktora znajduje auto o najnizszym przebiegu
 
+    public static int najnizszyPrzebieg(List<Samochod> list){
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        int najnizszyPrzebieg = Integer.MAX_VALUE;
+        for (Samochod samochod : list) {
+            if (samochod.getPrzebieg() < najnizszyPrzebieg){
+                najnizszyPrzebieg = samochod.getPrzebieg();
+            }
+        }
+        return najnizszyPrzebieg;
+    }
+
     // napisz metode ktora znajduje wszystkie auta o kolorze niebieskim starsze niz 15 lat
+
+    public static List<Samochod> niebieskieStarszeNiz (List<Samochod> list, Integer limit){
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        List<Samochod> niebieskieStarszeNiz = new ArrayList<>();
+        for (Samochod samochod : list) {
+            if (samochod.getKolor().equals("blue") && samochod.obliczWiek() > 15){
+                niebieskieStarszeNiz.add(samochod);
+            }
+        }
+        return niebieskieStarszeNiz;
+    }
 
     // napisz metode ktora znajduje najdrozsze auto ale z aut z przebiegiem mniejszym nzi 30k
 
+    public static Samochod najdrozszeZPrzebiegiemMniejszymNiz (List<Samochod> list, Integer limit){
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        Samochod najdrozszeZPrzebiegiemMniejszymNiz = null;
+        for (Samochod samochod : list) {
+            if (samochod.getPrzebieg() < 30000 && (najdrozszeZPrzebiegiemMniejszymNiz == null || samochod.getCena() > najdrozszeZPrzebiegiemMniejszymNiz.getCena())){
+                najdrozszeZPrzebiegiemMniejszymNiz = samochod;
+            }
+        }
+        return najdrozszeZPrzebiegiemMniejszymNiz;
+    }
+
     // znajdz najtansze auto marki bmw
+
+    public static Samochod najtanszeZMarki (List<Samochod> list, String marka){
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        Samochod najtanszeBmw = null;
+        for (Samochod samochod : list) {
+            if (samochod.getProducent().equals(marka) && (najtanszeBmw == null || samochod.getCena() < najtanszeBmw.getCena())){
+                najtanszeBmw = samochod;
+            }
+        }
+        return najtanszeBmw;
+    }
 
     // znajsz wszystkie auta ktore w marce maja literke a
 
+    public static List<Samochod> markaZLiterkaA (List<Samochod> list, Character literka){
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        List<Samochod> markaZLiterkaA = new ArrayList<>();
+        for (Samochod samochod : list) {
+            if (samochod.getProducent().contains(literka.toString())){
+                markaZLiterkaA.add(samochod);
+            }
+        }
+        return markaZLiterkaA;
+    }
+
     // znajdz najdrozsze auto ktorego marka ma dlugosc wieksza niz 4
 
-    // PD + stworz wlasna kalse biznesowa
+    public static Samochod najdrozszeMarkiDluzszejNiz (List<Samochod> list, Integer limit){
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        Samochod najdrozszeMarkiDluzszejNiz = null;
+        for (Samochod samochod : list) {
+            if (samochod.getProducent().length() > 4 && (najdrozszeMarkiDluzszejNiz == null || samochod.getCena() > najdrozszeMarkiDluzszejNiz.getCena())){
+                najdrozszeMarkiDluzszejNiz = samochod;
+            }
+        }
+        return najdrozszeMarkiDluzszejNiz;
+    }
+
 
     public static List<Samochod> getEkstensja() {
         return ekstensja;
