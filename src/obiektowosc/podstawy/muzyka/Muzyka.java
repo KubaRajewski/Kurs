@@ -3,10 +3,11 @@ package obiektowosc.podstawy.muzyka;
 import java.util.*;
 
 public class Muzyka {
+    // Pola klasy
     private String tytul;
     private String autor;
     private String gatunek;
-    private String dataWydania;
+    private final String dataWydania;
     private final int czasTrwania; // w sekundach
     private boolean czyWUlubionych;
 
@@ -24,42 +25,6 @@ public class Muzyka {
     // ekstensja klasy Muzyka
     static List<Muzyka> ekstensja = new ArrayList<>();
 
-    public String getDataWydania() {
-        return dataWydania;
-    }
-
-    public void setDataWydania(String dataWydania) {
-        this.dataWydania = dataWydania;
-    }
-
-    public boolean isCzyWUlubionych() {
-        return czyWUlubionych;
-    }
-
-    public void setCzyWUlubionych(boolean czyWUlubionych) {
-        this.czyWUlubionych = czyWUlubionych;
-    }
-
-    // Metoda do pobierania tytułu utworu
-    public String getTytul() {
-        return tytul;
-    }
-
-    // Metoda do pobierania artysty
-    public String getAutor() {
-        return autor;
-    }
-
-    // Metoda do pobierania gatunku muzycznego
-    public String getGatunek() {
-        return gatunek;
-    }
-
-    // Metoda do pobierania długości utworu
-    public int getCzasTrwania() {
-        return czasTrwania;
-    }
-
     // Metoda do wyświetlania informacji o utworze
     @Override
     public String toString() {
@@ -73,6 +38,54 @@ public class Muzyka {
         }
     }
 
+    public String getTytul() {
+        return tytul;
+    }
+
+    public void setTytul(String tytul) {
+        this.tytul = tytul;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getGatunek() {
+        return gatunek;
+    }
+
+    public void setGatunek(String gatunek) {
+        this.gatunek = gatunek;
+    }
+
+    public String getDataWydania() {
+        return dataWydania;
+    }
+
+
+    public int getCzasTrwania() {
+        return czasTrwania;
+    }
+
+    public boolean isCzyWUlubionych() {
+        return czyWUlubionych;
+    }
+
+    public void setCzyWUlubionych(boolean czyWUlubionych) {
+        this.czyWUlubionych = czyWUlubionych;
+    }
+
+    public static List<Muzyka> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Muzyka> ekstensja) {
+        Muzyka.ekstensja = ekstensja;
+    }
 
     public static void dodajUtwor(String tytul, String autor, String gatunek, int czasTrwania, String dataWydania, boolean czyWUlubionych) {
         Muzyka nowyUtwor = new Muzyka(tytul, autor, gatunek,  dataWydania, czasTrwania, czyWUlubionych);

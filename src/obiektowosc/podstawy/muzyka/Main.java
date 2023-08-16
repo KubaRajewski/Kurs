@@ -18,6 +18,7 @@ public class Main {
         System.out.println("Wyświetl utwory krótsze niż X minut - wprowadź napis krotsze");
         System.out.println("Wyświetl utwory dłuższe niż X minut - wprowadź napis dluzsze");
 
+
         while (true) {
             System.out.println("Wybierz opcję 0 - 7: ");
             String wybor = scanner.nextLine();
