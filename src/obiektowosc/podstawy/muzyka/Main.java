@@ -1,5 +1,6 @@
 package obiektowosc.podstawy.muzyka;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
@@ -17,10 +18,12 @@ public class Main {
         System.out.println("Wyświetl utwory danego gatunku - wprowadź napis gatunek");
         System.out.println("Wyświetl utwory krótsze niż X minut - wprowadź napis krotsze");
         System.out.println("Wyświetl utwory dłuższe niż X minut - wprowadź napis dluzsze");
+        System.out.println("Wyświetl utwory wydane po dacie X - wprowadź napis mlodsze");
+        System.out.println("Wyświetl utwory wydane przed datą X - wprowadź napis starsze");
 
 
         while (true) {
-            System.out.println("Wybierz opcję 0 - 7: ");
+            System.out.println("Wybierz opcję koniec/wszystko/ulubione/dodaj/usun/autor/gatunek/krotsze/dluzsze/mlodsze/starsze: ");
             String wybor = scanner.nextLine();
             wybor = wybor.toLowerCase();
 
@@ -62,7 +65,7 @@ public class Main {
                     } else {
                         System.out.println("Niepoprawny wybór, spróbuj ponownie");
                     }
-                    Muzyka.dodajUtwor(tytul, autor, gatunek, czasTrwania, dataWydania, ulubione);
+                    Muzyka.dodajUtwor(tytul, autor, gatunek, czasTrwania, LocalDate.parse(dataWydania), ulubione);
                     System.out.println("Utwór został dodany");
                         break;
                     case "usun":
@@ -93,6 +96,19 @@ public class Main {
                         int czas2 = scanner.nextInt();
                         scanner.nextLine();
                         System.out.println(Muzyka.utworyDluzszeNiz(Muzyka.ekstensja, czas2));
+                        break;
+                    case "starsze":
+                        System.out.println("Podaj wiek utworu (w latach): ");
+                        int wiek = scanner.nextInt();
+                        scanner.nextLine();
+                        Muzyka.wyswietlUtworyStarszeNiz(Muzyka.ekstensja, wiek);
+                        break;
+
+                    case "mlodsze":
+                        System.out.println("Podaj wiek utworu (w latach): ");
+                        int wiekMlodsze = scanner.nextInt();
+                        scanner.nextLine();
+                        Muzyka.wyswietlUtworyMlodszeNiz(Muzyka.ekstensja, wiekMlodsze);
                         break;
                     default:
                         System.out.println("Niepoprawny wybór, spróbuj ponownie");
