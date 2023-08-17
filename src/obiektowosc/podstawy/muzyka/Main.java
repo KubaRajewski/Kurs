@@ -8,7 +8,6 @@ public class Main {
     public static void main(String[] args) {
         Muzyka.dodaj20piosenek();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Muzyka \n");
         System.out.println("Zakończ program - Wprowadź napis koniec");
         System.out.println("Wyświetl wszystkie utwory - Wprowadź napis wszystko");
         System.out.println("Wyświetl utwory w ulubionych - Wprowadź napis ulubione ");
@@ -20,10 +19,11 @@ public class Main {
         System.out.println("Wyświetl utwory dłuższe niż X minut - wprowadź napis dluzsze");
         System.out.println("Wyświetl utwory wydane po dacie X - wprowadź napis mlodsze");
         System.out.println("Wyświetl utwory wydane przed datą X - wprowadź napis starsze");
+        System.out.println();
 
 
         while (true) {
-            System.out.println("Wybierz opcję koniec/wszystko/ulubione/dodaj/usun/autor/gatunek/krotsze/dluzsze/mlodsze/starsze: ");
+            System.out.println("Wybierz opcję: koniec/wszystko/ulubione/dodaj/usun/autor/gatunek/krotsze/dluzsze/mlodsze/starsze: ");
             String wybor = scanner.nextLine();
             wybor = wybor.toLowerCase();
 
