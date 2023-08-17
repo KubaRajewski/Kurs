@@ -1,5 +1,6 @@
 package obiektowosc.podstawy.muzyka;
 
+import java.lang.invoke.SwitchPoint;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -57,11 +58,11 @@ public class Main {
                     System.out.println("Podaj gatunek utworu: ");
                     String gatunekDoDodania = scanner.nextLine();
 
-                    System.out.println("Podaj czas trwania utworu: ");
+                    System.out.println("Podaj czas trwania utworu : ");
                     int czasTrwaniaDoDodania = scanner.nextInt();
                     scanner.nextLine();
 
-                    System.out.println("Podaj datę wydania utworu: ");
+                    System.out.println("Podaj datę wydania utworu (YYYY-MM-DD): ");
                     String dataWydaniaDoDodania = scanner.nextLine();
 
                     System.out.println("Czy utwór jest w ulubionych? (tak/nie)");

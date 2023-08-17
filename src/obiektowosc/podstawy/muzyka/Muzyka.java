@@ -70,7 +70,7 @@ public class Muzyka {
     }
 
 
-    public int getCzasTrwania() {
+    public double getCzasTrwania() {
         return czasTrwania;
     }
 
