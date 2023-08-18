@@ -39,6 +39,15 @@ public class Muzyka {
         }
     }
 
+    public static Muzyka zwrocKonkretnyUtwor(List<Muzyka> lista, String tytul){
+        for (Muzyka m : lista) {
+            if (tytul.equalsIgnoreCase(m.getTytul())){
+                return m;
+            }
+        }
+        return null;
+    }
+
     // gettery i settery
 
     public String getTytul() {
@@ -95,28 +104,85 @@ public class Muzyka {
     public static String konkretnyUtwor(List<Muzyka> list, String tytul){
         for (Muzyka m : list) {
             if (m.getTytul().equalsIgnoreCase(tytul)){
-                return "Autor: " + m.getAutor() + ", Tytuł: "+ m.getTytul() + ", Gatunek " +  m.getGatunek() + ", Czas Trwania: " + (m.getCzasTrwania()/60) + "minuty, Data Wydania: " + m.getDataWydania();
+                return "Autor: " + m.getAutor() + ", Tytuł: "+ m.getTytul() + ", Gatunek " +  m.getGatunek() + ", Czas Trwania: " + (m.getCzasTrwania()/60) + " minuty, Data Wydania: " + m.getDataWydania();
             }
         }
         return null;
+    }
+
+    public static void edytujPiosenke(Muzyka m){
+        System.out.println("Co chcesz edytować? (tytul, autor, gatunek, ulubione)");
+        Scanner scanner = new Scanner(System.in);
+        String wybor = scanner.nextLine();
+        wybor = wybor.toLowerCase();
+
+        switch (wybor){
+            case "tytul":
+                System.out.println("Stary tytul: " + m.getTytul());
+                System.out.println("Podaj nowy tytul: ");
+                String nowyT = scanner.nextLine();
+                m.setTytul(nowyT);
+                System.out.println("Tytul zmieniony na " + nowyT);
+                break;
+            case "autor":
+                System.out.println("Stary autor: " + m.getAutor());
+                System.out.println("Podaj nowego autora: ");
+                String nowyA = scanner.nextLine();
+                m.setAutor(nowyA);
+                System.out.println("Autor zmieniony na: " + nowyA);
+                break;
+            case "gatunek":
+                System.out.println("Stary gatunek: " + m.getGatunek());
+                System.out.println("Podaj nowy gatunek: ");
+                String nowyG = scanner.nextLine();
+                m.setGatunek(nowyG);
+                System.out.println("gatunek zmieniony na: " + nowyG);
+                break;
+            case "ulubione":
+                if (m.isCzyWUlubionych()) {
+                    System.out.println("Piosenka znajduje się w ulubionych, czy chcesz ją usunąć? (tak/nie)");
+                    String nowyU = scanner.nextLine();
+                    if (nowyU.equalsIgnoreCase("tak")) {
+                        m.setCzyWUlubionych(false);
+                        System.out.println("Usunięto z ulubionych");
+                    } else if (nowyU.equalsIgnoreCase("nie")) {
+                        System.out.println("Nie zmieniono statusu piosenki");
+                    } else {
+                        System.out.println("Coś poszło nie tak");
+                    }
+                } else {
+                    System.out.println("Piosenka nie znajduje się w ulubionych, czy chcesz to zmienić?");
+                    String nowyU = scanner.nextLine();
+                    if (nowyU.equalsIgnoreCase("tak")) {
+                        m.setCzyWUlubionych(true);
+                        System.out.println("Dodano do ulubionych");
+                    } else if (nowyU.equalsIgnoreCase("nie")) {
+                        System.out.println("Nie zmieniono statusu piosenki");
+                    } else {
+                        System.out.println("Coś poszło nie tak");
+                    }
+                }
+                break;
+            default:
+                System.out.println("Cos poszlo nie tak, wybierz z: tytul, autor, gatunek, ulubione");
+        }
     }
 
     public static void dodajUtwor(String tytul, String autor, String gatunek, int czasTrwania, LocalDate dataWydania, boolean czyWUlubionych) {
         Muzyka nowyUtwor = new Muzyka(tytul, autor, gatunek, dataWydania, czasTrwania, czyWUlubionych);
     }
 
-    public static void usunUtwor(String tytul, String autor) {
-        Iterator<Muzyka> iterator = ekstensja.iterator();
+    public static void usunUtwor(List<Muzyka> lista, String tytul, String autor) {
+        Iterator<Muzyka> iterator = lista.iterator();
         while (iterator.hasNext()) {
             Muzyka m = iterator.next();
-            if (m.getTytul().equals(tytul) && m.getAutor().equals(autor)) {
+            if (m.getAutor().equalsIgnoreCase(autor) && m.getTytul().equalsIgnoreCase(tytul)) {
                 iterator.remove();
-                System.out.println("Usunięto utwór: " + m);
-                return;
+                System.out.println("usunieto utwor");
             }
         }
-        System.out.println("Nie znaleziono utworu o podanych parametrach");
     }
+
 
     public static List<Muzyka> utworyAutora(List<Muzyka> list, String autor){
         List<Muzyka> lista = new ArrayList<>();

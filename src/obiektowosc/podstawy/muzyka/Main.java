@@ -12,6 +12,7 @@ public class Main {
         System.out.println("Zakończ program - Wprowadź napis koniec");
         System.out.println("Wyświetl wszystkie utwory - Wprowadź napis wszystko");
         System.out.println("Wyświetl konkretny utwor - Wprowadź napis konkretny");
+        System.out.println("Edytuj konkretny utwor - wprowadz napis edytuj");
         System.out.println("Wyświetl utwory w ulubionych - Wprowadź napis ulubione ");
         System.out.println("Dodaj nowy utwór - wprowadź napis dodaj");
         System.out.println("Usuń utwór - wprowadź napis usun");
@@ -24,14 +25,14 @@ public class Main {
         System.out.println();
 
         while (true) {
-            System.out.println("Wybierz opcję: koniec/wszystko/konkretny/ulubione/dodaj/usun/autor/gatunek/krotsze/dluzsze/mlodsze/starsze: ");
+            System.out.println("Wybierz opcję: koniec/wszystko/konkretny/edytuj/ulubione/dodaj/usun/autor/gatunek/krotsze/dluzsze/mlodsze/starsze: ");
             String wybor = scanner.nextLine();
             wybor = wybor.toLowerCase();
 
             switch (wybor) {
                 case "koniec":
                     System.out.println("Koniec programu");
-                    break;
+                    System.exit(0);
                 case "wszystko":
                     Muzyka.wyswietlEkstensje();
                     break;
@@ -43,6 +44,15 @@ public class Main {
                         System.out.println("Nie znaleziono utworu");
                     } else {
                         System.out.println(Muzyka.konkretnyUtwor(Muzyka.ekstensja, tytul));
+                    }
+                    break;
+                case "edytuj":
+                    System.out.println("Podaj tytuł utworu ktory chcesz edytowac: ");
+                    String tytulDoEdycji = scanner.nextLine();
+                    if (Muzyka.zwrocKonkretnyUtwor(Muzyka.ekstensja, tytulDoEdycji) == null){
+                        System.out.println("Nie znaleziono podanego utworu");
+                    } else {
+                        Muzyka.edytujPiosenke(Muzyka.zwrocKonkretnyUtwor(Muzyka.ekstensja, tytulDoEdycji));
                     }
                     break;
                 case "ulubione":
@@ -71,20 +81,22 @@ public class Main {
                     boolean ulubioneDoDodania = false;
                     if (czyWUlubionych.equals("tak")) {
                         ulubioneDoDodania = true;
+                        Muzyka.dodajUtwor(tytulDoDodania, autorDoDodania, gatunekDoDodania, czasTrwaniaDoDodania, LocalDate.parse(dataWydaniaDoDodania), ulubioneDoDodania);
+                        System.out.println("Utwór został dodany");
                     } else if (czyWUlubionych.equals("nie")) {
                         ulubioneDoDodania = false;
+                        Muzyka.dodajUtwor(tytulDoDodania, autorDoDodania, gatunekDoDodania, czasTrwaniaDoDodania, LocalDate.parse(dataWydaniaDoDodania), ulubioneDoDodania);
+                        System.out.println("Utwór został dodany");
                     } else {
                         System.out.println("Niepoprawny wybór, spróbuj ponownie");
                     }
-                    Muzyka.dodajUtwor(tytulDoDodania, autorDoDodania, gatunekDoDodania, czasTrwaniaDoDodania, LocalDate.parse(dataWydaniaDoDodania), ulubioneDoDodania);
-                    System.out.println("Utwór został dodany");
                     break;
                 case "usun":
                     System.out.println("Podaj tytuł utworu: ");
-                    String tytul2 = scanner.nextLine();
-                    System.out.println("Podaj autora utworu: ");
-                    String autor2 = scanner.nextLine();
-                    Muzyka.usunUtwor(tytul2, autor2);
+                    String tytulDoUsuniecia = scanner.nextLine();
+                    System.out.print("Podaj autora utworu: ");
+                    String autorDoUsuniecia = scanner.nextLine();
+                    Muzyka.usunUtwor(Muzyka.ekstensja, tytulDoUsuniecia, autorDoUsuniecia);
                     break;
                 case "autor":
                     System.out.println("Podaj autora: ");
