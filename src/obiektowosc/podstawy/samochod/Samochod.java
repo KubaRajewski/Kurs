@@ -1,10 +1,7 @@
 package obiektowosc.podstawy.samochod;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Samochod {
 
@@ -44,7 +41,8 @@ public class Samochod {
     // metoda klasowa (statyczna) wywolujemy ja na klasie
     // w tego typu metodach nie dzialamy bezposrednio na ekstensji
     public static Samochod najstarszeAuto(List<Samochod> lista) {
-        if (lista == null || lista.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        if (lista == null || lista.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         Samochod max = lista.get(0);
 
@@ -73,13 +71,13 @@ public class Samochod {
 
     // napisz metode ktora sumuje ceny wszystkich aut
 
-    public static double suma(List<Samochod> lista){
+    public static double suma(List<Samochod> lista) {
         if (lista == null) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         double suma = 0;
 
         for (Samochod samochod : lista) {
-            suma =+ samochod.getCena();
+            suma = +samochod.getCena();
         }
         return suma;
     }
@@ -100,50 +98,77 @@ public class Samochod {
 
     // napisz metode ktora znajduje auto o najnizszym przebiegu
 
-    public static int najnizszyPrzebieg(List<Samochod> list){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
-        int najnizszyPrzebieg = Integer.MAX_VALUE;
+    public static Samochod najnizszyPrzebieg(List<Samochod> list) {
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        Samochod s = list.get(0);
         for (Samochod samochod : list) {
-            if (samochod.getPrzebieg() < najnizszyPrzebieg){
-                najnizszyPrzebieg = samochod.getPrzebieg();
+            if (samochod.getPrzebieg() < s.getPrzebieg()) {
+                s = samochod;
             }
         }
-        return najnizszyPrzebieg;
+        return s;
     }
 
     // napisz metode ktora znajduje wszystkie auta o kolorze niebieskim starsze niz 15 lat
 
-    public static List<Samochod> niebieskieStarszeNiz (List<Samochod> list, Integer limit){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
-        List<Samochod> niebieskieStarszeNiz = new ArrayList<>();
+    public static List<Samochod> kolorStarszeNiz(List<Samochod> list, int limit, String kolor) {
+        if (list == null) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        List<Samochod> kolorStarszeNiz = new ArrayList<>();
         for (Samochod samochod : list) {
-            if (samochod.getKolor().equals("blue") && samochod.obliczWiek() > 15){
-                niebieskieStarszeNiz.add(samochod);
+            if (samochod.getKolor().equals(kolor) && samochod.obliczWiek() > limit) {
+                kolorStarszeNiz.add(samochod);
             }
         }
-        return niebieskieStarszeNiz;
+        return kolorStarszeNiz;
     }
 
     // napisz metode ktora znajduje najdrozsze auto ale z aut z przebiegiem mniejszym nzi 30k
 
-    public static Samochod najdrozszeZPrzebiegiemMniejszymNiz (List<Samochod> list, Integer limit){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
-        Samochod najdrozszeZPrzebiegiemMniejszymNiz = null;
-        for (Samochod samochod : list) {
-            if (samochod.getPrzebieg() < 30000 && (najdrozszeZPrzebiegiemMniejszymNiz == null || samochod.getCena() > najdrozszeZPrzebiegiemMniejszymNiz.getCena())){
-                najdrozszeZPrzebiegiemMniejszymNiz = samochod;
+    public static List<Samochod> samochodyPrzebiegMniejNiz(List<Samochod> list, int limit) {
+        if (list == null) throw new IllegalArgumentException("lista nie moze byc nullem");
+        List<Samochod> samochodyPrzebiegMniejNiz = new ArrayList<>();
+        for (Samochod s : list) {
+            if (s.getPrzebieg() < limit) {
+                samochodyPrzebiegMniejNiz.add(s);
             }
         }
-        return najdrozszeZPrzebiegiemMniejszymNiz;
+        return samochodyPrzebiegMniejNiz;
+    }
+
+    // napisz metode ktora sortuje po cenie
+    public static List<Samochod> sortuj(List<Samochod> lista) {
+
+        List<Samochod> kopia = new ArrayList<>(lista);
+        Collections.sort(kopia, Comparator.comparing(Samochod::getCena));
+        return kopia;
+    }
+
+
+    public static Samochod najdrozszeZPrzebiegiemMniejszymNiz(List<Samochod> list, int limit) {
+        List<Samochod> przefiltrowana = new ArrayList<>(samochodyPrzebiegMniejNiz(list, limit));
+
+        if (przefiltrowana.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        Samochod s = list.get(0);
+        for (Samochod samochod : list) {
+            if (samochod.getCena() > s.getCena()) {
+                s = samochod;
+            }
+        }
+        return s;
     }
 
     // znajdz najtansze auto marki bmw
 
-    public static Samochod najtanszeZMarki (List<Samochod> list, String marka){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
-        Samochod najtanszeBmw = null;
-        for (Samochod samochod : list) {
-            if (samochod.getProducent().equals(marka) && (najtanszeBmw == null || samochod.getCena() < najtanszeBmw.getCena())){
+    public static Samochod najtanszeZMarki(List<Samochod> list, String marka) {
+        List<Samochod> przefiltrowana = new ArrayList<>(znajdzMarke(list, marka));
+
+        if (przefiltrowana.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        Samochod najtanszeBmw = przefiltrowana.get(0);
+        for (Samochod samochod : przefiltrowana) {
+            if (samochod.getCena() < najtanszeBmw.getCena()) {
                 najtanszeBmw = samochod;
             }
         }
@@ -152,11 +177,12 @@ public class Samochod {
 
     // znajsz wszystkie auta ktore w marce maja literke a
 
-    public static List<Samochod> markaZLiterkaA (List<Samochod> list, Character literka){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+    public static List<Samochod> markaZLiterkaA(List<Samochod> list, char literka) {
+        if (list == null)
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
         List<Samochod> markaZLiterkaA = new ArrayList<>();
         for (Samochod samochod : list) {
-            if (samochod.getProducent().contains(literka.toString())){
+            if (samochod.getProducent().contains(String.valueOf(literka))) {
                 markaZLiterkaA.add(samochod);
             }
         }
@@ -165,11 +191,26 @@ public class Samochod {
 
     // znajdz najdrozsze auto ktorego marka ma dlugosc wieksza niz 4
 
-    public static Samochod najdrozszeMarkiDluzszejNiz (List<Samochod> list, Integer limit){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
-        Samochod najdrozszeMarkiDluzszejNiz = null;
-        for (Samochod samochod : list) {
-            if (samochod.getProducent().length() > 4 && (najdrozszeMarkiDluzszejNiz == null || samochod.getCena() > najdrozszeMarkiDluzszejNiz.getCena())){
+    public static List<Samochod> dluzszeNiz(List<Samochod> lista, int dlugosc){
+        if (lista == null)
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        List<Samochod> dluzszeNiz = new ArrayList<>();
+        for (Samochod s : lista) {
+            if (s.getProducent().length() > dlugosc){
+                dluzszeNiz.add(s);
+            }
+        }
+        return dluzszeNiz;
+    }
+
+    public static Samochod najdrozszeMarkiDluzszejNiz(List<Samochod> list, Integer limit) {
+        List<Samochod> przefiltrowana = new ArrayList<>(dluzszeNiz(list, limit));
+
+        if(przefiltrowana.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        Samochod najdrozszeMarkiDluzszejNiz = przefiltrowana.get(0);
+        for (Samochod samochod : przefiltrowana) {
+            if (samochod.getCena() > najdrozszeMarkiDluzszejNiz.getCena()) {
                 najdrozszeMarkiDluzszejNiz = samochod;
             }
         }

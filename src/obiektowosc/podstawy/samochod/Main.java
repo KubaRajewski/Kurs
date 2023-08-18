@@ -46,31 +46,37 @@ public class Main {
         System.out.println(Samochod.najstarszeAuto(Samochod.getEkstensja()));
         System.out.println();
 
-        //znajdz marke
-        System.out.println("wszystkie bmw: " + Samochod.znajdzMarke(Samochod.getEkstensja(), "bmw"));
+//        //znajdz marke
+//        System.out.println("wszystkie bmw: " + Samochod.znajdzMarke(Samochod.getEkstensja(), "bmw"));
+//
+//        //suma cen wszystkich aut
+//        System.out.println("suma cen wszystkich aut: " + Samochod.suma(Samochod.getEkstensja()));
+//
+//        // unikalne marki
+//        System.out.println("unikalne marki: " + Samochod.unikalne(Samochod.getEkstensja()));
+//
+//        // najnizszy przebieg
+//        System.out.println("najnizszy przebieg: " + Samochod.najnizszyPrzebieg(Samochod.getEkstensja()));
+//
+//        // niebieskie starsze niz 15 lat
+//        //System.out.println("niebieskie starsze niz 15 lat: " + Samochod.kolorStarszeNiz(Samochod.getEkstensja(), 15));
+//
+//        // najdrozsze auto z przebiegiem mniejszym niz 30000
+//        System.out.println("najdrozsze auto z przebiegiem mniejszym niz 30000: " + Samochod.najdrozszeZPrzebiegiemMniejszymNiz(Samochod.getEkstensja(), 30000));
+//
+//        // najtansze bmw
+//        System.out.println("najtansze bmw: " + Samochod.najtanszeZMarki(Samochod.getEkstensja(), "bmw"));
+//
+//        // auta z litera 'a' w nazwie
+//        System.out.println("auta z litera 'a' w nazwie marki: " + Samochod.markaZLiterkaA(Samochod.getEkstensja(), 'a'));
+//
+//        // najdrozsze auto gdzie marka jest dluzsza niz 4 znaki
+//        System.out.println("najdrozsze auto gdzie marka jest dluzsza niz 4 znaki: " + Samochod.najdrozszeMarkiDluzszejNiz(Samochod.getEkstensja(), 4));
 
-        //suma cen wszystkich aut
-        System.out.println("suma cen wszystkich aut: " + Samochod.suma(Samochod.getEkstensja()));
-
-        // unikalne marki
-        System.out.println("unikalne marki: " + Samochod.unikalne(Samochod.getEkstensja()));
-
-        // najnizszy przebieg
-        System.out.println("najnizszy przebieg: " + Samochod.najnizszyPrzebieg(Samochod.getEkstensja()));
-
-        // niebieskie starsze niz 15 lat
-        System.out.println("niebieskie starsze niz 15 lat: " + Samochod.niebieskieStarszeNiz(Samochod.getEkstensja(), 15));
-
-        // najdrozsze auto z przebiegiem mniejszym niz 30000
-        System.out.println("najdrozsze auto z przebiegiem mniejszym niz 30000: " + Samochod.najdrozszeZPrzebiegiemMniejszymNiz(Samochod.getEkstensja(), 30000));
-
-        // najtansze bmw
-        System.out.println("najtansze bmw: " + Samochod.najtanszeZMarki(Samochod.getEkstensja(), "bmw"));
-
-        // auta z litera 'a' w nazwie
-        System.out.println("auta z litera 'a' w nazwie marki: " + Samochod.markaZLiterkaA(Samochod.getEkstensja(), 'a'));
-
-        // najdrozsze auto gdzie marka jest dluzsza niz 4 znaki
-        System.out.println("najdrozsze auto gdzie marka jest dluzsza niz 4 znaki: " + Samochod.najdrozszeMarkiDluzszejNiz(Samochod.getEkstensja(), 4));
+        System.out.println(Samochod.getEkstensja());
+        System.out.println(Samochod.sortuj(Samochod.getEkstensja()));
+        System.out.println(Samochod.getEkstensja());
     }
+
+
 }
