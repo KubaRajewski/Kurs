@@ -102,7 +102,7 @@ public class Muzyka {
     // metody
 
     public static String konkretnyUtwor(List<Muzyka> list, String tytul){
-        if (list == null && list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
         for (Muzyka m : list) {
             if (m.getTytul().equalsIgnoreCase(tytul)){
                 return "Autor: " + m.getAutor() + ", Tytuł: "+ m.getTytul() + ", Gatunek " +  m.getGatunek() + ", Czas Trwania: " + (m.getCzasTrwania()/60) + " minuty, Data Wydania: " + m.getDataWydania();
@@ -174,7 +174,7 @@ public class Muzyka {
     }
 
     public static void usunUtwor(List<Muzyka> list, String tytul, String autor) {
-        if (list == null && list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         Iterator<Muzyka> iterator = list.iterator();
         while (iterator.hasNext()) {
@@ -188,7 +188,7 @@ public class Muzyka {
 
 
     public static List<Muzyka> utworyAutora(List<Muzyka> list, String autor){
-        if (list == null && list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> lista = new ArrayList<>();
         for (Muzyka m : list) {
@@ -200,7 +200,7 @@ public class Muzyka {
     }
 
     public static List<Muzyka> utworyGatunku(List<Muzyka> list, String gatunek){
-        if (list == null && list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> lista = new ArrayList<>();
         for (Muzyka m : list) {
@@ -212,7 +212,7 @@ public class Muzyka {
     }
 
     public static List<Muzyka> utworyDluzszeNiz(List<Muzyka> list, double czas){
-        if (list == null && list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> lista = new ArrayList<>();
         for (Muzyka m : list) {
@@ -224,7 +224,7 @@ public class Muzyka {
     }
 
     public static List<Muzyka> utworyKrotszeNiz(List<Muzyka> list, double czas){
-        if (list == null && list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> lista = new ArrayList<>();
         for (Muzyka m : list) {

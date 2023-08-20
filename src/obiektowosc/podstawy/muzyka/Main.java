@@ -78,7 +78,7 @@ public class Main {
                     System.out.println("Czy utwór jest w ulubionych? (tak/nie)");
                     String czyWUlubionych = scanner.nextLine();
                     czyWUlubionych.toLowerCase();
-                    boolean ulubioneDoDodania = false;
+                    boolean ulubioneDoDodania;
                     if (czyWUlubionych.equals("tak")) {
                         ulubioneDoDodania = true;
                         Muzyka.dodajUtwor(tytulDoDodania, autorDoDodania, gatunekDoDodania, czasTrwaniaDoDodania, LocalDate.parse(dataWydaniaDoDodania), ulubioneDoDodania);
