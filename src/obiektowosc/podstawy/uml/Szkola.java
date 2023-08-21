@@ -14,6 +14,11 @@ public class Szkola {
 
     public List<String> profile = new ArrayList<>();
 
+
+    // ekstensja klasy szkola
+    private static List<Szkola> ekstensja = new ArrayList<>();
+
+
     // asocjacja licznosci * do klasy Uczen
     private List<Uczen> uczniowie = new ArrayList<>();
 
@@ -24,8 +29,16 @@ public class Szkola {
         this.rokPowstania = rokPowstania;
         this.nazwa = nazwa;
         this.wyroznienie = wyroznienie;
-        this.numer = numer; // zeby byl unikalny
 
+        // sprawdzamy unikalnosc numeru
+        for (Szkola s : ekstensja) {
+            if (s.getNumer() == numer) {
+                throw new IllegalArgumentException("szkoła o tym numerze istnieje juz w systemie");
+            } else {
+                this.numer = numer;
+            }
+        }
+        ekstensja.add(this);
     }
 
     // metoda tworzaca powiazanie (asocjacje)
@@ -67,18 +80,9 @@ public class Szkola {
         return LocalDate.now().getYear() - rokPowstania;
     }
 
-    // konstruktor
-    public Szkola(int rokPowstania, String nazwa) {
-        this.rokPowstania = rokPowstania;
-        this.nazwa = nazwa;
-    }
-
     public void dodajProfil(String profil) {
         profile.add(profil);
     }
-
-    // gettery / settery
-
 
     public static int getMinLiczbaUczniow() {
         return MIN_LICZBA_UCZNIOW;

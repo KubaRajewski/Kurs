@@ -1,5 +1,7 @@
 package obiektowosc.podstawy.uml;
 
+import obiektowosc.podstawy.szkola.Nauczyciel;
+
 public class Main {
     public static void main(String[] args) {
         Uczen u1 = new Uczen("Kuba", "Rajewski", "Oginskiego", "29087");
@@ -18,7 +20,6 @@ public class Main {
         System.out.println(s1.getUczniowie());
         System.out.println(u1.getSzkola());
 
-      //  s2.dodajUcznia(u1);
 
         // PD TODO:
         // stworz swoj biznesowy diagram klas - uml + kod, wszystkie rodzaje atrybutow, dziedizczenie oraz asocajcje
@@ -27,7 +28,7 @@ public class Main {
          *  Klient kupuje produkty. Klient ma imie nazwisko i rozmiar penisa. Pordukt ma nazwe, cene i jesli jest to kondom to wymiar.
          *  Klient moze miec wiele produktow, produkt moze miec jednego klienta.
          *
-         *  1) Napisz mrtode ktota znajduje klienta ktory wydal najwiecej.
+         *   1) Napisz mrtode ktota znajduje klienta ktory wydal najwiecej.
          *
          *   2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
          *
