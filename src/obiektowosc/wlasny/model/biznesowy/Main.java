@@ -1,4 +1,4 @@
-package obiektowosc.wlasny.model;
+package obiektowosc.wlasny.model.biznesowy;
 
 public class Main {
     // PD TODO:
