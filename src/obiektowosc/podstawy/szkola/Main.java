@@ -110,9 +110,9 @@ public class Main {
         Uczen u58 = new Uczen("Krzysztof", "Sikorski", "Poznańska", "58", s3, k7);
         Uczen u59 = new Uczen("Agnieszka", "Lis", "Łódzka", "59", s3, k7);
         Uczen u60 = new Uczen("Damian", "Nowak", "Sienkiewicza", "60", s3, k8);
-//        Uczen u61 = new Uczen("Kamil", "Nowak", "Sienkiewicza", "61", s3, k8);
-//        Uczen u62 = new Uczen("Aleksandra", "Kowalska", "Warszawska", "62", s3, k8);
-//        Uczen u63 = new Uczen("Piotr", "Lis", "Poznańska", "63", s3, k8);
+        Uczen u61 = new Uczen("Kamil", "Nowak", "Sienkiewicza", "61", s3, k8);
+        Uczen u62 = new Uczen("Aleksandra", "Kowalska", "Warszawska", "62", s3, k8);
+        Uczen u63 = new Uczen("Piotr", "Lis", "Poznańska", "63", s3, k8);
 
 
         Nauczyciel n1 = new Nauczyciel("Marian", "Kowalski", "Sienkiewicza 1", "Matematyka");
@@ -130,69 +130,7 @@ public class Main {
         Nauczyciel n13 = new Nauczyciel("Marcin", "Sikorski", "Szkolna 19", "Religia");
         Nauczyciel n14 = new Nauczyciel("Natalia", "Pawlak", "Szkolna 2", "Wiedza o społeczeństwie");
         Nauczyciel n15 = new Nauczyciel("Adrian", "Lis", "Paderewskiego 8", "Technika");
-        // dodaj 20 uczniow do kazdej ze szkoł
-//        s1.dodajUcznia(u1);
-//        s1.dodajUcznia(u2);
-//        s1.dodajUcznia(u3);
-//        s1.dodajUcznia(u4);
-//        s1.dodajUcznia(u5);
-//        s1.dodajUcznia(u6);
-//        s1.dodajUcznia(u7);
-//        s1.dodajUcznia(u8);
-//        s1.dodajUcznia(u9);
-//        s1.dodajUcznia(u10);
-//        s1.dodajUcznia(u11);
-//        s1.dodajUcznia(u12);
-//        s1.dodajUcznia(u13);
-//        s1.dodajUcznia(u14);
-//        s1.dodajUcznia(u15);
-//        s1.dodajUcznia(u16);
-//        s1.dodajUcznia(u17);
-//        s1.dodajUcznia(u18);
-//        s1.dodajUcznia(u19);
-//        s1.dodajUcznia(u20);
-//
-//        s2.dodajUcznia(u21);
-//        s2.dodajUcznia(u22);
-//        s2.dodajUcznia(u23);
-//        s2.dodajUcznia(u24);
-//        s2.dodajUcznia(u25);
-//        s2.dodajUcznia(u26);
-//        s2.dodajUcznia(u27);
-//        s2.dodajUcznia(u28);
-//        s2.dodajUcznia(u29);
-//        s2.dodajUcznia(u30);
-//        s2.dodajUcznia(u31);
-//        s2.dodajUcznia(u32);
-//        s2.dodajUcznia(u33);
-//        s2.dodajUcznia(u34);
-//        s2.dodajUcznia(u35);
-//        s2.dodajUcznia(u36);
-//        s2.dodajUcznia(u37);
-//        s2.dodajUcznia(u38);
-//        s2.dodajUcznia(u39);
-//        s2.dodajUcznia(u40);
-//
-//        s3.dodajUcznia(u41);
-//        s3.dodajUcznia(u42);
-//        s3.dodajUcznia(u43);
-//        s3.dodajUcznia(u44);
-//        s3.dodajUcznia(u45);
-//        s3.dodajUcznia(u46);
-//        s3.dodajUcznia(u47);
-//        s3.dodajUcznia(u48);
-//        s3.dodajUcznia(u49);
-//        s3.dodajUcznia(u50);
-//        s3.dodajUcznia(u51);
-//        s3.dodajUcznia(u52);
-//        s3.dodajUcznia(u53);
-//        s3.dodajUcznia(u54);
-//        s3.dodajUcznia(u55);
-//        s3.dodajUcznia(u56);
-//        s3.dodajUcznia(u57);
-//        s3.dodajUcznia(u58);
-//        s3.dodajUcznia(u59);
-//        s3.dodajUcznia(u60);
+
 
         s1.dodajNauczyciela(n1);
         s1.dodajNauczyciela(n2);
@@ -226,16 +164,16 @@ public class Main {
         filozofia.dodajNauczyciela(n11);
         filozofia.dodajNauczyciela(n12);
 
-//        System.out.println("Wszystkie szkoły: ");
-//        Szkola.wyswietlEkstensje();
-//
-//        System.out.println("Sale w danej szkole: ");
-//        System.out.println("Szkoła 1 " + s1.getSale() + "\n");
-//
-//        System.out.println("Szkoła 2 " + s2.getSale() + "\n");
-//
-//        System.out.println("Szkoła 3 " + s2.getSale() + "\n");
-//
+        System.out.println("Wszystkie szkoły: ");
+        Szkola.wyswietlEkstensje();
+
+        System.out.println("Sale w danej szkole: ");
+        System.out.println("Szkoła 1 " + s1.getSale() + "\n");
+
+        System.out.println("Szkoła 2 " + s2.getSale() + "\n");
+
+        System.out.println("Szkoła 3 " + s2.getSale() + "\n");
+
         System.out.println("Klasy dostepne w szkole 1: ");
         System.out.println(s1.getKlasy()+ "\n");
 
@@ -245,8 +183,10 @@ public class Main {
         System.out.println("Klasy dostepne w szkole 3: ");
         System.out.println(s3.getKlasy()+ "\n");
 
-        System.out.println("\nUczniowie z pierwszej szkoły: ");
+        System.out.println("\nWszyscy uczniowie z pierwszej szkoły: ");
         System.out.println(Szkola.uczniowieZDanejSzkoly(s1) + "\n");
+
+
 
         System.out.println("Nauczyciele z pierwszej szkoły: ");
         System.out.println(Szkola.nauczycieleZDanejSzkoly(s1) + "\n");
@@ -263,14 +203,16 @@ public class Main {
         System.out.println("Nauczyciele z trzeciej szkoły: ");
         System.out.println(Szkola.nauczycieleZDanejSzkoly(s3) + "\n");
 
-//        System.out.println("Uczestnicy kursu programowania: ");
-//        System.out.println(programowanie.getUczestnicy() + "\n");
-//
-//        System.out.println("Uczestnicy kursu kwiatki: ");
-//        System.out.println(kwiatki.getUczestnicy() + "\n");
-//
-//        System.out.println("Uczestnicy kursu filozofia: ");
-//        System.out.println(filozofia.getUczestnicy() + "\n");
+        System.out.println("Uczestnicy kursu programowania: ");
+        System.out.println(programowanie.getUczestnicy() + "\n");
+
+        System.out.println("Uczestnicy kursu kwiatki: ");
+        System.out.println(kwiatki.getUczestnicy() + "\n");
+
+        System.out.println("Uczestnicy kursu filozofia: ");
+        System.out.println(filozofia.getUczestnicy() + "\n");
+
+
 
         //todo tu pojawia sie bląd
 //        System.out.println("szkolenia nauczyciela n3: ");

@@ -22,8 +22,8 @@ public class Uczen extends Osoba {
         }
         this.numerIndeksu = numerIndeksu;
         this.szkola = szkola;
-        this.klasa = klasa;
-
+        szkola.dodajUcznia(this);
+        klasa.dodajUcznia(this);
 
         ekstensja.add(this);
     }

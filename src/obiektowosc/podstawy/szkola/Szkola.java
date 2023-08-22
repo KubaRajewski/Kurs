@@ -39,14 +39,7 @@ public class Szkola {
 
 
     public void dodajUcznia(obiektowosc.podstawy.szkola.Uczen u){
-        if (u.getSzkola() != null){
-            throw new IllegalArgumentException("Ten uczen jest juz zapisany do innej szkoly");
-        }
-        // dodajemy ucznia do listy uczniow w danej szkole
         uczniowie.add(u);
-        // dodajemy informacje o szkole w polu szkola u danego ucznia
-        u.setSzkola(this);
-
     }
 
     public void usunUcznia(Uczen u) {
