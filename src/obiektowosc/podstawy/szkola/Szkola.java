@@ -35,6 +35,11 @@ public class Szkola {
         ekstensja.add(this);
     }
 
+    public static ThreadLocal<Object> pobierzEkstensje() {
+        return (ThreadLocal<Object>) ekstensja;
+    }
+
+
     public void dodajUcznia(obiektowosc.podstawy.szkola.Uczen u){
         if (u.getSzkola() != null){
             throw new IllegalArgumentException("Ten uczen jest juz zapisany do innej szkoly");
@@ -130,6 +135,14 @@ public class Szkola {
         for (Szkola s : ekstensja) {
             System.out.println("Nazwa: " + s.nazwa + " numer: " + s.numer + " rok powstania: " + s.rokPowstania);
         }
+    }
+
+    public static List<Uczen> uczniowieZDanejSzkoly(Szkola s){
+        return s.uczniowie;
+    }
+
+    public static List<Nauczyciel> nauczycieleZDanejSzkoly(Szkola s){
+        return s.nauczyciele;
     }
     @Override
     public String toString() {

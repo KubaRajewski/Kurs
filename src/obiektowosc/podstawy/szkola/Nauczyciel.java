@@ -37,6 +37,10 @@ public class Nauczyciel extends Osoba {
         return ekstensja;
     }
 
+    @Override
+    public String toString() {
+        return getImie() + " " +  getNazwisko() + " " +  getPrzedmiot();
+    }
 
     @Override
     public double obliczDochod() {

@@ -53,4 +53,10 @@ public class Uczen extends Osoba {
     public static List<Uczen> pobierzEkstensje() {
         return ekstensja;
     }
+
+    public static void wyswietlEkstensje(){
+        for (Uczen u : ekstensja) {
+            System.out.println(u);
+        }
+    }
 }
