@@ -9,7 +9,6 @@ public class Uczen extends Osoba {
     private Klasa klasa;
     private List<Ocena> oceny = new ArrayList<>();
 
-    // Zmienna statyczna do śledzenia wszystkich uczniów
     private static List<Uczen> ekstensja = new ArrayList<>();
 
     public Uczen(String imie, String nazwisko, String adres, String numerIndeksu, Szkola szkola, Klasa klasa) {
@@ -29,6 +28,11 @@ public class Uczen extends Osoba {
         // dodaj ucznia do szkoly szkola
         szkola.dodajUcznia(this);
         ekstensja.add(this);
+    }
+
+    @Override
+    public double obliczDochod() {
+        return 100;
     }
 
     public String getNumerIndeksu() {
@@ -63,9 +67,8 @@ public class Uczen extends Osoba {
         this.oceny = oceny;
     }
 
-    @Override
-    public double obliczDochod() {
-        return 100;
+    public static List<Uczen> getEkstensja() {
+        return ekstensja;
     }
 
     @Override
@@ -73,14 +76,6 @@ public class Uczen extends Osoba {
         return getImie() + " " + getNazwisko() + " " + numerIndeksu;
     }
 
-    // Metoda do pobierania wszystkich uczniów
-    public static List<Uczen> pobierzEkstensje() {
-        return ekstensja;
-    }
 
-    public static void wyswietlEkstensje(){
-        for (Uczen u : ekstensja) {
-            System.out.println(u);
-        }
-    }
+
 }

@@ -174,86 +174,89 @@ public class Main {
         filozofia.dodajNauczyciela(n11);
         filozofia.dodajNauczyciela(n12);
 
-//        System.out.println("Wszystkie szkoły: ");
-//        Szkola.wyswietlEkstensje();
-//
-//        System.out.println("Sale w danej szkole: ");
-//        System.out.println("Szkoła 1 " + s1.getSale() + "\n");
-//
-//        System.out.println("Szkoła 2 " + s2.getSale() + "\n");
-//
-//        System.out.println("Szkoła 3 " + s2.getSale() + "\n");
-//
-//        System.out.println("Klasy dostepne w szkole 1: ");
-//        System.out.println(s1.getKlasy()+ "\n");
-//
-//        System.out.println("uczniowie klasy 1a");
-//        System.out.println(k1.getUczniowie());
-//
-//        System.out.println("uczniowie klasy 2a");
-//        System.out.println(k2.getUczniowie());
-//
-//        System.out.println("uczniowie klasy 3a");
-//        System.out.println(k3.getUczniowie());
-//
-//        System.out.println("uczniowie klasy 1b");
-//        System.out.println(k4.getUczniowie());
-//
-//        System.out.println("uczniowie klasy 2b");
-//        System.out.println(k5.getUczniowie());
-//
-//        System.out.println("uczniowie klasy 3b");
-//        System.out.println(k6.getUczniowie());
-//
-//        System.out.println("uczniowie klasy 1c");
-//        System.out.println(k7.getUczniowie());
-//
-//        System.out.println("uczniowie klasy 2c");
-//        System.out.println(k8.getUczniowie());
-//
-//        System.out.println("uczniowie klasy 3c");
-//        System.out.println(k9.getUczniowie());
-//
-//        System.out.println("oceny kuby: ");
-//        System.out.println(u1.getOceny());
-//
-//        System.out.println("Klasy dostepne w szkole 2: ");
-//        System.out.println(s2.getKlasy()+ "\n");
-//
-//        System.out.println("Klasy dostepne w szkole 3: ");
-//        System.out.println(s3.getKlasy()+ "\n");
-//
-//        System.out.println("\nWszyscy uczniowie z pierwszej szkoły: ");
-//        System.out.println(Szkola.uczniowieZDanejSzkoly(s1) + "\n");
-//
-//        System.out.println("Nauczyciele z pierwszej szkoły: ");
-//        System.out.println(Szkola.nauczycieleZDanejSzkoly(s1) + "\n");
-//
-//        System.out.println("Uczniowie z drugiej szkoły: ");
-//        System.out.println(Szkola.uczniowieZDanejSzkoly(s2) + "\n");
-//
-//        System.out.println("Nauczyciele z drugiej szkoły: ");
-//        System.out.println(Szkola.nauczycieleZDanejSzkoly(s2) + "\n");
-//
-//        System.out.println("Uczniowie z trzeciej szkoły: ");
-//        System.out.println(Szkola.uczniowieZDanejSzkoly(s3) + "\n");
-//
-//        System.out.println("Nauczyciele z trzeciej szkoły: ");
-//        System.out.println(Szkola.nauczycieleZDanejSzkoly(s3) + "\n");
-//
-//        System.out.println("Uczestnicy kursu programowania: ");
-//        System.out.println(programowanie.getUczestnicy() + "\n");
-//
-//        System.out.println("Uczestnicy kursu kwiatki: ");
-//        System.out.println(kwiatki.getUczestnicy() + "\n");
-//
-//        System.out.println("Uczestnicy kursu filozofia: ");
-//        System.out.println(filozofia.getUczestnicy() + "\n");
+        System.out.println("Wszystkie szkoły: ");
+        System.out.println(Szkola.getEkstensja());
 
+        System.out.println("Sale w danej szkole: ");
+        System.out.println("Szkoła 1 " + s1.getSale() + "\n");
 
-        //todo tu pojawia sie bląd
-//        System.out.println("szkolenia nauczyciela n3: ");
-//        System.out.println(n3.getSzkolenia() + "\n");
+        System.out.println("Szkoła 2 " + s2.getSale() + "\n");
+
+        System.out.println("Szkoła 3 " + s2.getSale() + "\n");
+
+        System.out.println("Klasy dostepne w szkole 1: ");
+        System.out.println(s1.getKlasy()+ "\n");
+
+        System.out.println("uczniowie klasy 1a");
+        System.out.println(k1.getUczniowie());
+
+        System.out.println("uczniowie klasy 2a");
+        System.out.println(k2.getUczniowie());
+
+        System.out.println("uczniowie klasy 3a");
+        System.out.println(k3.getUczniowie());
+
+        System.out.println("uczniowie klasy 1b");
+        System.out.println(k4.getUczniowie());
+
+        System.out.println("uczniowie klasy 2b");
+        System.out.println(k5.getUczniowie());
+
+        System.out.println("uczniowie klasy 3b");
+        System.out.println(k6.getUczniowie());
+
+        System.out.println("uczniowie klasy 1c");
+        System.out.println(k7.getUczniowie());
+
+        System.out.println("uczniowie klasy 2c");
+        System.out.println(k8.getUczniowie());
+
+        System.out.println("uczniowie klasy 3c");
+        System.out.println(k9.getUczniowie());
+
+        System.out.println("oceny kuby: ");
+        System.out.println(u1.getOceny());
+
+        System.out.println("Klasy dostepne w szkole 2: ");
+        System.out.println(s2.getKlasy()+ "\n");
+
+        System.out.println("Klasy dostepne w szkole 3: ");
+        System.out.println(s3.getKlasy()+ "\n");
+
+        System.out.println("\nWszyscy uczniowie z pierwszej szkoły: ");
+        System.out.println(Szkola.uczniowieZDanejSzkoly(s1) + "\n");
+
+        System.out.println("Nauczyciele z pierwszej szkoły: ");
+        System.out.println(Szkola.nauczycieleZDanejSzkoly(s1) + "\n");
+
+        System.out.println("Uczniowie z drugiej szkoły: ");
+        System.out.println(Szkola.uczniowieZDanejSzkoly(s2) + "\n");
+
+        System.out.println("Nauczyciele z drugiej szkoły: ");
+        System.out.println(Szkola.nauczycieleZDanejSzkoly(s2) + "\n");
+
+        System.out.println("Uczniowie z trzeciej szkoły: ");
+        System.out.println(Szkola.uczniowieZDanejSzkoly(s3) + "\n");
+
+        System.out.println("Nauczyciele z trzeciej szkoły: ");
+        System.out.println(Szkola.nauczycieleZDanejSzkoly(s3) + "\n");
+
+        System.out.println("Uczestnicy kursu programowania: ");
+        System.out.println(programowanie.getUczestnicy() + "\n");
+
+        System.out.println("Uczestnicy kursu kwiatki: ");
+        System.out.println(kwiatki.getUczestnicy() + "\n");
+
+        System.out.println("Uczestnicy kursu filozofia: ");
+        System.out.println(filozofia.getUczestnicy() + "\n");
+
+        System.out.println("szkolenia nauczyciela n3: ");
+        System.out.println(n3.getSzkolenia() + "\n");
+
+        // TODO Wyjasnic jaka dokladnie relacja łączy klase Uczeń - Klasa - Szkoła
+        // TODO Inaczej wyglada metoda dodajUcznia w klasie szkola oraz konstruktor ucznia, czy tak jest okej?
+        // TODO W szkoleniach musze zainicjalizowac liste uczestnicy inaczej wyskakuje bląd, czy tak jest okej?
+        // TODO Inaczej wyglada klasa Sprawdzian, czy tak jest okej?
 
 
     }

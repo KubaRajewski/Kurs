@@ -11,12 +11,17 @@ public class Szkola {
     public String nazwa;
     public String wyroznienie;
     public int numer;
-    private List<Sala> sale = new ArrayList<>();
-    private List<Klasa> klasy = new ArrayList<>();
     private static int MIN_LICZBA_UCZNIOW = 150;
+    public List<String> profile = new ArrayList<>();
 
-    private List<String> profile = new ArrayList<>();
-    public List<Uczen> uczniowie = new ArrayList<>();
+    // lista sal (kompozycja z sala)
+    private List<Sala> sale = new ArrayList<>();
+    // Todo jaka to relacja?
+    private List<Klasa> klasy = new ArrayList<>();
+
+    // asocjacja licznosci * do klasy Uczen
+    private List<Uczen> uczniowie = new ArrayList<>();
+    // asocjacja licznosci * do klasy Nauczyciel
     private List<Nauczyciel> nauczyciele = new ArrayList<>();
 
     // ekstensja klasy szkola
@@ -39,8 +44,14 @@ public class Szkola {
     }
 
 
-    public void dodajUcznia(obiektowosc.podstawy.szkola.Uczen u){
+    public void dodajUcznia(Uczen u){
+        // TODO Czy to w mojej implementacji jest potrzebne?, dlaczego wywala błąd?
+//        if (u.getSzkola() != null) {
+//            throw new IllegalArgumentException("uczen juz jest w innej szkole");
+//        }
+
         uczniowie.add(u);
+        u.setSzkola(this);
     }
 
     public void usunUcznia(Uczen u) {
@@ -57,6 +68,35 @@ public class Szkola {
         nauczyciele.remove(n);
         n.getSzkoly().remove(this);
     }
+
+//    public void dodajSale(Sala s){
+//        sale.add(s);
+//        s.setSzkola(this);
+//    }
+//
+//    public void usunSale(Sala s){
+//        sale.remove(s);
+//        s.setSzkola(null);
+//    }
+//
+//    public void dodajKlase(Klasa k){
+//        klasy.add(k);
+//        k.setSzkola(this);
+//    }
+//
+//    public void usunKlase(Klasa k){
+//        klasy.remove(k);
+//        k.setSzkola(null);
+//    }
+
+    public void dodajProfil(String profil){
+        profile.add(profil);
+    }
+
+    public void usunProfil(String profil){
+        profile.remove(profil);
+    }
+
     public int obliczWiek() {
         return LocalDate.now().getYear() - rokPowstania;
     }
@@ -153,17 +193,9 @@ public class Szkola {
         Szkola.ekstensja = ekstensja;
     }
 
-    public static void wyswietlEkstensje(){
-        for (Szkola s : ekstensja) {
-            System.out.println("Nazwa: " + s.nazwa + " numer: " + s.numer + " rok powstania: " + s.rokPowstania);
-        }
-    }
-
     @Override
     public String toString() {
-        return "Szkola{" +
-                "ekstensja=" + ekstensja +
-                '}';
+        return nazwa;
     }
 }
 

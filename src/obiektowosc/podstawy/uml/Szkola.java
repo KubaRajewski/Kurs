@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Szkola {
+
     // atrybuty
     public final int rokPowstania;
     public String nazwa;
@@ -43,9 +44,9 @@ public class Szkola {
 
     // metoda tworzaca powiazanie (asocjacje)
     public void dodajUcznia(Uczen u) {
-        // sprawdzamy czy uczen nie chodzi juz do innej szkoly
-        if (u.getSzkola() != null) throw new IllegalArgumentException("Uczen ma jzu szkole");
-
+        if (u.getSzkola() != null) {
+            throw new IllegalArgumentException("uczen juz jest w innej szkole");
+        }
         uczniowie.add(u);
         // informacja zwrotna
         u.setSzkola(this);

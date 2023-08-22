@@ -46,7 +46,6 @@ public abstract class Osoba {
         this.adres = adres;
     }
 
-
     public void setEkstensja(List<Osoba> ekstensja) {
         this.ekstensja = ekstensja;
     }

@@ -6,26 +6,21 @@ import java.util.List;
 public class Szkolenie {
     private String nazwa;
     private String data;
-    private List<Nauczyciel> uczestnicy; // Zmiana nazwy listy nauczycieli na uczestnicy
+    private List<Nauczyciel> uczestnicy;
 
     private static List<Szkolenie> ekstensja =  new ArrayList<>();
 
     public Szkolenie(String nazwa, String data) {
         this.nazwa = nazwa;
         this.data = data;
-        this.uczestnicy = new ArrayList<>(); // Inicjalizuj listę uczestników
+        this.uczestnicy = new ArrayList<>(); //  TODO Inicjalizuj listę uczestników w UML tego nie ma
 
         ekstensja.add(this);
     }
 
     public void dodajNauczyciela(Nauczyciel n) {
         uczestnicy.add(n);
-        // info zwrotne
         n.getSzkolenia().add(this);
-    }
-
-    public static List<Szkolenie> getEkstensja() {
-        return ekstensja;
     }
 
     public String getNazwa() {
@@ -40,10 +35,20 @@ public class Szkolenie {
         return uczestnicy;
     }
 
+    public void setUczestnicy(List<Nauczyciel> uczestnicy) {
+        this.uczestnicy = uczestnicy;
+    }
+
+    public static List<Szkolenie> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Szkolenie> ekstensja) {
+        Szkolenie.ekstensja = ekstensja;
+    }
+
     @Override
     public String toString() {
-        return "Szkolenie{" +
-                "uczestnicy=" + uczestnicy +
-                '}';
+        return nazwa;
     }
 }

@@ -6,14 +6,13 @@ import java.util.List;
 public class Nauczyciel extends Osoba {
     private String przedmiot;
     private List<Szkola> szkoly = new ArrayList<>();
-    private List<Szkolenie> szkolenia = new ArrayList<>();
+    private List<Szkolenie> szkolenia = new ArrayList<>(); // TODO Dlaczego pokazuje ze nie potrzebne?
 
     private static List<Nauczyciel> ekstensja =  new ArrayList<>();
 
     public Nauczyciel(String imie, String nazwisko, String adres, String przedmiot) {
         super(imie, nazwisko, adres);
         this.przedmiot = przedmiot;
-        this.szkolenia = new ArrayList<>();
         ekstensja.add(this);
     }
 
@@ -48,7 +47,7 @@ public class Nauczyciel extends Osoba {
 
     @Override
     public String toString() {
-        return getImie() + " " +  getNazwisko() + " " +  getPrzedmiot();
+        return getImie() + " " +  getNazwisko() + " P: " +  getPrzedmiot();
     }
 
     @Override
