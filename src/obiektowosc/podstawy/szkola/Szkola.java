@@ -1,5 +1,6 @@
 package obiektowosc.podstawy.szkola;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Szkola {
     private static int MIN_LICZBA_UCZNIOW = 150;
 
     private List<String> profile = new ArrayList<>();
-    private List<Uczen> uczniowie = new ArrayList<>();
+    public List<Uczen> uczniowie = new ArrayList<>();
     private List<Nauczyciel> nauczyciele = new ArrayList<>();
 
     // ekstensja klasy szkola
@@ -56,6 +57,9 @@ public class Szkola {
         nauczyciele.remove(n);
         n.getSzkoly().remove(this);
     }
+    public int obliczWiek() {
+        return LocalDate.now().getYear() - rokPowstania;
+    }
 
     public static List<Uczen> uczniowieZDanejSzkoly(Szkola s){
         return s.uczniowie;
@@ -64,7 +68,6 @@ public class Szkola {
     public static List<Nauczyciel> nauczycieleZDanejSzkoly(Szkola s){
         return s.nauczyciele;
     }
-
 
     public int getRokPowstania() {
         return rokPowstania;
@@ -144,6 +147,10 @@ public class Szkola {
 
     public static List<Szkola> getEkstensja() {
         return ekstensja;
+    }
+
+    public static void setEkstensja(List<Szkola> ekstensja) {
+        Szkola.ekstensja = ekstensja;
     }
 
     public static void wyswietlEkstensje(){

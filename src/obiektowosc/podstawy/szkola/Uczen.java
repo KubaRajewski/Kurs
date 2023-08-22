@@ -7,6 +7,7 @@ public class Uczen extends Osoba {
     private String numerIndeksu;
     private Szkola szkola;
     private Klasa klasa;
+    private List<Ocena> oceny = new ArrayList<>();
 
     // Zmienna statyczna do śledzenia wszystkich uczniów
     private static List<Uczen> ekstensja = new ArrayList<>();
@@ -22,9 +23,11 @@ public class Uczen extends Osoba {
         }
         this.numerIndeksu = numerIndeksu;
         this.szkola = szkola;
-        szkola.dodajUcznia(this);
+        this.klasa = klasa;
+        // dodaj ucznia do klasy klasa
         klasa.dodajUcznia(this);
-
+        // dodaj ucznia do szkoly szkola
+        szkola.dodajUcznia(this);
         ekstensja.add(this);
     }
 
@@ -50,6 +53,14 @@ public class Uczen extends Osoba {
 
     public void setKlasa(Klasa klasa) {
         this.klasa = klasa;
+    }
+
+    public List<Ocena> getOceny() {
+        return oceny;
+    }
+
+    public void setOceny(List<Ocena> oceny) {
+        this.oceny = oceny;
     }
 
     @Override

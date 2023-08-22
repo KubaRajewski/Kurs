@@ -1,4 +1,4 @@
-package obiektowosc.podstawy.szkola;
+package obiektowosc.podstawy.uml;
 
 public class Sala {
     private String nazwa;
@@ -13,17 +13,11 @@ public class Sala {
         szkola.getSale().add(this);
     }
 
-
     public String getNazwa() {
         return nazwa;
     }
 
     public Szkola getSzkola() {
         return szkola;
-    }
-
-    @Override
-    public String toString() {
-        return nazwa;
     }
 }

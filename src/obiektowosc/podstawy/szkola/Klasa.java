@@ -7,14 +7,14 @@ public class Klasa {
     private String nazwa;
     private String profil;
     private final Szkola szkola;
+    private List<Uczen> uczniowie = new ArrayList<>(); // Dodaj listę uczniów jako atrybut instancji
 
-    private static List<Uczen> uczniowie = new ArrayList<>();
-
-    public Klasa(String nazwa, Szkola szkola, String profil) {
+    public Klasa(String nazwa, Szkola szkola, String profil, List<Uczen> uczniowie) {
         if (szkola == null) throw new IllegalArgumentException("Szkola musi istniec");
         this.nazwa = nazwa;
         this.szkola = szkola;
         this.profil = profil;
+        this.uczniowie = uczniowie;
 
         // informacja zwrotna
         szkola.getKlasy().add(this);
@@ -28,12 +28,13 @@ public class Klasa {
         return szkola;
     }
 
-    public static List<Uczen> getUczniowie() {
+    public List<Uczen> getUczniowie() {
         return uczniowie;
     }
 
-    public static void setUczniowie(List<Uczen> uczniowie) {
-        Klasa.uczniowie = uczniowie;
+    // Setter for uczniowie
+    public void setUczniowie(List<Uczen> uczniowie) {
+        this.uczniowie = uczniowie;
     }
 
     @Override
@@ -42,10 +43,6 @@ public class Klasa {
     }
 
     public void dodajUcznia(Uczen uczen) {
-        if (uczen.getKlasa() != null) {
-            throw new IllegalArgumentException("Ten uczen jest juz zapisany do innej klasy");
-        }
         uczniowie.add(uczen);
-        uczen.setKlasa(this);
     }
 }

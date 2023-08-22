@@ -1,5 +1,6 @@
 package obiektowosc.podstawy.szkola;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -31,21 +32,21 @@ public class Main {
 
         s3.setSale(List.of(sala7, sala8, sala9));
 
-        Klasa k1 = new Klasa("1a", s1, "matematyka");
-        Klasa k2 = new Klasa("2a", s1, "fizyka");
-        Klasa k3 = new Klasa("3a", s1, "chemia");
+        Klasa k1 = new Klasa("1a", s1, "matematyka", new ArrayList<>());
+        Klasa k2 = new Klasa("2a", s1, "fizyka", new ArrayList<>());
+        Klasa k3 = new Klasa("3a", s1, "chemia", new ArrayList<>());
 
         s1.setKlasy(List.of(k1, k2, k3));
 
-        Klasa k4 = new Klasa("1b", s2, "Filozofia");
-        Klasa k5 = new Klasa("2b", s2, "Mcdonalds");
-        Klasa k6 = new Klasa("3b", s2, "kwiatki");
+        Klasa k4 = new Klasa("1b", s2, "Filozofia", new ArrayList<>());
+        Klasa k5 = new Klasa("2b", s2, "Mcdonalds", new ArrayList<>());
+        Klasa k6 = new Klasa("3b", s2, "kwiatki", new ArrayList<>());
 
         s2.setKlasy(List.of(k4, k5, k6));
 
-        Klasa k7 = new Klasa("1c", s3, "Angielski");
-        Klasa k8 = new Klasa("2c", s3, "Niemiecki");
-        Klasa k9 = new Klasa("3c", s3, "Hiszpański");
+        Klasa k7 = new Klasa("1c", s3, "Angielski", new ArrayList<>());
+        Klasa k8 = new Klasa("2c", s3, "Niemiecki", new ArrayList<>());
+        Klasa k9 = new Klasa("3c", s3, "Hiszpański", new ArrayList<>());
 
         s3.setKlasy(List.of(k7, k8, k9));
 
@@ -114,6 +115,15 @@ public class Main {
         Uczen u62 = new Uczen("Aleksandra", "Kowalska", "Warszawska", "62", s3, k8);
         Uczen u63 = new Uczen("Piotr", "Lis", "Poznańska", "63", s3, k8);
 
+        Sprawdzian sp1 = new Sprawdzian("Matematyka", "Dział 1", "2019-10-10", new ArrayList<>());
+        Sprawdzian sp2 = new Sprawdzian("Matematyka", "Dział 2", "2020-10-10", new ArrayList<>());
+        Sprawdzian sp3 = new Sprawdzian("Matematyka", "Dział 3", "2021-10-10", new ArrayList<>());
+
+
+        Ocena o1 = new Ocena(5, "12/12/2023", u1, sp1);
+        Ocena o2 = new Ocena(2, "12/122/2023", u1, sp1);
+        Ocena o3 = new Ocena(5, "12/12/1992", u1, sp1);
+        Ocena o4 = new Ocena(3, "12/08/2023", u1, sp1);
 
         Nauczyciel n1 = new Nauczyciel("Marian", "Kowalski", "Sienkiewicza 1", "Matematyka");
         Nauczyciel n2 = new Nauczyciel("Anna", "Nowak", "Warszawska 5", "Fizyka");
@@ -152,8 +162,8 @@ public class Main {
         s3.dodajNauczyciela(n15);
 
         Szkolenie programowanie = new Szkolenie("Programowanie", "1992-12-12");
-        Szkolenie kwiatki = new Szkolenie("Programowanie", "1992-12-12");
-        Szkolenie filozofia = new Szkolenie("Programowanie", "1992-12-12");
+        Szkolenie kwiatki = new Szkolenie("Kwiatki", "1992-12-12");
+        Szkolenie filozofia = new Szkolenie("filozofia", "1992-12-12");
 
         programowanie.dodajNauczyciela(n3);
         programowanie.dodajNauczyciela(n4);
@@ -164,62 +174,86 @@ public class Main {
         filozofia.dodajNauczyciela(n11);
         filozofia.dodajNauczyciela(n12);
 
-        System.out.println("Wszystkie szkoły: ");
-        Szkola.wyswietlEkstensje();
-
-        System.out.println("Sale w danej szkole: ");
-        System.out.println("Szkoła 1 " + s1.getSale() + "\n");
-
-        System.out.println("Szkoła 2 " + s2.getSale() + "\n");
-
-        System.out.println("Szkoła 3 " + s2.getSale() + "\n");
-
-        System.out.println("Klasy dostepne w szkole 1: ");
-        System.out.println(s1.getKlasy()+ "\n");
-
-        System.out.println("Klasy dostepne w szkole 2: ");
-        System.out.println(s2.getKlasy()+ "\n");
-
-        System.out.println("Klasy dostepne w szkole 3: ");
-        System.out.println(s3.getKlasy()+ "\n");
-
-        System.out.println("\nWszyscy uczniowie z pierwszej szkoły: ");
-        System.out.println(Szkola.uczniowieZDanejSzkoly(s1) + "\n");
-
-
-
-        System.out.println("Nauczyciele z pierwszej szkoły: ");
-        System.out.println(Szkola.nauczycieleZDanejSzkoly(s1) + "\n");
-
-        System.out.println("Uczniowie z drugiej szkoły: ");
-        System.out.println(Szkola.uczniowieZDanejSzkoly(s2) + "\n");
-
-        System.out.println("Nauczyciele z drugiej szkoły: ");
-        System.out.println(Szkola.nauczycieleZDanejSzkoly(s2) + "\n");
-
-        System.out.println("Uczniowie z trzeciej szkoły: ");
-        System.out.println(Szkola.uczniowieZDanejSzkoly(s3) + "\n");
-
-        System.out.println("Nauczyciele z trzeciej szkoły: ");
-        System.out.println(Szkola.nauczycieleZDanejSzkoly(s3) + "\n");
-
-        System.out.println("Uczestnicy kursu programowania: ");
-        System.out.println(programowanie.getUczestnicy() + "\n");
-
-        System.out.println("Uczestnicy kursu kwiatki: ");
-        System.out.println(kwiatki.getUczestnicy() + "\n");
-
-        System.out.println("Uczestnicy kursu filozofia: ");
-        System.out.println(filozofia.getUczestnicy() + "\n");
-
+//        System.out.println("Wszystkie szkoły: ");
+//        Szkola.wyswietlEkstensje();
+//
+//        System.out.println("Sale w danej szkole: ");
+//        System.out.println("Szkoła 1 " + s1.getSale() + "\n");
+//
+//        System.out.println("Szkoła 2 " + s2.getSale() + "\n");
+//
+//        System.out.println("Szkoła 3 " + s2.getSale() + "\n");
+//
+//        System.out.println("Klasy dostepne w szkole 1: ");
+//        System.out.println(s1.getKlasy()+ "\n");
+//
+//        System.out.println("uczniowie klasy 1a");
+//        System.out.println(k1.getUczniowie());
+//
+//        System.out.println("uczniowie klasy 2a");
+//        System.out.println(k2.getUczniowie());
+//
+//        System.out.println("uczniowie klasy 3a");
+//        System.out.println(k3.getUczniowie());
+//
+//        System.out.println("uczniowie klasy 1b");
+//        System.out.println(k4.getUczniowie());
+//
+//        System.out.println("uczniowie klasy 2b");
+//        System.out.println(k5.getUczniowie());
+//
+//        System.out.println("uczniowie klasy 3b");
+//        System.out.println(k6.getUczniowie());
+//
+//        System.out.println("uczniowie klasy 1c");
+//        System.out.println(k7.getUczniowie());
+//
+//        System.out.println("uczniowie klasy 2c");
+//        System.out.println(k8.getUczniowie());
+//
+//        System.out.println("uczniowie klasy 3c");
+//        System.out.println(k9.getUczniowie());
+//
+//        System.out.println("oceny kuby: ");
+//        System.out.println(u1.getOceny());
+//
+//        System.out.println("Klasy dostepne w szkole 2: ");
+//        System.out.println(s2.getKlasy()+ "\n");
+//
+//        System.out.println("Klasy dostepne w szkole 3: ");
+//        System.out.println(s3.getKlasy()+ "\n");
+//
+//        System.out.println("\nWszyscy uczniowie z pierwszej szkoły: ");
+//        System.out.println(Szkola.uczniowieZDanejSzkoly(s1) + "\n");
+//
+//        System.out.println("Nauczyciele z pierwszej szkoły: ");
+//        System.out.println(Szkola.nauczycieleZDanejSzkoly(s1) + "\n");
+//
+//        System.out.println("Uczniowie z drugiej szkoły: ");
+//        System.out.println(Szkola.uczniowieZDanejSzkoly(s2) + "\n");
+//
+//        System.out.println("Nauczyciele z drugiej szkoły: ");
+//        System.out.println(Szkola.nauczycieleZDanejSzkoly(s2) + "\n");
+//
+//        System.out.println("Uczniowie z trzeciej szkoły: ");
+//        System.out.println(Szkola.uczniowieZDanejSzkoly(s3) + "\n");
+//
+//        System.out.println("Nauczyciele z trzeciej szkoły: ");
+//        System.out.println(Szkola.nauczycieleZDanejSzkoly(s3) + "\n");
+//
+//        System.out.println("Uczestnicy kursu programowania: ");
+//        System.out.println(programowanie.getUczestnicy() + "\n");
+//
+//        System.out.println("Uczestnicy kursu kwiatki: ");
+//        System.out.println(kwiatki.getUczestnicy() + "\n");
+//
+//        System.out.println("Uczestnicy kursu filozofia: ");
+//        System.out.println(filozofia.getUczestnicy() + "\n");
 
 
         //todo tu pojawia sie bląd
 //        System.out.println("szkolenia nauczyciela n3: ");
 //        System.out.println(n3.getSzkolenia() + "\n");
-
-
-
 
 
     }
