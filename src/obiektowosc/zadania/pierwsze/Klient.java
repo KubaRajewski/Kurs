@@ -30,7 +30,6 @@ public class Klient {
     }
 
     public static Klient ktoWydalNajwiecej(List<Klient> list){
-        double wartoscNajwiekszychZakupow = 0;
         Klient klientZNajwiekszymiZakupami = new Klient(" ", " ", 0);
 
         for (Klient klient : list) {
