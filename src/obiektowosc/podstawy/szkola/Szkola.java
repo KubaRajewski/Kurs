@@ -10,9 +10,11 @@ public class Szkola {
     public String nazwa;
     public String wyroznienie;
     public int numer;
+    private List<Sala> sale = new ArrayList<>();
+    private List<Klasa> klasy = new ArrayList<>();
     private static int MIN_LICZBA_UCZNIOW = 150;
 
-    public List<String> profile = new ArrayList<>();
+    private List<String> profile = new ArrayList<>();
     private List<Uczen> uczniowie = new ArrayList<>();
     private List<Nauczyciel> nauczyciele = new ArrayList<>();
 
@@ -33,10 +35,6 @@ public class Szkola {
             }
         }
         ekstensja.add(this);
-    }
-
-    public static ThreadLocal<Object> pobierzEkstensje() {
-        return (ThreadLocal<Object>) ekstensja;
     }
 
 
@@ -64,6 +62,14 @@ public class Szkola {
     public void usunNauczyciela(Nauczyciel n) {
         nauczyciele.remove(n);
         n.getSzkoly().remove(this);
+    }
+
+    public static List<Uczen> uczniowieZDanejSzkoly(Szkola s){
+        return s.uczniowie;
+    }
+
+    public static List<Nauczyciel> nauczycieleZDanejSzkoly(Szkola s){
+        return s.nauczyciele;
     }
 
 
@@ -127,6 +133,22 @@ public class Szkola {
         this.nauczyciele = nauczyciele;
     }
 
+    public List<Klasa> getKlasy() {
+        return klasy;
+    }
+
+    public void setKlasy(List<Klasa> klasy) {
+        this.klasy = klasy;
+    }
+
+    public List<Sala> getSale() {
+        return sale;
+    }
+
+    public void setSale(List<Sala> sale) {
+        this.sale = sale;
+    }
+
     public static List<Szkola> getEkstensja() {
         return ekstensja;
     }
@@ -137,13 +159,6 @@ public class Szkola {
         }
     }
 
-    public static List<Uczen> uczniowieZDanejSzkoly(Szkola s){
-        return s.uczniowie;
-    }
-
-    public static List<Nauczyciel> nauczycieleZDanejSzkoly(Szkola s){
-        return s.nauczyciele;
-    }
     @Override
     public String toString() {
         return "Szkola{" +

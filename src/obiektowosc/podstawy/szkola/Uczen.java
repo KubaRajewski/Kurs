@@ -6,11 +6,12 @@ import java.util.List;
 public class Uczen extends Osoba {
     private String numerIndeksu;
     private Szkola szkola;
+    private Klasa klasa;
 
     // Zmienna statyczna do śledzenia wszystkich uczniów
     private static List<Uczen> ekstensja = new ArrayList<>();
 
-    public Uczen(String imie, String nazwisko, String adres, String numerIndeksu) {
+    public Uczen(String imie, String nazwisko, String adres, String numerIndeksu, Szkola szkola, Klasa klasa) {
         super(imie, nazwisko, adres);
 
         // Sprawdzanie, czy uczeń o danym numerze indeksu już istnieje w danej szkole
@@ -20,6 +21,10 @@ public class Uczen extends Osoba {
             }
         }
         this.numerIndeksu = numerIndeksu;
+        this.szkola = szkola;
+        this.klasa = klasa;
+
+
         ekstensja.add(this);
     }
 
@@ -37,6 +42,14 @@ public class Uczen extends Osoba {
 
     public void setSzkola(Szkola szkola) {
         this.szkola = szkola;
+    }
+
+    public Klasa getKlasa() {
+        return klasa;
+    }
+
+    public void setKlasa(Klasa klasa) {
+        this.klasa = klasa;
     }
 
     @Override
