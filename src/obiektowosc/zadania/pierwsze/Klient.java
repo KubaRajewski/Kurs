@@ -18,7 +18,7 @@ public class Klient {
         ekstensja.add(this);
     }
 
-    // 1) Napisz metode ktota znajduje ka ktory wydal najwiecej.
+// 1) Napisz metode ktota znajduje ka ktory wydal najwiecej.
     public static double obliczWartoscZakupow(List<Produkt> list) {
         double wartosc = 0;
         for (Produkt produkt : list) {
@@ -37,10 +37,7 @@ public class Klient {
         return nk;
     }
 
-
-    //TODO Rozbic to na dwie funkcje, niech jedna zwraca liste klientow ktorzy kupili dany produkt
-
-//       2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
+// 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
     public static List<Klient> klienciKtorzyKupiliDanyProdukt(List<Klient> list, String nazwa){
         List<Klient> klienciZDanymProduktem = new ArrayList<>();
         for (Klient k : list) {
@@ -55,19 +52,18 @@ public class Klient {
         }
         return klienciZDanymProduktem;
     }
-//
-//       3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
-public static List<Klient> kupiliZlegoKondoma(List<Klient> klienci) {
-    List<Klient> kupiliZlegoKondoma = new ArrayList<>();
 
-    for (Klient k : klienci) {
+// 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
+public static List<Klient> kupiliZlegoKondoma(List<Klient> klienci) {
+        List<Klient> kupiliKondomy = klienciKtorzyKupiliDanyProdukt(klienci, "kondom");
+        List<Klient> kupiliZlegoKondoma = new ArrayList<>();
+
+    for (Klient k : kupiliKondomy) {
         for (Produkt p : k.getProdukty()) {
-            if (Helpers.containsIgnoreCase(p.getNazwa(), "kondom")) {
                 Optional<Double> wymiarKondoma = p.getWymiar();
                 if (wymiarKondoma.isPresent() && k.getRozmiarPenisa() != wymiarKondoma.get() && !kupiliZlegoKondoma.contains(k)) {
                     kupiliZlegoKondoma.add(k);
                 }
-            }
         }
     }
     return kupiliZlegoKondoma;
