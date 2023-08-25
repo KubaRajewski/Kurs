@@ -8,6 +8,7 @@ public class Klient {
     private int rozmiarPenisa;
 
     private List<Produkt> produkty = new ArrayList<>();
+
     private static List<Klient> ekstensja = new ArrayList<>();
 
     public Klient(String imie, String nazwisko, int rozmiarPenisa) {
@@ -18,8 +19,11 @@ public class Klient {
         ekstensja.add(this);
     }
 
-// 1) Napisz metode ktota znajduje ka ktory wydal najwiecej.
+// TODO 1) Napisz metode ktota znajduje ka ktory wydal najwiecej.
+
     public static double obliczWartoscZakupow(List<Produkt> list) {
+        if (list == null)
+            throw new IllegalArgumentException("koszyk nie moze byc nullem");
         double wartosc = 0;
         for (Produkt produkt : list) {
             wartosc += produkt.getCena();
@@ -28,7 +32,9 @@ public class Klient {
     }
 
     public static Klient ktoWydalNajwiecej(List<Klient> list){
-        Klient nk = new Klient(" ", " ", 0);
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
+        Klient nk = list.get(0);
         for (Klient k : list) {
             if (obliczWartoscZakupow(k.getProdukty()) > obliczWartoscZakupow(nk.getProdukty())) {
                 nk = k;
@@ -37,8 +43,12 @@ public class Klient {
         return nk;
     }
 
-// 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
+// TODO 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
+
     public static List<Klient> klienciKtorzyKupiliDanyProdukt(List<Klient> list, String nazwa){
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
+
         List<Klient> klienciZDanymProduktem = new ArrayList<>();
         for (Klient k : list) {
             for (Produkt p : k.getProdukty()) {
@@ -53,8 +63,12 @@ public class Klient {
         return klienciZDanymProduktem;
     }
 
-// 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
+// TODO 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
+
 public static List<Klient> kupiliZlegoKondoma(List<Klient> klienci) {
+    if (klienci == null || klienci.isEmpty())
+        throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
+
         List<Klient> kupiliKondomy = klienciKtorzyKupiliDanyProdukt(klienci, "kondom");
         List<Klient> kupiliZlegoKondoma = new ArrayList<>();
 
