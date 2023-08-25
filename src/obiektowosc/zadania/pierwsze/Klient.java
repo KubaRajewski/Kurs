@@ -21,21 +21,21 @@ public class Klient {
 
 // TODO 1) Napisz metode ktota znajduje ka ktory wydal najwiecej.
 
-    public static double obliczWartoscZakupow(List<Produkt> list) {
-        if (list == null)
+    public static double obliczWartoscZakupow(List<Produkt> produkty) {
+        if (produkty == null)
             throw new IllegalArgumentException("koszyk nie moze byc nullem");
         double wartosc = 0;
-        for (Produkt produkt : list) {
+        for (Produkt produkt : produkty) {
             wartosc += produkt.getCena();
         }
         return wartosc;
     }
 
-    public static Klient ktoWydalNajwiecej(List<Klient> list){
-        if (list == null || list.isEmpty())
+    public static Klient ktoWydalNajwiecej(List<Klient> klienci){
+        if (klienci == null || klienci.isEmpty())
             throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
-        Klient nk = list.get(0);
-        for (Klient k : list) {
+        Klient nk = klienci.get(0);
+        for (Klient k : klienci) {
             if (obliczWartoscZakupow(k.getProdukty()) > obliczWartoscZakupow(nk.getProdukty())) {
                 nk = k;
             }

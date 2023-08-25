@@ -25,6 +25,7 @@ public class Klient {
     public static double obliczWartoscZakupow(List<Produkt> koszyk) {
         if (koszyk == null)
             throw new IllegalArgumentException("koszyk nie moze byc nullem");
+
         double wartosc = 0;
         for (Produkt produkt : koszyk) {
             wartosc += produkt.getCena();
@@ -35,6 +36,7 @@ public class Klient {
     public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
         if (klienci == null || klienci.isEmpty())
             throw new IllegalArgumentException("koszyk nie moze byc nullem");
+
         Klient nk = klienci.get(0);
         double maxWartosc = obliczWartoscZakupow(nk.getKoszyk());
 

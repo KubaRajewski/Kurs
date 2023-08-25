@@ -3,10 +3,7 @@ package obiektowosc.zadania.drugie;
 //        Stwórz klasę Pracownik (imie,nazwisko, adres, pensja i Klient (imie,nazwisko, ulubiony produkt). Klient kupuje produkty (nazwa, cena).
 //        Pracownik uzywa samochod (model, marka)
 
-//       TODO 3) Wyswietl 3 top pracownikow z najwieksza pensja (compartor + sortowanie) DODATKOWE
-//
-//       TODO 4) Pracownicy auta moga uzywac wielkorotnie, chcemy przechowywac informacje (i moc ja wyswietlic) ile jaki pracownik uzywal jakiego auta
-
+import java.time.LocalDate;
 import java.util.List;
 
 public class Main {
@@ -28,21 +25,42 @@ public class Main {
         Samochod s14 = new Samochod("Model 3", "Tesla");
         Samochod s15 = new Samochod("Cruze", "Chevrolet");
 
-        Pracownik p1 = new Pracownik("Jakub", "Rajewski", "Ogińskiego", 3500, s1);
-        Pracownik p2 = new Pracownik("Anna", "Nowak", "Dąbrowskiego", 4200, s2);
-        Pracownik p3 = new Pracownik("Piotr", "Kowalski", "Sienkiewicza", 3100, s3);
-        Pracownik p4 = new Pracownik("Magda", "Jankowska", "Mickiewicza", 3800, s4);
-        Pracownik p5 = new Pracownik("Marcin", "Wójcik", "Wałbrzyska", 2900, s5);
-        Pracownik p6 = new Pracownik("Ewa", "Zielińska", "Grunwaldzka", 4100, s6);
-        Pracownik p7 = new Pracownik("Kamil", "Lewandowski", "Słowackiego", 3400, s7);
-        Pracownik p8 = new Pracownik("Natalia", "Duda", "Kościuszki", 3700, s8);
-        Pracownik p9 = new Pracownik("Tomasz", "Pawlak", "Czarnieckiego", 2800, s9);
-        Pracownik p10 = new Pracownik("Karolina", "Mazur", "Orzeszkowej", 4000, s10);
-        Pracownik p11 = new Pracownik("Wojciech", "Adamczyk", "Chrobrego", 3300, s11);
-        Pracownik p12 = new Pracownik("Monika", "Sikora", "Fredry", 3600, s12);
-        Pracownik p13 = new Pracownik("Mateusz", "Kaczmarek", "Paderewskiego", 2700, s13);
-        Pracownik p14 = new Pracownik("Alicja", "Czerwińska", "Kopernika", 3900, s14);
-        Pracownik p15 = new Pracownik("Krzysztof", "Wojciechowski", "Piłsudskiego", 3200, s15);
+        Pracownik p1 = new Pracownik("Jakub", "Rajewski", "Ogińskiego", 3500);
+        Pracownik p2 = new Pracownik("Anna", "Nowak", "Dąbrowskiego", 42000);
+        Pracownik p3 = new Pracownik("Piotr", "Kowalski", "Sienkiewicza", 3100);
+        Pracownik p4 = new Pracownik("Magda", "Jankowska", "Mickiewicza", 3800);
+        Pracownik p5 = new Pracownik("Marcin", "Wójcik", "Wałbrzyska", 2900);
+        Pracownik p6 = new Pracownik("Ewa", "Zielińska", "Grunwaldzka", 4100);
+        Pracownik p7 = new Pracownik("Kamil", "Lewandowski", "Słowackiego", 3400);
+        Pracownik p8 = new Pracownik("Natalia", "Duda", "Kościuszki", 3700);
+        Pracownik p9 = new Pracownik("Tomasz", "Pawlak", "Czarnieckiego", 2800);
+        Pracownik p10 = new Pracownik("Karolina", "Mazur", "Orzeszkowej", 4000);
+        Pracownik p11 = new Pracownik("Wojciech", "Adamczyk", "Chrobrego", 3300);
+        Pracownik p12 = new Pracownik("Monika", "Sikora", "Fredry", 36000);
+        Pracownik p13 = new Pracownik("Mateusz", "Kaczmarek", "Paderewskiego", 27000);
+        Pracownik p14 = new Pracownik("Alicja", "Czerwińska", "Kopernika", 3900);
+        Pracownik p15 = new Pracownik("Krzysztof", "Wojciechowski", "Piłsudskiego", 3200);
+
+        p1.uzywalSamochodu(s1, "2019-01-01");
+        p1.uzywalSamochodu(s1, "2019-01-02");
+        p1.uzywalSamochodu(s1, "2019-01-03");
+        p1.uzywalSamochodu(s2, "2019-01-04");
+        p2.uzywalSamochodu(s2, "2019-01-05");
+        p2.uzywalSamochodu(s2, "2019-01-06");
+        p3.uzywalSamochodu(s3, "2019-01-07");
+        p3.uzywalSamochodu(s3, "2019-01-08");
+        p5.uzywalSamochodu(s5, "2019-01-10");
+        p6.uzywalSamochodu(s6, "2019-01-11");
+        p7.uzywalSamochodu(s7, "2019-01-12");
+        p9.uzywalSamochodu(s9, "2019-01-14");
+        p11.uzywalSamochodu(s11, "2019-01-16");
+        p11.uzywalSamochodu(s11, "2019-01-16");
+        p11.uzywalSamochodu(s11, "2019-01-17");
+        p11.uzywalSamochodu(s11, "2019-01-18");
+        p11.uzywalSamochodu(s11, "2019-01-19");
+        p12.uzywalSamochodu(s12, "2019-01-17");
+        p14.uzywalSamochodu(s14, "2019-01-19");
+        p15.uzywalSamochodu(s15, "2019-01-20");
 
         Produkt pr1 = new Produkt("Mąka", 1.20);
         Produkt pr2 = new Produkt("Cukier", 2.50);
@@ -137,14 +155,38 @@ public class Main {
         Klient k45 = new Klient("Amir", "Malinowski", List.of(pr15, pr31, pr45));
 
 
-//      1) Znajdz klienta ktory wydał najwiecej
+//TODO      1) Znajdz klienta ktory wydał najwiecej
+
         System.out.println("Kto wydał najwiecej: " + Klient.ktoWydalNajwiecej(Klient.getEkstensja()) + "\n");
 
 
-//      2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
-        System.out.println("Ulubiony produkt każdego klienta: ");
-        System.out.println(Klient.znajdzUlubioneProdukty(Klient.getEkstensja()));
+//TODO      2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
 
+        System.out.println("Ulubiony produkt każdego klienta: ");
+        System.out.println(Klient.znajdzUlubioneProdukty(Klient.getEkstensja()) + "\n");
+
+//TODO      3) Wyswietl 3 top pracownikow z najwieksza pensja (compartor + sortowanie) DODATKOWE
+
+        System.out.println("Pracownicy z najwieksza pensja: ");
+        System.out.println(Pracownik.najlepiejZarabiajacy(Pracownik.getEkstensja(), 3) + "\n");
+
+//TODO      4) Pracownicy auta moga uzywac wielkorotnie, chcemy przechowywac informacje (i moc ja wyswietlic) ile jaki pracownik uzywal jakiego auta
+        
+        System.out.println(p1.getUzytkowaneSamochody());
+        System.out.println(p2.getUzytkowaneSamochody());
+        System.out.println(p3.getUzytkowaneSamochody());
+        System.out.println(p4.getUzytkowaneSamochody());
+        System.out.println(p5.getUzytkowaneSamochody());
+        System.out.println(p6.getUzytkowaneSamochody());
+        System.out.println(p7.getUzytkowaneSamochody());
+        System.out.println(p8.getUzytkowaneSamochody());
+        System.out.println(p9.getUzytkowaneSamochody());
+        System.out.println(p10.getUzytkowaneSamochody());
+        System.out.println(p11.getUzytkowaneSamochody());
+        System.out.println(p12.getUzytkowaneSamochody());
+        System.out.println(p13.getUzytkowaneSamochody());
+        System.out.println(p14.getUzytkowaneSamochody());
+        System.out.println(p15.getUzytkowaneSamochody());
 
 
     }

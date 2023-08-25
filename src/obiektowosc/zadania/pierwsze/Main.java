@@ -55,7 +55,7 @@ public class Main {
         Produkt p29 = new Produkt("Cukier", 2.0);
         Produkt p30 = new Produkt("Sól", 1.0);
 
-        // Zakupy
+//      Zakupy
         k1.dodajProdukt(List.of(p3, p5, p10, p10, p10, p16, p18, p9, p26, p23));
         k2.dodajProdukt(List.of(p4, p6, p11, p21, p27, p7));
         k3.dodajProdukt(List.of(p13, p26, p8, p15));
@@ -67,15 +67,15 @@ public class Main {
         k9.dodajProdukt(List.of(p9, p19, p29, p20, p30));
         k10.dodajProdukt(List.of(p10, p20, p30, p1, p2));
 
-        // Kto wydał najwiecej
+//TODO      Kto wydał najwiecej
         System.out.println("Kto wydal najwiecej: ");
         System.out.println(Klient.ktoWydalNajwiecej(Klient.getEkstensja()) + "\n");
 
-        // Kto kupił dany produkt
+//TODO      Kto kupił dany produkt
         System.out.println("Klienci ktorzy kupili dany produkt: ");
         System.out.println(Klient.klienciKtorzyKupiliDanyProdukt(Klient.getEkstensja(), "kondom") + "\n");
 
-        // Kto kupił zlego kondoma
+//TODO      Kto kupił zlego kondoma
         System.out.println("Klienci ktorzy kupili zlego kondoma: ");
         System.out.println(Klient.kupiliZlegoKondoma(Klient.getEkstensja()) + "\n");
 

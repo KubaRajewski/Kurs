@@ -6,12 +6,16 @@ import java.util.List;
 public class Samochod {
     private String model;
     private String marka;
-    private Pracownik uzytkownik;
-    private List<Samochod> ekstensja = new ArrayList<>();
+
+    private static List<Samochod> ekstensja = new ArrayList<>();
+
+    private List<Pracownik> uzytkownicy = new ArrayList<>();
 
     public Samochod(String model, String marka) {
         this.model = model;
         this.marka = marka;
+
+        ekstensja.add(this);
     }
 
     public String getModel() {
@@ -30,7 +34,15 @@ public class Samochod {
         this.marka = marka;
     }
 
-    public List<Samochod> getEkstensja() {
+    public List<Pracownik> getUzytkownicy() {
+        return uzytkownicy;
+    }
+
+    public void setUzytkownicy(List<Pracownik> uzytkownicy) {
+        this.uzytkownicy = uzytkownicy;
+    }
+
+    public static List<Samochod> getEkstensja() {
         return ekstensja;
     }
 
