@@ -15,11 +15,25 @@ public class Motocykl extends Pojazd{
         ekstensja.add(this);
     }
 
+    public static List<Motocykl> motocykleNaB (List<Motocykl> motocykle){
+        List<Motocykl> moznaNaB = new ArrayList<>();
+        for (Motocykl m : motocykle) {
+            if (m.isCzyMoznaNaB()){
+                moznaNaB.add(m);
+            }
+        }
+        return moznaNaB;
+    }
+
     public boolean isCzyMoznaNaB() {
         return czyMoznaNaB;
     }
 
     public void setCzyMoznaNaB(boolean czyMoznaNaB) {
         this.czyMoznaNaB = czyMoznaNaB;
+    }
+
+    public static List<Motocykl> getEkstensjaMotocykl() {
+        return ekstensja;
     }
 }

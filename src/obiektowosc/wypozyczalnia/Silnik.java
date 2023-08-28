@@ -61,6 +61,6 @@ public class Silnik {
 
     @Override
     public String toString() {
-        return typ;
+        return typ + " " + pojemnosc;
     }
 }

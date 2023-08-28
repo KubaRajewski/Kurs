@@ -36,6 +36,16 @@ public abstract class Pojazd {
         silnik.getPojazdyZDanymSilnikiem().add(this);
     }
 
+    public static List<Pojazd> pojazdyMocniejszeNiz(List<Pojazd> pojazdy, int mocMinimalna){
+        List<Pojazd> mocniejszeNiz = new ArrayList<>();
+        for (Pojazd p : pojazdy) {
+            if(p.getSilnik().getMoc() > mocMinimalna){
+                mocniejszeNiz.add(p);
+            }
+        }
+        return mocniejszeNiz;
+    }
+
     public String getNumerRejestracyjny() {
         return numerRejestracyjny;
     }
@@ -90,6 +100,10 @@ public abstract class Pojazd {
 
     public void setCenaWypozyczenia(int cenaWypozyczenia) {
         this.cenaWypozyczenia = cenaWypozyczenia;
+    }
+
+    public Silnik getSilnik() {
+        return silnik;
     }
 
     public static List<Pojazd> getEkstensja() {
