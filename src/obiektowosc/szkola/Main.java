@@ -1,4 +1,4 @@
-package obiektowosc.podstawy.szkola;
+package obiektowosc.szkola;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -255,7 +255,6 @@ public class Main {
 
         // TODO Wyjasnic jaka dokladnie relacja łączy klase Uczeń - Klasa - Szkoła
         // TODO Inaczej wyglada metoda dodajUcznia w klasie szkola oraz konstruktor ucznia, czy tak jest okej?
-        // TODO W szkoleniach musze zainicjalizowac liste uczestnicy inaczej wyskakuje bląd, czy tak jest okej?
         // TODO Inaczej wyglada klasa Sprawdzian, czy tak jest okej?
 
 

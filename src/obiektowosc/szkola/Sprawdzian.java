@@ -1,4 +1,4 @@
-package obiektowosc.podstawy.szkola;
+package obiektowosc.szkola;
 
 import java.util.ArrayList;
 import java.util.List;

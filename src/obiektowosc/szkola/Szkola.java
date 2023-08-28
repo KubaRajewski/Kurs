@@ -1,4 +1,4 @@
-package obiektowosc.podstawy.szkola;
+package obiektowosc.szkola;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

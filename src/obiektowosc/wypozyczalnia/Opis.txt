@@ -1,0 +1,44 @@
+https://lucid.app/lucidchart/a94d15bd-97c4-43e4-89bd-348f2b3b3e82/edit?beaconFlowId=8BD42868E77CBC8D&invitationId=inv_598609eb-bccb-4006-be23-66cb6aac8ae9&page=0_0#
+
+Klasa Klient:
+Atrybuty: imię, nazwisko, numer telefonu
+Metody: brak
+
+Klasa Pojazd: (abstrakcyjna klasa)
+Atrybuty: numer rejestracyjny, marka, model, rok produkcji, dostępność
+Metody: brak
+
+Klasa SamochódOsobowy:
+Dziedziczy po: Pojazd
+Atrybuty: liczba miejsc, pojemność bagażnika
+Metody: brak
+
+Klasa Van:
+Dziedziczy po: Pojazd
+Atrybuty: liczba miejsc, pojemność ładowni
+Metody: brak
+
+Klasa PrzyczepaKempingowa:
+Dziedziczy po: Pojazd
+Atrybuty: liczba miejsc do spania, wyposażenie
+Metody: brak
+
+Klasa Wypożyczenie:
+Atrybuty: data wypożyczenia, data zwrotu, koszt
+Metody: brak
+
+Klasa Pracownik:
+Atrybuty: imię, nazwisko, stanowisko
+Metody: obsłużWypożyczenie(), rezerwujPojazd()
+
+Klasa WypożyczniaPojazdów:
+Atrybuty: dostępnePojazdy (lista obiektów klasy Pojazd), pracownicy (lista obiektów klasy Pracownik)
+Metody: wypożyczPojazd(), zwrotPojazdu()
+Asocjacje:
+
+Klient -- (rezerwuje, wypożycza) --> Wypożyczenie
+Pracownik -- (obsługuje) --> Klient
+Wypożyczenie -- (dotyczy) --> SamochódOsobowy
+Wypożyczenie -- (dotyczy) --> Van
+Wypożyczenie -- (dotyczy) --> PrzyczepaKempingowa
+Wypożyczenie -- (obsługuje) --> Pracownik

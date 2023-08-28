@@ -1,4 +1,4 @@
-package obiektowosc.podstawy.szkola;
+package obiektowosc.szkola;
 
 public class Ocena {
     private final int wartosc;

@@ -1,4 +1,4 @@
-package obiektowosc.podstawy.szkola;
+package obiektowosc.szkola;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ public class Szkolenie {
     private String data;
     private List<Nauczyciel> uczestnicy;
 
-    private static List<Szkolenie> ekstensja =  new ArrayList<>();
+    private  List<Szkolenie> ekstensja =  new ArrayList<>();
 
     public Szkolenie(String nazwa, String data) {
         this.nazwa = nazwa;
@@ -39,12 +39,12 @@ public class Szkolenie {
         this.uczestnicy = uczestnicy;
     }
 
-    public static List<Szkolenie> getEkstensja() {
+    public List<Szkolenie> getEkstensja() {
         return ekstensja;
     }
 
-    public static void setEkstensja(List<Szkolenie> ekstensja) {
-        Szkolenie.ekstensja = ekstensja;
+    public void setEkstensja(List<Szkolenie> ekstensja) {
+        this.ekstensja = ekstensja;
     }
 
     @Override
