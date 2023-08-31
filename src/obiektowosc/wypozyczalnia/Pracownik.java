@@ -8,6 +8,7 @@ public class Pracownik extends Osoba{
     public String rodzajUmowy;
 
     private List<Szkolenie> szkolenia = new ArrayList<>();
+    private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
 
     private static List<Pracownik> ekstensja = new ArrayList<>();
 
@@ -29,6 +30,17 @@ public class Pracownik extends Osoba{
         return zarabiajacyWiecejNiz;
     }
 
+    public static List<Pracownik> pracownicyZDanaUmowa(List<Pracownik> pracownicy, String umowa) {
+        List<Pracownik> pracownicyZDanaUmowa = new ArrayList<>();
+
+        for (Pracownik p : pracownicy) {
+            if(p.getRodzajUmowy().equalsIgnoreCase(umowa)) {
+                pracownicyZDanaUmowa.add(p);
+            }
+        }
+        return pracownicyZDanaUmowa;
+    }
+
     public int getPensja() {
         return pensja;
     }
@@ -43,6 +55,14 @@ public class Pracownik extends Osoba{
 
     public void setRodzajUmowy(String rodzajUmowy) {
         this.rodzajUmowy = rodzajUmowy;
+    }
+
+    public List<Wypozyczenie> getWypozyczenia() {
+        return wypozyczenia;
+    }
+
+    public void setWypozyczenia(List<Wypozyczenie> wypozyczenia) {
+        this.wypozyczenia = wypozyczenia;
     }
 
     public static List<Pracownik> getEkstensjaPracownik() {

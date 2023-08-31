@@ -13,6 +13,8 @@ public abstract class Pojazd {
     private int cenaWypozyczenia; // cena za dobę
 
     private Silnik silnik;
+    private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
+
 
     private static List<Pojazd> ekstensja = new ArrayList<>();
 
@@ -106,6 +108,14 @@ public abstract class Pojazd {
         return silnik;
     }
 
+    public List<Wypozyczenie> getWypozyczenia() {
+        return wypozyczenia;
+    }
+
+    public void setWypozyczenia(List<Wypozyczenie> wypozyczenia) {
+        this.wypozyczenia = wypozyczenia;
+    }
+
     public static List<Pojazd> getEkstensja() {
         return ekstensja;
     }
@@ -117,8 +127,8 @@ public abstract class Pojazd {
     @Override
     public String toString() {
         if (dostepnosc) {
-            return marka + " " + model + " " + numerRejestracyjny + " - Dostępny";
+            return marka + " " + model + " " + numerRejestracyjny;
         }
-        return marka + " " + model +  " " + numerRejestracyjny + " - Niedostępny";
+        return marka + " " + model +  " " + numerRejestracyjny;
     }
 }

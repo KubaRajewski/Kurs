@@ -152,7 +152,7 @@ public class Main {
         Klient k42 = new Klient("Helena", "Piotrowska", List.of(pr12, pr28, pr28, pr42));
         Klient k43 = new Klient("Wojciech", "Jaworski", List.of(pr13, pr13, pr29, pr43));
         Klient k44 = new Klient("Eliza", "Wróbel", List.of(pr14, pr14, pr44, pr30, pr44));
-        Klient k45 = new Klient("Amir", "Malinowski", List.of(pr15, pr31, pr45));
+        Klient k45 = new Klient("Amir", "Malinowski", List.of(pr15, pr31, pr45, pr15, pr31, pr45));
 
 
 //TODO      1) Znajdz klienta ktory wydał najwiecej

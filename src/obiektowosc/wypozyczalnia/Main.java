@@ -150,5 +150,17 @@ public class Main {
         // pracownicy zarabiajacy wiecej niz x
         System.out.println("Pracownicy zarabiajacy wiecej niz x ");
         System.out.println(Pracownik.zarabiajacyWiecejNiz(Pracownik.getEkstensjaPracownik(), 4000) + "\n");
+
+        // pracownicy z umowa o prace
+        System.out.println("Pracownicy z umowa o prace");
+        System.out.println(Pracownik.pracownicyZDanaUmowa(Pracownik.getEkstensjaPracownik(), "Umowa o pracę") + "\n");
+
+
+        // Wypozyczenia
+        Wypozyczenie w1 = new Wypozyczenie("2019-01-01", "2019-01-02", 2000, vd1, k1, pb1);
+        Wypozyczenie w2 = new Wypozyczenie("2019-01-03", "2019-01-04", 2000, vd2, k2, pb2);
+        Wypozyczenie w3 = new Wypozyczenie("2019-01-05", "2019-01-06", 2000, vd3, k3, pb3);
+
+        System.out.println(vd3.getWypozyczenia());
     }
 }

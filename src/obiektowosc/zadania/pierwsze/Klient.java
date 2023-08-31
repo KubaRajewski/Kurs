@@ -19,7 +19,7 @@ public class Klient {
         ekstensja.add(this);
     }
 
-// TODO 1) Napisz metode ktota znajduje ka ktory wydal najwiecej.
+// TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
 
     public static double obliczWartoscZakupow(List<Produkt> produkty) {
         if (produkty == null)

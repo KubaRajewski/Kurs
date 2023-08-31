@@ -25,17 +25,32 @@ public class Pracownik {
 
     public static List<Pracownik> najlepiejZarabiajacy(List<Pracownik> pracownicy, int limit) {
         Collections.sort(pracownicy, (p1, p2) -> p2.getPensja() - p1.getPensja());
+
+        // metoda sort przyjmuje dwa argumenty - pierwszy to lista, drugi to comparator
+        // 'p2.getPensja() - p1.getPensja() oblicza różnicę pensji między p2 a p1' jesli roznica bedzie dodatnia
+        // oznacza to ze p2 zarabia wiecej niz p1, wiec p2 jest wiekszy i powinien byc na przed p1
+
         return pracownicy.subList(0, limit);
     }
 
 //TODO 4) Pracownicy auta moga uzywac wielkorotnie, chcemy przechowywac informacje (i moc ja wyswietlic) ile jaki pracownik uzywal jakiego auta
 
     public void uzywalSamochodu(Samochod samochod, String data) {
-        uzytkowaneSamochody.putIfAbsent(this, new HashMap<>());
-        Map<Samochod, List<String>> samochody = uzytkowaneSamochody.get(this);
 
-        samochody.putIfAbsent(samochod, new ArrayList<>());
-        samochody.get(samochod).add(data);
+        uzytkowaneSamochody.putIfAbsent(this, new HashMap<>());
+        // this w tym przypadku wstawia klienta do mapy, jeśli go tam nie ma
+
+        Map<Samochod, List<String>> samochodyIDaty = uzytkowaneSamochody.get(this);
+        // pobiera mapę samochodów i dat dla konkretnego pracownika (this) z mapy uzytkowaneSamochody.
+        // Otrzymujemy mapę, gdzie kluczem jest obiekt Samochod, a wartością jest lista dat.
+
+        samochodyIDaty.putIfAbsent(samochod, new ArrayList<>());
+        // Sprawdzamy, czy dla danego samochodu (samochod) istnieje już wpis w mapie samochodyIDaty.
+        // Jeśli nie istnieje, tworzymy wpis z pustą listą dat.
+
+        samochodyIDaty.get(samochod).add(data);
+        // dodajemy nową datę (data) do listy dat w mapie samochodyIDaty,
+        // która jest przypisana do konkretnego samochodu (samochod)
     }
 
     public String getImie() {

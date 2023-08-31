@@ -1,9 +1,6 @@
 package obiektowosc.zadania.drugie;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Klient {
     private String imie;
@@ -81,6 +78,16 @@ public class Klient {
             if (licznik > 1 && !najczestszeProdukty.contains(p)) {
                 najczestszeProdukty.add(p);
             }
+        }
+
+        Set<Produkt> s1 = new HashSet<>();
+        s1.addAll(najczestszeProdukty);
+
+        Set<Produkt> s2 = new HashSet<>();
+        s2.addAll(koszyk);
+
+        if (s1.size() == s2.size()) {
+            najczestszeProdukty.clear();
         }
 
         return najczestszeProdukty;
