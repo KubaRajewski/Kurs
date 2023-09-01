@@ -1,18 +1,20 @@
-package obiektowosc.zadania.pierwsze;
+package obiektowosc.zadaniaPoprawione.pierwsze;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Produkt {
     private String nazwa;
     private double cena;
 
-    private Klient klient;
+    List<Produkt> ekstensja = new ArrayList<>();
 
     public Produkt(String nazwa, double cena) {
         this.nazwa = nazwa;
         this.cena = cena;
-    }
 
+        ekstensja.add(this);
+    }
 
     public String getNazwa() {
         return nazwa;
@@ -30,11 +32,16 @@ public abstract class Produkt {
         this.cena = cena;
     }
 
-    public Klient getKlient() {
-        return klient;
+    public List<Produkt> getEkstensja() {
+        return ekstensja;
     }
 
-    public void setKlient(Klient klient) {
-        this.klient = klient;
+    public void setEkstensja(List<Produkt> ekstensja) {
+        this.ekstensja = ekstensja;
+    }
+
+    @Override
+    public String toString() {
+        return nazwa;
     }
 }

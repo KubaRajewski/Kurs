@@ -3,34 +3,38 @@ package obiektowosc.zadania.drugie;
 import java.time.LocalDate;
 import java.util.*;
 
-public class Pracownik {
-    private String imie;
-    private String nazwisko;
+public class Pracownik extends Osoba {
     private String adres;
-    private int pensja;
+    private double pensja;
 
     private static List<Pracownik> ekstensja = new ArrayList<>();
     private Map<Pracownik, Map<Samochod, List<String>>> uzytkowaneSamochody = new HashMap<>();
 
-    public Pracownik(String imie, String nazwisko, String adres, int pensja) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
+    public Pracownik(String imie, String nazwisko, String adres, double pensja) {
+        super(imie, nazwisko);
         this.adres = adres;
         this.pensja = pensja;
 
         ekstensja.add(this);
     }
 
-//TODO 3) Wyswietl 3 top pracownikow z najwieksza pensja (compartor + sortowanie) DODATKOWE
+    //TODO 3) Wyswietl 3 top pracownikow z najwieksza pensja (compartor + sortowanie) DODATKOWE
 
     public static List<Pracownik> najlepiejZarabiajacy(List<Pracownik> pracownicy, int limit) {
-        Collections.sort(pracownicy, (p1, p2) -> p2.getPensja() - p1.getPensja());
+
+        if (pracownicy == null) throw new IllegalArgumentException();
+
+        if (limit > pracownicy.size()) throw new IllegalArgumentException();
+
+        List<Pracownik> copy = new ArrayList<>(pracownicy);
+
+        Collections.sort(copy, Comparator.comparing(Pracownik::getPensja).reversed());
 
         // metoda sort przyjmuje dwa argumenty - pierwszy to lista, drugi to comparator
         // 'p2.getPensja() - p1.getPensja() oblicza różnicę pensji między p2 a p1' jesli roznica bedzie dodatnia
-        // oznacza to ze p2 zarabia wiecej niz p1, wiec p2 jest wiekszy i powinien byc na przed p1
+        // oznacza to ze p2 zarabia wiecej niz p1, wiec p2 jest wiekszy i powinien byc przed p1
 
-        return pracownicy.subList(0, limit);
+        return copy.subList(0, limit);
     }
 
 //TODO 4) Pracownicy auta moga uzywac wielkorotnie, chcemy przechowywac informacje (i moc ja wyswietlic) ile jaki pracownik uzywal jakiego auta
@@ -41,7 +45,7 @@ public class Pracownik {
         // this w tym przypadku wstawia klienta do mapy, jeśli go tam nie ma
 
         Map<Samochod, List<String>> samochodyIDaty = uzytkowaneSamochody.get(this);
-        // pobiera mapę samochodów i dat dla konkretnego pracownika (this) z mapy uzytkowaneSamochody.
+        // pobiera mapę samochodów i dat dla konkretnego pracownika  z mapy uzytkowaneSamochody.
         // Otrzymujemy mapę, gdzie kluczem jest obiekt Samochod, a wartością jest lista dat.
 
         samochodyIDaty.putIfAbsent(samochod, new ArrayList<>());
@@ -53,20 +57,25 @@ public class Pracownik {
         // która jest przypisana do konkretnego samochodu (samochod)
     }
 
-    public String getImie() {
-        return imie;
-    }
 
-    public void setImie(String imie) {
-        this.imie = imie;
-    }
-
-    public String getNazwisko() {
-        return nazwisko;
-    }
-
-    public void setNazwisko(String nazwisko) {
-        this.nazwisko = nazwisko;
+    public void uzywalSamochoduOryginal(Samochod samochod, String data) {
+        if (uzytkowaneSamochody.containsKey(this)) {
+            Map<Samochod, List<String>> samochodyIDaty = uzytkowaneSamochody.get(this);
+            if (samochodyIDaty.containsKey(samochod)) {
+                List<String> daty = samochodyIDaty.get(samochod);
+                daty.add(data);
+            } else {
+                List<String> daty = new ArrayList<>();
+                daty.add(data);
+                samochodyIDaty.put(samochod, daty);
+            }
+        } else {
+            Map<Samochod, List<String>> samochodyIDaty = new HashMap<>();
+            List<String> daty = new ArrayList<>();
+            daty.add(data);
+            samochodyIDaty.put(samochod, daty);
+            uzytkowaneSamochody.put(this, samochodyIDaty);
+        }
     }
 
     public String getAdres() {
@@ -77,13 +86,10 @@ public class Pracownik {
         this.adres = adres;
     }
 
-    public int getPensja() {
+    public double getPensja() {
         return pensja;
     }
 
-    public void setPensja(int pensja) {
-        this.pensja = pensja;
-    }
 
     public static List<Pracownik> getEkstensja() {
         return ekstensja;
@@ -101,8 +107,5 @@ public class Pracownik {
         this.uzytkowaneSamochody = uzytkowaneSamochody;
     }
 
-    @Override
-    public String toString() {
-        return imie + " " + nazwisko;
-    }
+
 }

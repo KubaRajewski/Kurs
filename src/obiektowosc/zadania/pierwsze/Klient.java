@@ -19,11 +19,16 @@ public class Klient {
         ekstensja.add(this);
     }
 
+    public void dodajProdukt(Produkt p) {
+        if (p.getKlient() != null) throw new IllegalArgumentException();
+        produkty.add(p);
+
+        p.setKlient(this);
+    }
+
 // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
 
-    public static double obliczWartoscZakupow(List<Produkt> produkty) {
-        if (produkty == null)
-            throw new IllegalArgumentException("koszyk nie moze byc nullem");
+    public double obliczWartoscZakupow() {
         double wartosc = 0;
         for (Produkt produkt : produkty) {
             wartosc += produkt.getCena();
@@ -31,61 +36,65 @@ public class Klient {
         return wartosc;
     }
 
-    public static Klient ktoWydalNajwiecej(List<Klient> klienci){
+    public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
         if (klienci == null || klienci.isEmpty())
             throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
-        Klient nk = klienci.get(0);
+        Klient max = klienci.get(0);
         for (Klient k : klienci) {
-            if (obliczWartoscZakupow(k.getProdukty()) > obliczWartoscZakupow(nk.getProdukty())) {
-                nk = k;
+            if (k.obliczWartoscZakupow() > max.obliczWartoscZakupow()) {
+                max = k;
             }
         }
-        return nk;
+        return max;
     }
 
 // TODO 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
 
-    public static List<Klient> klienciKtorzyKupiliDanyProdukt(List<Klient> list, String nazwa){
-        if (list == null || list.isEmpty())
-            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
-
-        List<Klient> klienciZDanymProduktem = new ArrayList<>();
-        for (Klient k : list) {
-            for (Produkt p : k.getProdukty()) {
-                if (Helpers.containsIgnoreCase(p.getNazwa(), nazwa)) {
-                    if (klienciZDanymProduktem.contains(k)){
-                        break;
-                    }
-                    klienciZDanymProduktem.add(k);
-                }
+    // 2a) srpawdza czy dany klient kupil kondoma
+    public boolean czyKupilKondoma() {
+        for (Produkt produkt : produkty) {
+            if (produkt instanceof Kondom) {
+                return true;
             }
         }
-        return klienciZDanymProduktem;
+        return false;
     }
 
-// TODO 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
+    public static List<Klient> klienciKtorzyKupiliDanyProdukt(List<Klient> list) {
+        if (list == null)
+            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
 
-public static List<Klient> kupiliZlegoKondoma(List<Klient> klienci) {
-    if (klienci == null || klienci.isEmpty())
-        throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
+        List<Klient> klienciZKondomem = new ArrayList<>();
 
-        List<Klient> kupiliKondomy = klienciKtorzyKupiliDanyProdukt(klienci, "kondom");
-        List<Klient> kupiliZlegoKondoma = new ArrayList<>();
-
-    for (Klient k : kupiliKondomy) {
-        for (Produkt p : k.getProdukty()) {
-                Optional<Double> wymiarKondoma = p.getWymiar();
-                if (wymiarKondoma.isPresent() && k.getRozmiarPenisa() != wymiarKondoma.get() && !kupiliZlegoKondoma.contains(k)) {
-                    kupiliZlegoKondoma.add(k);
-                }
+        for (Klient klient : list) {
+            if (klient.czyKupilKondoma()) {
+                klienciZKondomem.add(klient);
+            }
         }
+        return klienciZKondomem;
     }
-    return kupiliZlegoKondoma;
-}
 
-    public void dodajProdukt(List<Produkt> list) {
-        produkty.addAll(list);
+    // TODO 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
+    // 3a) sprawdz czy klient kupil kondoma na zly rozmiar
+    public boolean czyKupilZlegoKondoma() {
+        for (Produkt produkt : produkty) {
+            if (produkt instanceof Kondom && ((Kondom) produkt).getRozmiar() != rozmiarPenisa) {
+                return true;
+            }
+        }
+        return false;
     }
+
+    public static List<Klient> kupiliZlegoKondoma(List<Klient> klienci) {
+        List<Klient> kupiliZlegoKondoma = new ArrayList<>();
+        for (Klient klient : klienci) {
+            if(klient.czyKupilZlegoKondoma()){
+                kupiliZlegoKondoma.add(klient);
+            }
+        }
+        return kupiliZlegoKondoma;
+    }
+
 
     public String getImie() {
         return imie;

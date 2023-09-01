@@ -7,6 +7,8 @@ public class Klient {
     private String nazwisko;
     private List<Produkt> koszyk;
 
+    // TODO asocjacja!!!!!!
+
     private static List<Klient> ekstensja = new ArrayList<>();
 
     public Klient(String imie, String nazwisko, List<Produkt> koszyk) {
@@ -49,49 +51,53 @@ public class Klient {
 
 // TODO 2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
 
-    public static Map<Klient, List<Produkt>> znajdzUlubioneProdukty(List<Klient> klienci) {
-        if (klienci == null || klienci.isEmpty())
-            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+    // metoda obiektowa dla klienta co kupowal najczesciej
 
-        Map<Klient, List<Produkt>> ulubioneProdukty = new HashMap<>();
 
-        for (Klient k : klienci) {
-            ulubioneProdukty.put(k, znajdzNajczestszeProdukty(k.getKoszyk()));
-        }
-
-        return ulubioneProdukty;
-    }
-
-    public static List<Produkt> znajdzNajczestszeProdukty(List<Produkt> koszyk) {
-        if (koszyk == null)
-            throw new IllegalArgumentException("koszyk nie moze byc nullem");
-
-        List<Produkt> najczestszeProdukty = new ArrayList<>();
-
-        for (Produkt p : koszyk) {
-            int licznik = 0;
-            for (Produkt P : koszyk) {
-                if (p.getNazwa().equals(P.getNazwa())) {
-                    licznik++;
-                }
-            }
-            if (licznik > 1 && !najczestszeProdukty.contains(p)) {
-                najczestszeProdukty.add(p);
-            }
-        }
-
-        Set<Produkt> s1 = new HashSet<>();
-        s1.addAll(najczestszeProdukty);
-
-        Set<Produkt> s2 = new HashSet<>();
-        s2.addAll(koszyk);
-
-        if (s1.size() == s2.size()) {
-            najczestszeProdukty.clear();
-        }
-
-        return najczestszeProdukty;
-    }
+//
+//    public static Map<Klient, List<Produkt>> znajdzUlubioneProdukty(List<Klient> klienci) {
+//        if (klienci == null || klienci.isEmpty())
+//            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+//
+//        Map<Klient, List<Produkt>> ulubioneProdukty = new HashMap<>();
+//
+//        for (Klient k : klienci) {
+//            ulubioneProdukty.put(k, znajdzNajczestszeProdukty(k.getKoszyk()));
+//        }
+//
+//        return ulubioneProdukty;
+//    }
+//
+//    public static List<Produkt> znajdzNajczestszeProdukty(List<Produkt> koszyk) {
+//        if (koszyk == null)
+//            throw new IllegalArgumentException("koszyk nie moze byc nullem");
+//
+//        List<Produkt> najczestszeProdukty = new ArrayList<>();
+//
+//        for (Produkt p : koszyk) {
+//            int licznik = 0;
+//            for (Produkt P : koszyk) {
+//                if (p.getNazwa().equals(P.getNazwa())) {
+//                    licznik++;
+//                }
+//            }
+//            if (licznik > 1 && !najczestszeProdukty.contains(p)) {
+//                najczestszeProdukty.add(p);
+//            }
+//        }
+//
+//        Set<Produkt> s1 = new HashSet<>();
+//        s1.addAll(najczestszeProdukty);
+//
+//        Set<Produkt> s2 = new HashSet<>();
+//        s2.addAll(koszyk);
+//
+//        if (s1.size() == s2.size()) {
+//            najczestszeProdukty.clear();
+//        }
+//
+//        return najczestszeProdukty;
+//    }
 
     public String getImie() {
         return imie;

@@ -253,10 +253,5 @@ public class Main {
         System.out.println("szkolenia nauczyciela n3: ");
         System.out.println(n3.getSzkolenia() + "\n");
 
-        // TODO Wyjasnic jaka dokladnie relacja łączy klase Uczeń - Klasa - Szkoła
-        // TODO Inaczej wyglada metoda dodajUcznia w klasie szkola oraz konstruktor ucznia, czy tak jest okej?
-        // TODO Inaczej wyglada klasa Sprawdzian, czy tak jest okej?
-
-
     }
 }
