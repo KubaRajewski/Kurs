@@ -4,15 +4,15 @@ import java.util.*;
 
 public class Test1 {
     public static void main(String[] args) {
-//      Zadanie 01:
+//      TODO Zadanie 01:
 //      wypisz wszystkie liczby 3 cyfrowe ktorych suma cyfr dziesiatek i setek jest rowna cyfrze jednosci. np: 314 bo 3+1=4
         System.out.println("Liczby trzycyfrowe ktorych suma cyfr dziesiatek i setek jest rowna cyfrze jednosci: \n" + cyfry() + "\n");
 
-//      Zadanie 02:
+//      TODO Zadanie 02:
 //      dla każdej liczby dwucyfrowej wypisz jej ilosc dzielników.
         System.out.println("Liczby dwucyfrowe i ich ilość dzielników (Liczba = Ilość Dzielników): \n" + liczbyIIloscIchDzielnikow() + "\n");
 
-//      Zadanie 03:
+//      TODO Zadanie 03:
 //      Poproś użytkownika o podanie 10ciu roznych napisów
 //      Wpisz je wszystkie do tablicy a następnie:
 //      - wypisz najdłuższy napis i ile ma znaków.
@@ -25,7 +25,7 @@ public class Test1 {
         System.out.println("Najkrotszy napis: " + najkrotszyNapis(napisy) + "\n");
         System.out.println("Ilość palidromow: " + iloscPalidromow(napisy) + "\n");
 
-//      Zadanie 04:
+//      TODO Zadanie 04:
 //      Zapytaj użytkownika o liczby rozdzielone spacją, następnie:
 //      - wypisz medianę wprowadzonych liczb.
 //      - wypisz liczbę z największą ilością dzielników.
