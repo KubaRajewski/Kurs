@@ -1,11 +1,8 @@
-package obiektowosc.zadania.poprawione.pierwsze;
+package obiektowosc.zadania.pierwsze;
 
 
 //        Klient kupuje produkty. Klient ma imie nazwisko i rozmiar penisa. Pordukt ma nazwe, cene i jesli jest to kondom to wymiar
 //        Klient moze miec wiele produktow, produkt moze miec jednego klienta.
-//        TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
-//        TODO 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
-//        TODO 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
 
 public class Main {
     public static void main(String[] args) {
@@ -34,10 +31,13 @@ public class Main {
         k6.dodajProdukt(kondom1);
         k8.dodajProdukt(kondom3);
 
+        // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
         System.out.println("Klient ktory wydal najwiecej: " + Klient.ktoWydalNajwiecej(Klient.ekstensja) + "\n");
 
+        // TODO 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
         System.out.println("Klienci ktorzy kupili kondoma: " + Klient.klienciKtorzyKupiliKondoma(Klient.ekstensja) + "\n");
 
+        // TODO 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
         System.out.println("Klienci ktorzy kupili kondoma ale nie na swoj rozmiar: " + Klient.kupiliZlegoKondoma(Klient.ekstensja) + "\n");
     }
 }

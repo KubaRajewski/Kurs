@@ -4,26 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Samochod {
-    private String model;
     private String marka;
-
-    private static List<Samochod> ekstensja = new ArrayList<>();
+    private String model;
 
     private List<Pracownik> uzytkownicy = new ArrayList<>();
 
-    public Samochod(String model, String marka) {
-        this.model = model;
+    private static List<Samochod> ekstensja = new ArrayList<>();
+
+    public Samochod(String marka, String model) {
         this.marka = marka;
+        this.model = model;
 
         ekstensja.add(this);
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
     }
 
     public String getMarka() {
@@ -32,6 +24,14 @@ public class Samochod {
 
     public void setMarka(String marka) {
         this.marka = marka;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public List<Pracownik> getUzytkownicy() {
@@ -46,8 +46,8 @@ public class Samochod {
         return ekstensja;
     }
 
-    public void setEkstensja(List<Samochod> ekstensja) {
-        this.ekstensja = ekstensja;
+    public static void setEkstensja(List<Samochod> ekstensja) {
+        Samochod.ekstensja = ekstensja;
     }
 
     @Override

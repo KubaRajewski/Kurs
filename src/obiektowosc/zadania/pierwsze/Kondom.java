@@ -1,4 +1,4 @@
-package obiektowosc.zadania.poprawione.pierwsze;
+package obiektowosc.zadania.pierwsze;
 
 public class Kondom extends Produkt{
     private String nazwa;

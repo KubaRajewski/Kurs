@@ -1,30 +1,29 @@
 package obiektowosc.zadania.drugie;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class Klient {
-    private String imie;
-    private String nazwisko;
-    private List<Produkt> koszyk;
+public class Klient extends Osoba {
+private List<Produkt> koszyk = new ArrayList<>();
 
-    // TODO asocjacja!!!!!!
+private static List<Klient> ekstensja = new ArrayList<>();
 
-    private static List<Klient> ekstensja = new ArrayList<>();
-
-    public Klient(String imie, String nazwisko, List<Produkt> koszyk) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
-        this.koszyk = koszyk != null ? koszyk : new ArrayList<>(); // Inicjalizacja koszyka
+    public Klient(String imie, String nazwisko) {
+        super(imie, nazwisko);
 
         ekstensja.add(this);
     }
 
-// TODO 1) Znajdz klienta który wydal najwiecej
+    public void dodajProdukt(Produkt produkt){
+        koszyk.add(produkt);
+        produkt.dodajKlienta(this);
+    }
 
-    public static double obliczWartoscZakupow(List<Produkt> koszyk) {
-        if (koszyk == null)
-            throw new IllegalArgumentException("koszyk nie moze byc nullem");
+    // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
 
+    public double obliczWartoscZakupow() {
         double wartosc = 0;
         for (Produkt produkt : koszyk) {
             wartosc += produkt.getCena();
@@ -34,85 +33,52 @@ public class Klient {
 
     public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
         if (klienci == null || klienci.isEmpty())
-            throw new IllegalArgumentException("koszyk nie moze byc nullem");
-
-        Klient nk = klienci.get(0);
-        double maxWartosc = obliczWartoscZakupow(nk.getKoszyk());
-
+            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
+        Klient max = klienci.get(0);
         for (Klient k : klienci) {
-            double wartoscKoszyka = obliczWartoscZakupow(k.getKoszyk());
-            if (wartoscKoszyka > maxWartosc) {
-                maxWartosc = wartoscKoszyka;
-                nk = k;
+            if (k.obliczWartoscZakupow() > max.obliczWartoscZakupow()) {
+                max = k;
             }
         }
-        return nk;
+        return max;
     }
 
-// TODO 2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
+    ////TODO 2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
 
-    // metoda obiektowa dla klienta co kupowal najczesciej
+    public List<Produkt> ulubioneProdukty(){
+        if (koszyk == null)
+            throw new IllegalArgumentException("koszyk tego klienta jest pusty");
 
+        List<Produkt> ulubioneProdukty = new ArrayList<>();
 
-//
-//    public static Map<Klient, List<Produkt>> znajdzUlubioneProdukty(List<Klient> klienci) {
-//        if (klienci == null || klienci.isEmpty())
-//            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
-//
-//        Map<Klient, List<Produkt>> ulubioneProdukty = new HashMap<>();
-//
-//        for (Klient k : klienci) {
-//            ulubioneProdukty.put(k, znajdzNajczestszeProdukty(k.getKoszyk()));
-//        }
-//
-//        return ulubioneProdukty;
-//    }
-//
-//    public static List<Produkt> znajdzNajczestszeProdukty(List<Produkt> koszyk) {
-//        if (koszyk == null)
-//            throw new IllegalArgumentException("koszyk nie moze byc nullem");
-//
-//        List<Produkt> najczestszeProdukty = new ArrayList<>();
-//
-//        for (Produkt p : koszyk) {
-//            int licznik = 0;
-//            for (Produkt P : koszyk) {
-//                if (p.getNazwa().equals(P.getNazwa())) {
-//                    licznik++;
-//                }
-//            }
-//            if (licznik > 1 && !najczestszeProdukty.contains(p)) {
-//                najczestszeProdukty.add(p);
-//            }
-//        }
-//
-//        Set<Produkt> s1 = new HashSet<>();
-//        s1.addAll(najczestszeProdukty);
-//
-//        Set<Produkt> s2 = new HashSet<>();
-//        s2.addAll(koszyk);
-//
-//        if (s1.size() == s2.size()) {
-//            najczestszeProdukty.clear();
-//        }
-//
-//        return najczestszeProdukty;
-//    }
+        if (koszyk.size() == 1){
+            ulubioneProdukty.add(koszyk.get(0));
+            return ulubioneProdukty;
+        }
 
-    public String getImie() {
-        return imie;
-    }
+        for (Produkt p : koszyk) {
+            int licznik = 0;
+            for (Produkt P : koszyk) {
+                if (p.getNazwa().equals(P.getNazwa())) {
+                    licznik++;
+                }
+            }
+            if (licznik > 1 && !ulubioneProdukty.contains(p)) {
+                ulubioneProdukty.add(p);
+            }
+        }
 
-    public void setImie(String imie) {
-        this.imie = imie;
-    }
+        Set<Produkt> s1 = new HashSet<>();
+        s1.addAll(ulubioneProdukty);
 
-    public String getNazwisko() {
-        return nazwisko;
-    }
+        Set<Produkt> s2 = new HashSet<>();
+        s2.addAll(koszyk);
 
-    public void setNazwisko(String nazwisko) {
-        this.nazwisko = nazwisko;
+        if (s1.size() == s2.size()) {
+            ulubioneProdukty.clear();
+        }
+
+        return ulubioneProdukty;
     }
 
     public List<Produkt> getKoszyk() {
@@ -127,12 +93,12 @@ public class Klient {
         return ekstensja;
     }
 
-    public void setEkstensja(List<Klient> ekstensja) {
-        this.ekstensja = ekstensja;
+    public static void setEkstensja(List<Klient> ekstensja) {
+        Klient.ekstensja = ekstensja;
     }
 
     @Override
     public String toString() {
-        return imie + " " + nazwisko;
+        return getImie() + " " + getNazwisko();
     }
 }

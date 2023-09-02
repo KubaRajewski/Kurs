@@ -7,6 +7,8 @@ public class Produkt {
     private String nazwa;
     private double cena;
 
+    private List<Klient> klienci = new ArrayList<>();
+
     private static List<Produkt> ekstensja = new ArrayList<>();
 
     public Produkt(String nazwa, double cena) {
@@ -16,20 +18,24 @@ public class Produkt {
         ekstensja.add(this);
     }
 
-    public String getNazwa() {
-        return nazwa;
+    public void dodajKlienta(Klient klient){
+        klienci.add(klient);
     }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
+    public String getNazwa() {
+        return nazwa;
     }
 
     public double getCena() {
         return cena;
     }
 
-    public void setCena(int cena) {
-        this.cena = cena;
+    public List<Klient> getKlienci() {
+        return klienci;
+    }
+
+    public void setKlienci(List<Klient> klienci) {
+        this.klienci = klienci;
     }
 
     public static List<Produkt> getEkstensja() {

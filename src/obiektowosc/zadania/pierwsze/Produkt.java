@@ -1,4 +1,4 @@
-package obiektowosc.zadania.poprawione.pierwsze;
+package obiektowosc.zadania.pierwsze;
 
 import java.util.ArrayList;
 import java.util.List;
