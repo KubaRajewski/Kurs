@@ -196,41 +196,9 @@ public class Main {
 //        System.out.println(p15.getUzytkowaneSamochody());
 
 
-        	/*
-		 * Ok to masz graczy ktorzy graja w turniejach. Turniej ma nazwe i miesiac. Gracz ma imie i nazwisko.
-		 *
 
 
-			1) chcemy przechowywac dla kazdego gracza jakie pozycje zajmowal w jakim turnieju
-
-			2) tak samo punkty jakie zdobyl z dnaego turnieju
-
-			3) znajdz gracsa ktory byl najlepeszt w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
-
-			4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
-
-			5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdycnie mial 1 miejsca
-		 */
 
 
-        /*
-         * Stwórz system do zarządzania przedszkolem. W przedszkolu mamy dzieci oraz
-         * wychowawcow, dla obu chcemy znac imie, nazwisko oraz date urodzenia. Dzieci
-         * dziela sie na posluszne (odznaka) i nieposluszne (przewinienia).
-         *
-         * Wychowawcy maja pensje (obliczana za pomoca algorytmu) i dziela sie na
-         * wychowawcow kwalifikowanych (kwalifikacje) oraz tymczasowych.
-         *
-         * Wychowacwa odpowiada za grupe (nazwa, max liczba dzieci, obecnie 15).
-         * Wychowacwca moze miec wiele grup, grupa ma jednego wychowawce.
-         *
-         * Kazda grupa ma przypisana sale (nazwa, kolor scian).
-         *
-         * -narysuj poprawny diagram uml do teog zagadnienia
-         * -napisz metode która zwraca dziecko ktore ma najwiecej przewinien
-         * -napisz metode ktora zwroci wychowawcow kwliafikowanych z pensja wieksza niz podany parametr
-         * -zapisz do pliku imiona nazwiska wszystkich dzieci którzy sa w grupie dla wychowawcy podanego jako parametr
-         *
-         */
     }
 }
