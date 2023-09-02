@@ -1,16 +1,15 @@
 package obiektowosc.zadania.poprawione.pierwsze;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Klient {
     private String imie;
     private String nazwisko;
-    private double rozmiarPenisa;
+    private final double rozmiarPenisa;
 
-    List<Produkt> produkty = new ArrayList<>();
+    private List<Produkt> produkty = new ArrayList<>();
 
-    List<Klient> ekstensja = new ArrayList<>();
+    public static List<Klient> ekstensja = new ArrayList<>();
 
     public Klient(String imie, String nazwisko, double rozmiarPenisa) {
         this.imie = imie;
@@ -20,6 +19,76 @@ public class Klient {
         ekstensja.add(this);
     }
 
+    public void dodajProdukt(Produkt p){
+        if(p.getKlienci().contains(this)) throw new IllegalArgumentException();
+        produkty.add(p);
+        p.getKlienci().add(this);
+    }
+
+    // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
+
+    public double obliczWartoscZakupow() {
+        double wartosc = 0;
+        for (Produkt produkt : produkty) {
+            wartosc += produkt.getCena();
+        }
+        return wartosc;
+    }
+
+    public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
+        if (klienci == null || klienci.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
+        Klient max = klienci.get(0);
+        for (Klient k : klienci) {
+            if (k.obliczWartoscZakupow() > max.obliczWartoscZakupow()) {
+                max = k;
+            }
+        }
+        return max;
+    }
+
+    // TODO 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
+    public boolean czyKupilKondoma() {
+        for (Produkt produkt : produkty) {
+            if (produkt instanceof Kondom) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static List<Klient> klienciKtorzyKupiliKondoma(List<Klient> list) {
+        if (list == null)
+            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
+
+        List<Klient> klienciZKondomem = new ArrayList<>();
+        for (Klient klient : list) {
+            if (klient.czyKupilKondoma()) {
+                klienciZKondomem.add(klient);
+            }
+        }
+        return klienciZKondomem;
+    }
+
+    // TODO 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
+    public boolean czyKupilZlegoKondoma() {
+        for (Produkt produkt : produkty) {
+            if (produkt instanceof Kondom && ((Kondom) produkt).getRozmiar() != rozmiarPenisa) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static List<Klient> kupiliZlegoKondoma(List<Klient> klienci) {
+        List<Klient> kupiliZlegoKondoma = new ArrayList<>();
+        for (Klient klient : klienci) {
+            if(klient.czyKupilZlegoKondoma()){
+                kupiliZlegoKondoma.add(klient);
+            }
+        }
+        return kupiliZlegoKondoma;
+    }
 
     public String getImie() {
         return imie;
@@ -41,10 +110,6 @@ public class Klient {
         return rozmiarPenisa;
     }
 
-    public void setRozmiarPenisa(double rozmiarPenisa) {
-        this.rozmiarPenisa = rozmiarPenisa;
-    }
-
     public List<Produkt> getProdukty() {
         return produkty;
     }
@@ -53,11 +118,16 @@ public class Klient {
         this.produkty = produkty;
     }
 
-    public List<Klient> getEkstensja() {
+    public static List<Klient> getEkstensja() {
         return ekstensja;
     }
 
-    public void setEkstensja(List<Klient> ekstensja) {
-        this.ekstensja = ekstensja;
+    public static void setEkstensja(List<Klient> ekstensja) {
+        Klient.ekstensja = ekstensja;
+    }
+
+    @Override
+    public String toString() {
+        return imie + " " + nazwisko;
     }
 }

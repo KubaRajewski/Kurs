@@ -7,6 +7,8 @@ public abstract class Produkt {
     private String nazwa;
     private double cena;
 
+    private List<Klient> klienci = new ArrayList<>();
+
     List<Produkt> ekstensja = new ArrayList<>();
 
     public Produkt(String nazwa, double cena) {
@@ -38,6 +40,14 @@ public abstract class Produkt {
 
     public void setEkstensja(List<Produkt> ekstensja) {
         this.ekstensja = ekstensja;
+    }
+
+    public List<Klient> getKlienci() {
+        return klienci;
+    }
+
+    public void setKlienci(List<Klient> klienci) {
+        this.klienci = klienci;
     }
 
     @Override
