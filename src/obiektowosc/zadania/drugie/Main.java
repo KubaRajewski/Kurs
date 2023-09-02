@@ -60,6 +60,8 @@ public class Main {
         ////TODO 1) Znajdz klienta ktory wydał najwiecej
         System.out.println("Klient, który wydał najwięcej: " + Klient.ktoWydalNajwiecej(Klient.getEkstensja()) + "\n");
 
+        System.out.println("Kto kupił produkt pr4: " + pr4.getKlienci() + "\n");
+
         ////TODO 2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
         System.out.println("Ulubione produkty klientów:");
         for (Klient k : Klient.getEkstensja()) {

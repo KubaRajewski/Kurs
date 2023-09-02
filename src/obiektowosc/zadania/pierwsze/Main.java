@@ -28,8 +28,8 @@ public class Main {
         k2.dodajProdukt(kondom2);
         k4.dodajProdukt(kondom4);
         k5.dodajProdukt(kondom5);
-        k6.dodajProdukt(kondom1);
-        k8.dodajProdukt(kondom3);
+        k6.dodajProdukt(kondom2);
+        k8.dodajProdukt(kondom1);
 
         // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
         System.out.println("Klient ktory wydal najwiecej: " + Klient.ktoWydalNajwiecej(Klient.ekstensja) + "\n");

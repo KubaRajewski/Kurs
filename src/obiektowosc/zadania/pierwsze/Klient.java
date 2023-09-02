@@ -19,10 +19,9 @@ public class Klient {
         ekstensja.add(this);
     }
 
-    public void dodajProdukt(Produkt p){
-        if(p.getKlienci().contains(this)) throw new IllegalArgumentException();
-        produkty.add(p);
-        p.getKlienci().add(this);
+    public void dodajProdukt(Produkt produkt) {
+        produkty.add(produkt);
+        produkt.dodajKlienta(this);
     }
 
     // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.

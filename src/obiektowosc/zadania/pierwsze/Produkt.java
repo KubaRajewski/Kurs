@@ -18,6 +18,12 @@ public abstract class Produkt {
         ekstensja.add(this);
     }
 
+    public void dodajKlienta(Klient klient){
+        if (!klienci.contains(klient)){
+            klienci.add(klient);
+        }
+    }
+
     public String getNazwa() {
         return nazwa;
     }
