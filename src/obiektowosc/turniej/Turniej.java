@@ -7,7 +7,7 @@ public class Turniej {
     private String miesiac;
 
     private List<Gracz> uczestnicy = new ArrayList<>();
-    private List<Wynik> wyniki = new ArrayList<>();
+    private List<Wynik> turnieje = new ArrayList<>();
 
     private static List<Turniej> ekstensja = new ArrayList<>();
 
@@ -27,37 +27,6 @@ public class Turniej {
         gracz.dodajTurniej(this);
     }
 
-    // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
-    public static List<Turniej> wynikiWturniejachODanejNazwie(String nazwa) {
-        List<Turniej> wyniki = new ArrayList<>();
-        for (Turniej turniej : ekstensja) {
-            if (turniej.getNazwa().equals(nazwa)) {
-                wyniki.add(turniej);
-            }
-        }
-        return wyniki;
-    }
-
-    public static Gracz najlepszyGraczWTurniejachODanejNazwie(String nazwa){
-        List<Turniej> turniejeODanejNazwie = wynikiWturniejachODanejNazwie(nazwa);
-        Gracz najlepszyGracz = null;
-        int maxPunkty = 0;
-
-        for (Turniej turniej : turniejeODanejNazwie) {
-            for (Wynik wynik : turniej.getWyniki()) {
-                if (wynik.getPunkty() > maxPunkty) {
-                    maxPunkty = wynik.getPunkty();
-                    najlepszyGracz = wynik.getGracz();
-                }
-            }
-        }
-
-        if (najlepszyGracz == null) {
-            throw new RuntimeException("Nie ma gracza ktory bylby najlepszy w turniejach o nazwie " + nazwa);
-        }
-
-        return najlepszyGracz;
-    }
 
     public String getNazwa () {
         return nazwa;
@@ -84,11 +53,11 @@ public class Turniej {
     }
 
     public List<Wynik> getWyniki() {
-        return wyniki;
+        return turnieje;
     }
 
-    public void setWyniki(List<Wynik> wyniki) {
-        this.wyniki = wyniki;
+    public void setWyniki(List<Wynik> turnieje) {
+        this.turnieje = turnieje;
     }
 
     public static List<Turniej> getEkstensja () {

@@ -90,12 +90,13 @@ public class Main {
         System.out.println("\n"+"Punkty gracza g1 po wszystkich turniejach: " + g1.getPunkty());
 
         // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
-        System.out.println("\n"+"Najlepszy gracz w turnieju o nazwie Szachy: " + Turniej.wynikiWturniejachODanejNazwie("Szachy"));
-
+        System.out.println("\n"+"Najlepszy gracz w turnieju o nazwie Szachy: " + Gracz.najlepszyGraczWTurniejachODanejNazwie("Szachy"));
 
         // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
+        System.out.println("\n"+"Gracz ktory zdobyl najwiecej 1 miejsc: " + Gracz.graczZNajwiekszaIlosciaWygranych());
 
-        // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdycnie mial 1 miejsca
+        // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdy nie mial 1 miejsca
+        System.out.println("\n"+"Gracz ktory ma najwyzszy ranking z turniejow ale nigdy nie mial 1 miejsca: " + Gracz.najlepszyGraczBezWygranej());
 
     }
 
