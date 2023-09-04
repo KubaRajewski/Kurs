@@ -8,10 +8,10 @@ import java.util.Map;
 public class Gracz {
     private String imie;
     private String nazwisko;
+    private int punkty;
 
     private List<Turniej> turnieje = new ArrayList<>();
-
-    private Map<Turniej, Map<Integer, Integer>> wynikiGracza = new HashMap<>();
+    private List<Wynik> wyniki = new ArrayList<>();
 
     private static List<Gracz> ekstensja = new ArrayList<>();
 
@@ -28,15 +28,6 @@ public class Gracz {
             return;
         }
         turnieje.add(turniej);
-    }
-
-    public void dodajWynik(Turniej turniej, int pozycja, int punkty) {
-        if (!turnieje.contains(turniej)) {
-            System.out.println("Ten gracz nie jest zapisany na ten turniej");
-            return;
-        }
-        wynikiGracza.put(turniej, new HashMap<>());
-        wynikiGracza.get(turniej).put(pozycja, punkty);
     }
 
     public String getImie() {
@@ -63,12 +54,20 @@ public class Gracz {
         this.turnieje = turnieje;
     }
 
-    public Map<Turniej, Map<Integer, Integer>> getWynikiGracza() {
-        return wynikiGracza;
+    public int getPunkty() {
+        return punkty;
     }
 
-    public void setWynikiGracza(Map<Turniej, Map<Integer, Integer>> wynikiGracza) {
-        this.wynikiGracza = wynikiGracza;
+    public void setPunkty(int punkty) {
+        this.punkty = punkty;
+    }
+
+    public List<Wynik> getWyniki() {
+        return wyniki;
+    }
+
+    public void setWyniki(List<Wynik> wyniki) {
+        this.wyniki = wyniki;
     }
 
     public static List<Gracz> getEkstensja() {

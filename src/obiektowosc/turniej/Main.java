@@ -1,11 +1,6 @@
 package obiektowosc.turniej;
 
-//          Ok to masz graczy ktorzy graja w turniejach. Turniej ma nazwe i miesiac. Gracz ma imie i nazwisko.
-//
-//
-//
-//
-//			5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdycnie mial 1 miejsca
+// Ok to masz graczy ktorzy graja w turniejach. Turniej ma nazwe i miesiac. Gracz ma imie i nazwisko.
 
 public class Main {
     public static void main(String[] args) {
@@ -27,51 +22,80 @@ public class Main {
         Gracz g9 = new Gracz("Ewa", "Zając");
         Gracz g10 = new Gracz("Michał", "Szymański");
 
-        t1.dodajUczestnikaIPozycje(g1, 1);
-        t1.dodajUczestnikaIPozycje(g2, 2);
-        t1.dodajUczestnikaIPozycje(g3, 3);
-        t1.dodajUczestnikaIPozycje(g4, 4);
-        t1.dodajUczestnikaIPozycje(g9, 5);
+        t1.dodajUczestnika(g1);
+        t1.dodajUczestnika(g2);
+        t1.dodajUczestnika(g3);
+        t1.dodajUczestnika(g4);
+        t1.dodajUczestnika(g9);
 
-        t2.dodajUczestnikaIPozycje(g4, 1);
-        t2.dodajUczestnikaIPozycje(g1, 2);
-        t2.dodajUczestnikaIPozycje(g2, 3);
-        t2.dodajUczestnikaIPozycje(g3, 4);
-        t2.dodajUczestnikaIPozycje(g9, 5);
+        t2.dodajUczestnika(g4);
+        t2.dodajUczestnika(g1);
+        t2.dodajUczestnika(g2);
+        t2.dodajUczestnika(g3);
+        t2.dodajUczestnika(g9);
 
-        t3.dodajUczestnikaIPozycje(g5, 1);
-        t3.dodajUczestnikaIPozycje(g6, 2);
-        t3.dodajUczestnikaIPozycje(g7, 3);
-        t3.dodajUczestnikaIPozycje(g8, 4);
-        t3.dodajUczestnikaIPozycje(g9, 5);
+        t3.dodajUczestnika(g5);
+        t3.dodajUczestnika(g6);
+        t3.dodajUczestnika(g7);
+        t3.dodajUczestnika(g8);
+        t3.dodajUczestnika(g9);
 
-        t4.dodajUczestnikaIPozycje(g1, 1);
-        t4.dodajUczestnikaIPozycje(g2, 2);
-        t4.dodajUczestnikaIPozycje(g3, 3);
+        t4.dodajUczestnika(g1);
+        t4.dodajUczestnika(g2);
+        t4.dodajUczestnika(g3);
 
-        t5.dodajUczestnikaIPozycje(g2, 1);
-        t5.dodajUczestnikaIPozycje(g1, 2);
-        t5.dodajUczestnikaIPozycje(g4, 3);
-        t5.dodajUczestnikaIPozycje(g3, 4);
+        t5.dodajUczestnika(g2);
+        t5.dodajUczestnika(g1);
+        t5.dodajUczestnika(g4);
+        t5.dodajUczestnika(g3);
+
+        Wynik w1 = new Wynik(t1, g1, 1);
+        Wynik w2 = new Wynik(t1, g2, 2);
+        Wynik w3 = new Wynik(t1, g3, 3);
+        Wynik w4 = new Wynik(t1, g4, 4);
+        Wynik w5 = new Wynik(t1, g9, 5);
+
+        Wynik w6 = new Wynik(t2, g4, 1);
+        Wynik w7 = new Wynik(t2, g1, 2);
+        Wynik w8 = new Wynik(t2, g2, 3);
+        Wynik w9 = new Wynik(t2, g3, 4);
+        Wynik w10 = new Wynik(t2, g9, 5);
+
+        Wynik w11 = new Wynik(t3, g5, 1);
+        Wynik w12 = new Wynik(t3, g6, 2);
+        Wynik w13 = new Wynik(t3, g7, 3);
+        Wynik w14 = new Wynik(t3, g8, 4);
+        Wynik w15 = new Wynik(t3, g9, 5);
+
+        Wynik w16 = new Wynik(t4, g1, 1);
+        Wynik w17 = new Wynik(t4, g2, 2);
+        Wynik w18 = new Wynik(t4, g3, 3);
+
+        Wynik w19 = new Wynik(t5, g2, 1);
+        Wynik w20 = new Wynik(t5, g1, 2);
+        Wynik w21 = new Wynik(t5, g4, 3);
+        Wynik w22 = new Wynik(t5, g3, 4);
 
         // TODO 1) chcemy przechowywac dla kazdego gracza jakie pozycje zajmowal w jakim turnieju
         // TODO 2) tak samo punkty jakie zdobyl z dnaego turnieju
-//        System.out.println(Gracz.getEkstensja());
+        System.out.println(Gracz.getEkstensja());
 
-        // Wyswietlmy wszystkie turnieje i pozycje w nich zajmowane przez jednego gracza:
-        System.out.println("Wszystkie turnieje gracza g1: " + g1.getTurnieje());
-        System.out.println("Pozycje Zajmowane w tych turniejach gracza g1 i punkty: " + g1.getWynikiGracza() + "\n");
+        System.out.println("\n" + "Wyniki turnieju t1: " + t1.getNazwa());
+        t1.getWyniki().forEach(System.out::println);
 
-        // Wyswietlamy rankingi w danym turnieju
-        System.out.println("Ranking w turnieju t1: " + t1 + " (Gracz = (Pozycja = Punkty)) " + t1.getWynikiTurnieju());
-        System.out.println("Ranking w turnieju t2: " + t2 + " (Gracz = (Pozycja = Punkty)) " + t2.getWynikiTurnieju());
-        System.out.println("Ranking w turnieju t3: " + t3 + " (Gracz = (Pozycja = Punkty)) " + t3.getWynikiTurnieju());
+
+        System.out.println("\n" + "Wyniki gracza g1: " + g1.getNazwisko());
+        g1.getWyniki().forEach(System.out::println);
+
+        System.out.println("\n"+"Punkty gracza g1 po wszystkich turniejach: " + g1.getPunkty());
 
         // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
-        System.out.println("Gracz Ktory zdobył najwiecej punktow w turniejach o danej nazwie " + Turniej.najlepszyGraczWTurniejachODanejNazwie("Pilka nozna"));
+        System.out.println("\n"+"Najlepszy gracz w turnieju o nazwie Szachy: " + Turniej.wynikiWturniejachODanejNazwie("Szachy"));
+
 
         // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
-        System.out.println("Gracz ktory najczesciej wygrywa: " + Turniej.najczesciejNaPierwszymMiejscu());
+
+        // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdycnie mial 1 miejsca
 
     }
 
