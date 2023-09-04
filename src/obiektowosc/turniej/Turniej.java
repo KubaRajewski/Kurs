@@ -19,13 +19,28 @@ public class Turniej {
         ekstensja.add(this);
     }
 
-    public void dodajUczestnikaIPozycje(Gracz gracz, int pozycja, int punkty) {
+    public void dodajUczestnikaIPozycje(Gracz gracz, int pozycja) {
         if (uczestnicy.contains(gracz)) {
             System.out.println("Gracz " + gracz + " już jest na liście uczestników");
             return;
         } else if (pozycja > gracz.getEkstensja().size()){
             System.out.println("Coś poszło nie tak, pozycja gracza jest większa niż liczba graczy");
             return;
+        }
+
+        int punkty = 0;
+        if (pozycja == 1) {
+            punkty = 10;
+        } else if (pozycja == 9) {
+            punkty = 8;
+        } else if (pozycja == 8) {
+            punkty = 6;
+        } else if (pozycja == 7) {
+            punkty = 4;
+        } else if (pozycja == 6) {
+            punkty = 2;
+        } else if (pozycja == 5) {
+            punkty = 1;
         }
 
         uczestnicy.add(gracz);

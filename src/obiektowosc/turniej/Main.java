@@ -27,32 +27,32 @@ public class Main {
         Gracz g9 = new Gracz("Ewa", "Zając");
         Gracz g10 = new Gracz("Michał", "Szymański");
 
-        t1.dodajUczestnikaIPozycje(g1, 1, 10);
-        t1.dodajUczestnikaIPozycje(g2, 2, 8);
-        t1.dodajUczestnikaIPozycje(g3, 3, 6);
-        t1.dodajUczestnikaIPozycje(g4, 4, 4);
-        t1.dodajUczestnikaIPozycje(g9, 5, 2);
+        t1.dodajUczestnikaIPozycje(g1, 1);
+        t1.dodajUczestnikaIPozycje(g2, 2);
+        t1.dodajUczestnikaIPozycje(g3, 3);
+        t1.dodajUczestnikaIPozycje(g4, 4);
+        t1.dodajUczestnikaIPozycje(g9, 5);
 
-        t2.dodajUczestnikaIPozycje(g4, 1, 10);
-        t2.dodajUczestnikaIPozycje(g1, 2, 8);
-        t2.dodajUczestnikaIPozycje(g2, 3, 6);
-        t2.dodajUczestnikaIPozycje(g3, 4, 4);
-        t2.dodajUczestnikaIPozycje(g9, 5, 2);
+        t2.dodajUczestnikaIPozycje(g4, 1);
+        t2.dodajUczestnikaIPozycje(g1, 2);
+        t2.dodajUczestnikaIPozycje(g2, 3);
+        t2.dodajUczestnikaIPozycje(g3, 4);
+        t2.dodajUczestnikaIPozycje(g9, 5);
 
-        t3.dodajUczestnikaIPozycje(g5, 1, 10);
-        t3.dodajUczestnikaIPozycje(g6, 2, 8);
-        t3.dodajUczestnikaIPozycje(g7, 3, 6);
-        t3.dodajUczestnikaIPozycje(g8, 4, 4);
-        t3.dodajUczestnikaIPozycje(g9, 5, 2);
+        t3.dodajUczestnikaIPozycje(g5, 1);
+        t3.dodajUczestnikaIPozycje(g6, 2);
+        t3.dodajUczestnikaIPozycje(g7, 3);
+        t3.dodajUczestnikaIPozycje(g8, 4);
+        t3.dodajUczestnikaIPozycje(g9, 5);
 
-        t4.dodajUczestnikaIPozycje(g1, 1, 10);
-        t4.dodajUczestnikaIPozycje(g2, 2, 8);
-        t4.dodajUczestnikaIPozycje(g3, 3, 6);
+        t4.dodajUczestnikaIPozycje(g1, 1);
+        t4.dodajUczestnikaIPozycje(g2, 2);
+        t4.dodajUczestnikaIPozycje(g3, 3);
 
-        t5.dodajUczestnikaIPozycje(g2, 1, 10);
-        t5.dodajUczestnikaIPozycje(g1, 2, 8);
-        t5.dodajUczestnikaIPozycje(g4, 3, 6);
-        t5.dodajUczestnikaIPozycje(g3, 4, 4);
+        t5.dodajUczestnikaIPozycje(g2, 1);
+        t5.dodajUczestnikaIPozycje(g1, 2);
+        t5.dodajUczestnikaIPozycje(g4, 3);
+        t5.dodajUczestnikaIPozycje(g3, 4);
 
         // TODO 1) chcemy przechowywac dla kazdego gracza jakie pozycje zajmowal w jakim turnieju
         // TODO 2) tak samo punkty jakie zdobyl z dnaego turnieju
