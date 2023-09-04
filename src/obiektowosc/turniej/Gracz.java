@@ -1,9 +1,6 @@
 package obiektowosc.turniej;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Gracz {
     private String imie;
@@ -166,6 +163,20 @@ public class Gracz {
 
     public static void setEkstensja(List<Gracz> ekstensja) {
         Gracz.ekstensja = ekstensja;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Gracz gracz = (Gracz) o;
+        return Objects.equals(imie, gracz.imie) &&
+                Objects.equals(nazwisko, gracz.nazwisko);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(imie, nazwisko);
     }
 
     @Override

@@ -13,7 +13,7 @@ public class Wynik {
 
     public Wynik(Turniej turniej, Gracz gracz, int pozycja) {
 
-        int punkty = 0;
+        int punkty;
         if (pozycja == 1) {
             punkty = 10;
         } else if (pozycja == 2) {
@@ -26,6 +26,11 @@ public class Wynik {
             punkty = 2;
         } else if (pozycja == 6) {
             punkty = 1;
+        } else if (pozycja < 1 || pozycja > turniej.getUczestnicy().size()) {
+            System.out.println("Nieprawidłowa pozycja");
+            return;
+        } else {
+            punkty = 0;
         }
 
         this.turniej = turniej;
