@@ -77,7 +77,7 @@ public class Main {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // TODO Testy systemu wychowawcow wynagrodzen i kwalifikacji
+        // TODO Testy systemu wychowawcow, wynagrodzen i kwalifikacji
         Kwalifikacje kw1 = new Kwalifikacje(true, true, true, true, 15);
         Kwalifikowany w1 = new Kwalifikowany("Mariusz", "Pudzianowski", "2000-01-01");
         w1.dodajKwalifikacje(kw1);
