@@ -7,15 +7,14 @@ public class Grupa {
     private String nazwa;
     private Wychowawca wychowawca;
     private static int MAX_LICZBA_DZIECI = 15;
+    private Sala sala;
 
     private List<Dziecko> dzieci = new ArrayList<>();
 
     private static List<Grupa> ekstensja = new ArrayList<>();
 
-    public Grupa(String nazwa, Wychowawca wychowawca) {
+    public Grupa(String nazwa) {
         this.nazwa = nazwa;
-        this.wychowawca = wychowawca;
-
         ekstensja.add(this);
     }
 
@@ -31,5 +30,55 @@ public class Grupa {
     public void dodajWychowawce(Wychowawca wychowawca) {
         this.wychowawca = wychowawca;
         wychowawca.dodajGrupe(this);
+    }
+
+    public void dodajSale(Sala sala) {
+        this.sala = sala;
+        sala.dodajGrupe(this);
+    }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+
+    public Wychowawca getWychowawca() {
+        return wychowawca;
+    }
+
+    public void setWychowawca(Wychowawca wychowawca) {
+        this.wychowawca = wychowawca;
+    }
+
+    public static int getMaxLiczbaDzieci() {
+        return MAX_LICZBA_DZIECI;
+    }
+
+    public static void setMaxLiczbaDzieci(int maxLiczbaDzieci) {
+        MAX_LICZBA_DZIECI = maxLiczbaDzieci;
+    }
+
+    public List<Dziecko> getDzieci() {
+        return dzieci;
+    }
+
+    public void setDzieci(List<Dziecko> dzieci) {
+        this.dzieci = dzieci;
+    }
+
+    public static List<Grupa> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Grupa> ekstensja) {
+        Grupa.ekstensja = ekstensja;
+    }
+
+    @Override
+    public String toString() {
+        return "Nazwa: " + nazwa + ", Sala: " + sala + ", Wychowawca: " + wychowawca;
     }
 }

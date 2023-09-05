@@ -15,7 +15,6 @@ public abstract class Wychowawca extends Osoba{
         ekstensja.add(this);
     }
 
-
     public abstract int obliczPensje();
 
     public static List<Wychowawca> getEkstensjaWychowca() {

@@ -64,6 +64,14 @@ public class Dziecko extends Osoba{
         this.uwagi = uwagi;
     }
 
+    public Grupa getGrupa() {
+        return grupa;
+    }
+
+    public void setGrupa(Grupa grupa) {
+        this.grupa = grupa;
+    }
+
     public static List<Dziecko> getEkstensjaDziecko() {
         return ekstensja;
     }
