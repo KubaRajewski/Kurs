@@ -40,7 +40,7 @@ public class Wynik {
 
         ekstensja.add(this);
         gracz.getWyniki().add(this);
-        gracz.setPunkty(gracz.getPunkty() + punkty);
+        gracz.setSumaPunktow(gracz.getSumaPunktow() + punkty);
         turniej.getWyniki().add(this);
     }
 

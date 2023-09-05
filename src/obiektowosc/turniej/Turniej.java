@@ -7,7 +7,7 @@ public class Turniej {
     private String miesiac;
 
     private List<Gracz> uczestnicy = new ArrayList<>();
-    private List<Wynik> turnieje = new ArrayList<>();
+    private List<Wynik> wyniki = new ArrayList<>();
 
     private static List<Turniej> ekstensja = new ArrayList<>();
 
@@ -26,7 +26,6 @@ public class Turniej {
         uczestnicy.add(gracz);
         gracz.dodajTurniej(this);
     }
-
 
     public String getNazwa () {
         return nazwa;
@@ -53,11 +52,11 @@ public class Turniej {
     }
 
     public List<Wynik> getWyniki() {
-        return turnieje;
+        return wyniki;
     }
 
-    public void setWyniki(List<Wynik> turnieje) {
-        this.turnieje = turnieje;
+    public void setWyniki(List<Wynik> wyniki) {
+        this.wyniki = wyniki;
     }
 
     public static List<Turniej> getEkstensja () {

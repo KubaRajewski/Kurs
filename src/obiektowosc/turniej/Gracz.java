@@ -5,7 +5,7 @@ import java.util.*;
 public class Gracz {
     private String imie;
     private String nazwisko;
-    private int punkty;
+    private int sumaPunktow;
 
     private List<Turniej> turnieje = new ArrayList<>();
     private List<Wynik> wyniki = new ArrayList<>();
@@ -86,6 +86,15 @@ public class Gracz {
     }
 
     // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdy nie mial 1 miejsca
+    private boolean posiadaWygrana() {
+        for (Wynik wynik : wyniki) {
+            if (wynik.getPozycja() == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static Gracz najlepszyGraczBezWygranej(){
         Gracz najlepszyGracz = null;
         int maxRanking = 0;
@@ -106,15 +115,6 @@ public class Gracz {
         }
 
         return najlepszyGracz;
-    }
-
-    private boolean posiadaWygrana() {
-        for (Wynik wynik : wyniki) {
-            if (wynik.getPozycja() == 1) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public String getImie() {
@@ -141,12 +141,12 @@ public class Gracz {
         this.turnieje = turnieje;
     }
 
-    public int getPunkty() {
-        return punkty;
+    public int getSumaPunktow() {
+        return sumaPunktow;
     }
 
-    public void setPunkty(int punkty) {
-        this.punkty = punkty;
+    public void setSumaPunktow(int sumaPunktow) {
+        this.sumaPunktow = sumaPunktow;
     }
 
     public List<Wynik> getWyniki() {

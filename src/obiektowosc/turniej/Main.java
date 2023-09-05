@@ -87,7 +87,7 @@ public class Main {
         System.out.println("\n" + "Wyniki gracza g1: " + g1.getNazwisko());
         g1.getWyniki().forEach(System.out::println);
 
-        System.out.println("\n"+"Punkty gracza g1 po wszystkich turniejach: " + g1.getPunkty());
+        System.out.println("\n"+"Punkty gracza g1 po wszystkich turniejach: " + g1.getSumaPunktow());
 
         // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
         System.out.println("\n"+"Najlepszy gracz w turnieju o nazwie Szachy: " + Gracz.najlepszyGraczWTurniejachODanejNazwie("Szachy"));
