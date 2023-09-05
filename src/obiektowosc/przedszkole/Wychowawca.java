@@ -3,7 +3,9 @@ package obiektowosc.przedszkole;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Wychowawca extends Osoba{
+public abstract class Wychowawca extends Osoba{
+
+    private List<Grupa> grupy = new ArrayList<>();
 
     public static List<Wychowawca> ekstensja = new ArrayList<>();
 
@@ -13,7 +15,14 @@ public class Wychowawca extends Osoba{
         ekstensja.add(this);
     }
 
+
+    public abstract int obliczPensje();
+
     public static List<Wychowawca> getEkstensjaWychowca() {
         return ekstensja;
+    }
+
+    public void dodajGrupe(Grupa grupa) {
+        grupy.add(grupa);
     }
 }

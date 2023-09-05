@@ -21,6 +21,9 @@ package obiektowosc.przedszkole;
  */
 public class Main {
     public static void main(String[] args) {
+
+        // TODO Testy systemu przewinien i odznak dla dzieci
+
         Dziecko d1 = new Dziecko("Jan", "Kowalski", "2000-01-01");
         Dziecko d2 = new Dziecko("Anna", "Nowak", "2002-03-15");
         Dziecko d3 = new Dziecko("Piotr", "Zając", "1998-07-20");
@@ -43,32 +46,52 @@ public class Main {
         d2.dodajPrzewinienie("Kopanie pilki", "Wybil okno", "2017-01-04");
 
 
-        // TODO Testy systemu przewinien i odznak dla dzieci
-        //Kim jest d1?
-        System.out.println("Dziecko d1: " + d1);
+//        //Kim jest d1?
+//        System.out.println("Dziecko d1: " + d1);
+//
+//        // Zobaczmy wszystkie uwagi dziecka d1:
+//        System.out.println("\n" + "Uwagi dla dziecka d1: ");
+//        d1.getUwagi().forEach(System.out::println);
+//
+//        // Zobaczmy wszystkie odznaki dziecka d1:
+//        System.out.println("\n" + "Odznaki dla dziecka d1: ");
+//        d1.getOdznaki().forEach(System.out::println);
+//
+//        // Zobaczmy wszystkie przewinienia dziecka d1:
+//        System.out.println("\n" + "Przewinienia dla dziecka d1: ");
+//        d1.getPrzewinienia().forEach(System.out::println);
+//
+//        // zobaczmy czy dziecko d1 jest posluszne:
+//        System.out.println("\n" + "Czy dziecko d1 jest posluszne? " + d1.czyPosluszne());
+//        if (d1.czyPosluszne()) {
+//            System.out.println("Dziecko d1 ma wiecej odznak niz przewinien" + "\n");
+//        } else {
+//            System.out.println("Dziecko d1 ma wiecej przewinien niz odznak" + "\n");
+//        }
+//
+//        // W systemie mamy 4 uwagi, mozemy wiec zobaczyc 4 uwagi w ekstensji
+//        System.out.println("Ekstensja uwag: ");
+//        Uwaga.getEkstensja().forEach(System.out::println);
 
-        // Zobaczmy wszystkie uwagi dziecka d1:
-        System.out.println("\n" + "Uwagi dla dziecka d1: ");
-        d1.getUwagi().forEach(System.out::println);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Zobaczmy wszystkie odznaki dziecka d1:
-        System.out.println("\n" + "Odznaki dla dziecka d1: ");
-        d1.getOdznaki().forEach(System.out::println);
+        // TODO Testy systemu wychowawcow wynagrodzen i kwalifikacji
+        Kwalifikacje kw1 = new Kwalifikacje(true, true, true, true, 15);
+        Kwalifikowany w1 = new Kwalifikowany("Jan", "Kowalski", "2000-01-01");
+        w1.dodajKwalifikacje(kw1);
 
-        // Zobaczmy wszystkie przewinienia dziecka d1:
-        System.out.println("\n" + "Przewinienia dla dziecka d1: ");
-        d1.getPrzewinienia().forEach(System.out::println);
+        Kwalifikacje kw2 = new Kwalifikacje(true, false, false, false, 3);
+        Kwalifikowany w2 = new Kwalifikowany("Marek", "Nowak", "2002-03-15");
+        w2.dodajKwalifikacje(kw2);
 
-        // zobaczmy czy dziecko d1 jest posluszne:
-        System.out.println("\n" + "Czy dziecko d1 jest posluszne? " + d1.czyPosluszne());
-        if (d1.czyPosluszne()) {
-            System.out.println("Dziecko d1 ma wiecej odznak niz przewinien" + "\n");
-        } else {
-            System.out.println("Dziecko d1 ma wiecej przewinien niz odznak" + "\n");
-        }
+        // Mamy dwoch Wychowawcow, jedem ma tylko licencjat a drugi doktorat i dlugi staz pracy, obliczStopien w zaleznosci od kwalifikacji
+        // przypisuje nauczyciela do jednej z 4 kategorii, a funkcja obliczPensje na jej podstawie oblicza pensje wychowawcy
 
-        // W systemie mamy 4 uwagi, mozemy wiec zobaczyc 4 uwagi w ekstensji
-        System.out.println("Ekstensja uwag: ");
-        Uwaga.getEkstensja().forEach(System.out::println);
+        System.out.println("Wychowawca w1: " + w1 + ", Pensja: " + w1.obliczPensje());
+        System.out.println("Wychowawca w2: " + w2 + ", Pensja: " + w2.obliczPensje());
+
+        // Wychowawcy tymczasowi maja stala pensje niezaleznie od kwalififikacji, obliczPensje zwraca liczbe godzin razy stawka godzinowa
+        Tymczasowy t1 = new Tymczasowy("Anna", "Nowak", "2002-03-15", 130);
+        System.out.println("\nWychowawca t1: " + t1 + ", Pensja: " + t1.obliczPensje());
     }
 }
