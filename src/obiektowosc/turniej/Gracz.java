@@ -21,14 +21,6 @@ public class Gracz {
         ekstensja.add(this);
     }
 
-    public void dodajTurniej(Turniej turniej) {
-        if (turnieje.contains(turniej)) {
-            System.out.println("Ten gracz jest juz zapisany na ten turniej");
-            return;
-        }
-        turnieje.add(turniej);
-    }
-
     // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
     public static List<Turniej> turniejeODanejNazwie(String nazwa) {
         List<Turniej> turnieje = new ArrayList<>();
@@ -63,7 +55,7 @@ public class Gracz {
     }
 
     // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
-    public static Gracz graczZNajwiekszaIlosciaWygranych(){
+    public static Gracz zNajwiekszaIlosciaWygranych(){
         Gracz najlepszyGracz = null;
         int maxIloscWygranych = 0;
 

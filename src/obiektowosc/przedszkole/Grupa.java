@@ -57,7 +57,7 @@ public class Grupa {
             if (g.getWychowawca().getImie().equalsIgnoreCase(imie) && g.getWychowawca().getNazwisko().equalsIgnoreCase(nazwisko)){
                 String groupName = g.getNazwa();
                 String rootPath = "src/obiektowosc/przedszkole";
-                String groupFolderPath = rootPath + File.separator + "Grupy";
+                String groupFolderPath = rootPath + File.separator + "grupy";
                 String filePath = groupFolderPath + File.separator + groupName + ".txt";
 
                 File groupFolder = new File(groupFolderPath);

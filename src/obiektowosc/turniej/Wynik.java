@@ -2,6 +2,7 @@ package obiektowosc.turniej;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Wynik {
     private Turniej turniej;
@@ -88,5 +89,18 @@ public class Wynik {
     @Override
     public String toString() {
         return turniej + ", Gracz: " + gracz + ", Pozycja: " + pozycja + ", Punkty: " + punkty;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Wynik wynik = (Wynik) o;
+        return pozycja == wynik.pozycja && punkty == wynik.punkty && Objects.equals(turniej, wynik.turniej) && Objects.equals(gracz, wynik.gracz);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(turniej, gracz, pozycja, punkty);
     }
 }

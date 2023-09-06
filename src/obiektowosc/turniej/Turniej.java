@@ -2,6 +2,7 @@ package obiektowosc.turniej;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Turniej {
     private String nazwa;
@@ -25,7 +26,7 @@ public class Turniej {
             return;
         }
         uczestnicy.add(gracz);
-        gracz.dodajTurniej(this);
+        gracz.getTurnieje().add(this);
     }
 
     public String getNazwa () {
@@ -71,6 +72,19 @@ public class Turniej {
     @Override
     public String toString() {
         return nazwa + " " + miesiac;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Turniej turniej = (Turniej) o;
+        return Objects.equals(nazwa, turniej.nazwa) && Objects.equals(miesiac, turniej.miesiac) && Objects.equals(uczestnicy, turniej.uczestnicy) && Objects.equals(wyniki, turniej.wyniki);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nazwa, miesiac, uczestnicy, wyniki);
     }
 }
 

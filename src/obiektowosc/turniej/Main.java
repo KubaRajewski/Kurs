@@ -93,7 +93,7 @@ public class Main {
         System.out.println("\n"+"Najlepszy gracz w turnieju o nazwie Szachy: " + Gracz.najlepszyGraczWTurniejachODanejNazwie("Szachy"));
 
         // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
-        System.out.println("\n"+"Gracz ktory zdobyl najwiecej 1 miejsc: " + Gracz.graczZNajwiekszaIlosciaWygranych());
+        System.out.println("\n"+"Gracz ktory zdobyl najwiecej 1 miejsc: " + Gracz.zNajwiekszaIlosciaWygranych());
 
         // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdy nie mial 1 miejsca
         System.out.println("\n"+"Gracz ktory ma najwyzszy ranking z turniejow ale nigdy nie mial 1 miejsca: " + Gracz.najlepszyGraczBezWygranej());
