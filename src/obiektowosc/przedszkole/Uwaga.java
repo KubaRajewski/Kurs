@@ -2,12 +2,13 @@ package obiektowosc.przedszkole;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Uwaga {
-    private String nazwa;
-    private String opis;
-    private String dataWystawienia;
-    private Dziecko dziecko;
+    private final String nazwa;
+    private final String opis;
+    private final String dataWystawienia;
+    private final Dziecko dziecko;
 
     public static List<Uwaga> ekstensja = new ArrayList<>();
 
@@ -22,24 +23,16 @@ public abstract class Uwaga {
         return nazwa;
     }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
-    }
-
     public String getOpis() {
         return opis;
-    }
-
-    public void setOpis(String opis) {
-        this.opis = opis;
     }
 
     public String getDataWystawienia() {
         return dataWystawienia;
     }
 
-    public void setDataWystawienia(String dataWystawienia) {
-        this.dataWystawienia = dataWystawienia;
+    public Dziecko getDziecko() {
+        return dziecko;
     }
 
     public static List<Uwaga> getEkstensja() {
@@ -52,6 +45,25 @@ public abstract class Uwaga {
 
     @Override
     public String toString() {
-        return "Uczeń: " + dziecko + ", Tytuł: " + nazwa + ", Data: " + dataWystawienia;
+        if (this instanceof Przewinienie)
+            return "Typ: Przewinienie, " +  "Uczeń: " + dziecko + ", Tytuł: " + nazwa + ", Data: " + dataWystawienia;
+        else if (this instanceof Odznaka)
+            return "Typ: Odznaka, " + "Uczeń: " + dziecko + ", Tytuł: " + nazwa + ", Data: " + dataWystawienia;
+        else {
+            return "Uwaga nieznanego typu, cos poszlo nie tak.";
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Uwaga uwaga = (Uwaga) o;
+        return Objects.equals(nazwa, uwaga.nazwa) && Objects.equals(opis, uwaga.opis) && Objects.equals(dataWystawienia, uwaga.dataWystawienia) && Objects.equals(dziecko, uwaga.dziecko);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nazwa, opis, dataWystawienia, dziecko);
     }
 }

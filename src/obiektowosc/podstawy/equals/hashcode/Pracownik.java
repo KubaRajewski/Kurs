@@ -18,12 +18,12 @@ public class Pracownik {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pracownik pracownik = (Pracownik) o;
-        return Objects.equals(imie, pracownik.imie) && Objects.equals(naziwsko, pracownik.naziwsko);
+        return Double.compare(pracownik.pensja, pensja) == 0 && Objects.equals(imie, pracownik.imie) && Objects.equals(naziwsko, pracownik.naziwsko);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(imie, naziwsko);
+        return Objects.hash(imie, naziwsko, pensja);
     }
 
     public String getImie() {

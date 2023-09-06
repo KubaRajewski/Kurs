@@ -17,10 +17,6 @@ public class Sala {
         ekstensja.add(this);
     }
 
-    public void dodajGrupe(Grupa grupa) {
-        this.grupa = grupa;
-    }
-
     public String getNazwa() {
         return nazwa;
     }
@@ -35,6 +31,14 @@ public class Sala {
 
     public void setKolorScian(String kolorScian) {
         this.kolorScian = kolorScian;
+    }
+
+    public Grupa getGrupa() {
+        return grupa;
+    }
+
+    public void setGrupa(Grupa grupa) {
+        this.grupa = grupa;
     }
 
     public static List<Sala> getEkstensja() {

@@ -1,7 +1,5 @@
 package obiektowosc.przedszkole;
 
-import java.util.List;
-
 /*
  * Stwórz system do zarządzania przedszkolem. W przedszkolu mamy dzieci oraz
  * wychowawcow, dla obu chcemy znac imie, nazwisko oraz date urodzenia. Dzieci
@@ -17,7 +15,7 @@ import java.util.List;
  *
  * -narysuj poprawny diagram uml do tego zagadnienia
  * -napisz metode która zwraca dziecko ktore ma najwiecej przewinien
- * -napisz metode ktora zwroci wychowawcow kwliafikowanych z pensja wieksza niz podany parametr
+ * -napisz metode ktora zwroci wychowawcow kwafilikowanych z pensja wieksza niz podany parametr
  * -zapisz do pliku imiona nazwiska wszystkich dzieci którzy sa w grupie dla wychowawcy podanego jako parametr
  *
  */
@@ -46,6 +44,8 @@ public class Main {
         d1.dodajOdznake("Rysunek", "Ładnie rysował", "2017-01-02");
         d1.dodajOdznake("Bieganie", "Ładnie biegał", "2017-01-03");
         d2.dodajPrzewinienie("Kopanie pilki", "Wybil okno", "2017-01-04");
+        d2.dodajPrzewinienie("Bieganie", "Biegal po korytarzu", "2017-01-05");
+        d2.dodajPrzewinienie("Śmianie sie", "Smial sie z kolegow", "2017-01-06");
 
 
         //Kim jest d1?
@@ -89,12 +89,12 @@ public class Main {
         // Mamy dwoch Wychowawcow, jedem ma tylko licencjat a drugi doktorat i dlugi staz pracy, obliczStopien w zaleznosci od kwalifikacji
         // przypisuje nauczyciela do jednej z 4 kategorii, a funkcja obliczPensje na jej podstawie oblicza pensje wychowawcy
 
-        System.out.println("Wychowawca w1: " + w1 + ", Pensja: " + w1.obliczPensje());
+        System.out.println("\nWychowawca w1: " + w1 + ", Pensja: " + w1.obliczPensje());
         System.out.println("Wychowawca w2: " + w2 + ", Pensja: " + w2.obliczPensje());
 
         // Wychowawcy tymczasowi maja stala pensje niezaleznie od kwalififikacji, obliczPensje zwraca liczbe godzin razy stawka godzinowa
         Tymczasowy t1 = new Tymczasowy("Anna", "Nowak", "2002-03-15", 130);
-        System.out.println("\nWychowawca t1: " + t1 + ", Pensja: " + t1.obliczPensje());
+        System.out.println("Wychowawca t1: " + t1 + ", Pensja: " + t1.obliczPensje() + "\n");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -146,7 +146,16 @@ public class Main {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // TODO  * - napisz metode która zwraca dziecko ktore ma najwiecej przewinien
-        // TODO  * - napisz metode ktora zwroci wychowawcow kwliafikowanych z pensja wieksza niz podany parametr
-        // TODO  * - zapisz do pliku imiona nazwiska wszystkich dzieci którzy sa w grupie dla wychowawcy podanego jako parametr
+        System.out.println("\nDziecko z najwieksza iloscia przewinien: " + Dziecko.najmniejPosluszne());
+
+        // TODO  * - napisz metode ktora zwroci wychowawcow kwalifikowanych z pensja wieksza niz podany parametr
+        System.out.println("\nWychowawcy kwalifikowani z pensja wieksza niz 6000: " + Wychowawca.wychowawcyKwalifikowaniZPensjaWiekszNiz(6000.0));
+
+        // TODO  * - zapisz do pliku imiona i nazwiska wszystkich dzieci którzy sa w grupie dla wychowawcy podanego jako parametr
+        Grupa.zapiszDzieciDoPliku("Mariusz", "Pudzianowski");
+        System.out.println("\nZapisano do pliku");
+
+
+
     }
 }

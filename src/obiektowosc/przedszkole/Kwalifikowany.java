@@ -6,13 +6,21 @@ import java.util.List;
 public class Kwalifikowany extends Wychowawca{
     private Kwalifikacje kwalifikacje;
 
+    public static List<Kwalifikowany> ekstensja = new ArrayList<>();
+
     public Kwalifikowany(String imie, String nazwisko, String dataUrodzenia) {
         super(imie, nazwisko, dataUrodzenia);
+
+        ekstensja.add(this);
     }
 
     public void dodajKwalifikacje(Kwalifikacje kwalifikacje) {
-        this.kwalifikacje = kwalifikacje;
-        kwalifikacje.dodajWychowawce(this);
+        if (this.kwalifikacje == null) {
+            this.kwalifikacje = kwalifikacje;
+            kwalifikacje.setWychowawca(this);
+        } else {
+            throw new IllegalArgumentException("Wychowawca posiada już kwalifikacje");
+        }
     }
 
     @Override
@@ -29,6 +37,7 @@ public class Kwalifikowany extends Wychowawca{
         }
         return pensja;
     }
+
 
     public Kwalifikacje getKwalifikacje() {
         return kwalifikacje;

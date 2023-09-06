@@ -2,6 +2,7 @@ package obiektowosc.przedszkole;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Osoba {
     private String imie;
@@ -17,7 +18,6 @@ public abstract class Osoba {
 
         ekstensja.add(this);
     }
-
 
     public String getImie() {
         return imie;
@@ -47,8 +47,25 @@ public abstract class Osoba {
         return ekstensja;
     }
 
+    public static void setEkstensja(List<Osoba> ekstensja) {
+        Osoba.ekstensja = ekstensja;
+    }
+
     @Override
     public String toString() {
         return imie + " " + nazwisko;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Osoba osoba = (Osoba) o;
+        return Objects.equals(imie, osoba.imie) && Objects.equals(nazwisko, osoba.nazwisko) && Objects.equals(dataUrodzenia, osoba.dataUrodzenia);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(imie, nazwisko, dataUrodzenia);
     }
 }

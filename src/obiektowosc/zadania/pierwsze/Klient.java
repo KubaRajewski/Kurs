@@ -1,6 +1,7 @@
 package obiektowosc.zadania.pierwsze;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Klient {
     private String imie;

@@ -1,6 +1,8 @@
 package obiektowosc.turniej;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Gracz {
     private String imie;

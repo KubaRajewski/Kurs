@@ -1,7 +1,5 @@
 package obiektowosc.wypozyczalnia;
 
-import obiektowosc.zadania.drugie.Produkt;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -16,5 +16,4 @@ public class Odznaka extends Uwaga{
     public static List<Odznaka> getEkstensjaOdznaka() {
         return ekstensja;
     }
-
 }
