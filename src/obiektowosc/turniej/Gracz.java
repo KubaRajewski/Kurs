@@ -1,6 +1,8 @@
 package obiektowosc.turniej;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +11,6 @@ public class Gracz {
     private String nazwisko;
     private int sumaPunktow;
 
-    private List<Turniej> turnieje = new ArrayList<>();
     private List<Wynik> wyniki = new ArrayList<>();
 
     private static List<Gracz> ekstensja = new ArrayList<>();
@@ -22,90 +23,76 @@ public class Gracz {
     }
 
     // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
-    public static List<Turniej> turniejeODanejNazwie(String nazwa) {
-        List<Turniej> turnieje = new ArrayList<>();
-
-        for (Turniej turniej : Turniej.getEkstensja()) {
-            if (turniej.getNazwa().equals(nazwa)) {
-                turnieje.add(turniej);
+    // ile dany gracz mial punktow z turniejow o danej nazwie
+    public int ileGraczMialPunktow(String nazwa) {
+        int punkty = 0;
+        for (Wynik w : wyniki) {
+            if (w.getTurniej().getNazwa().equalsIgnoreCase(nazwa)) {
+                punkty += w.getPunkty();
             }
         }
-        return turnieje;
+        return punkty;
     }
 
-    public static Gracz najlepszyGraczWTurniejachODanejNazwie(String nazwa){
-        List<Turniej> turniejeODanejNazwie = turniejeODanejNazwie(nazwa);
-        Gracz najlepszyGracz = null;
-        int maxPunkty = 0;
+    public static Gracz najlepszyGraczWTurniejachODanejNazwie(List<Gracz> gracze, String nazwa) {
+        if (gracze == null || gracze.isEmpty())
+            throw new IllegalArgumentException("Lista nie moze byc pusta ani byc nullem");
 
-        for (Turniej turniej : turniejeODanejNazwie) {
-            for (Wynik wynik : turniej.getWyniki()) {
-                if (wynik.getPunkty() > maxPunkty) {
-                    maxPunkty = wynik.getPunkty();
-                    najlepszyGracz = wynik.getGracz();
-                }
+        Gracz najlepszyGracz = gracze.get(0);
+
+        for (Gracz gracz : gracze) {
+            if (gracz.ileGraczMialPunktow(nazwa) > najlepszyGracz.ileGraczMialPunktow(nazwa)) {
+                najlepszyGracz = gracz;
             }
-        }
-
-        if (najlepszyGracz == null) {
-            throw new RuntimeException("Nie ma gracza ktory bylby najlepszy w turniejach o nazwie " + nazwa);
         }
 
         return najlepszyGracz;
     }
 
     // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
-    public static Gracz zNajwiekszaIlosciaWygranych(){
-        Gracz najlepszyGracz = null;
-        int maxIloscWygranych = 0;
-
-        for (Gracz gracz : ekstensja) {
-            int iloscWygranych = 0;
-            for (Wynik wynik : gracz.getWyniki()) {
-                if (wynik.getPozycja() == 1) {
-                    iloscWygranych++;
-                }
-            }
-            if (iloscWygranych > maxIloscWygranych) {
-                maxIloscWygranych = iloscWygranych;
-                najlepszyGracz = gracz;
+    public int ileMialDanychPozycji(int pozycja){
+        int iloscPozycji = 0;
+        for (Wynik wynik : wyniki) {
+            if (wynik.getPozycja() == pozycja){
+                iloscPozycji++;
             }
         }
+        return iloscPozycji;
+    }
 
-        if (najlepszyGracz == null) {
-            throw new RuntimeException("Nie ma gracza ktory bylby najlepszy");
+    public static Gracz zNajwiekszaIlosciaDanychPozycji(List<Gracz> gracze, int pozycja) {
+        Gracz najlepszyGracz = gracze.get(0);
+
+        for (Gracz g : gracze) {
+            if(g.ileMialDanychPozycji(pozycja) > najlepszyGracz.ileMialDanychPozycji(pozycja)) {
+                najlepszyGracz = g;
+            }
         }
 
         return najlepszyGracz;
     }
 
     // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdy nie mial 1 miejsca
-    private boolean posiadaWygrana() {
-        for (Wynik wynik : wyniki) {
-            if (wynik.getPozycja() == 1) {
-                return true;
+    public int ileGraczMialPunktowBezWygranej(int pozycja) {
+        int punkty = 0;
+        for (Wynik w : wyniki) {
+            if (w.getPozycja() != pozycja) {
+                punkty += w.getPunkty();
             }
         }
-        return false;
+        return punkty;
     }
 
-    public static Gracz najlepszyGraczBezWygranej(){
-        Gracz najlepszyGracz = null;
-        int maxRanking = 0;
+    public static Gracz najlepszyGraczBezDanejPozycji(List<Gracz> gracze, int pozycja) {
+        if(gracze == null || gracze.isEmpty())
+            throw new IllegalArgumentException("Lista nie moze byc pusta ani byc nullem");
 
-        for (Gracz gracz : ekstensja) {
-            int ranking = 0;
-            for (Wynik wynik : gracz.getWyniki()) {
-                ranking += wynik.getPozycja();
-            }
-            if ((ranking > maxRanking) && !gracz.posiadaWygrana()) {
-                maxRanking = ranking;
-                najlepszyGracz = gracz;
-            }
-        }
+        Gracz najlepszyGracz = gracze.get(0);
 
-        if (najlepszyGracz == null) {
-            throw new RuntimeException("Nie ma gracza ktory bylby najlepszy");
+        for (Gracz g : gracze) {
+            if(g.ileGraczMialPunktowBezWygranej(pozycja) > najlepszyGracz.ileGraczMialPunktowBezWygranej(pozycja)) {
+                najlepszyGracz = g;
+            }
         }
 
         return najlepszyGracz;
@@ -127,13 +114,6 @@ public class Gracz {
         this.nazwisko = nazwisko;
     }
 
-    public List<Turniej> getTurnieje() {
-        return turnieje;
-    }
-
-    public void setTurnieje(List<Turniej> turnieje) {
-        this.turnieje = turnieje;
-    }
 
     public int getSumaPunktow() {
         return sumaPunktow;
@@ -177,6 +157,5 @@ public class Gracz {
     public String toString() {
         return imie + " " + nazwisko;
     }
-
 
 }

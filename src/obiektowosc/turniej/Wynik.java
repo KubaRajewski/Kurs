@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Wynik {
+
     private Turniej turniej;
     private Gracz gracz;
     private int pozycja;
@@ -50,33 +51,21 @@ public class Wynik {
         return turniej;
     }
 
-    public void setTurniej(Turniej turniej) {
-        this.turniej = turniej;
-    }
 
     public Gracz getGracz() {
         return gracz;
     }
 
-    public void setGracz(Gracz gracz) {
-        this.gracz = gracz;
-    }
 
     public int getPozycja() {
         return pozycja;
     }
 
-    public void setPozycja(int pozycja) {
-        this.pozycja = pozycja;
-    }
 
     public int getPunkty() {
         return punkty;
     }
 
-    public void setPunkty(int punkty) {
-        this.punkty = punkty;
-    }
 
     public static List<Wynik> getEkstensja() {
         return ekstensja;

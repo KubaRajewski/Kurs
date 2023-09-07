@@ -1,6 +1,10 @@
 package obiektowosc.turniej;
 
-// Ok to masz graczy ktorzy graja w turniejach. Turniej ma nazwe i miesiac. Gracz ma imie i nazwisko.
+// Ok to masz graczy ktorzy graja w Turniejach. Turniej ma nazwe i miesiac. Gracz ma imie i nazwisko.
+
+import obiektowosc.turniej.Gracz;
+import obiektowosc.turniej.Turniej;
+import obiektowosc.turniej.Wynik;
 
 public class Main {
     public static void main(String[] args) {
@@ -76,27 +80,27 @@ public class Main {
         Wynik w21 = new Wynik(t5, g4, 3);
         Wynik w22 = new Wynik(t5, g3, 4);
 
-        // TODO 1) chcemy przechowywac dla kazdego gracza jakie pozycje zajmowal w jakim turnieju
-        // TODO 2) tak samo punkty jakie zdobyl z dnaego turnieju
+        // TODO 1) chcemy przechowywac dla kazdego gracza jakie pozycje zajmowal w jakim Turnieju
+        // TODO 2) tak samo punkty jakie zdobyl z dnaego Turnieju
         System.out.println(Gracz.getEkstensja());
 
-        System.out.println("\n" + "Wyniki turnieju t1: " + t1.getNazwa());
+        System.out.println("\n" + "Wyniki Turnieju t1: " + t1.getNazwa());
         t1.getWyniki().forEach(System.out::println);
 
 
         System.out.println("\n" + "Wyniki gracza g1: " + g1.getNazwisko());
         g1.getWyniki().forEach(System.out::println);
 
-        System.out.println("\n"+"Punkty gracza g1 po wszystkich turniejach: " + g1.getSumaPunktow());
+        System.out.println("\n"+"Punkty gracza g1 po wszystkich Turniejach: " + g1.getSumaPunktow());
 
-        // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
-        System.out.println("\n"+"Najlepszy gracz w turnieju o nazwie Szachy: " + Gracz.najlepszyGraczWTurniejachODanejNazwie("Szachy"));
+        // TODO 3) znajdz gracza ktory byl najlepszy w Turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
+        System.out.println("\n"+"Najlepszy gracz w Turnieju o nazwie Szachy: " + Gracz.najlepszyGraczWTurniejachODanejNazwie(Gracz.getEkstensja(), "Szachy"));
 
-        // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
-        System.out.println("\n"+"Gracz ktory zdobyl najwiecej 1 miejsc: " + Gracz.zNajwiekszaIlosciaWygranych());
+        // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich Turniejow
+        System.out.println("\n"+"Gracz ktory zdobyl najwiecej 1 miejsc: " + Gracz.zNajwiekszaIlosciaDanychPozycji(Gracz.getEkstensja(), 1));
 
         // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdy nie mial 1 miejsca
-        System.out.println("\n"+"Gracz ktory ma najwyzszy ranking z turniejow ale nigdy nie mial 1 miejsca: " + Gracz.najlepszyGraczBezWygranej());
+        System.out.println("\n"+"Gracz ktory ma najwyzszy ranking z Turniejow ale nigdy nie mial 1 miejsca: " + Gracz.najlepszyGraczBezDanejPozycji(Gracz.getEkstensja(), 1));
 
     }
 
