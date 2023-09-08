@@ -2,10 +2,6 @@ package obiektowosc.turniej;
 
 // Ok to masz graczy ktorzy graja w Turniejach. Turniej ma nazwe i miesiac. Gracz ma imie i nazwisko.
 
-import obiektowosc.turniej.Gracz;
-import obiektowosc.turniej.Turniej;
-import obiektowosc.turniej.Wynik;
-
 public class Main {
     public static void main(String[] args) {
 

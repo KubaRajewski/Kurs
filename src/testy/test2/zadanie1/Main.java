@@ -23,8 +23,35 @@ package testy.test2.zadanie1;
 //    jesli mimo tych uwag popelnisz ktoras z gaf opisanych powyzej, tracisz mozliwosc poprawki :(
 //    dodatkowo pamiętaj o małych metodach i o zasadach z poprzednich testów.
 
+
+import java.io.File;
+
 public class Main {
     public static void main(String[] args) {
+
+        File fileMothers = new File("src/testy/test2/zadanie1/mamy.txt");
+        File fileChildren = new File("src/testy/test2/zadanie1/noworodki.txt");
+
+        Mother.readMothers(fileMothers);
+        Child.readChildren(fileChildren);
+
+//        Checking if everything loaded correctly:
+        Mother.getExtension().forEach(System.out::println);
+//
+//        We can access the relation from both sides:
+        System.out.println(Mother.getExtension().get(1).getChildren());
+        System.out.println(Child.getExtension().get(68).getMum());
+
+//TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
+//TODO  b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
+//TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
+//TODO  d) Podaj imiona i daty urodzenia dziewczynek, które odziedziczyły imię po matce.
+//TODO  e) Znajdz matki które urodziły bliźnięta.
+
+
+
+
+
 
     }
 }
