@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Mother {
     private int motherId;
@@ -25,9 +23,9 @@ public class Mother {
         extension.add(this);
     }
 
-//TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
-    public static List<Mother> mothersCertainAgeWithKidsCertainWeight(List<Mother> mothers, int age, double weight){
-        List <Mother> mothersCertainAgeWithKidsCertainWeight = new ArrayList<>();
+    //TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
+    public static List<Mother> mothersCertainAgeWithKidsCertainWeight(List<Mother> mothers, int age, double weight) {
+        List<Mother> mothersCertainAgeWithKidsCertainWeight = new ArrayList<>();
 
         for (Mother m : mothers) {
             if (m.getAge() < age) {
@@ -41,6 +39,21 @@ public class Mother {
         return mothersCertainAgeWithKidsCertainWeight;
     }
 
+    //TODO  e) Znajdz matki które urodziły bliźnięta.
+    public static List<Mother> mothersWhoGaveBirthToMoreThenOneBaby(List<Mother> mothers) {
+        List<Mother> mothersWhoGaveBirthToMoreThenOneBaby = new ArrayList<>();
+
+        for (Mother m : mothers) {
+            if (m.getChildren().size() > 1){
+                mothersWhoGaveBirthToMoreThenOneBaby.add(m);
+            }
+        }
+
+        return mothersWhoGaveBirthToMoreThenOneBaby;
+    }
+
+
+    //TODO 0) zaimplementuj relacje oraz wczytaj pliki
     public static void readMothers(File mamy) {
         try (BufferedReader br = new BufferedReader(new FileReader(mamy))) {
             String line;
@@ -114,6 +127,6 @@ public class Mother {
 
     @Override
     public String toString() {
-        return "Id: " + motherId + ", name " + name + ", age: " + age + ", dzieci: " + children;
+        return "Id: " + motherId + ", name " + name + ", age: " + age + " " + children;
     }
 }
