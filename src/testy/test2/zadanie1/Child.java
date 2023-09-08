@@ -6,10 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Child {
     private int childId;
@@ -31,6 +28,19 @@ public class Child {
         this.height = height;
 
         extension.add(this);
+    }
+
+//TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
+    public static Child tollestChildByGender(List<Child> list, char gender) {
+        Child tollestChild = list.get(0);
+
+        for (Child c : list) {
+            if ((c.getHeight() > tollestChild.getHeight()) && c.getGender() == gender){
+                tollestChild = c;
+            }
+        }
+
+        return tollestChild;
     }
 
     public static void readChildren(File noworodki) {

@@ -25,33 +25,59 @@ package testy.test2.zadanie1;
 
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        File fileMothers = new File("src/testy/test2/zadanie1/mamy.txt");
-        File fileChildren = new File("src/testy/test2/zadanie1/noworodki.txt");
+        File fileMothers = new File("src/testy/test2/zadanie1/files/mamy.txt");
+        File fileChildren = new File("src/testy/test2/zadanie1/files/noworodki.txt");
 
         Mother.readMothers(fileMothers);
         Child.readChildren(fileChildren);
 
-//        Checking if everything loaded correctly:
-        Mother.getExtension().forEach(System.out::println);
-//
-//        We can access the relation from both sides:
-        System.out.println(Mother.getExtension().get(1).getChildren());
-        System.out.println(Child.getExtension().get(68).getMum());
+//TODO  Checking if everything loaded correctly:
+//        Mother.getExtension().forEach(System.out::println);
+
+//TODO  We can access the relation from both sides:
+//        System.out.println(Mother.getExtension().get(1).getChildren());
+//        System.out.println(Child.getExtension().get(68).getMum());
 
 //TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
+        Child tollestBoy = Child.tollestChildByGender(Child.extension, 's');
+        Child tollestGirl = Child.tollestChildByGender(Child.extension, 'c');
+
+        System.out.println("Tollest boy" + tollestBoy.getChildId() + " " + tollestBoy.getName() + " " + tollestBoy.getHeight());
+        System.out.println("Tollest girl" + tollestGirl.getChildId() + " " + tollestGirl.getName() + " " + tollestGirl.getHeight());
+
 //TODO  b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
+        System.out.println(mostPopularDay(Child.extension));
+
 //TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
+        for (Mother mother : Mother.mothersCertainAgeWithKidsCertainWeight(Mother.extension, 25, 4000.00)) {
+            System.out.println(mother.getName());
+        }
 //TODO  d) Podaj imiona i daty urodzenia dziewczynek, które odziedziczyły imię po matce.
 //TODO  e) Znajdz matki które urodziły bliźnięta.
 
 
+    }
 
+// b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
+    public static Map.Entry<String, Integer> mostPopularDay(List<Child> children) {
+        Map<String, Integer> dayOfWeekCount = new HashMap<>();
 
+        for (Child child : children) {
+            Date dateOfBirth = child.getDateOfBirth();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateOfBirth);
 
+            String dayOfWeek = new SimpleDateFormat("EEEE").format(dateOfBirth);
 
+            dayOfWeekCount.put(dayOfWeek, dayOfWeekCount.getOrDefault(dayOfWeek, 0) + 1);
+        }
+
+        return Collections.max(dayOfWeekCount.entrySet(), Map.Entry.comparingByValue());
     }
 }

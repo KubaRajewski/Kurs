@@ -25,6 +25,22 @@ public class Mother {
         extension.add(this);
     }
 
+//TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
+    public static List<Mother> mothersCertainAgeWithKidsCertainWeight(List<Mother> mothers, int age, double weight){
+        List <Mother> mothersCertainAgeWithKidsCertainWeight = new ArrayList<>();
+
+        for (Mother m : mothers) {
+            if (m.getAge() < age) {
+                for (Child c : m.getChildren()) {
+                    if (c.getWeight() > weight) {
+                        mothersCertainAgeWithKidsCertainWeight.add(m);
+                    }
+                }
+            }
+        }
+        return mothersCertainAgeWithKidsCertainWeight;
+    }
+
     public static void readMothers(File mamy) {
         try (BufferedReader br = new BufferedReader(new FileReader(mamy))) {
             String line;
