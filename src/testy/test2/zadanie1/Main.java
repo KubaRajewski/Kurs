@@ -35,40 +35,40 @@ public class Main {
         Mother.readMothers(fileMothers);
         Child.readChildren(fileChildren);
 
-//TODO  Checking if everything loaded correctly:
+//      TODO  Checking if everything loaded correctly:
         Mother.extension.forEach(System.out::println);
         Child.extension.forEach(System.out::println);
         System.out.println();
 
-//TODO  We can access the relation from both sides:
+//      TODO  We can access the relation from both sides:
         System.out.println(Mother.getExtension().get(1).getChildren());
         System.out.println(Child.getExtension().get(68).getMum());
 
-//TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
+//      TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
         Child tollestBoy = Child.tollestChildByGender(Child.extension, 's');
         Child tollestGirl = Child.tollestChildByGender(Child.extension, 'c');
 
         System.out.println("\nTollest boy: " + tollestBoy.getChildId() + " " + tollestBoy.getName() + " " + tollestBoy.getHeight());
         System.out.println("Tollest girl: " + tollestGirl.getChildId() + " " + tollestGirl.getName() + " " + tollestGirl.getHeight() + "\n");
 
-//TODO  b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
+//      TODO  b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
         System.out.println("Most popular day of the week: " + Child.mostPopularDay(Child.extension) + "\n");
 
-//TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
+//      TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
         System.out.println("Women below the age of 25 who have given birth to babies weighing over 4000g: ");
         for (Mother mother : Mother.mothersCertainAgeWithKidsCertainWeight(Mother.extension, 25, 4000.00)) {
             System.out.println(mother.getName());
         }
         System.out.println();
 
-//TODO  d) Podaj imiona i daty urodzenia dziewczynek, które odziedziczyły imię po matce.
+//      TODO  d) Podaj imiona i daty urodzenia dziewczynek, które odziedziczyły imię po matce.
         System.out.println("Girls with the same name as their mother: ");
         for (Child child : Child.girlsWithTheSameNameAsMother(Child.extension)) {
             System.out.println(child.getName() + " " + child.getFormattedDateOfBirth());
         }
         System.out.println();
 
-//TODO  e) Znajdz matki które urodziły bliźnięta.
-//        Mother.mothersWhoGaveBirthToTwins(Mother.extension).forEach(System.out::println);
+//      TODO  e) Znajdz matki które urodziły bliźnięta.
+        Mother.mothersWhoGaveBirthToTwins(Mother.extension).forEach(System.out::println);
     }
 }

@@ -23,36 +23,6 @@ public class Mother {
         extension.add(this);
     }
 
-    //TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
-    public static List<Mother> mothersCertainAgeWithKidsCertainWeight(List<Mother> mothers, int age, double weight) {
-        List<Mother> mothersCertainAgeWithKidsCertainWeight = new ArrayList<>();
-
-        for (Mother m : mothers) {
-            if (m.getAge() < age) {
-                for (Child c : m.getChildren()) {
-                    if (c.getWeight() > weight) {
-                        mothersCertainAgeWithKidsCertainWeight.add(m);
-                    }
-                }
-            }
-        }
-        return mothersCertainAgeWithKidsCertainWeight;
-    }
-
-    //TODO  e) Znajdz matki które urodziły bliźnięta.
-    public static List<Mother> mothersWhoGaveBirthToMoreThenOneBaby(List<Mother> mothers) {
-        List<Mother> mothersWhoGaveBirthToMoreThenOneBaby = new ArrayList<>();
-
-        for (Mother m : mothers) {
-            if (m.getChildren().size() > 1){
-                mothersWhoGaveBirthToMoreThenOneBaby.add(m);
-            }
-        }
-
-        return mothersWhoGaveBirthToMoreThenOneBaby;
-    }
-
-
     //TODO 0) zaimplementuj relacje oraz wczytaj pliki
     public static void readMothers(File mamy) {
         try (BufferedReader br = new BufferedReader(new FileReader(mamy))) {
@@ -70,6 +40,44 @@ public class Mother {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    //TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
+    public static List<Mother> mothersCertainAgeWithKidsCertainWeight(List<Mother> mothers, int age, double weight) {
+        List<Mother> mothersCertainAgeWithKidsCertainWeight = new ArrayList<>();
+
+        for (Mother m : mothers) {
+            if (m.getAge() < age) {
+                for (Child c : m.getChildren()) {
+                    if (c.getWeight() > weight) {
+                        mothersCertainAgeWithKidsCertainWeight.add(m);
+                    }
+                }
+            }
+        }
+        return mothersCertainAgeWithKidsCertainWeight;
+    }
+
+    //TODO  e) Znajdz matki które urodziły bliźnięta.
+    public static List<Mother> mothersWhoGaveBirthToTwins(List<Mother> mothers) {
+        List<Mother> mothersWhoGaveBirthToTwins = new ArrayList<>();
+
+        for (Mother mother : mothers) {
+            List<Child> children = mother.getChildren();
+            int childCount = children.size();
+
+            for (int i = 0; i < childCount - 1; i++) {
+                Child child1 = children.get(i);
+                Child child2 = children.get(i + 1);
+
+                if (child1.getDateOfBirth().equals(child2.getDateOfBirth())) {
+                    mothersWhoGaveBirthToTwins.add(mother);
+                    break;
+                }
+            }
+        }
+
+        return mothersWhoGaveBirthToTwins;
     }
 
     public int getMotherId() {
@@ -127,6 +135,6 @@ public class Mother {
 
     @Override
     public String toString() {
-        return "Id: " + motherId + ", name " + name + ", age: " + age + " " + children;
+        return "Id: " + motherId + ", name " + name + ", age: " + age;
     }
 }

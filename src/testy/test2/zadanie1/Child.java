@@ -30,50 +30,7 @@ public class Child {
         extension.add(this);
     }
 
-//TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
-    public static Child tollestChildByGender(List<Child> children, char gender) {
-        Child tollestChild = children.get(0);
-
-        for (Child c : children) {
-            if ((c.getHeight() > tollestChild.getHeight()) && c.getGender() == gender){
-                tollestChild = c;
-            }
-        }
-
-        return tollestChild;
-    }
-
-//TODO b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
-    public static Map.Entry<String, Integer> mostPopularDay(List<Child> children) {
-        Map<String, Integer> dayOfWeekCount = new HashMap<>();
-
-        for (Child child : children) {
-            Date dateOfBirth = child.getDateOfBirth();
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(dateOfBirth);
-
-            String dayOfWeek = new SimpleDateFormat("EEEE").format(dateOfBirth);
-
-            dayOfWeekCount.put(dayOfWeek, dayOfWeekCount.getOrDefault(dayOfWeek, 0) + 1);
-        }
-
-        return Collections.max(dayOfWeekCount.entrySet(), Map.Entry.comparingByValue());
-    }
-
-//TODO d) Podaj imiona i daty urodzenia dziewczynek, które odziedziczyły imię po matce.
-    public static List<Child> girlsWithTheSameNameAsMother(List<Child> children) {
-            List<Child> girlsWithTheSameNameAsMother = new ArrayList<>();
-
-        for (Child child : children) {
-            if (child.getName().equalsIgnoreCase(child.getMum().getName())) {
-                girlsWithTheSameNameAsMother.add(child);
-            }
-        }
-
-        return girlsWithTheSameNameAsMother;
-    }
-
-//TODO 0) zaimplementuj relacje oraz wczytaj pliki
+    //TODO 0) zaimplementuj relacje oraz wczytaj pliki
     public static void readChildren(File noworodki) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -118,6 +75,49 @@ public class Child {
             }
         }
         return null;
+    }
+
+    //TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
+    public static Child tollestChildByGender(List<Child> children, char gender) {
+        Child tollestChild = children.get(0);
+
+        for (Child c : children) {
+            if ((c.getHeight() > tollestChild.getHeight()) && c.getGender() == gender){
+                tollestChild = c;
+            }
+        }
+
+        return tollestChild;
+    }
+
+    //TODO b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
+    public static Map.Entry<String, Integer> mostPopularDay(List<Child> children) {
+        Map<String, Integer> dayOfWeekCount = new HashMap<>();
+
+        for (Child child : children) {
+            Date dateOfBirth = child.getDateOfBirth();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateOfBirth);
+
+            String dayOfWeek = new SimpleDateFormat("EEEE").format(dateOfBirth);
+
+            dayOfWeekCount.put(dayOfWeek, dayOfWeekCount.getOrDefault(dayOfWeek, 0) + 1);
+        }
+
+        return Collections.max(dayOfWeekCount.entrySet(), Map.Entry.comparingByValue());
+    }
+
+    //TODO d) Podaj imiona i daty urodzenia dziewczynek, które odziedziczyły imię po matce.
+    public static List<Child> girlsWithTheSameNameAsMother(List<Child> children) {
+            List<Child> girlsWithTheSameNameAsMother = new ArrayList<>();
+
+        for (Child child : children) {
+            if (child.getName().equalsIgnoreCase(child.getMum().getName())) {
+                girlsWithTheSameNameAsMother.add(child);
+            }
+        }
+
+        return girlsWithTheSameNameAsMother;
     }
 
     public int getChildId() {
