@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Mother {
-    private int motherId;
-    private String name;
+    private int motherId; // TODO UNIQUE
+    private final String name;
     private int age;
 
     private List<Child> children = new ArrayList<>();
@@ -16,6 +18,12 @@ public class Mother {
     public static List<Mother> extension = new ArrayList<>();
 
     public Mother(int motherId, String name, int age) {
+        for (Mother mother : extension) {
+            if (mother.motherId == motherId){
+                throw new IllegalArgumentException("Mother with this ID already exists");
+            }
+        }
+
         this.motherId = motherId;
         this.name = name;
         this.age = age;
@@ -90,10 +98,6 @@ public class Mother {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getAge() {

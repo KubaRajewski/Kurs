@@ -10,16 +10,22 @@ import java.util.*;
 
 public class Child {
     private int childId;
-    private char gender;
+    private final char gender;
     private String name;
-    private Date dateOfBirth;
-    private double weight;
-    private double height;
+    private final Date dateOfBirth;
+    private final double weight;
+    private final double height;
     private Mother mum;
 
     public static List<Child> extension = new ArrayList<>();
 
     public Child(int childId, char gender, String name, Date dateOfBirth, double weight, double height) {
+        for (Child child : extension) {
+            if (child.childId == childId){
+                throw new IllegalArgumentException("Child with this id already exists");
+            }
+        }
+
         this.childId = childId;
         this.gender = gender;
         this.name = name;
@@ -39,11 +45,10 @@ public class Child {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(" ");
                 if (parts.length == 7) {
-                    int childId = Integer.parseInt(parts[0]);
-                    char gender = parts[1].charAt(0);
-                    String name = parts[2];
-
                     try {
+                        int childId = Integer.parseInt(parts[0]);
+                        char gender = parts[1].charAt(0);
+                        String name = parts[2];
                         Date dateOfBirth = dateFormat.parse(parts[3]);
                         double weight = Double.parseDouble(parts[4]);
                         double height = Double.parseDouble(parts[5]);
@@ -132,10 +137,6 @@ public class Child {
         return gender;
     }
 
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
     public String getName() {
         return name;
     }
@@ -153,24 +154,12 @@ public class Child {
         return dateFormat.format(dateOfBirth);
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     public double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     public double getHeight() {
         return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
     }
 
     public Mother getMum() {
@@ -185,10 +174,6 @@ public class Child {
 
     public static List<Child> getExtension() {
         return extension;
-    }
-
-    public static void setExtension(List<Child> extension) {
-        Child.extension = extension;
     }
 
     @Override

@@ -32,11 +32,50 @@ package testy.test2.zadanie2;
 //    - zwroc pacientow ktorzy byli u minumum 5ciu roznych lekarzy
 //    - zwroc lekarzy ktorzy przyjeli tylko jednego pacjenta
 //
-//    UWAGA: w plikach mogą być dane złośliwe, należy je pominać, dane złośliwe to np: lekarz ze zduplikowanym numerem NIP (bierzemy pierwszego o takim numerze)
+//    UWAGA: w plikach mogą być dane złośliwe, należy je pominać, dane złośliwe to np: lekarz ze zduplikowanym numerem NIP (wtedy bierzemy pierwszego o takim numerze)
 //    lub id pacjenta / id lekarza w wizyty.txt ktore nie istnieje w lekarze.txt lub pacjenci.txt
+
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
+        File fileDoctors = new File("src/testy/test2/zadanie2/files/lekarze.txt");
+        File filePatients = new File("src/testy/test2/zadanie2/files/pacjenci.txt");
+        File fileVisits = new File("src/testy/test2/zadanie2/files/wizyty.txt");
 
+        Doctor.readDoctors(fileDoctors);
+        Patient.readPatients(filePatients);
+        Visit.readVisits(fileVisits);
+
+        //TODO - znajdź lekarza ktory miał najwięcej wizyt
+        System.out.println("Lekarz ktory mial najwiecej wizyt: " + Doctor.busiestDoctor());
+
+        //TODO - znajdź pacjenta który miał najwięcej wizyt
+        System.out.println("\nPacjent ktory mial najwiecej wizyt: " + Patient.busiestPatient());
+
+        //TODO - która specalizacja cieszy się największym powodzeniem?
+        System.out.println("\nNajpopularniejsza specjalizacja: " + Doctor.mostPopularSpecialty());
+
+        //TODO - którego roku było najwięcej wizyt?
+        System.out.println("\nNajwiecej wizyt bylo w roku: " + Visit.busiestYear()+"\n");
+
+        //TODO - wypisz top 5 najstarszych lekarzy
+        System.out.println("x najstarszych lekarzy: ");
+        Doctor.oldestDoctors(5).forEach(System.out::println);
+        System.out.println();
+
+        //TODO - wypisz top 5 lekarzy co mieli najwiecej wizyt
+        System.out.println("x lekarzy z najwieksza iloscia wizyt: ");
+        Doctor.busiestDoctors(5).forEach(System.out::println);
+        System.out.println();
+
+        //TODO - zwroc pacientow ktorzy byli u minumum 5ciu roznych lekarzy
+        System.out.println("Pacjenci ktorzy byli u x roznych lekarzy: ");
+        Patient.patientsWithMinimumDoctors(5).forEach(System.out::println);
+        System.out.println();
+
+        //TODO - zwroc lekarzy ktorzy przyjeli tylko jednego pacjenta
+        System.out.println("Lekarze z tylko jednym pacjentem: ");
+        Doctor.doctorsWithOnePatient().forEach(System.out::println);
     }
 }
