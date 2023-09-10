@@ -126,7 +126,7 @@ public class Doctor  extends Person{
     }
 
     //TODO - zwroc lekarzy ktorzy przyjeli tylko jednego pacjenta
-    public static List<Doctor> doctorsWithOnePatient() {
+    public static List<Doctor> doctorsWithCertainAmountOfPatients(int num) {
         Map<Doctor, Integer> doctorToPatientCount = new HashMap<>();
 
         for (Visit visit : Visit.getExtension()) {
@@ -134,15 +134,15 @@ public class Doctor  extends Person{
             doctorToPatientCount.put(doctor, doctorToPatientCount.getOrDefault(doctor, 0) + 1);
         }
 
-        List<Doctor> doctorsWithOnePatient = new ArrayList<>();
+        List<Doctor> doctorsWithCertainAmountOfPatients = new ArrayList<>();
 
         for (Map.Entry<Doctor, Integer> entry : doctorToPatientCount.entrySet()) {
-            if (entry.getValue() == 1) {
-                doctorsWithOnePatient.add(entry.getKey());
+            if (entry.getValue() == num) {
+                doctorsWithCertainAmountOfPatients.add(entry.getKey());
             }
         }
 
-        return doctorsWithOnePatient;
+        return doctorsWithCertainAmountOfPatients;
     }
 
     public int getDoctorId() {

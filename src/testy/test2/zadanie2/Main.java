@@ -65,17 +65,17 @@ public class Main {
         System.out.println();
 
         //TODO - wypisz top 5 lekarzy co mieli najwiecej wizyt
-        System.out.println("x lekarzy z najwieksza iloscia wizyt: ");
+        System.out.println("5 lekarzy z najwieksza iloscia wizyt: ");
         Doctor.busiestDoctors(5).forEach(System.out::println);
         System.out.println();
 
         //TODO - zwroc pacientow ktorzy byli u minumum 5ciu roznych lekarzy
-        System.out.println("Pacjenci ktorzy byli u x roznych lekarzy: ");
+        System.out.println("Pacjenci ktorzy byli u 5 roznych lekarzy: ");
         Patient.patientsWithMinimumDoctors(5).forEach(System.out::println);
         System.out.println();
 
         //TODO - zwroc lekarzy ktorzy przyjeli tylko jednego pacjenta
         System.out.println("Lekarze z tylko jednym pacjentem: ");
-        Doctor.doctorsWithOnePatient().forEach(System.out::println);
+        Doctor.doctorsWithCertainAmountOfPatients(1).forEach(System.out::println);
     }
 }
