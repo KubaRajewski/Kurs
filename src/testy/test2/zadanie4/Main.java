@@ -36,9 +36,6 @@ public class Main {
         System.out.println("\nFigura z największym obwodem: " + Figura.znajdzNajwiekszyObwod(figury) + ", Obwod: " + Figura.znajdzNajwiekszyObwod(figury).obwod());
         System.out.println("Figura z największym polem: " + Figura.znajdzNajwiekszePole(figury) + ", Pole: " + Figura.znajdzNajwiekszePole(figury).pole() + "\n");
 
-        //Tutaj musialem zamienic tablice na liste zeby moc uzyc metody contains
-        List<Figura> figuryAsList = new ArrayList<>(Arrays.asList(figury));
-
-        System.out.println(figuryAsList.contains(new Kwadrat(10)));
+        System.out.println(Arrays.asList(figury).contains(new Kwadrat(10)));
     }
 }

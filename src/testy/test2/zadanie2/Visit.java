@@ -106,10 +106,6 @@ public class Visit {
         return extension;
     }
 
-    public static void setExtension(List<Visit> extension) {
-        Visit.extension = extension;
-    }
-
     @Override
     public String toString() {
         return "Visit{" +
