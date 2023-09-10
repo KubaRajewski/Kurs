@@ -1,5 +1,7 @@
 package testy.test2.zadanie4;
 
+import java.util.Objects;
+
 public class Kolo extends Figura {
     private double srednica;
 
@@ -16,6 +18,18 @@ public class Kolo extends Figura {
     @Override
     public double pole() {
         return Math.PI * srednica/2 * srednica/2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Kolo kolo)) return false;
+        return Double.compare(kolo.srednica, srednica) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(srednica);
     }
 
     @Override

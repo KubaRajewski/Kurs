@@ -3,6 +3,7 @@ package testy.test2.zadanie4;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Figura {
     private int index;
@@ -82,6 +83,7 @@ public abstract class Figura {
     public static List<Figura> getEkstensja() {
         return ekstensja;
     }
+
 
     @Override
     public String toString() {

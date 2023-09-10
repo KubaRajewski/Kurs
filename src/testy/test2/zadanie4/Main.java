@@ -22,6 +22,7 @@ package testy.test2.zadanie4;
 //    figura ma numer 0.
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -32,17 +33,12 @@ public class Main {
             System.out.println(f);
         }
 
-        Figura figuraZNajwiekszymObwodem = Figura.znajdzNajwiekszyObwod(figury);
-        Figura figuraZNajwiekszymPolem = Figura.znajdzNajwiekszePole(figury);
+        System.out.println("\nFigura z największym obwodem: " + Figura.znajdzNajwiekszyObwod(figury) + ", Obwod: " + Figura.znajdzNajwiekszyObwod(figury).obwod());
+        System.out.println("Figura z największym polem: " + Figura.znajdzNajwiekszePole(figury) + ", Pole: " + Figura.znajdzNajwiekszePole(figury).pole() + "\n");
 
-        System.out.println("\nFigura z największym obwodem: " + figuraZNajwiekszymObwodem + ", Obwod: " + figuraZNajwiekszymObwodem.obwod());
-        System.out.println("Figura z największym polem: " + figuraZNajwiekszymPolem + ", Pole: " + figuraZNajwiekszymPolem.pole() + "\n");
+        //Tutaj musialem zamienic tablice na liste zeby moc uzyc metody contains
+        List<Figura> figuryAsList = new ArrayList<>(Arrays.asList(figury));
 
-        List<Figura> figuryCopy = new ArrayList<>();
-        for (int i = 0; i < figury.length; i++) {
-            figuryCopy.add(figury[i]);
-        }
-
-        System.out.println(figuryCopy.contains(new Kwadrat(10)));
+        System.out.println(figuryAsList.contains(new Kwadrat(10)));
     }
 }
