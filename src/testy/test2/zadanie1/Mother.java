@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Mother {
-    private int motherId; // TODO UNIQUE
+    private int motherId;
     private final String name;
     private int age;
 
@@ -51,23 +51,30 @@ public class Mother {
     }
 
     //TODO  c) Podaj imiona kobiet w wieku poniżej 25 lat, które urodziły dzieci o wadze powyżej 4000 g.
-    public static List<Mother> mothersCertainAgeWithKidsCertainWeight(List<Mother> mothers, int age, double weight) {
-        List<Mother> mothersCertainAgeWithKidsCertainWeight = new ArrayList<>();
+    public static List<Mother> womenBelowAgeWithKidsOverWeight(List<Mother> mothers, int age, double weight) {
+        if (mothers.isEmpty()) {
+            throw new IllegalArgumentException("List of mothers cannot be empty");
+        }
+
+        List<Mother> womenBelowAgeWithKidsOverWeight = new ArrayList<>();
 
         for (Mother m : mothers) {
             if (m.getAge() < age) {
                 for (Child c : m.getChildren()) {
                     if (c.getWeight() > weight) {
-                        mothersCertainAgeWithKidsCertainWeight.add(m);
+                        womenBelowAgeWithKidsOverWeight.add(m);
                     }
                 }
             }
         }
-        return mothersCertainAgeWithKidsCertainWeight;
+        return womenBelowAgeWithKidsOverWeight;
     }
 
     //TODO  e) Znajdz matki które urodziły bliźnięta.
     public static List<Mother> mothersWhoGaveBirthToTwins(List<Mother> mothers) {
+        if (mothers.isEmpty()) {
+            throw new IllegalArgumentException("List of mothers cannot be empty");
+        }
         List<Mother> mothersWhoGaveBirthToTwins = new ArrayList<>();
 
         for (Mother mother : mothers) {
@@ -118,10 +125,6 @@ public class Mother {
 
     public static List<Mother> getExtension() {
         return extension;
-    }
-
-    public static void setExtension(List<Mother> extension) {
-        Mother.extension = extension;
     }
 
     @Override

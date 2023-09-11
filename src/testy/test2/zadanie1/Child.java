@@ -74,6 +74,9 @@ public class Child {
     }
 
     private static Mother findMotherById(int id) {
+        if (Mother.extension.isEmpty()) {
+            throw new IllegalArgumentException("List of mothers is empty");
+        }
         for (Mother mother : Mother.extension) {
             if (mother.getMotherId() == id) {
                 return mother;
@@ -84,6 +87,9 @@ public class Child {
 
     //TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
     public static Child tollestChildByGender(List<Child> children, char gender) {
+        if (children.isEmpty()) {
+            throw new IllegalArgumentException("List of children is empty");
+        }
         Child tollestChild = children.get(0);
 
         for (Child c : children) {
@@ -96,10 +102,14 @@ public class Child {
     }
 
     //TODO b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
-    public static Map.Entry<String, Integer> mostPopularDay(List<Child> children) {
+    public static Map.Entry<String, Integer> mostPopularDay() {
+        if (extension.isEmpty()) {
+            throw new IllegalArgumentException("List of children is empty");
+        }
+
         Map<String, Integer> dayOfWeekCount = new HashMap<>();
 
-        for (Child child : children) {
+        for (Child child : extension) {
             Date dateOfBirth = child.getDateOfBirth();
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(dateOfBirth);
@@ -114,7 +124,11 @@ public class Child {
 
     //TODO d) Podaj imiona i daty urodzenia dziewczynek, które odziedziczyły imię po matce.
     public static List<Child> girlsWithTheSameNameAsMother(List<Child> children) {
-            List<Child> girlsWithTheSameNameAsMother = new ArrayList<>();
+        if (children.isEmpty()) {
+            throw new IllegalArgumentException("List of children is empty");
+        }
+
+        List<Child> girlsWithTheSameNameAsMother = new ArrayList<>();
 
         for (Child child : children) {
             if (child.getName().equalsIgnoreCase(child.getMum().getName())) {
@@ -123,6 +137,17 @@ public class Child {
         }
 
         return girlsWithTheSameNameAsMother;
+    }
+
+    public String getFormattedDateOfBirth() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(dateOfBirth);
+    }
+
+    public void setMum(Mother mum) {
+        if(!mum.getChildren().contains(this)) {
+            this.mum = mum;
+        }
     }
 
     public int getChildId() {
@@ -149,11 +174,6 @@ public class Child {
         return dateOfBirth;
     }
 
-    public String getFormattedDateOfBirth() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return dateFormat.format(dateOfBirth);
-    }
-
     public double getWeight() {
         return weight;
     }
@@ -164,12 +184,6 @@ public class Child {
 
     public Mother getMum() {
         return mum;
-    }
-
-    public void setMum(Mother mum) {
-        if(!mum.getChildren().contains(this)) {
-            this.mum = mum;
-        }
     }
 
     public static List<Child> getExtension() {

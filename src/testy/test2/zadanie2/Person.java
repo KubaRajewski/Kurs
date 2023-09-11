@@ -16,9 +16,16 @@ public abstract class Person {
 
     public Person(String surname, String name, String pesel, Date dateOfBirth) {
         for (Person person : extension) {
-            if (person.pesel.equals(pesel)){
+            if (person.pesel.equals(pesel)) {
                 throw new IllegalArgumentException("Person with this PESEL already exists");
             }
+        }
+        if (pesel.length() != 11 || !pesel.matches("[0-9]+")) {
+            throw new IllegalArgumentException("PESEL must be 11 characters long and must contain only digits");
+        } else if (surname == null || surname.isBlank() || name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name and surname cannot be empty");
+        } else if (dateOfBirth == null || dateOfBirth.after(new Date())) {
+            throw new IllegalArgumentException("Date of birth cannot be null or in the future");
         }
 
         this.surname = surname;

@@ -29,6 +29,16 @@ public class Visit {
         patient.getVisits().add(this);
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                          KOMENTARZ DO WCZYTYWANIA PLIKOW                                                 //
+//      Wartosci w plikach ktore dostalem byly oddzielone znakami tabulacji, a nie spacjami tak jak w tym rozwiazaniu       //
+//      Nie wiem dlaczego moj komputer (mac) przy wczytywaniu zamieniał niektore znaki tabulacji na spacje a inne           //
+//      zostawiał nie zmienione, probowałem sobie jakos z tym poradzic ale nie bylem w stanie, nawet przy recznej zamianie  //
+//      znakow spacji na tab nie dawalo to efektu. Zeby program jakkolwiek zadzialal musialem zamienic znaki tabulacji na   //
+//      znaki spacji, mam nadzieje ze to nie problem ale chcialem tylko poinformowac o tym skad ta zmiana.                  //
+//      W folderze screeenshot zalaczylem zdjecie tego jak wygladal plik ktory dostalem na maila po zaladowaniu do intelija //
+//      O dziwo problem dotyczyl tylko i wylacznie pliku wizyty i pacjenci, problem nie wystapil w pliku lekarze.           //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Todo 0) zaimplementuj relacje oraz wczytaj pliki
     public static void readVisits(File visits) {
@@ -84,7 +94,6 @@ public class Visit {
         return busiestYear;
     }
 
-
     public Doctor getDoctor() {
         return doctor;
     }
@@ -108,11 +117,8 @@ public class Visit {
 
     @Override
     public String toString() {
-        return "Visit{" +
-                "doctor=" + doctor +
-                ", patient=" + patient +
-                ", date=" + getFormattedDate() +
-                '}';
+        return "Doctor: " + doctor.getName() + " " + doctor.getSurname() + ", Patient: "
+                + patient.getName() + " " + patient.getSurname() + ", Date: " + getFormattedDate() + "\n";
     }
 
     @Override

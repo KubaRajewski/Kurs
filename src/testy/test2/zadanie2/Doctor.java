@@ -19,10 +19,13 @@ public class Doctor  extends Person{
     public Doctor(String surname, String name, String pesel, Date dateOfBirth, int doctorId, String specialization, String nip) {
         super(surname, name, pesel, dateOfBirth);
         for (Doctor doctor : extension) {
-            if (doctor.doctorId == doctorId || doctor.nip.equals(nip)){
-                throw new IllegalArgumentException("Doctor with this Id or nip already exists");
+            if (doctor.doctorId == doctorId){
+                throw new IllegalArgumentException("Doctor with this Id already exists");
+            } else if (doctor.nip.equals(nip)){
+                throw new IllegalArgumentException("Doctor with this NIP already exists");
             }
         }
+
         this.doctorId = doctorId;
         this.specialization = specialization;
         this.nip = nip;
@@ -73,6 +76,9 @@ public class Doctor  extends Person{
 
     //TODO - znajdź lekarza ktory miał najwięcej wizyt
     public static Doctor busiestDoctor(){
+        if (extension.isEmpty()) {
+            throw new IllegalArgumentException("List of doctors is empty");
+        }
         Doctor busiestDoctor = extension.get(0);
         for (Doctor doctor : extension) {
             if (doctor.getVisits().size() > busiestDoctor.getVisits().size()){
@@ -84,29 +90,31 @@ public class Doctor  extends Person{
 
 
     //TODO - która specalizacja cieszy się największym powodzeniem?
-    public static String mostPopularSpecialty() {
-        Map<String, Integer> specialtyCounts = new HashMap<>();
-
+    public static String mostPopularSpecialty(){
+        if (extension.isEmpty()) {
+            throw new IllegalArgumentException("List of doctors is empty");
+        }
+        Map<String, Integer> visitCount = new HashMap<>();
         for (Doctor doctor : extension) {
-            String specialty = doctor.getSpecialization();
-            specialtyCounts.put(specialty, specialtyCounts.getOrDefault(specialty, 0) + doctor.getVisits().size());
+            visitCount.put(doctor.getSpecialization(), visitCount.getOrDefault(doctor.getSpecialization(), 0) + doctor.getVisits().size());
         }
 
-        int maxCount = 0;
-        String mostPopularSpecialty = "";
-
-        for (Map.Entry<String, Integer> entry : specialtyCounts.entrySet()) {
-            if (entry.getValue() > maxCount) {
-                maxCount = entry.getValue();
+        String mostPopularSpecialty = null;
+        int mostPopularSpecialtyCount = 0;
+        for (Map.Entry<String, Integer> entry : visitCount.entrySet()) {
+            if (entry.getValue() > mostPopularSpecialtyCount){
                 mostPopularSpecialty = entry.getKey();
+                mostPopularSpecialtyCount = entry.getValue();
             }
         }
-
         return mostPopularSpecialty;
     }
 
     //TODO - wypisz top 5 najstarszych lekarzy
     public static List<Doctor> oldestDoctors(int limit) {
+        if (extension.isEmpty()) {
+            throw new IllegalArgumentException("List of doctors is empty");
+        }
         Comparator<Doctor> birthDateComparator = Comparator.comparing(Doctor::getDateOfBirth);
         List<Doctor> extensionCopy = new ArrayList<>(extension);
         extensionCopy.sort(birthDateComparator);
@@ -117,6 +125,9 @@ public class Doctor  extends Person{
 
     //TODO - wypisz top 5 lekarzy co mieli najwiecej wizyt
     public static List<Doctor> busiestDoctors(int limit) {
+        if (extension.isEmpty()) {
+            throw new IllegalArgumentException("List of doctors is empty");
+        }
         Comparator<Doctor> visitsComparator = Comparator.comparingInt(doctor -> doctor.getVisits().size());
         List<Doctor> extensionCopy = new ArrayList<>(extension);
         extensionCopy.sort(visitsComparator.reversed());
@@ -126,23 +137,23 @@ public class Doctor  extends Person{
     }
 
     //TODO - zwroc lekarzy ktorzy przyjeli tylko jednego pacjenta
-    public static List<Doctor> doctorsWithCertainAmountOfPatients(int num) {
-        Map<Doctor, Integer> doctorToPatientCount = new HashMap<>();
+    public static List<Doctor> doctorsWithXPatients(int num) {
+        Map<Doctor, Integer> patientCount = new HashMap<>();
 
         for (Visit visit : Visit.getExtension()) {
             Doctor doctor = visit.getDoctor();
-            doctorToPatientCount.put(doctor, doctorToPatientCount.getOrDefault(doctor, 0) + 1);
+            patientCount.put(doctor, patientCount.getOrDefault(doctor, 0) + 1);
         }
 
-        List<Doctor> doctorsWithCertainAmountOfPatients = new ArrayList<>();
+        List<Doctor> doctorsWithXPatients = new ArrayList<>();
 
-        for (Map.Entry<Doctor, Integer> entry : doctorToPatientCount.entrySet()) {
+        for (Map.Entry<Doctor, Integer> entry : patientCount.entrySet()) {
             if (entry.getValue() == num) {
-                doctorsWithCertainAmountOfPatients.add(entry.getKey());
+                doctorsWithXPatients.add(entry.getKey());
             }
         }
 
-        return doctorsWithCertainAmountOfPatients;
+        return doctorsWithXPatients;
     }
 
     public int getDoctorId() {
@@ -171,10 +182,6 @@ public class Doctor  extends Person{
 
     public static List<Doctor> getExtension() {
         return extension;
-    }
-
-    public static void setExtension(List<Doctor> extension) {
-        Doctor.extension = extension;
     }
 
     @Override

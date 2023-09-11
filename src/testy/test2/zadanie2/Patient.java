@@ -26,6 +26,18 @@ public class Patient extends Person {
         extension.add(this);
     }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                          KOMENTARZ DO WCZYTYWANIA PLIKOW                                                 //
+//      Wartosci w plikach ktore dostalem byly oddzielone znakami tabulacji, a nie spacjami tak jak w tym rozwiazaniu       //
+//      Nie wiem dlaczego moj komputer (mac) przy wczytywaniu zamieniał niektore znaki tabulacji na spacje a inne           //
+//      zostawiał nie zmienione, probowałem sobie jakos z tym poradzic ale nie bylem w stanie, nawet przy recznej zamianie  //
+//      znakow spacji na tab nie dawalo to efektu. Zeby program jakkolwiek zadzialal musialem zamienic znaki tabulacji na   //
+//      znaki spacji, mam nadzieje ze to nie problem ale chcialem tylko poinformowac o tym skad ta zmiana.                  //
+//      W folderze screeenshot zalaczylem zdjecia tego jak wygladal plik ktory dostalem na maila po zaladowaniu do intelija //
+//      O dziwo problem dotyczyl tylko i wylacznie pliku wizyty i pacjenci, problem nie wystapil w pliku lekarze.           //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // Todo 0) zaimplementuj relacje oraz wczytaj pliki
     public static void readPatients(File patients) {
         try (BufferedReader reader = new BufferedReader(new FileReader(patients))) {
@@ -57,7 +69,7 @@ public class Patient extends Person {
     }
 
     public static Patient findPatientByID(int patientId) {
-        for (Patient patient : Patient.getExtension()) {
+        for (Patient patient : extension) {
             if (patient.getPatientId() == patientId){
                 return patient;
             }
@@ -67,6 +79,9 @@ public class Patient extends Person {
 
     //TODO - znajdź pacjenta który miał najwięcej wizyt
     public static Patient busiestPatient(){
+        if (extension.isEmpty()) {
+            throw new IllegalArgumentException("List of patients is empty");
+        }
         Patient busiestPatient = extension.get(0);
 
         for (Patient patient : extension) {
@@ -138,5 +153,4 @@ public class Patient extends Person {
     public int hashCode() {
         return Objects.hash(super.hashCode(), patientId);
     }
-
 }
