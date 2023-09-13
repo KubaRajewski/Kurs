@@ -29,17 +29,6 @@ public class Visit {
         patient.getVisits().add(this);
     }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                          KOMENTARZ DO WCZYTYWANIA PLIKOW                                                 //
-//      Wartosci w plikach ktore dostalem byly oddzielone znakami tabulacji, a nie spacjami tak jak w tym rozwiazaniu       //
-//      Nie wiem dlaczego moj komputer (mac) przy wczytywaniu zamieniał niektore znaki tabulacji na spacje a inne           //
-//      zostawiał nie zmienione, probowałem sobie jakos z tym poradzic ale nie bylem w stanie, nawet przy recznej zamianie  //
-//      znakow spacji na tab nie dawalo to efektu. Zeby program jakkolwiek zadzialal musialem zamienic znaki tabulacji na   //
-//      znaki spacji, mam nadzieje ze to nie problem ale chcialem tylko poinformowac o tym skad ta zmiana.                  //
-//      W folderze screeenshot zalaczylem zdjecie tego jak wygladal plik ktory dostalem na maila po zaladowaniu do intelija //
-//      O dziwo problem dotyczyl tylko i wylacznie pliku wizyty i pacjenci, problem nie wystapil w pliku lekarze.           //
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     // Todo 0) zaimplementuj relacje oraz wczytaj pliki
     public static void readVisits(File visits) {
         try (BufferedReader reader = new BufferedReader(new FileReader(visits))) {
@@ -51,7 +40,7 @@ public class Visit {
                     continue;
                 }
 
-                String[] parts = line.split(" ");
+                String[] parts = line.split("\t");
 
                 if (parts.length == 3) {
                     int doctorId = Integer.parseInt(parts[0]);
@@ -106,7 +95,7 @@ public class Visit {
         return date;
     }
 
-    public String getFormattedDate() {
+    private String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(date);
     }

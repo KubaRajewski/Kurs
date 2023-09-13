@@ -36,11 +36,11 @@ public class Main {
         Child.readChildren(fileChildren);
 
         //TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
-        Child tollestBoy = Child.tollestChildByGender(Child.extension, 's');
-        Child tollestGirl = Child.tollestChildByGender(Child.extension, 'c');
+        Child tallestBoy = Child.tallestChildByGender(Child.extension, 's');
+        Child tallestGirl = Child.tallestChildByGender(Child.extension, 'c');
 
-        System.out.println("\nTollest boy: " + tollestBoy.getChildId() + " " + tollestBoy.getName() + " " + tollestBoy.getHeight());
-        System.out.println("Tollest girl: " + tollestGirl.getChildId() + " " + tollestGirl.getName() + " " + tollestGirl.getHeight() + "\n");
+        System.out.println("\nTallest boy: " + tallestBoy.getChildId() + " " + tallestBoy.getName() + " " + tallestBoy.getHeight());
+        System.out.println("Tallest girl: " + tallestGirl.getChildId() + " " + tallestGirl.getName() + " " + tallestGirl.getHeight() + "\n");
 
         //TODO  b) W którym dniu tygodnia urodziło się najwięcej dzieci? Podaj dzien tygodnia i liczbe dzieci.
         System.out.println("Most popular day of the week: " + Child.mostPopularDay() + "\n");

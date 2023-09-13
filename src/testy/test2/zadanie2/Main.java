@@ -62,7 +62,7 @@ public class Main {
         System.out.println("\nNajwiecej wizyt bylo w roku: " + Visit.busiestYear()+"\n");
 
         //TODO e) wypisz top 5 najstarszych lekarzy
-        System.out.println("x najstarszych lekarzy: ");
+        System.out.println("5 najstarszych lekarzy: ");
         Doctor.oldestDoctors(5).forEach(System.out::println);
         System.out.println();
 

@@ -82,7 +82,6 @@ public abstract class Figura {
         return ekstensja;
     }
 
-
     @Override
     public String toString() {
         return "Figura nr " + getIndex() + ": " + opis();

@@ -21,7 +21,7 @@ public class Child {
 
     public Child(int childId, char gender, String name, Date dateOfBirth, double weight, double height) {
         for (Child child : extension) {
-            if (child.childId == childId){
+            if (child.childId == childId) {
                 throw new IllegalArgumentException("Child with this id already exists");
             }
         }
@@ -57,7 +57,7 @@ public class Child {
                         Mother mother = findMotherById(idMatki);
 
                         Child child = new Child(childId, gender, name, dateOfBirth, weight, height);
-                        if (mother == null){
+                        if (mother == null) {
                             throw new IllegalArgumentException("Mother not found for baby with id:" + childId);
                         }
                         child.setMum(mother);
@@ -86,14 +86,14 @@ public class Child {
     }
 
     //TODO  a) Podaj imię i wzrost najwyższego chłopca oraz imię i wzrost najwyższej dziewczynki.
-    public static Child tollestChildByGender(List<Child> children, char gender) {
+    public static Child tallestChildByGender(List<Child> children, char gender) {
         if (children.isEmpty()) {
             throw new IllegalArgumentException("List of children is empty");
         }
         Child tollestChild = children.get(0);
 
         for (Child c : children) {
-            if ((c.getHeight() > tollestChild.getHeight()) && c.getGender() == gender){
+            if ((c.getHeight() > tollestChild.getHeight()) && c.getGender() == gender) {
                 tollestChild = c;
             }
         }
@@ -145,7 +145,7 @@ public class Child {
     }
 
     public void setMum(Mother mum) {
-        if(!mum.getChildren().contains(this)) {
+        if (!mum.getChildren().contains(this)) {
             this.mum = mum;
         }
     }

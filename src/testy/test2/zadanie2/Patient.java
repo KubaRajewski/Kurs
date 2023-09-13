@@ -26,18 +26,6 @@ public class Patient extends Person {
         extension.add(this);
     }
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                          KOMENTARZ DO WCZYTYWANIA PLIKOW                                                 //
-//      Wartosci w plikach ktore dostalem byly oddzielone znakami tabulacji, a nie spacjami tak jak w tym rozwiazaniu       //
-//      Nie wiem dlaczego moj komputer (mac) przy wczytywaniu zamieniał niektore znaki tabulacji na spacje a inne           //
-//      zostawiał nie zmienione, probowałem sobie jakos z tym poradzic ale nie bylem w stanie, nawet przy recznej zamianie  //
-//      znakow spacji na tab nie dawalo to efektu. Zeby program jakkolwiek zadzialal musialem zamienic znaki tabulacji na   //
-//      znaki spacji, mam nadzieje ze to nie problem ale chcialem tylko poinformowac o tym skad ta zmiana.                  //
-//      W folderze screeenshot zalaczylem zdjecia tego jak wygladal plik ktory dostalem na maila po zaladowaniu do intelija //
-//      O dziwo problem dotyczyl tylko i wylacznie pliku wizyty i pacjenci, problem nie wystapil w pliku lekarze.           //
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     // Todo 0) zaimplementuj relacje oraz wczytaj pliki
     public static void readPatients(File patients) {
         try (BufferedReader reader = new BufferedReader(new FileReader(patients))) {
@@ -49,7 +37,7 @@ public class Patient extends Person {
                     continue;
                 }
 
-                String[] parts = line.split(" ");
+                String[] parts = line.split("\t");
 
                 if (parts.length == 5) {
                     int patientId = Integer.parseInt(parts[0]);
@@ -93,18 +81,22 @@ public class Patient extends Person {
         return busiestPatient;
     }
 
-    //TODO - zwroc pacientow ktorzy byli u minumum 5ciu roznych lekarzy
     public static List<Patient> patientsWithMinimumDoctors(int minDoctors) {
-        Map<Patient, List<Doctor> > patientToDoctorsMap = new HashMap<>();
+        Map<Patient, List<Doctor>> patientToDoctorsMap = new HashMap<>();
+        List<Patient> resultPatients = new ArrayList<>();
 
         for (Visit visit : Visit.getExtension()) {
             Patient patient = visit.getPatient();
             Doctor doctor = visit.getDoctor();
 
-            patientToDoctorsMap.computeIfAbsent(patient, k -> new ArrayList<>()).add(doctor);
-        }
+            List<Doctor> doctorsList = patientToDoctorsMap.get(patient);
+            if (doctorsList == null) {
+                doctorsList = new ArrayList<>();
+                patientToDoctorsMap.put(patient, doctorsList);
+            }
 
-        List<Patient> resultPatients = new ArrayList<>();
+            doctorsList.add(doctor);
+        }
 
         for (Map.Entry<Patient, List<Doctor>> entry : patientToDoctorsMap.entrySet()) {
             List<Doctor> uniqueDoctors = entry.getValue();
@@ -115,6 +107,7 @@ public class Patient extends Person {
 
         return resultPatients;
     }
+
 
     public int getPatientId() {
         return patientId;

@@ -32,11 +32,8 @@ public abstract class Osoba {
 
     public abstract double obliczDochod();
 
-    public String getPlec(){
-        if (Integer.parseInt(String.valueOf(getPesel().charAt(10))) % 2 == 0) {
-            return "Kobieta";
-        }
-        return "Mezczyzna";
+    public String getPlec() {
+        return (Integer.parseInt(String.valueOf(getPesel().charAt(10))) % 2 == 0) ? "Kobieta" : "Mezczyzna";
     }
 
     public String getImie() {

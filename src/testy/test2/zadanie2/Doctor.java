@@ -39,6 +39,7 @@ public class Doctor  extends Person{
             String line;
             boolean firstLine = true;
             while ((line = reader.readLine()) != null) {
+//                reader.readLine();
                 if (firstLine) {
                     firstLine = false;
                     continue;
@@ -73,6 +74,7 @@ public class Doctor  extends Person{
         }
         throw new IllegalArgumentException("Doctor with this ID not found: " + doctorId);
     }
+
 
     //TODO - znajdź lekarza ktory miał najwięcej wizyt
     public static Doctor busiestDoctor(){
