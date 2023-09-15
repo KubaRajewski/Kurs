@@ -1,9 +1,9 @@
-package dalsze.podstawy.big.decimal;
+package dalsze.podstawy.wielkie.liczby;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Main {
+public class Dodatkowe {
     public static void main(String[] args) {
 //        Dodawanie BigDecimal:
 //        Napisz funkcję, która przyjmuje dwa argumenty typu BigDecimal i zwraca wynik ich dodawania.

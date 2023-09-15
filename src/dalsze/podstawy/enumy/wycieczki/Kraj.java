@@ -1,0 +1,5 @@
+package dalsze.podstawy.enumy.wycieczki;
+
+public enum Kraj {
+    TUNEZJA, EGIPT, FRANCJA, WLOCHY, MALEDIWY, TAJLANDIA, HISZPANIA, NIEMCY, POLSKA, USA, CHINY, AUSTRALIA, BRAZYLIA, KANADA, ROSJA, JAPONIA;
+}
