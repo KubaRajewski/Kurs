@@ -1,5 +1,6 @@
 package dalsze.podstawy.wielkie.liczby;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // stale reprezentujace 0,1,2,10
         System.out.println(BigInteger.ZERO);
@@ -119,12 +120,12 @@ public class Main {
 
         System.out.println(wspolneElementy(bigIntegers, bigIntegers2));
 
-        // Stworz metode ktora przyjmuje jako parametr liste list big intow :). Z kazdej
+        //TODO Stworz metode ktora przyjmuje jako parametr liste list big intow :). Z kazdej
         // listy znajdz najwieksza wartosc i oblicz sume najwiekszych wartosci.
-
-
-        //		stworz sobie jakis plik z liczbami, 100 liczb stucyfrowych (roznych, losowych!)
-//		Wczytaj te liczby z pliku i zapisz iloczyn tych liczb to pliku wynik.txt
+        List<List<BigInteger>> listaList = new ArrayList<>();
+        listaList.add(bigIntegers);
+        listaList.add(bigIntegers2);
+        System.out.println(sumaNajwiekszych(listaList));
 
         // Stworz krotki system bankowy oparty na klasie BigDecimal. Stworz klase Klient
         // i Konto. Klient moze miec wiele kont. Konto powinno miec metody
@@ -207,6 +208,6 @@ public class Main {
         }
 
         return suma;
-
     }
 }
+
