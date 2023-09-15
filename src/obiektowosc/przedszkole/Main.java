@@ -138,7 +138,7 @@ public class Main {
         Grupa.getEkstensja().forEach(System.out::println);
 
         // Wypiszmy dzieci w grupie g1
-        System.out.println("\nGrupa g1: "+g1 + "\nDzieci: "+ g1.getDzieci());
+        System.out.println("\nGrupa g1: " + g1 + "\nDzieci: " + g1.getDzieci());
 
         // wypiszmy grupe dziecka g1
         System.out.println("\nGrupa dziecka d1: " + d1.getGrupa());
@@ -154,7 +154,6 @@ public class Main {
         // TODO  * - zapisz do pliku imiona i nazwiska wszystkich dzieci którzy sa w grupie dla wychowawcy podanego jako parametr
         Grupa.zapiszDzieciDoPliku("Mariusz", "Pudzianowski");
         System.out.println("\nZapisano do pliku");
-
 
 
     }

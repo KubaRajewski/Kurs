@@ -6,12 +6,11 @@ import java.util.Objects;
 
 public class Wynik {
 
+    private static List<Wynik> ekstensja = new ArrayList<>();
     private Turniej turniej;
     private Gracz gracz;
     private int pozycja;
     private int punkty;
-
-    private static List<Wynik> ekstensja = new ArrayList<>();
 
     public Wynik(Turniej turniej, Gracz gracz, int pozycja) {
 
@@ -46,33 +45,28 @@ public class Wynik {
         turniej.getWyniki().add(this);
     }
 
-
-    public Turniej getTurniej() {
-        return turniej;
-    }
-
-
-    public Gracz getGracz() {
-        return gracz;
-    }
-
-
-    public int getPozycja() {
-        return pozycja;
-    }
-
-
-    public int getPunkty() {
-        return punkty;
-    }
-
-
     public static List<Wynik> getEkstensja() {
         return ekstensja;
     }
 
     public static void setEkstensja(List<Wynik> ekstensja) {
         Wynik.ekstensja = ekstensja;
+    }
+
+    public Turniej getTurniej() {
+        return turniej;
+    }
+
+    public Gracz getGracz() {
+        return gracz;
+    }
+
+    public int getPozycja() {
+        return pozycja;
+    }
+
+    public int getPunkty() {
+        return punkty;
     }
 
     @Override

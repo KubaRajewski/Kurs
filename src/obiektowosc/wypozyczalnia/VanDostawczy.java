@@ -3,10 +3,9 @@ package obiektowosc.wypozyczalnia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VanDostawczy extends Van{
-    private Double ladownosc; // w m3
-
+public class VanDostawczy extends Van {
     private static List<VanDostawczy> ekstensja = new ArrayList<>();
+    private Double ladownosc; // w m3
 
     public VanDostawczy(String numerRejestracyjny, String marka, String model, int rokProdukcji, int pojemnoscBaku, boolean dostepnosc, int cenaWypozyczenia, int dlugoscBagaznika, double ladownosc) {
         super(numerRejestracyjny, marka, model, rokProdukcji, pojemnoscBaku, dostepnosc, cenaWypozyczenia, dlugoscBagaznika);

@@ -9,17 +9,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class Mother {
-    private int motherId;
-    private final String name;
-    private int age;
-
-    private List<Child> children = new ArrayList<>();
-
     public static List<Mother> extension = new ArrayList<>();
+    private final String name;
+    private int motherId;
+    private int age;
+    private List<Child> children = new ArrayList<>();
 
     public Mother(int motherId, String name, int age) {
         for (Mother mother : extension) {
-            if (mother.motherId == motherId){
+            if (mother.motherId == motherId) {
                 throw new IllegalArgumentException("Mother with this ID already exists");
             }
         }
@@ -95,6 +93,10 @@ public class Mother {
         return mothersWhoGaveBirthToTwins;
     }
 
+    public static List<Mother> getExtension() {
+        return extension;
+    }
+
     public int getMotherId() {
         return motherId;
     }
@@ -121,10 +123,6 @@ public class Mother {
 
     public void setChildren(List<Child> children) {
         this.children = children;
-    }
-
-    public static List<Mother> getExtension() {
-        return extension;
     }
 
     @Override

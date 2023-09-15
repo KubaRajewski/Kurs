@@ -5,19 +5,18 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Osoba {
+    private static List<Osoba> ekstensja = new ArrayList<>();
     private String imie;
     private String nazwisko;
     private String pesel;
     private String miasto;
 
-    private static List<Osoba> ekstensja = new ArrayList<>();
-
     public Osoba(String imie, String nazwisko, String pesel, String miasto) {
-        if (imie == null || nazwisko == null || pesel == null){
+        if (imie == null || nazwisko == null || pesel == null) {
             throw new IllegalArgumentException("podaj conajmniej imie, nazwisko i pesel");
         }
         for (Osoba osoba : Osoba.getEkstensja()) {
-            if (osoba.getPesel().equals(pesel)){
+            if (osoba.getPesel().equals(pesel)) {
                 throw new IllegalArgumentException("Pesel nie moze sie powtarzac");
             }
         }
@@ -28,6 +27,14 @@ public abstract class Osoba {
         this.miasto = miasto;
 
         ekstensja.add(this);
+    }
+
+    public static List<Osoba> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Osoba> ekstensja) {
+        Osoba.ekstensja = ekstensja;
     }
 
     public abstract double obliczDochod();
@@ -66,14 +73,6 @@ public abstract class Osoba {
 
     public void setMiasto(String miasto) {
         this.miasto = miasto;
-    }
-
-    public static List<Osoba> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Osoba> ekstensja) {
-        Osoba.ekstensja = ekstensja;
     }
 
     @Override

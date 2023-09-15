@@ -131,14 +131,13 @@ public class Main {
 
         if (table1.length > table2.length) {
             drukujTablice(table1);
-        }
-        else if (table1.length == table2.length) {
+        } else if (table1.length == table2.length) {
             System.out.println("tablice sa tej samej dlugosci");
-        }
-        else {
+        } else {
             drukujTablice(table2);
         }
     }
+
     public static void drukujTablice(int[] tablica) {
         for (int num : tablica) {
             System.out.print(num + " ");

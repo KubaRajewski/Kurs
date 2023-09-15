@@ -407,41 +407,41 @@ public class Main {
 //    Stwórz funkcję, która jako parametr przyjmuje mapę z wartościami liczbowymi i zwraca listę wartości,
 //    które są liczbami pierwszymi.
 
-        public static List<Integer> liczbyPierwsze(HashMap<Integer, Integer> liczby) {
-            List<Integer> liczbyPierwsze = new ArrayList<>();
+    public static List<Integer> liczbyPierwsze(HashMap<Integer, Integer> liczby) {
+        List<Integer> liczbyPierwsze = new ArrayList<>();
 
-            for (Integer i : liczby.keySet()) {
-                Boolean pierwsza = false;
+        for (Integer i : liczby.keySet()) {
+            Boolean pierwsza = false;
 
-                // warunek czy liczba jest pierwsza
-                for (int j = 2; j < i; j++) {
-                    if (i % j == 0) {
-                        pierwsza = false;
-                        break;
-                    } else {
-                        pierwsza = true;
-                    }
-                }
-                if (pierwsza) {
-                    liczbyPierwsze.add(i);
+            // warunek czy liczba jest pierwsza
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    pierwsza = false;
+                    break;
+                } else {
+                    pierwsza = true;
                 }
             }
-
-            return liczbyPierwsze;
+            if (pierwsza) {
+                liczbyPierwsze.add(i);
+            }
         }
+
+        return liczbyPierwsze;
+    }
 
 //    Napisz metodę, która jako parametr przyjmuje mapę zawierającą imiona jako klucze i wiek jako wartości,
 //    a następnie zwraca nową mapę, gdzie kluczem jest imię osoby, a wartością jest jej wiek podniesiony do kwadratu.
 
-        public static Map<String, Integer> wiekDoKwadratu(HashMap<String, Integer> wiek) {
-            Map<String, Integer> wiekDoKwadratu = new HashMap<>();
+    public static Map<String, Integer> wiekDoKwadratu(HashMap<String, Integer> wiek) {
+        Map<String, Integer> wiekDoKwadratu = new HashMap<>();
 
-            for (String imie : wiek.keySet()) {
-                wiekDoKwadratu.put(imie, wiek.get(imie) * wiek.get(imie));
-            }
-
-            return wiekDoKwadratu;
+        for (String imie : wiek.keySet()) {
+            wiekDoKwadratu.put(imie, wiek.get(imie) * wiek.get(imie));
         }
+
+        return wiekDoKwadratu;
+    }
 
     // Napisz metoda która dodaje słowa do mapy. Kluczem maja byc kolejen liczby
     // naturalne zaczynajac od 0.
@@ -562,7 +562,6 @@ public class Main {
 //    public static String najdluzszeNazwisko (Map<String, List<String>> mapa) {
 //        return najdluzszyString(najdluzszeImiona(mapa));
 //    }
-
 
 
     public static List<String> najdluzszeImionaWKlasach(List<String> klasa, int limit) {

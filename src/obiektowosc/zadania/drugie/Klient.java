@@ -6,29 +6,13 @@ import java.util.List;
 import java.util.Set;
 
 public class Klient extends Osoba {
-private List<Produkt> koszyk = new ArrayList<>();
-
-private static List<Klient> ekstensja = new ArrayList<>();
+    private static List<Klient> ekstensja = new ArrayList<>();
+    private List<Produkt> koszyk = new ArrayList<>();
 
     public Klient(String imie, String nazwisko) {
         super(imie, nazwisko);
 
         ekstensja.add(this);
-    }
-
-    public void dodajProdukt(Produkt produkt){
-        koszyk.add(produkt);
-        produkt.dodajKlienta(this);
-    }
-
-    // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
-
-    public double obliczWartoscZakupow() {
-        double wartosc = 0;
-        for (Produkt produkt : koszyk) {
-            wartosc += produkt.getCena();
-        }
-        return wartosc;
     }
 
     public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
@@ -43,15 +27,38 @@ private static List<Klient> ekstensja = new ArrayList<>();
         return max;
     }
 
+    // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
+
+    public static List<Klient> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Klient> ekstensja) {
+        Klient.ekstensja = ekstensja;
+    }
+
     ////TODO 2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
 
-    public List<Produkt> ulubioneProdukty(){
+    public void dodajProdukt(Produkt produkt) {
+        koszyk.add(produkt);
+        produkt.dodajKlienta(this);
+    }
+
+    public double obliczWartoscZakupow() {
+        double wartosc = 0;
+        for (Produkt produkt : koszyk) {
+            wartosc += produkt.getCena();
+        }
+        return wartosc;
+    }
+
+    public List<Produkt> ulubioneProdukty() {
         if (koszyk == null)
             throw new IllegalArgumentException("koszyk tego klienta jest pusty");
 
         List<Produkt> ulubioneProdukty = new ArrayList<>();
 
-        if (koszyk.size() == 1){
+        if (koszyk.size() == 1) {
             ulubioneProdukty.add(koszyk.get(0));
             return ulubioneProdukty;
         }
@@ -87,14 +94,6 @@ private static List<Klient> ekstensja = new ArrayList<>();
 
     public void setKoszyk(List<Produkt> koszyk) {
         this.koszyk = koszyk;
-    }
-
-    public static List<Klient> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Klient> ekstensja) {
-        Klient.ekstensja = ekstensja;
     }
 
     @Override

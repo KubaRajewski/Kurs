@@ -4,20 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Figura {
-    private int index;
-
     private static List<Figura> ekstensja = new ArrayList<>();
+    private int index;
 
     public Figura() {
         this.index = 0;
         ekstensja.add(this);
     }
-
-    public abstract double obwod();
-
-    public abstract double pole();
-
-    public abstract String opis();
 
     public static Figura stworzKwadrat(double bok) {
         int index = ekstensja.size() + 1;
@@ -70,16 +63,22 @@ public abstract class Figura {
         return najwiekszePole;
     }
 
+    public static List<Figura> getEkstensja() {
+        return ekstensja;
+    }
+
+    public abstract double obwod();
+
+    public abstract double pole();
+
+    public abstract String opis();
+
     public int getIndex() {
         return index;
     }
 
     public void setIndex(int index) {
         this.index = index;
-    }
-
-    public static List<Figura> getEkstensja() {
-        return ekstensja;
     }
 
     @Override

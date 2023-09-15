@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Uczen extends Osoba {
+    private static List<Uczen> ekstensja = new ArrayList<>();
     private String numerIndeksu;
     private Szkola szkola;
     private Klasa klasa;
     private List<Ocena> oceny = new ArrayList<>();
-
-    private static List<Uczen> ekstensja = new ArrayList<>();
 
     public Uczen(String imie, String nazwisko, String adres, String numerIndeksu, Szkola szkola, Klasa klasa) {
         super(imie, nazwisko, adres);
@@ -28,6 +27,10 @@ public class Uczen extends Osoba {
         // dodaj ucznia do szkoly szkola
         szkola.dodajUcznia(this);
         ekstensja.add(this);
+    }
+
+    public static List<Uczen> getEkstensja() {
+        return ekstensja;
     }
 
     @Override
@@ -67,15 +70,10 @@ public class Uczen extends Osoba {
         this.oceny = oceny;
     }
 
-    public static List<Uczen> getEkstensja() {
-        return ekstensja;
-    }
-
     @Override
     public String toString() {
         return getImie() + " " + getNazwisko() + " " + numerIndeksu;
     }
-
 
 
 }

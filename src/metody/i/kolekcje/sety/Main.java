@@ -53,7 +53,7 @@ public class Main {
 
 // 7. Zbiór znaków
         System.out.println("Znaki z danego Stringa ");
-        System.out.println("String: Kuba" );
+        System.out.println("String: Kuba");
         System.out.println("Set: " + zbiorZnakow("Kuba"));
         System.out.println();
 

@@ -1,4 +1,5 @@
 package podstawy.JoptionPane;
+
 import javax.swing.*;
 
 public class Main {
@@ -26,7 +27,8 @@ public class Main {
         int max = a;
         if (b > max) {
             max = b;
-        }   if (c > max) {
+        }
+        if (c > max) {
             max = c;
         }
         JOptionPane.showMessageDialog(null, "Największa liczba to: " + max);
@@ -73,7 +75,7 @@ public class Main {
         int dialogResult2 = 0;
         while (dialogResult2 != JOptionPane.CANCEL_OPTION) {
             dialogResult2 = JOptionPane.showConfirmDialog(null, "Tak czy nie?",
-                    "",JOptionPane.YES_NO_CANCEL_OPTION);
+                    "", JOptionPane.YES_NO_CANCEL_OPTION);
             if (dialogResult2 == JOptionPane.YES_OPTION) {
                 tak++;
             } else if (dialogResult2 == JOptionPane.NO_OPTION) {
@@ -83,7 +85,7 @@ public class Main {
         if (tak > nie) {
             JOptionPane.showMessageDialog(null, "Więcej razy wybrałeś tak: " + tak + " razy.");
         } else if (nie > tak) {
-            JOptionPane.showMessageDialog(null, "Więcej razy wybrałeś nie: "+ nie + " razy.");
+            JOptionPane.showMessageDialog(null, "Więcej razy wybrałeś nie: " + nie + " razy.");
         } else {
             JOptionPane.showMessageDialog(null, "Wybrałeś tyle samo razy tak i nie: " + tak + " razy.");
         }

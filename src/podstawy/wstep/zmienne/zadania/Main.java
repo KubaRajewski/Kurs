@@ -82,9 +82,9 @@ public class Main {
 
         System.out.println(
                 "Imię: " + imie
-                + "\nNazwisko: " + nazwisko
-                + "\nAdres: " + adres
-                + "\nWiek: " + wiek);
+                        + "\nNazwisko: " + nazwisko
+                        + "\nAdres: " + adres
+                        + "\nWiek: " + wiek);
         System.out.println();
 
 //		Stwórz dwie zmienne typu int i w jednej linii wypisz ich sume, roznice,
@@ -105,8 +105,7 @@ public class Main {
         int liczbaInt = Integer.parseInt(liczba);
         if (liczbaInt == 10) {
             System.out.println("działa");
-        }
-        else {
+        } else {
             System.out.println("Nie działa");
         }
 
@@ -121,8 +120,7 @@ public class Main {
 
         if (x == z) { // w tym przypadku sa to dwa rozne obiekty bo == wskazuje na miejsce w pamieci komputera
             System.out.println("są równe");
-        }
-        else{
+        } else {
             System.out.println("nie sa rowne");
         }
 

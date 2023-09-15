@@ -34,6 +34,6 @@ public class Kwadrat extends Figura {
 
     @Override
     public String opis() {
-        return "Kwadrat o boku " + (int)bok + ".";
+        return "Kwadrat o boku " + (int) bok + ".";
     }
 }

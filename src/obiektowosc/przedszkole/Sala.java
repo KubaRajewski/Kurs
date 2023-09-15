@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sala {
+    private static List<Sala> ekstensja = new ArrayList<>();
     private String nazwa;
     private String kolorScian;
     private Grupa grupa;
-
-    private static List<Sala> ekstensja = new ArrayList<>();
 
     public Sala(String nazwa, String kolorScian) {
         this.nazwa = nazwa;
         this.kolorScian = kolorScian;
 
         ekstensja.add(this);
+    }
+
+    public static List<Sala> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Sala> ekstensja) {
+        Sala.ekstensja = ekstensja;
     }
 
     public String getNazwa() {
@@ -39,14 +46,6 @@ public class Sala {
 
     public void setGrupa(Grupa grupa) {
         this.grupa = grupa;
-    }
-
-    public static List<Sala> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Sala> ekstensja) {
-        Sala.ekstensja = ekstensja;
     }
 
     @Override

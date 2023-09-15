@@ -5,18 +5,25 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Uwaga {
+    public static List<Uwaga> ekstensja = new ArrayList<>();
     private final String nazwa;
     private final String opis;
     private final String dataWystawienia;
     private final Dziecko dziecko;
-
-    public static List<Uwaga> ekstensja = new ArrayList<>();
 
     public Uwaga(String nazwa, String opis, String dataWystawienia, Dziecko dziecko) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.dataWystawienia = dataWystawienia;
         this.dziecko = dziecko;
+    }
+
+    public static List<Uwaga> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Uwaga> ekstensja) {
+        Uwaga.ekstensja = ekstensja;
     }
 
     public String getNazwa() {
@@ -35,18 +42,10 @@ public abstract class Uwaga {
         return dziecko;
     }
 
-    public static List<Uwaga> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Uwaga> ekstensja) {
-        Uwaga.ekstensja = ekstensja;
-    }
-
     @Override
     public String toString() {
         if (this instanceof Przewinienie)
-            return "Typ: Przewinienie, " +  "Uczeń: " + dziecko + ", Tytuł: " + nazwa + ", Data: " + dataWystawienia;
+            return "Typ: Przewinienie, " + "Uczeń: " + dziecko + ", Tytuł: " + nazwa + ", Data: " + dataWystawienia;
         else if (this instanceof Odznaka)
             return "Typ: Odznaka, " + "Uczeń: " + dziecko + ", Tytuł: " + nazwa + ", Data: " + dataWystawienia;
         else {

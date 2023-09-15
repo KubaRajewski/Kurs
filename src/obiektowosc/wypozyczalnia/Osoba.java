@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Osoba {
+    public static List<Osoba> ekstensja = new ArrayList<>();
     private final String imie;
     private final String nazwisko;
-    private String adres;
     private final String numerDowodu;
-
-    public static List<Osoba> ekstensja = new ArrayList<>();
+    private String adres;
 
     public Osoba(String imie, String nazwisko, String adres, String numerDowodu) {
         this.imie = imie;
@@ -18,6 +17,14 @@ public abstract class Osoba {
         this.numerDowodu = numerDowodu;
 
         ekstensja.add(this);
+    }
+
+    public static List<Osoba> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Osoba> ekstensja) {
+        Osoba.ekstensja = ekstensja;
     }
 
     public String getImie() {
@@ -40,16 +47,8 @@ public abstract class Osoba {
         return numerDowodu;
     }
 
-    public static List<Osoba> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Osoba> ekstensja) {
-        Osoba.ekstensja = ekstensja;
-    }
-
     @Override
     public String toString() {
-        return imie + " " + nazwisko +  " " + numerDowodu;
+        return imie + " " + nazwisko + " " + numerDowodu;
     }
 }

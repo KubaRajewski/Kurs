@@ -48,7 +48,7 @@ public class Main {
                 case "edytuj":
                     System.out.println("Podaj tytuł utworu ktory chcesz edytowac: ");
                     String tytulDoEdycji = scanner.nextLine();
-                    if (Muzyka.zwrocKonkretnyUtwor(Muzyka.ekstensja, tytulDoEdycji) == null){
+                    if (Muzyka.zwrocKonkretnyUtwor(Muzyka.ekstensja, tytulDoEdycji) == null) {
                         System.out.println("Nie znaleziono podanego utworu");
                     } else {
                         Muzyka.edytujPiosenke(Muzyka.zwrocKonkretnyUtwor(Muzyka.ekstensja, tytulDoEdycji));
@@ -133,7 +133,7 @@ public class Main {
                     System.out.println("Podaj wiek utworu (w latach): ");
                     int wiekStarsze = scanner.nextInt();
                     scanner.nextLine();
-                    if (Muzyka.wyswietlUtworyStarszeNiz(Muzyka.ekstensja, wiekStarsze).isEmpty()){
+                    if (Muzyka.wyswietlUtworyStarszeNiz(Muzyka.ekstensja, wiekStarsze).isEmpty()) {
                         System.out.println("Nie znaleziono utworow");
                     } else {
                         System.out.println("Utwory starsze niż " + wiekStarsze + " lat:");

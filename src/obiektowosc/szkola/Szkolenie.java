@@ -8,7 +8,7 @@ public class Szkolenie {
     private String data;
     private List<Nauczyciel> uczestnicy;
 
-    private  List<Szkolenie> ekstensja =  new ArrayList<>();
+    private List<Szkolenie> ekstensja = new ArrayList<>();
 
     public Szkolenie(String nazwa, String data) {
         this.nazwa = nazwa;

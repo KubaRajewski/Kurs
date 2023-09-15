@@ -12,12 +12,12 @@ public class Kolo extends Figura {
 
     @Override
     public double obwod() {
-        return 2 * Math.PI * srednica/2;
+        return 2 * Math.PI * srednica / 2;
     }
 
     @Override
     public double pole() {
-        return Math.PI * srednica/2 * srednica/2;
+        return Math.PI * srednica / 2 * srednica / 2;
     }
 
     @Override
@@ -34,6 +34,6 @@ public class Kolo extends Figura {
 
     @Override
     public String opis() {
-        return "Koło o promieniu " + (int)srednica/2;
+        return "Koło o promieniu " + (int) srednica / 2;
     }
 }

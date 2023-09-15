@@ -3,12 +3,10 @@ package obiektowosc.wypozyczalnia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Klient extends Osoba{
-    private boolean kartaLojalnosciowa;
-
-    private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
-
+public class Klient extends Osoba {
     public static List<Klient> ekstensja = new ArrayList<>();
+    private boolean kartaLojalnosciowa;
+    private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
 
     public Klient(String imie, String nazwisko, String adres, String numerDowodu, boolean kartaLojalnosciowa) {
         super(imie, nazwisko, adres, numerDowodu);
@@ -27,6 +25,10 @@ public class Klient extends Osoba{
         return klienciZKarta;
     }
 
+    public static List<Klient> getEkstensjaKlient() {
+        return ekstensja;
+    }
+
     public boolean isKartaLojalnosciowa() {
         return kartaLojalnosciowa;
     }
@@ -41,9 +43,5 @@ public class Klient extends Osoba{
 
     public void setWypozyczenia(List<Wypozyczenie> wypozyczenia) {
         this.wypozyczenia = wypozyczenia;
-    }
-
-    public static List<Klient> getEkstensjaKlient() {
-        return ekstensja;
     }
 }

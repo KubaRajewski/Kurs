@@ -3,7 +3,7 @@ package obiektowosc.przedszkole;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Przewinienie extends Uwaga{
+public class Przewinienie extends Uwaga {
 
     public static List<Przewinienie> ekstensja = new ArrayList<>();
 

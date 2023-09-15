@@ -3,10 +3,9 @@ package obiektowosc.wypozyczalnia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Motocykl extends Pojazd{
-    private boolean czyMoznaNaB;
-
+public class Motocykl extends Pojazd {
     private static List<Motocykl> ekstensja = new ArrayList<>();
+    private boolean czyMoznaNaB;
 
     public Motocykl(String numerRejestracyjny, String marka, String model, int rokProdukcji, int pojemnoscBaku, boolean dostepnosc, int cenaWypozyczenia, boolean czyMoznaNaB) {
         super(numerRejestracyjny, marka, model, rokProdukcji, pojemnoscBaku, dostepnosc, cenaWypozyczenia);
@@ -15,14 +14,18 @@ public class Motocykl extends Pojazd{
         ekstensja.add(this);
     }
 
-    public static List<Motocykl> motocykleNaB (List<Motocykl> motocykle){
+    public static List<Motocykl> motocykleNaB(List<Motocykl> motocykle) {
         List<Motocykl> moznaNaB = new ArrayList<>();
         for (Motocykl m : motocykle) {
-            if (m.isCzyMoznaNaB()){
+            if (m.isCzyMoznaNaB()) {
                 moznaNaB.add(m);
             }
         }
         return moznaNaB;
+    }
+
+    public static List<Motocykl> getEkstensjaMotocykl() {
+        return ekstensja;
     }
 
     public boolean isCzyMoznaNaB() {
@@ -31,9 +34,5 @@ public class Motocykl extends Pojazd{
 
     public void setCzyMoznaNaB(boolean czyMoznaNaB) {
         this.czyMoznaNaB = czyMoznaNaB;
-    }
-
-    public static List<Motocykl> getEkstensjaMotocykl() {
-        return ekstensja;
     }
 }

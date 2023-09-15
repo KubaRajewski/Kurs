@@ -1,6 +1,6 @@
 package obiektowosc.zadania.pierwsze;
 
-public class Kondom extends Produkt{
+public class Kondom extends Produkt {
     private String nazwa;
     private double rozmiar;
 

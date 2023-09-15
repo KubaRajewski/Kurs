@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Klient {
+    public static List<Klient> ekstensja = new ArrayList<>();
+    private final double rozmiarPenisa;
     private String imie;
     private String nazwisko;
-    private final double rozmiarPenisa;
-
     private List<Produkt> produkty = new ArrayList<>();
-
-    public static List<Klient> ekstensja = new ArrayList<>();
 
     public Klient(String imie, String nazwisko, double rozmiarPenisa) {
         this.imie = imie;
@@ -18,21 +16,6 @@ public class Klient {
         this.rozmiarPenisa = rozmiarPenisa;
 
         ekstensja.add(this);
-    }
-
-    public void dodajProdukt(Produkt produkt) {
-        produkty.add(produkt);
-        produkt.dodajKlienta(this);
-    }
-
-    // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
-
-    public double obliczWartoscZakupow() {
-        double wartosc = 0;
-        for (Produkt produkt : produkty) {
-            wartosc += produkt.getCena();
-        }
-        return wartosc;
     }
 
     public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
@@ -47,15 +30,7 @@ public class Klient {
         return max;
     }
 
-    // TODO 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
-    public boolean czyKupilKondoma() {
-        for (Produkt produkt : produkty) {
-            if (produkt instanceof Kondom) {
-                return true;
-            }
-        }
-        return false;
-    }
+    // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
 
     public static List<Klient> klienciKtorzyKupiliKondoma(List<Klient> list) {
         if (list == null)
@@ -70,6 +45,47 @@ public class Klient {
         return klienciZKondomem;
     }
 
+    public static List<Klient> kupiliZlegoKondoma(List<Klient> klienci) {
+        List<Klient> kupiliZlegoKondoma = new ArrayList<>();
+        for (Klient klient : klienci) {
+            if (klient.czyKupilZlegoKondoma()) {
+                kupiliZlegoKondoma.add(klient);
+            }
+        }
+        return kupiliZlegoKondoma;
+    }
+
+    public static List<Klient> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Klient> ekstensja) {
+        Klient.ekstensja = ekstensja;
+    }
+
+    public void dodajProdukt(Produkt produkt) {
+        produkty.add(produkt);
+        produkt.dodajKlienta(this);
+    }
+
+    public double obliczWartoscZakupow() {
+        double wartosc = 0;
+        for (Produkt produkt : produkty) {
+            wartosc += produkt.getCena();
+        }
+        return wartosc;
+    }
+
+    // TODO 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
+    public boolean czyKupilKondoma() {
+        for (Produkt produkt : produkty) {
+            if (produkt instanceof Kondom) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // TODO 3) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma ale nie na swoj rozmiar :D
     public boolean czyKupilZlegoKondoma() {
         for (Produkt produkt : produkty) {
@@ -78,16 +94,6 @@ public class Klient {
             }
         }
         return false;
-    }
-
-    public static List<Klient> kupiliZlegoKondoma(List<Klient> klienci) {
-        List<Klient> kupiliZlegoKondoma = new ArrayList<>();
-        for (Klient klient : klienci) {
-            if(klient.czyKupilZlegoKondoma()){
-                kupiliZlegoKondoma.add(klient);
-            }
-        }
-        return kupiliZlegoKondoma;
     }
 
     public String getImie() {
@@ -116,14 +122,6 @@ public class Klient {
 
     public void setProdukty(List<Produkt> produkty) {
         this.produkty = produkty;
-    }
-
-    public static List<Klient> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Klient> ekstensja) {
-        Klient.ekstensja = ekstensja;
     }
 
     @Override

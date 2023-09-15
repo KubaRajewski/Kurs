@@ -222,8 +222,8 @@ public class Main {
         // 27) Napisz metode ktora przyjmuje jako parametr liste tablic Stringow i oblicza
         // sume dlugosci wszystkich Stringów
 
-        String[] tablica1 = {"Ania", "Krzys", "Tomek", "Kasia", "Jan" };
-        String[] tablica2 = {"Ania", "Krzys", "Tomek", "Kasia", "Jan", "Marta", "Kuba", "Marek", "Kasia", "Jan" };
+        String[] tablica1 = {"Ania", "Krzys", "Tomek", "Kasia", "Jan"};
+        String[] tablica2 = {"Ania", "Krzys", "Tomek", "Kasia", "Jan", "Marta", "Kuba", "Marek", "Kasia", "Jan"};
 
         List<String[]> tablice = new ArrayList<>();
         tablice.add(tablica1);

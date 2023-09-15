@@ -36,6 +36,6 @@ public class Prostokat extends Figura {
 
     @Override
     public String opis() {
-        return "Prostokat o bokach " + (int)bokA + "x" + (int)bokB + ".";
+        return "Prostokat o bokach " + (int) bokA + "x" + (int) bokB + ".";
     }
 }

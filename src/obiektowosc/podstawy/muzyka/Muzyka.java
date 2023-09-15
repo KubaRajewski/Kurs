@@ -7,15 +7,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Muzyka {
+    // ekstensja klasy Muzyka
+    static List<Muzyka> ekstensja = new ArrayList<>();
+    private final LocalDate dataWydania; // Zmiana na LocalDate
+    private final double czasTrwania; // w sekundach
     private String tytul;
     private String autor;
     private String gatunek;
-    private final LocalDate dataWydania; // Zmiana na LocalDate
-    private final double czasTrwania; // w sekundach
     private boolean czyWUlubionych;
-
-    // ekstensja klasy Muzyka
-    static List<Muzyka> ekstensja = new ArrayList<>();
 
     // Konstruktor
     public Muzyka(String tytul, String autor, String gatunek, LocalDate dataWydania, int czasTrwania, boolean czyWUlubionych) {
@@ -28,13 +27,6 @@ public class Muzyka {
         ekstensja.add(this);
     }
 
-
-    // Metoda do wyświetlania informacji o utworze
-    @Override
-    public String toString() {
-        return "Tytuł: " + tytul + ", Autor: " + autor + ", Data wydania: " + dataWydania + "\n";
-    }
-
     public static void wyswietlEkstensje() {
         System.out.println("Wszystkie utwory: ");
         for (Muzyka m : ekstensja) {
@@ -42,85 +34,43 @@ public class Muzyka {
         }
     }
 
-    public static Muzyka zwrocKonkretnyUtwor(List<Muzyka> lista, String tytul){
+    public static Muzyka zwrocKonkretnyUtwor(List<Muzyka> lista, String tytul) {
         for (Muzyka m : lista) {
-            if (tytul.equalsIgnoreCase(m.getTytul())){
+            if (tytul.equalsIgnoreCase(m.getTytul())) {
                 return m;
             }
         }
         return null;
     }
 
-    // gettery i settery
-
-    public String getTytul() {
-        return tytul;
-    }
-
-    public void setTytul(String tytul) {
-        this.tytul = tytul;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getGatunek() {
-        return gatunek;
-    }
-
-    public void setGatunek(String gatunek) {
-        this.gatunek = gatunek;
-    }
-
-    public LocalDate getDataWydania() {
-        return dataWydania;
-    }
-
-
-    public double getCzasTrwania() {
-        return czasTrwania;
-    }
-
-    public boolean isCzyWUlubionych() {
-        return czyWUlubionych;
-    }
-
-    public void setCzyWUlubionych(boolean czyWUlubionych) {
-        this.czyWUlubionych = czyWUlubionych;
-    }
-
     public static List<Muzyka> getEkstensja() {
         return ekstensja;
     }
+
+    // gettery i settery
 
     public static void setEkstensja(List<Muzyka> ekstensja) {
         Muzyka.ekstensja = ekstensja;
     }
 
-    // metody
-
-    public static String konkretnyUtwor(List<Muzyka> list, String tytul){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+    public static String konkretnyUtwor(List<Muzyka> list, String tytul) {
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
         for (Muzyka m : list) {
-            if (m.getTytul().equalsIgnoreCase(tytul)){
-                return "Autor: " + m.getAutor() + ", Tytuł: "+ m.getTytul() + ", Gatunek " +  m.getGatunek() + ", Czas Trwania: " + (m.getCzasTrwania()/60) + " minuty, Data Wydania: " + m.getDataWydania();
+            if (m.getTytul().equalsIgnoreCase(tytul)) {
+                return "Autor: " + m.getAutor() + ", Tytuł: " + m.getTytul() + ", Gatunek " + m.getGatunek() + ", Czas Trwania: " + (m.getCzasTrwania() / 60) + " minuty, Data Wydania: " + m.getDataWydania();
             }
         }
         return null;
     }
 
-    public static void edytujPiosenke(Muzyka m){
+    public static void edytujPiosenke(Muzyka m) {
         System.out.println("Co chcesz edytować? (tytul, autor, gatunek, ulubione)");
         Scanner scanner = new Scanner(System.in);
         String wybor = scanner.nextLine();
         wybor = wybor.toLowerCase();
 
-        switch (wybor){
+        switch (wybor) {
             case "tytul":
                 System.out.println("Stary tytul: " + m.getTytul());
                 System.out.println("Podaj nowy tytul: ");
@@ -177,7 +127,8 @@ public class Muzyka {
     }
 
     public static void usunUtwor(List<Muzyka> list, String tytul, String autor) {
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         Iterator<Muzyka> iterator = list.iterator();
         while (iterator.hasNext()) {
@@ -189,9 +140,9 @@ public class Muzyka {
         }
     }
 
-
-    public static List<Muzyka> utworyAutora(List<Muzyka> list, String autor){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+    public static List<Muzyka> utworyAutora(List<Muzyka> list, String autor) {
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> lista = new ArrayList<>();
         for (Muzyka m : list) {
@@ -202,8 +153,9 @@ public class Muzyka {
         return lista;
     }
 
-    public static List<Muzyka> utworyGatunku(List<Muzyka> list, String gatunek){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+    public static List<Muzyka> utworyGatunku(List<Muzyka> list, String gatunek) {
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> lista = new ArrayList<>();
         for (Muzyka m : list) {
@@ -214,45 +166,43 @@ public class Muzyka {
         return lista;
     }
 
-    public static List<Muzyka> utworyDluzszeNiz(List<Muzyka> list, double czas){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+    public static List<Muzyka> utworyDluzszeNiz(List<Muzyka> list, double czas) {
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> lista = new ArrayList<>();
         for (Muzyka m : list) {
-            if (m.getCzasTrwania() > (czas*60)) {
+            if (m.getCzasTrwania() > (czas * 60)) {
                 lista.add(m);
             }
         }
         return lista;
     }
 
-    public static List<Muzyka> utworyKrotszeNiz(List<Muzyka> list, double czas){
-        if (list == null || list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+    public static List<Muzyka> utworyKrotszeNiz(List<Muzyka> list, double czas) {
+        if (list == null || list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> lista = new ArrayList<>();
         for (Muzyka m : list) {
-            if (m.getCzasTrwania() < (czas*60)) {
+            if (m.getCzasTrwania() < (czas * 60)) {
                 lista.add(m);
             }
         }
         return lista;
     }
 
-    public static List<Muzyka> utworyWUlubionych(List<Muzyka> list){
-        if (list == null && list.isEmpty()) throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
+    public static List<Muzyka> utworyWUlubionych(List<Muzyka> list) {
+        if (list == null && list.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem ani byc pusta");
 
         List<Muzyka> ulubione = new ArrayList<>();
         for (Muzyka m : list) {
-            if (m.isCzyWUlubionych()){
+            if (m.isCzyWUlubionych()) {
                 ulubione.add(m);
             }
         }
         return ulubione;
-    }
-
-    public int obliczWiekUtworu() {
-        int aktualnyRok = LocalDate.now().getYear();
-        return aktualnyRok - dataWydania.getYear();
     }
 
     public static List<Muzyka> wyswietlUtworyStarszeNiz(List<Muzyka> list, int wiek) {
@@ -275,7 +225,9 @@ public class Muzyka {
         return Lista;
     }
 
-    public static void dodajMuzykeDoTestow(){
+    // metody
+
+    public static void dodajMuzykeDoTestow() {
         dodajUtwor("Bohemian Rhapsody", "Queen", "Rock", 355, LocalDate.parse("1975-10-31"), false);
         dodajUtwor("Shape of You", "Ed Sheeran", "Pop", 233, LocalDate.parse("2017-01-06"), true);
         dodajUtwor("Imagine", "John Lennon", "Rock", 186, LocalDate.parse("1971-09-09"), false);
@@ -298,6 +250,57 @@ public class Muzyka {
         dodajUtwor("Boogie Wonderland", "Earth, Wind & Fire", "Disco", 280, LocalDate.parse("1979-03-20"), true);
         dodajUtwor("Dancing Queen", "ABBA", "Disco", 221, LocalDate.parse("1976-08-15"), false);
 
+    }
+
+    // Metoda do wyświetlania informacji o utworze
+    @Override
+    public String toString() {
+        return "Tytuł: " + tytul + ", Autor: " + autor + ", Data wydania: " + dataWydania + "\n";
+    }
+
+    public String getTytul() {
+        return tytul;
+    }
+
+    public void setTytul(String tytul) {
+        this.tytul = tytul;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getGatunek() {
+        return gatunek;
+    }
+
+    public void setGatunek(String gatunek) {
+        this.gatunek = gatunek;
+    }
+
+    public LocalDate getDataWydania() {
+        return dataWydania;
+    }
+
+    public double getCzasTrwania() {
+        return czasTrwania;
+    }
+
+    public boolean isCzyWUlubionych() {
+        return czyWUlubionych;
+    }
+
+    public void setCzyWUlubionych(boolean czyWUlubionych) {
+        this.czyWUlubionych = czyWUlubionych;
+    }
+
+    public int obliczWiekUtworu() {
+        int aktualnyRok = LocalDate.now().getYear();
+        return aktualnyRok - dataWydania.getYear();
     }
 }
 

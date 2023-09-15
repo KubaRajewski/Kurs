@@ -39,6 +39,6 @@ public class Ocena {
 
     @Override
     public String toString() {
-        return "Ocena: " + wartosc +  " Sprawdzian: " + sprawdzian;
+        return "Ocena: " + wartosc + " Sprawdzian: " + sprawdzian;
     }
 }

@@ -2,7 +2,7 @@ package testy.test2.zadanie3;
 
 import java.util.Objects;
 
-public class Pracownik extends Osoba{
+public class Pracownik extends Osoba {
     private String stanowisko;
     private double pensja;
 

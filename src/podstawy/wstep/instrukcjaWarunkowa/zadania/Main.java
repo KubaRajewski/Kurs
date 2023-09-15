@@ -84,7 +84,7 @@ public class Main {
             nalezy = true;
         } else if (liczba >= 7 && liczba <= 8) {
             nalezy = true;
-        }else{
+        } else {
 
         }
 
@@ -104,35 +104,33 @@ public class Main {
         System.out.println();
 
 // Sprawdz czy suma 3 liczb jest podzielna przez 3
-        System.out.println( "Zadanie 7 - suma 3 liczb podzielna przez 3");
+        System.out.println("Zadanie 7 - suma 3 liczb podzielna przez 3");
         double liczba3 = 15;
         boolean jestPodzielna = false;
 
         if ((liczba + liczba2 + liczba3) % 3 == 0) {
             System.out.println("suma 3 liczb jest podzielna przez 3");
-        }
-        else {
+        } else {
             System.out.println("suma 3 liczb nie jest podzielna przez 3");
         }
         System.out.println();
 
 // Sprawdz czy dlugosc podanego Stringa jest wieksza od 5
-        System.out.println( "Zadanie 8 - dlugosc stringa wieksza od 5");
+        System.out.println("Zadanie 8 - dlugosc stringa wieksza od 5");
         String str = "czesc!";
         if (str.length() > 5) {
             System.out.println("dlugosc stringa jest wieksza od 5");
-        }
-        else {
+        } else {
             System.out.println("długość stringa jest mniejsza lub rowna 5");
         }
         System.out.println();
 
 // Sprawdz czy pierwszy znak stringa to literka A
-        System.out.println( "Zadanie 9 - pierwszy znak to litera A");
+        System.out.println("Zadanie 9 - pierwszy znak to litera A");
         char firstChar = str.charAt(0);
 
-       // if (Character.toString(firstChar).equals("A")) {
-        if(str.startsWith("A")){
+        // if (Character.toString(firstChar).equals("A")) {
+        if (str.startsWith("A")) {
             System.out.println("Pierwszy znak to litera A");
         } else {
             System.out.println("Pierwszy znak nie jest literą A");
@@ -140,7 +138,7 @@ public class Main {
         System.out.println();
 
 // sprawdz czy string zawiera literke a
-        System.out.println( "Zadanie 10 - string zawiera litere a");
+        System.out.println("Zadanie 10 - string zawiera litere a");
         if (str.contains("a")) {
             System.out.println("String zawiera literę 'a'");
         } else {

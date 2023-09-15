@@ -4,31 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dziecko extends Osoba {
+    public static List<Dziecko> ekstensja = new ArrayList<>();
     private Grupa grupa;
     private List<Uwaga> uwagi = new ArrayList<>();
-
-    public static List<Dziecko> ekstensja = new ArrayList<>();
 
     public Dziecko(String imie, String nazwisko, String dataUrodzenia) {
         super(imie, nazwisko, dataUrodzenia);
 
         ekstensja.add(this);
-    }
-
-    public void dodajOdznake(String nazwa, String opis, String dataWystawienia){
-        Odznaka odznaka = new Odznaka(nazwa, opis, dataWystawienia, this);
-        uwagi.add(odznaka);
-        Uwaga.getEkstensja().add(odznaka);
-    }
-
-    public void dodajPrzewinienie(String nazwa, String opis, String dataWystawienia){
-        Przewinienie przewinienie = new Przewinienie(nazwa, opis, dataWystawienia, this);
-        uwagi.add(przewinienie);
-        Uwaga.getEkstensja().add(przewinienie);
-    }
-
-    public boolean czyPosluszne(){
-        return getPrzewinienia().size() <= getOdznaki().size();
     }
 
     // TODO  * - napisz metode która zwraca dziecko ktore ma najwiecej przewinien
@@ -49,6 +32,26 @@ public class Dziecko extends Osoba {
         return najmniejPosluszne;
     }
 
+    public static List<Dziecko> getEkstensjaDziecko() {
+        return ekstensja;
+    }
+
+    public void dodajOdznake(String nazwa, String opis, String dataWystawienia) {
+        Odznaka odznaka = new Odznaka(nazwa, opis, dataWystawienia, this);
+        uwagi.add(odznaka);
+        Uwaga.getEkstensja().add(odznaka);
+    }
+
+    public void dodajPrzewinienie(String nazwa, String opis, String dataWystawienia) {
+        Przewinienie przewinienie = new Przewinienie(nazwa, opis, dataWystawienia, this);
+        uwagi.add(przewinienie);
+        Uwaga.getEkstensja().add(przewinienie);
+    }
+
+    public boolean czyPosluszne() {
+        return getPrzewinienia().size() <= getOdznaki().size();
+    }
+
     public List<Uwaga> getUwagi() {
         return uwagi;
     }
@@ -62,34 +65,30 @@ public class Dziecko extends Osoba {
     }
 
     public void setGrupa(Grupa grupa) {
-        if (this.grupa == null){
+        if (this.grupa == null) {
             this.grupa = grupa;
         } else {
             System.out.println("Dziecko juz jest w innej grupie");
         }
     }
 
-    public List<Przewinienie> getPrzewinienia(){
+    public List<Przewinienie> getPrzewinienia() {
         List<Przewinienie> przewinienia = new ArrayList<>();
-        for(Uwaga uwaga : uwagi){
-            if(uwaga instanceof Przewinienie){
+        for (Uwaga uwaga : uwagi) {
+            if (uwaga instanceof Przewinienie) {
                 przewinienia.add((Przewinienie) uwaga);
             }
         }
         return przewinienia;
     }
 
-    public List<Odznaka> getOdznaki(){
+    public List<Odznaka> getOdznaki() {
         List<Odznaka> odznaki = new ArrayList<>();
-        for(Uwaga uwaga : uwagi){
-            if(uwaga instanceof Odznaka){
+        for (Uwaga uwaga : uwagi) {
+            if (uwaga instanceof Odznaka) {
                 odznaki.add((Odznaka) uwaga);
             }
         }
         return odznaki;
-    }
-
-    public static List<Dziecko> getEkstensjaDziecko() {
-        return ekstensja;
     }
 }

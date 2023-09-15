@@ -4,18 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Samochod {
+    private static List<Samochod> ekstensja = new ArrayList<>();
     private String marka;
     private String model;
-
     private List<Pracownik> uzytkownicy = new ArrayList<>();
-
-    private static List<Samochod> ekstensja = new ArrayList<>();
 
     public Samochod(String marka, String model) {
         this.marka = marka;
         this.model = model;
 
         ekstensja.add(this);
+    }
+
+    public static List<Samochod> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Samochod> ekstensja) {
+        Samochod.ekstensja = ekstensja;
     }
 
     public String getMarka() {
@@ -40,14 +46,6 @@ public class Samochod {
 
     public void setUzytkownicy(List<Pracownik> uzytkownicy) {
         this.uzytkownicy = uzytkownicy;
-    }
-
-    public static List<Samochod> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Samochod> ekstensja) {
-        Samochod.ekstensja = ekstensja;
     }
 
     @Override

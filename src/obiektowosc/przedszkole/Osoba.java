@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Osoba {
+    public static List<Osoba> ekstensja = new ArrayList<>();
     private String imie;
     private String nazwisko;
     private String dataUrodzenia;
-
-    public static List<Osoba> ekstensja = new ArrayList<>();
 
     public Osoba(String imie, String nazwisko, String dataUrodzenia) {
         this.imie = imie;
@@ -17,6 +16,14 @@ public abstract class Osoba {
         this.dataUrodzenia = dataUrodzenia;
 
         ekstensja.add(this);
+    }
+
+    public static List<Osoba> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Osoba> ekstensja) {
+        Osoba.ekstensja = ekstensja;
     }
 
     public String getImie() {
@@ -41,14 +48,6 @@ public abstract class Osoba {
 
     public void setDataUrodzenia(String dataUrodzenia) {
         this.dataUrodzenia = dataUrodzenia;
-    }
-
-    public static List<Osoba> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Osoba> ekstensja) {
-        Osoba.ekstensja = ekstensja;
     }
 
     @Override

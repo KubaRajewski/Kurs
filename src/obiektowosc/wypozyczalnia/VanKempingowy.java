@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VanKempingowy extends Van {
-    private int iloscMiejscDoSpania;
-
     private static List<VanKempingowy> ekstensja = new ArrayList<>();
+    private int iloscMiejscDoSpania;
 
     public VanKempingowy(String numerRejestracyjny, String marka, String model, int rokProdukcji, int pojemnoscBaku, boolean dostepnosc, int cenaWypozyczenia, int dlugoscBagaznika, int iloscMiejscDoSpania) {
         super(numerRejestracyjny, marka, model, rokProdukcji, pojemnoscBaku, dostepnosc, cenaWypozyczenia, dlugoscBagaznika);

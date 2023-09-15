@@ -9,15 +9,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Patient extends Person {
+    private static List<Patient> extension = new ArrayList<>();
     private int patientId;
     private List<Visit> visits = new ArrayList<>();
-
-    private static List<Patient> extension = new ArrayList<>();
 
     public Patient(int patientId, String surname, String name, String pesel, Date dateOfBirth) {
         super(surname, name, pesel, dateOfBirth);
         for (Patient patient : extension) {
-            if (patient.patientId == patientId){
+            if (patient.patientId == patientId) {
                 throw new IllegalArgumentException("Patient with this patientID already exists");
             }
         }
@@ -58,7 +57,7 @@ public class Patient extends Person {
 
     public static Patient findPatientByID(int patientId) {
         for (Patient patient : extension) {
-            if (patient.getPatientId() == patientId){
+            if (patient.getPatientId() == patientId) {
                 return patient;
             }
         }
@@ -66,7 +65,7 @@ public class Patient extends Person {
     }
 
     //TODO - znajdź pacjenta który miał najwięcej wizyt
-    public static Patient busiestPatient(){
+    public static Patient busiestPatient() {
         if (extension.isEmpty()) {
             throw new IllegalArgumentException("List of patients is empty");
         }
@@ -108,6 +107,13 @@ public class Patient extends Person {
         return resultPatients;
     }
 
+    public static List<Patient> getExtension() {
+        return extension;
+    }
+
+    public static void setExtension(List<Patient> extension) {
+        Patient.extension = extension;
+    }
 
     public int getPatientId() {
         return patientId;
@@ -123,14 +129,6 @@ public class Patient extends Person {
 
     public void setVisits(List<Visit> visits) {
         this.visits = visits;
-    }
-
-    public static List<Patient> getExtension() {
-        return extension;
-    }
-
-    public static void setExtension(List<Patient> extension) {
-        Patient.extension = extension;
     }
 
     @Override

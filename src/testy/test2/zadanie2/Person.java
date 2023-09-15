@@ -7,12 +7,11 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Person {
-    private String surname;
-    private String name;
+    public static List<Person> extension = new ArrayList<>();
     private final String pesel;
     private final Date dateOfBirth;
-
-    public static List<Person> extension = new ArrayList<>();
+    private String surname;
+    private String name;
 
     public Person(String surname, String name, String pesel, Date dateOfBirth) {
         for (Person person : extension) {

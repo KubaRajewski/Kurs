@@ -2,7 +2,7 @@ package testy.test2.zadanie3;
 
 import java.util.Objects;
 
-public class Student extends Osoba{
+public class Student extends Osoba {
     private String grupa;
     private double stypendium;
 

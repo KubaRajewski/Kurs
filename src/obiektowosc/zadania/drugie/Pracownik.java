@@ -2,13 +2,11 @@ package obiektowosc.zadania.drugie;
 
 import java.util.*;
 
-public class Pracownik extends Osoba{
+public class Pracownik extends Osoba {
+    private static List<Pracownik> ekstensja = new ArrayList<>();
     private String adres;
     private double pensja;
-
     private Map<Pracownik, Map<Samochod, List<String>>> uzytkowaneSamochody = new HashMap<>();
-
-    private static List<Pracownik> ekstensja = new ArrayList<>();
 
     public Pracownik(String imie, String nazwisko, String adres, double pensja) {
         super(imie, nazwisko);
@@ -30,6 +28,14 @@ public class Pracownik extends Osoba{
         Collections.sort(copy, Comparator.comparing(Pracownik::getPensja).reversed());
 
         return copy.subList(0, limit);
+    }
+
+    public static List<Pracownik> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Pracownik> ekstensja) {
+        Pracownik.ekstensja = ekstensja;
     }
 
     //TODO 4) Pracownicy auta moga uzywac wielkorotnie, chcemy przechowywac informacje (i moc ja wyswietlic) ile jaki pracownik uzywal jakiego auta
@@ -66,14 +72,6 @@ public class Pracownik extends Osoba{
 
     public void setUzytkowaneSamochody(Map<Pracownik, Map<Samochod, List<String>>> uzytkowaneSamochody) {
         this.uzytkowaneSamochody = uzytkowaneSamochody;
-    }
-
-    public static List<Pracownik> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Pracownik> ekstensja) {
-        Pracownik.ekstensja = ekstensja;
     }
 
     @Override

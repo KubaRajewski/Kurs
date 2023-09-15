@@ -68,24 +68,24 @@ public class Test1 {
     private static String[] pobierzNapisy(Integer iloscNapisow) {
         String[] napisy = new String[iloscNapisow];
         Scanner scanner = new Scanner(System.in);
-            for (int i = 0; i < iloscNapisow; i++) {
-                System.out.println("Podaj napis nr " + (i + 1) + ": ");
-                String napis = scanner.nextLine();
+        for (int i = 0; i < iloscNapisow; i++) {
+            System.out.println("Podaj napis nr " + (i + 1) + ": ");
+            String napis = scanner.nextLine();
 
-                while (napis.isEmpty() || napis.isBlank()) {
-                    System.out.println("Napis nie może być pusty. Podaj napis nr " + (i + 1) + " ponownie: ");
+            while (napis.isEmpty() || napis.isBlank()) {
+                System.out.println("Napis nie może być pusty. Podaj napis nr " + (i + 1) + " ponownie: ");
+                napis = scanner.nextLine();
+            }
+
+            for (String s : napisy) {
+                if (s != null && s.equalsIgnoreCase(napis)) {
+                    System.out.println("Napis nie może się powtarzać. Podaj napis nr " + (i + 1) + " ponownie: ");
                     napis = scanner.nextLine();
                 }
-
-                for (String s : napisy) {
-                    if (s != null && s.equalsIgnoreCase(napis)) {
-                        System.out.println("Napis nie może się powtarzać. Podaj napis nr " + (i + 1) + " ponownie: ");
-                        napis = scanner.nextLine();
-                    }
-                }
-
-                napisy[i] = napis;
             }
+
+            napisy[i] = napis;
+        }
         return napisy;
     }
 

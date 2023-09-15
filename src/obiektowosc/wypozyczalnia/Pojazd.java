@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Pojazd {
+    private static List<Pojazd> ekstensja = new ArrayList<>();
     private String numerRejestracyjny;
     private String marka;
     private String model;
@@ -11,16 +12,14 @@ public abstract class Pojazd {
     private int pojemnoscBaku;
     private boolean dostepnosc;
     private int cenaWypozyczenia; // cena za dobę
-
     private Silnik silnik;
     private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
 
-
-    private static List<Pojazd> ekstensja = new ArrayList<>();
-
     public Pojazd(String numerRejestracyjny, String marka, String model, int rokProdukcji, int pojemnoscBaku, boolean dostepnosc, int cenaWypozyczenia) {
-        if (numerRejestracyjny == null || numerRejestracyjny.isEmpty()) throw new IllegalArgumentException("Numer rejestracyjny nie może być pusty");
-        if (ekstensja.contains(numerRejestracyjny)) throw new IllegalArgumentException("Pojazd o podanym numerze rejestracyjnym już istnieje");
+        if (numerRejestracyjny == null || numerRejestracyjny.isEmpty())
+            throw new IllegalArgumentException("Numer rejestracyjny nie może być pusty");
+        if (ekstensja.contains(numerRejestracyjny))
+            throw new IllegalArgumentException("Pojazd o podanym numerze rejestracyjnym już istnieje");
 
         this.numerRejestracyjny = numerRejestracyjny;
         this.marka = marka;
@@ -33,19 +32,27 @@ public abstract class Pojazd {
         ekstensja.add(this);
     }
 
-    public void dodajSilnik(Silnik silnik) {
-        this.silnik = silnik;
-        silnik.getPojazdyZDanymSilnikiem().add(this);
-    }
-
-    public static List<Pojazd> pojazdyMocniejszeNiz(List<Pojazd> pojazdy, int mocMinimalna){
+    public static List<Pojazd> pojazdyMocniejszeNiz(List<Pojazd> pojazdy, int mocMinimalna) {
         List<Pojazd> mocniejszeNiz = new ArrayList<>();
         for (Pojazd p : pojazdy) {
-            if(p.getSilnik().getMoc() > mocMinimalna){
+            if (p.getSilnik().getMoc() > mocMinimalna) {
                 mocniejszeNiz.add(p);
             }
         }
         return mocniejszeNiz;
+    }
+
+    public static List<Pojazd> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Pojazd> ekstensja) {
+        Pojazd.ekstensja = ekstensja;
+    }
+
+    public void dodajSilnik(Silnik silnik) {
+        this.silnik = silnik;
+        silnik.getPojazdyZDanymSilnikiem().add(this);
     }
 
     public String getNumerRejestracyjny() {
@@ -116,19 +123,11 @@ public abstract class Pojazd {
         this.wypozyczenia = wypozyczenia;
     }
 
-    public static List<Pojazd> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Pojazd> ekstensja) {
-        Pojazd.ekstensja = ekstensja;
-    }
-
     @Override
     public String toString() {
         if (dostepnosc) {
             return marka + " " + model + " " + numerRejestracyjny;
         }
-        return marka + " " + model +  " " + numerRejestracyjny;
+        return marka + " " + model + " " + numerRejestracyjny;
     }
 }

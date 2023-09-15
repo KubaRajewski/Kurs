@@ -59,7 +59,7 @@ public class Main {
         System.out.println("\nNajpopularniejsza specjalizacja: " + Doctor.mostPopularSpecialty());
 
         //TODO d) którego roku było najwięcej wizyt?
-        System.out.println("\nNajwiecej wizyt bylo w roku: " + Visit.busiestYear()+"\n");
+        System.out.println("\nNajwiecej wizyt bylo w roku: " + Visit.busiestYear() + "\n");
 
         //TODO e) wypisz top 5 najstarszych lekarzy
         System.out.println("5 najstarszych lekarzy: ");

@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Wypozyczenie {
+    private static List<Wypozyczenie> ekstensja = new ArrayList<>();
     private String dataOD;
     private String dataDO;
     private int koszt;
     private Pojazd pojazd;
     private Klient klient;
     private Pracownik pracownik;
-
-    private static List<Wypozyczenie> ekstensja = new ArrayList<>();
 
     public Wypozyczenie(String dataOD, String dataDO, int koszt, Pojazd pojazd, Klient klient, Pracownik pracownik) {
         this.dataOD = dataOD;
@@ -26,6 +25,14 @@ public class Wypozyczenie {
         klient.getWypozyczenia().add(this);
 
         ekstensja.add(this);
+    }
+
+    public static List<Wypozyczenie> getEksstensja() {
+        return ekstensja;
+    }
+
+    public static void setEksstensja(List<Wypozyczenie> eksstensja) {
+        Wypozyczenie.ekstensja = eksstensja;
     }
 
     public String getDataOD() {
@@ -74,14 +81,6 @@ public class Wypozyczenie {
 
     public void setPracownik(Pracownik pracownik) {
         this.pracownik = pracownik;
-    }
-
-    public static List<Wypozyczenie> getEksstensja() {
-        return ekstensja;
-    }
-
-    public static void setEksstensja(List<Wypozyczenie> eksstensja) {
-        Wypozyczenie.ekstensja = eksstensja;
     }
 
     @Override

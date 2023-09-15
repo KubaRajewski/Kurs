@@ -1,7 +1,10 @@
 package dalsze.podstawy.wielkie.liczby;
 
-import java.math.*;
-import java.util.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,7 +38,6 @@ public class Main {
         // dzielenie
         BigInteger dzielenie = b.divide(a);
         System.out.println("Dzielenie " + dzielenie);
-
 
 
         // porownuje dwa BigInty
@@ -80,7 +82,7 @@ public class Main {
         // liczba cyfr na prawo od kropki
         System.out.println(bd.scale());
 
-        // Stworz liste BigItnow, stworz pare obiektow BigInt, dodaj je do listy,
+        //TODO Stworz liste BigItnow, stworz pare obiektow BigInt, dodaj je do listy,
         // wyswietl w kolejnosci rosnacej
         List<BigInteger> bigIntegers = new ArrayList<>();
 
@@ -91,17 +93,31 @@ public class Main {
         bigIntegers.add(BigInteger.valueOf(451));
         Collections.sort(bigIntegers);
 
-//        bigIntegers.sort(Comparator.comparing(BigInteger::intValue));
         System.out.println(bigIntegers);
 
 
-        // Stwórz metode która znajduje najwieksza liczbe typu BigInt na liscie
+        //TODO Stwórz metode która znajduje najwieksza liczbe typu BigInt na liscie
+        System.out.println(najwiekszLiczbaNaLiscie(bigIntegers));
 
-        // Stworz metode ktora przyjmuje jako parametr liste bigitnow oraz dwa inty a i
+        //TODO napisz metode ktora przyjmuje jako parametr Liste BigIntow i zwraca Liste
+        // liczb wiekszych od podanego parametru
+        System.out.println(listaLiczbWiekszychNiz(bigIntegers, new BigInteger("125")));
+
+
+        //TODO Stworz metode ktora przyjmuje jako parametr liste bigitnow oraz dwa inty a i
         // b i zwroci liste wszystkich elementow z listy ktorych wartosc modulo a = b.
         // element listy=17, a = 5, b=2 17mod5 =2
+        System.out.println(znajdzElementyModulo(bigIntegers, 1, 2));
 
-        //napisz metode która zwroci wspolne elementy z dwoch list wielkich liczb
+        //TODO napisz metode która zwroci wspolne elementy z dwoch list wielkich liczb
+        List<BigInteger> bigIntegers2 = new ArrayList<>();
+        bigIntegers2.add(new BigInteger("5412341234333312341234"));
+        bigIntegers2.add(BigInteger.valueOf(1541));
+        bigIntegers2.add(BigInteger.valueOf(1451));
+        bigIntegers2.add(BigInteger.valueOf(123));
+        bigIntegers2.add(BigInteger.valueOf(4));
+
+        System.out.println(wspolneElementy(bigIntegers, bigIntegers2));
 
         // Stworz metode ktora przyjmuje jako parametr liste list big intow :). Z kazdej
         // listy znajdz najwieksza wartosc i oblicz sume najwiekszych wartosci.
@@ -109,8 +125,6 @@ public class Main {
 
         //		stworz sobie jakis plik z liczbami, 100 liczb stucyfrowych (roznych, losowych!)
 //		Wczytaj te liczby z pliku i zapisz iloczyn tych liczb to pliku wynik.txt
-
-
 
         // Stworz krotki system bankowy oparty na klasie BigDecimal. Stworz klase Klient
         // i Konto. Klient moze miec wiele kont. Konto powinno miec metody
@@ -126,12 +140,12 @@ public class Main {
 
     //napisz metode ktora przyjmuje jako parametr Liste BigIntow i zwraca Liste
     // liczb wiekszych od podanego parametru
-    public static List<BigInteger> listaLiczbWiekszychNiz(List<BigInteger> lista, BigInteger liczba){
+    public static List<BigInteger> listaLiczbWiekszychNiz(List<BigInteger> lista, BigInteger liczba) {
         List<BigInteger> listaLiczbWiekszychNiz = new ArrayList<>();
 
         for (BigInteger bigInteger : lista) {
-            if (bigInteger.compareTo(liczba) > 0){
-                listaLiczbWiekszychNiz.add(liczba);
+            if (bigInteger.compareTo(liczba) > 0) {
+                listaLiczbWiekszychNiz.add(bigInteger);
 
             }
         }
@@ -141,14 +155,15 @@ public class Main {
 
     // Stwórz metode która znajduje najwieksza liczbe typu BigInt na liscie
 
-    public static BigInteger najwiekszLiczbaNaLiscie(List<BigInteger> lista){
-        if (lista == null){
+    public static BigInteger najwiekszLiczbaNaLiscie(List<BigInteger> lista) {
+        if (lista == null) {
             throw new IllegalArgumentException("Lista jest pusta");
         }
+
         BigInteger najwiekszLiczbaNaLiscie = lista.get(0);
 
         for (BigInteger bigInteger : lista) {
-            if (bigInteger.compareTo(najwiekszLiczbaNaLiscie) > 0){
+            if (bigInteger.compareTo(najwiekszLiczbaNaLiscie) > 0) {
                 najwiekszLiczbaNaLiscie = bigInteger;
             }
         }
@@ -156,4 +171,42 @@ public class Main {
         return najwiekszLiczbaNaLiscie;
     }
 
+    public static List<BigInteger> znajdzElementyModulo(List<BigInteger> lista, int a, int b) {
+        List<BigInteger> wynik = new ArrayList<>();
+
+        for (BigInteger bi : lista) {
+            if (bi.mod(BigInteger.valueOf(a)).compareTo(BigInteger.valueOf(b)) == 0) {
+                wynik.add(bi);
+            }
+        }
+
+        return wynik;
+    }
+
+
+    // napisz metode która zwroci wspolne elementy z dwoch list wielkich liczb
+    public static List<BigInteger> wspolneElementy(List<BigInteger> lista1, List<BigInteger> lista2) {
+        List<BigInteger> wynik = new ArrayList<>();
+
+        for (BigInteger bi : lista1) {
+            if (lista2.contains(bi)) {
+                wynik.add(bi);
+            }
+        }
+
+        return wynik;
+    }
+
+    // Stworz metode ktora przyjmuje jako parametr liste list big intow :). Z kazdej
+    // listy znajdz najwieksza wartosc i oblicz sume najwiekszych wartosci.
+    public static BigInteger sumaNajwiekszych(List<List<BigInteger>> listaList) {
+        BigInteger suma = BigInteger.ZERO;
+
+        for (List<BigInteger> lista : listaList) {
+            suma = suma.add(najwiekszLiczbaNaLiscie(lista));
+        }
+
+        return suma;
+
+    }
 }

@@ -5,11 +5,10 @@ import java.util.List;
 
 public class Wycieczka {
     private final String nazwa;
-    private int cena;
     private final Kraj kraj;
-    private List<Dodatek> wybraneDodatki = new ArrayList<>();
     private final List<Dodatek> mozliweDodatki;
-
+    private int cena;
+    private List<Dodatek> wybraneDodatki = new ArrayList<>();
     private List<Klient> klienci = new ArrayList<>();
 
     private List<Wycieczka> ekstensja = new ArrayList<>();
@@ -23,7 +22,7 @@ public class Wycieczka {
         ekstensja.add(this);
     }
 
-    public double obliczCeneWybranychDodatkow(){
+    public double obliczCeneWybranychDodatkow() {
         double suma = 0;
         for (Dodatek dodatek : wybraneDodatki) {
             suma += dodatek.getCena();

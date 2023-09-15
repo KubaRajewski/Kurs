@@ -18,15 +18,15 @@ public class Kwalifikacje {
         this.stazPracy = stazPracy;
     }
 
-    public String obliczStopien(){
+    public String obliczStopien() {
         String stopien = "";
-        if (this.licencjat && !this.isMagister() && !this.doktorat && !this.isKursDoszkalajacy() && this.stazPracy < 5){
+        if (this.licencjat && !this.isMagister() && !this.doktorat && !this.isKursDoszkalajacy() && this.stazPracy < 5) {
             stopien = "MLODSZY_WYCHOWAWCA";
-        } else if (this.licencjat && this.isMagister() && !this.doktorat && !this.isKursDoszkalajacy() && this.stazPracy > 5){
+        } else if (this.licencjat && this.isMagister() && !this.doktorat && !this.isKursDoszkalajacy() && this.stazPracy > 5) {
             stopien = "WYCHOWAWCA";
-        } else if (this.licencjat && this.isMagister() && !this.doktorat && this.isKursDoszkalajacy() && this.stazPracy > 5){
+        } else if (this.licencjat && this.isMagister() && !this.doktorat && this.isKursDoszkalajacy() && this.stazPracy > 5) {
             stopien = "WYCHOWAWCA_Z_KURSEM";
-        } else if ((this.licencjat && this.isMagister() && this.doktorat) || this.licencjat && this.isMagister() && !this.doktorat && this.isKursDoszkalajacy() && this.stazPracy > 10){
+        } else if ((this.licencjat && this.isMagister() && this.doktorat) || this.licencjat && this.isMagister() && !this.doktorat && this.isKursDoszkalajacy() && this.stazPracy > 10) {
             stopien = "STARSZY_WYCHOWAWCA";
         }
         return stopien;

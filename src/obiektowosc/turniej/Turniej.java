@@ -5,19 +5,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class Turniej {
+    private static List<Turniej> ekstensja = new ArrayList<>();
     private String nazwa;
     private String miesiac;
-
     private List<Gracz> uczestnicy = new ArrayList<>();
     private List<Wynik> wyniki = new ArrayList<>();
-
-    private static List<Turniej> ekstensja = new ArrayList<>();
 
     public Turniej(String nazwa, String miesiac) {
         this.nazwa = nazwa;
         this.miesiac = miesiac;
 
         ekstensja.add(this);
+    }
+
+    public static List<Turniej> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Turniej> ekstensja) {
+        Turniej.ekstensja = ekstensja;
     }
 
     public void dodajUczestnika(Gracz gracz) {
@@ -28,27 +34,27 @@ public class Turniej {
         uczestnicy.add(gracz);
     }
 
-    public String getNazwa () {
+    public String getNazwa() {
         return nazwa;
     }
 
-    public void setNazwa (String nazwa){
+    public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
     }
 
-    public String getMiesiac () {
+    public String getMiesiac() {
         return miesiac;
     }
 
-    public void setMiesiac (String miesiac){
+    public void setMiesiac(String miesiac) {
         this.miesiac = miesiac;
     }
 
-    public List<Gracz> getUczestnicy () {
+    public List<Gracz> getUczestnicy() {
         return uczestnicy;
     }
 
-    public void setUczestnicy (List < Gracz > uczestnicy) {
+    public void setUczestnicy(List<Gracz> uczestnicy) {
         this.uczestnicy = uczestnicy;
     }
 
@@ -58,14 +64,6 @@ public class Turniej {
 
     public void setWyniki(List<Wynik> wyniki) {
         this.wyniki = wyniki;
-    }
-
-    public static List<Turniej> getEkstensja () {
-        return ekstensja;
-    }
-
-    public static void setEkstensja (List < Turniej > ekstensja) {
-        Turniej.ekstensja = ekstensja;
     }
 
     @Override

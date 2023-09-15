@@ -13,7 +13,7 @@ public class Szkolenie {
         this.nazwa = nazwa;
     }
 
-    public void dodajNauczyciela(Nauczyciel n){
+    public void dodajNauczyciela(Nauczyciel n) {
         nauczyciele.add(n);
         // info zwrotne
         n.getSzkolenia().add(this);

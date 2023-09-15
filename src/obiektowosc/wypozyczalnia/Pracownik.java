@@ -3,14 +3,12 @@ package obiektowosc.wypozyczalnia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pracownik extends Osoba{
+public class Pracownik extends Osoba {
+    private static List<Pracownik> ekstensja = new ArrayList<>();
     public int pensja;
     public String rodzajUmowy;
-
     private List<Szkolenie> szkolenia = new ArrayList<>();
     private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
-
-    private static List<Pracownik> ekstensja = new ArrayList<>();
 
     public Pracownik(String imie, String nazwisko, String adres, String numerDowodu, int pensja, String rodzajUmowy) {
         super(imie, nazwisko, adres, numerDowodu);
@@ -20,7 +18,7 @@ public class Pracownik extends Osoba{
         ekstensja.add(this);
     }
 
-    public static List<Pracownik> zarabiajacyWiecejNiz(List<Pracownik> pracownicy, int minPensja){
+    public static List<Pracownik> zarabiajacyWiecejNiz(List<Pracownik> pracownicy, int minPensja) {
         List<Pracownik> zarabiajacyWiecejNiz = new ArrayList<>();
         for (Pracownik p : pracownicy) {
             if (p.getPensja() > minPensja) {
@@ -34,11 +32,15 @@ public class Pracownik extends Osoba{
         List<Pracownik> pracownicyZDanaUmowa = new ArrayList<>();
 
         for (Pracownik p : pracownicy) {
-            if(p.getRodzajUmowy().equalsIgnoreCase(umowa)) {
+            if (p.getRodzajUmowy().equalsIgnoreCase(umowa)) {
                 pracownicyZDanaUmowa.add(p);
             }
         }
         return pracownicyZDanaUmowa;
+    }
+
+    public static List<Pracownik> getEkstensjaPracownik() {
+        return ekstensja;
     }
 
     public int getPensja() {
@@ -63,9 +65,5 @@ public class Pracownik extends Osoba{
 
     public void setWypozyczenia(List<Wypozyczenie> wypozyczenia) {
         this.wypozyczenia = wypozyczenia;
-    }
-
-    public static List<Pracownik> getEkstensjaPracownik() {
-        return ekstensja;
     }
 }

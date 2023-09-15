@@ -9,14 +9,13 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Visit {
+    public static List<Visit> extension = new ArrayList<>();
     private final Doctor doctor;
     private final Patient patient;
     private final Date date;
 
-    public static List<Visit> extension = new ArrayList<>();
-
     public Visit(Doctor doctor, Patient patient, Date date) {
-        if (doctor == null || patient == null){
+        if (doctor == null || patient == null) {
             throw new IllegalArgumentException("Doctor and patient needed");
         }
 
@@ -83,6 +82,10 @@ public class Visit {
         return busiestYear;
     }
 
+    public static List<Visit> getExtension() {
+        return extension;
+    }
+
     public Doctor getDoctor() {
         return doctor;
     }
@@ -98,10 +101,6 @@ public class Visit {
     private String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(date);
-    }
-
-    public static List<Visit> getExtension() {
-        return extension;
     }
 
     @Override

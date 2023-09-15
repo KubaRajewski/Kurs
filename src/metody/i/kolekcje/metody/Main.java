@@ -141,7 +141,7 @@ public class Main {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// Napisz metodę ktora oblicza pensje pracownika na podstawie liczby przepracowanych godzin, stawki godzinowej oraz bonusu
+    // Napisz metodę ktora oblicza pensje pracownika na podstawie liczby przepracowanych godzin, stawki godzinowej oraz bonusu
     public static double obliczPensje(int liczbaGodzin, double stawka, double bonus) {
         return liczbaGodzin * stawka + bonus;
     }

@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Osoba {
+    public static List<Osoba> ekstensja = new ArrayList<>();
     private String imie;
     private String nazwisko;
     private KolorOczu kolorOczu;
     private KolorWlosow kolorWlosow;
-
-    public static List<Osoba> ekstensja = new ArrayList<>();
 
     public Osoba(String imie, String nazwisko, KolorOczu kolorOczu, KolorWlosow kolorWlosow) {
         this.imie = imie;
@@ -76,6 +75,9 @@ public class Osoba {
         return osobaONajdluzszymNazwiskuZDanymiOczami;
     }
 
+    public static List<Osoba> getEkstensja() {
+        return ekstensja;
+    }
 
     public String getImie() {
         return imie;
@@ -107,10 +109,6 @@ public class Osoba {
 
     public void setKolorWlosow(KolorWlosow kolorWlosow) {
         this.kolorWlosow = kolorWlosow;
-    }
-
-    public static List<Osoba> getEkstensja() {
-        return ekstensja;
     }
 
     @Override

@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Szkolenie {
+    private static List<Szkolenie> ekstensja = new ArrayList<>();
     private String nazwa;
     private String data;
-
     private List<Pracownik> uczestnicy = new ArrayList<>();
-
-    private static List<Szkolenie> ekstensja = new ArrayList<>();
 
     public Szkolenie(String nazwa, String data) {
         this.nazwa = nazwa;
         this.data = data;
 
         ekstensja.add(this);
+    }
+
+    public static List<Szkolenie> getEkstensja() {
+        return ekstensja;
     }
 
     public String getNazwa() {
@@ -40,10 +42,6 @@ public class Szkolenie {
 
     public void setUczestnicy(List<Pracownik> uczestnicy) {
         this.uczestnicy = uczestnicy;
-    }
-
-    public static List<Szkolenie> getEkstensja() {
-        return ekstensja;
     }
 
     @Override

@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Produkt {
+    private static List<Produkt> ekstensja = new ArrayList<>();
     private String nazwa;
     private double cena;
-
     private List<Klient> klienci = new ArrayList<>();
-
-    private static List<Produkt> ekstensja = new ArrayList<>();
 
     public Produkt(String nazwa, double cena) {
         this.nazwa = nazwa;
@@ -18,8 +16,16 @@ public class Produkt {
         ekstensja.add(this);
     }
 
-    public void dodajKlienta(Klient klient){
-        if(!klienci.contains(klient)){
+    public static List<Produkt> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Produkt> ekstensja) {
+        Produkt.ekstensja = ekstensja;
+    }
+
+    public void dodajKlienta(Klient klient) {
+        if (!klienci.contains(klient)) {
             klienci.add(klient);
         }
     }
@@ -38,14 +44,6 @@ public class Produkt {
 
     public void setKlienci(List<Klient> klienci) {
         this.klienci = klienci;
-    }
-
-    public static List<Produkt> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Produkt> ekstensja) {
-        Produkt.ekstensja = ekstensja;
     }
 
     @Override

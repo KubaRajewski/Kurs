@@ -8,20 +8,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Doctor  extends Person{
-    private final int doctorId;
-    private String specialization;
-    private final String nip;
-    private List<Visit> visits = new ArrayList<>();
-
+public class Doctor extends Person {
     private static List<Doctor> extension = new ArrayList<>();
+    private final int doctorId;
+    private final String nip;
+    private String specialization;
+    private List<Visit> visits = new ArrayList<>();
 
     public Doctor(String surname, String name, String pesel, Date dateOfBirth, int doctorId, String specialization, String nip) {
         super(surname, name, pesel, dateOfBirth);
         for (Doctor doctor : extension) {
-            if (doctor.doctorId == doctorId){
+            if (doctor.doctorId == doctorId) {
                 throw new IllegalArgumentException("Doctor with this Id already exists");
-            } else if (doctor.nip.equals(nip)){
+            } else if (doctor.nip.equals(nip)) {
                 throw new IllegalArgumentException("Doctor with this NIP already exists");
             }
         }
@@ -68,7 +67,7 @@ public class Doctor  extends Person{
 
     public static Doctor findDoctorByID(int doctorId) {
         for (Doctor doctor : Doctor.getExtension()) {
-            if (doctor.getDoctorId() == doctorId){
+            if (doctor.getDoctorId() == doctorId) {
                 return doctor;
             }
         }
@@ -77,13 +76,13 @@ public class Doctor  extends Person{
 
 
     //TODO - znajdź lekarza ktory miał najwięcej wizyt
-    public static Doctor busiestDoctor(){
+    public static Doctor busiestDoctor() {
         if (extension.isEmpty()) {
             throw new IllegalArgumentException("List of doctors is empty");
         }
         Doctor busiestDoctor = extension.get(0);
         for (Doctor doctor : extension) {
-            if (doctor.getVisits().size() > busiestDoctor.getVisits().size()){
+            if (doctor.getVisits().size() > busiestDoctor.getVisits().size()) {
                 busiestDoctor = doctor;
             }
         }
@@ -92,7 +91,7 @@ public class Doctor  extends Person{
 
 
     //TODO - która specalizacja cieszy się największym powodzeniem?
-    public static String mostPopularSpecialty(){
+    public static String mostPopularSpecialty() {
         if (extension.isEmpty()) {
             throw new IllegalArgumentException("List of doctors is empty");
         }
@@ -104,7 +103,7 @@ public class Doctor  extends Person{
         String mostPopularSpecialty = null;
         int mostPopularSpecialtyCount = 0;
         for (Map.Entry<String, Integer> entry : visitCount.entrySet()) {
-            if (entry.getValue() > mostPopularSpecialtyCount){
+            if (entry.getValue() > mostPopularSpecialtyCount) {
                 mostPopularSpecialty = entry.getKey();
                 mostPopularSpecialtyCount = entry.getValue();
             }
@@ -158,6 +157,10 @@ public class Doctor  extends Person{
         return doctorsWithXPatients;
     }
 
+    public static List<Doctor> getExtension() {
+        return extension;
+    }
+
     public int getDoctorId() {
         return doctorId;
     }
@@ -180,10 +183,6 @@ public class Doctor  extends Person{
 
     public void setVisits(List<Visit> visits) {
         this.visits = visits;
-    }
-
-    public static List<Doctor> getExtension() {
-        return extension;
     }
 
     @Override

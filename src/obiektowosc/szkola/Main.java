@@ -185,7 +185,7 @@ public class Main {
         System.out.println("Szkoła 3 " + s2.getSale() + "\n");
 
         System.out.println("Klasy dostepne w szkole 1: ");
-        System.out.println(s1.getKlasy()+ "\n");
+        System.out.println(s1.getKlasy() + "\n");
 
         System.out.println("uczniowie klasy 1a");
         System.out.println(k1.getUczniowie());
@@ -218,10 +218,10 @@ public class Main {
         System.out.println(u1.getOceny());
 
         System.out.println("Klasy dostepne w szkole 2: ");
-        System.out.println(s2.getKlasy()+ "\n");
+        System.out.println(s2.getKlasy() + "\n");
 
         System.out.println("Klasy dostepne w szkole 3: ");
-        System.out.println(s3.getKlasy()+ "\n");
+        System.out.println(s3.getKlasy() + "\n");
 
         System.out.println("\nWszyscy uczniowie z pierwszej szkoły: ");
         System.out.println(Szkola.uczniowieZDanejSzkoly(s1) + "\n");

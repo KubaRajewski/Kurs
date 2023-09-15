@@ -35,7 +35,7 @@ public class Main {
         System.out.println();
 
 // 3) Napisz program w którym deklarujesz 2 zmienne typu int. Sprawdź czy są sobie równe
-        System.out.println( "Zadanie 3 - czy zmienne sa rowne");
+        System.out.println("Zadanie 3 - czy zmienne sa rowne");
 
         int d = 3;
         int e = 3;

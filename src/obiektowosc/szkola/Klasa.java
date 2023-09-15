@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Klasa {
+    private final Szkola szkola;
     private String nazwa;
     private String profil;
-    private final Szkola szkola;
     private List<Uczen> uczniowie = new ArrayList<>(); // Dodaj listę uczniów jako atrybut instancji
 
     public Klasa(String nazwa, Szkola szkola, String profil, List<Uczen> uczniowie) {

@@ -63,7 +63,7 @@ public class Main {
         dyplom2.dodajOcene(new Ocena(NazwaPrzedmiotu.FIZYKA, OcenaEnum.DOSTATECZNY));
         dyplom2.dodajOcene(new Ocena(NazwaPrzedmiotu.CHEMIA, OcenaEnum.BARDZO_DOBRY));
 
-        System.out.println("\n"+Dyplom.dyplomZNajwiekszaSrednia(Dyplom.getEkstensja()));
+        System.out.println("\n" + Dyplom.dyplomZNajwiekszaSrednia(Dyplom.getEkstensja()));
 
         /*
          * Stwórz klase klient i wycieczka, klient moze miec wiele wycieczek, wycieczka
@@ -94,7 +94,7 @@ public class Main {
         k4.dodajWycieczke(w4, d4);
 
         //TODO  Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
-        System.out.println("\n"+Klient.wydalNajwiecej(Klient.getEkstensja()));
+        System.out.println("\n" + Klient.wydalNajwiecej(Klient.getEkstensja()));
 
         //TODO Znadz klienta który wydal * najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
         System.out.println(Klient.wydalNajwiecejNaDodatki(Klient.getEkstensja()) + "\n");

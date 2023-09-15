@@ -5,12 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 public class Dyplom {
+    public static List<Dyplom> ekstensja = new ArrayList<>();
     private String imie;
     private String nazwisko;
     private Date dataWystawienia;
     private List<Ocena> oceny;
-
-    public static List<Dyplom> ekstensja = new ArrayList<>();
 
     public Dyplom(String imie, String nazwisko, Date dataWystawienia) {
         this.imie = imie;
@@ -19,10 +18,6 @@ public class Dyplom {
         this.oceny = new ArrayList<>();
 
         ekstensja.add(this);
-    }
-
-    public void dodajOcene(Ocena ocena) {
-        oceny.add(ocena);
     }
 
     public static Dyplom dyplomZNajwiekszaSrednia(List<Dyplom> dyplomy) {
@@ -40,6 +35,14 @@ public class Dyplom {
             }
         }
         return najlepszyDyplom;
+    }
+
+    public static List<Dyplom> getEkstensja() {
+        return ekstensja;
+    }
+
+    public void dodajOcene(Ocena ocena) {
+        oceny.add(ocena);
     }
 
     public double sredniaOcen() {
@@ -83,10 +86,6 @@ public class Dyplom {
 
     public void setOceny(List<Ocena> oceny) {
         this.oceny = oceny;
-    }
-
-    public static List<Dyplom> getEkstensja() {
-        return ekstensja;
     }
 
     @Override

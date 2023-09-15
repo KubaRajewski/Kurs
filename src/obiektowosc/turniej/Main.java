@@ -87,16 +87,16 @@ public class Main {
         System.out.println("\n" + "Wyniki gracza g1: " + g1.getNazwisko());
         g1.getWyniki().forEach(System.out::println);
 
-        System.out.println("\n"+"Punkty gracza g1 po wszystkich Turniejach: " + g1.getSumaPunktow());
+        System.out.println("\n" + "Punkty gracza g1 po wszystkich Turniejach: " + g1.getSumaPunktow());
 
         // TODO 3) znajdz gracza ktory byl najlepszy w Turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
-        System.out.println("\n"+"Najlepszy gracz w Turnieju o nazwie Szachy: " + Gracz.najlepszyGraczWTurniejachODanejNazwie(Gracz.getEkstensja(), "Szachy"));
+        System.out.println("\n" + "Najlepszy gracz w Turnieju o nazwie Szachy: " + Gracz.najlepszyGraczWTurniejachODanejNazwie(Gracz.getEkstensja(), "Szachy"));
 
         // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich Turniejow
-        System.out.println("\n"+"Gracz ktory zdobyl najwiecej 1 miejsc: " + Gracz.zNajwiekszaIlosciaDanychPozycji(Gracz.getEkstensja(), 1));
+        System.out.println("\n" + "Gracz ktory zdobyl najwiecej 1 miejsc: " + Gracz.zNajwiekszaIlosciaDanychPozycji(Gracz.getEkstensja(), 1));
 
         // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdy nie mial 1 miejsca
-        System.out.println("\n"+"Gracz ktory ma najwyzszy ranking z Turniejow ale nigdy nie mial 1 miejsca: " + Gracz.najlepszyGraczBezDanejPozycji(Gracz.getEkstensja(), 1));
+        System.out.println("\n" + "Gracz ktory ma najwyzszy ranking z Turniejow ale nigdy nie mial 1 miejsca: " + Gracz.najlepszyGraczBezDanejPozycji(Gracz.getEkstensja(), 1));
 
     }
 

@@ -9,15 +9,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Child {
-    private int childId;
+    public static List<Child> extension = new ArrayList<>();
     private final char gender;
-    private String name;
     private final Date dateOfBirth;
     private final double weight;
     private final double height;
+    private int childId;
+    private String name;
     private Mother mum;
-
-    public static List<Child> extension = new ArrayList<>();
 
     public Child(int childId, char gender, String name, Date dateOfBirth, double weight, double height) {
         for (Child child : extension) {
@@ -139,15 +138,13 @@ public class Child {
         return girlsWithTheSameNameAsMother;
     }
 
+    public static List<Child> getExtension() {
+        return extension;
+    }
+
     public String getFormattedDateOfBirth() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(dateOfBirth);
-    }
-
-    public void setMum(Mother mum) {
-        if (!mum.getChildren().contains(this)) {
-            this.mum = mum;
-        }
     }
 
     public int getChildId() {
@@ -186,8 +183,10 @@ public class Child {
         return mum;
     }
 
-    public static List<Child> getExtension() {
-        return extension;
+    public void setMum(Mother mum) {
+        if (!mum.getChildren().contains(this)) {
+            this.mum = mum;
+        }
     }
 
     @Override

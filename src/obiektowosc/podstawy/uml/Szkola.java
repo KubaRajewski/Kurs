@@ -6,20 +6,15 @@ import java.util.List;
 
 public class Szkola {
 
+    private static int MIN_LICZBA_UCZNIOW = 150;
+    // ekstensja klasy szkola
+    private static List<Szkola> ekstensja = new ArrayList<>();
     // atrybuty
     public final int rokPowstania;
     public String nazwa;
     public String wyroznienie;
     public int numer;
-    private static int MIN_LICZBA_UCZNIOW = 150;
-
     public List<String> profile = new ArrayList<>();
-
-
-    // ekstensja klasy szkola
-    private static List<Szkola> ekstensja = new ArrayList<>();
-
-
     // asocjacja licznosci * do klasy Uczen
     private List<Uczen> uczniowie = new ArrayList<>();
 
@@ -40,6 +35,14 @@ public class Szkola {
             }
         }
         ekstensja.add(this);
+    }
+
+    public static int getMinLiczbaUczniow() {
+        return MIN_LICZBA_UCZNIOW;
+    }
+
+    public static void setMinLiczbaUczniow(int minLiczbaUczniow) {
+        MIN_LICZBA_UCZNIOW = minLiczbaUczniow;
     }
 
     // metoda tworzaca powiazanie (asocjacje)
@@ -83,14 +86,6 @@ public class Szkola {
 
     public void dodajProfil(String profil) {
         profile.add(profil);
-    }
-
-    public static int getMinLiczbaUczniow() {
-        return MIN_LICZBA_UCZNIOW;
-    }
-
-    public static void setMinLiczbaUczniow(int minLiczbaUczniow) {
-        MIN_LICZBA_UCZNIOW = minLiczbaUczniow;
     }
 
     public int getRokPowstania() {
