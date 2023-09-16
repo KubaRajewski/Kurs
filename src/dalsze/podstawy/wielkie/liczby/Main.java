@@ -48,7 +48,6 @@ public class Main {
 
         System.out.println(a.compareTo(b));
 
-
         // zwraca wieksza z dwoch
         System.out.println("wieksza " + a.max(b));
         // mniejsza z dwoch
@@ -104,7 +103,6 @@ public class Main {
         // liczb wiekszych od podanego parametru
         System.out.println(listaLiczbWiekszychNiz(bigIntegers, new BigInteger("125")));
 
-
         //TODO Stworz metode ktora przyjmuje jako parametr liste bigitnow oraz dwa inty a i
         // b i zwroci liste wszystkich elementow z listy ktorych wartosc modulo a = b.
         // element listy=17, a = 5, b=2 17mod5 =2
@@ -126,17 +124,6 @@ public class Main {
         listaList.add(bigIntegers);
         listaList.add(bigIntegers2);
         System.out.println(sumaNajwiekszych(listaList));
-
-        // Stworz krotki system bankowy oparty na klasie BigDecimal. Stworz klase Klient
-        // i Konto. Klient moze miec wiele kont. Konto powinno miec metody
-        // deposit(BigDecimal b) i withdraw(BigDecimal b). Przeprowadz symulacje
-        // wplacania i wyplacania pieniedzy.
-        // Dodaj swoje metody pozwalajace na ciekawe operacje na koncie np naliczenie
-        // odsetek gdy stan konta jest ujemny, dodanie odsetek gdy ktos ma duzo pieniedzy itp
-        // Znajdz konto ktore ma najwiecej hajsu
-        // Znajdz konto ktore miało najwiecej transakcji
-        // Znajdz znajdz wszystkie konta z ujemnym balansem
-
     }
 
     //napisz metode ktora przyjmuje jako parametr Liste BigIntow i zwraca Liste
@@ -155,7 +142,6 @@ public class Main {
     }
 
     // Stwórz metode która znajduje najwieksza liczbe typu BigInt na liscie
-
     public static BigInteger najwiekszLiczbaNaLiscie(List<BigInteger> lista) {
         if (lista == null) {
             throw new IllegalArgumentException("Lista jest pusta");

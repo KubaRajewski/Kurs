@@ -20,6 +20,21 @@ public class Dyplom {
         ekstensja.add(this);
     }
 
+    public void dodajOcene(Ocena ocena) {
+        oceny.add(ocena);
+    }
+
+    public double sredniaOcen() {
+        if (oceny.isEmpty()) {
+            return 0.0;
+        }
+        double sumaOcen = 0;
+        for (Ocena ocena : oceny) {
+            sumaOcen += ocena.getOcena().getWartosc();
+        }
+        return sumaOcen / oceny.size();
+    }
+
     public static Dyplom dyplomZNajwiekszaSrednia(List<Dyplom> dyplomy) {
         if (dyplomy == null) {
             throw new IllegalArgumentException("Brak dyplomow");
@@ -39,21 +54,6 @@ public class Dyplom {
 
     public static List<Dyplom> getEkstensja() {
         return ekstensja;
-    }
-
-    public void dodajOcene(Ocena ocena) {
-        oceny.add(ocena);
-    }
-
-    public double sredniaOcen() {
-        if (oceny.isEmpty()) {
-            return 0.0;
-        }
-        double sumaOcen = 0;
-        for (Ocena ocena : oceny) {
-            sumaOcen += ocena.getOcena().getWartosc();
-        }
-        return sumaOcen / oceny.size();
     }
 
     public String getImie() {

@@ -196,7 +196,6 @@ public class Account {
         return extension;
     }
 
-
     @Override
     public String toString() {
         return number.toString() + ", balance: " + balance.toString();

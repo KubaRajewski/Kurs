@@ -49,23 +49,23 @@ public class Main {
         System.out.println(Osoba.osobaONajdluzszymNazwiskuZDanymiOczami(Osoba.getEkstensja(), KolorOczu.NIEBIESKI));
 
 
-        // Stworz klase Dyplom ktora posiada imie i nazwisko, date wystawienia, na
+        //TODO Stworz klase Dyplom ktora posiada imie i nazwisko, date wystawienia, na
         // dyplomie znajduja sie oceny z przedmiotow(lista klasy Ocena, gdzie ocena ma wartosc i nazwe przedmiotu)
         // stworz kilka dyplomow, znajdz dyplom z najwieksza srednia
 
-        Dyplom dyplom1 = new Dyplom("Jan", "Kowalski", new Date(2023 - 1900, 4, 15));
+        Dyplom dyplom1 = new Dyplom("Jan", "Kowalski", new Date(2023, 4, 15));
         dyplom1.dodajOcene(new Ocena(NazwaPrzedmiotu.MATEMATYKA, OcenaEnum.BARDZO_DOBRY));
         dyplom1.dodajOcene(new Ocena(NazwaPrzedmiotu.FIZYKA, OcenaEnum.CELUJACY));
         dyplom1.dodajOcene(new Ocena(NazwaPrzedmiotu.CHEMIA, OcenaEnum.DOSTATECZNY));
 
-        Dyplom dyplom2 = new Dyplom("Anna", "Nowak", new Date(2023 - 1900, 5, 10));
+        Dyplom dyplom2 = new Dyplom("Anna", "Nowak", new Date(2023, 5, 10));
         dyplom2.dodajOcene(new Ocena(NazwaPrzedmiotu.MATEMATYKA, OcenaEnum.CELUJACY));
         dyplom2.dodajOcene(new Ocena(NazwaPrzedmiotu.FIZYKA, OcenaEnum.DOSTATECZNY));
         dyplom2.dodajOcene(new Ocena(NazwaPrzedmiotu.CHEMIA, OcenaEnum.BARDZO_DOBRY));
 
         System.out.println("\n" + Dyplom.dyplomZNajwiekszaSrednia(Dyplom.getEkstensja()));
 
-        /*
+        /*TODO
          * Stwórz klase klient i wycieczka, klient moze miec wiele wycieczek, wycieczka
          * moze miec wielu klientow. Wycieczka ma nazwe, kraj, cena i liste dodatkow
          * (kazdy jest dodatkowo platny) Znadz klienta który wydal najwiecej na dodatki
@@ -93,10 +93,10 @@ public class Main {
         k3.dodajWycieczke(w3, d3);
         k4.dodajWycieczke(w4, d4);
 
-        //TODO  Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
+        // Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
         System.out.println("\n" + Klient.wydalNajwiecej(Klient.getEkstensja()));
 
-        //TODO Znadz klienta który wydal * najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
+        // Znadz klienta który wydal * najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
         System.out.println(Klient.wydalNajwiecejNaDodatki(Klient.getEkstensja()) + "\n");
 
         // Napisz kalkulator opierajacy sie o typ wyliczeniowy i metode abstrakcyjna licz(double d1, double d2)
