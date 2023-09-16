@@ -16,42 +16,73 @@ public class Main {
     public static void main(String[] args) {
 
         Client c1 = new Client("Jan", "Kowalski");
-        Client c10 = new Client("Jan", "Kowalski"); // new client with the same name and surname but different id
         Client c2 = new Client("Anna", "Nowak");
         Client c3 = new Client("Andrzej", "Wisniewski");
         Client c4 = new Client("Maria", "Dabrowska");
         Client c5 = new Client("Piotr", "Zawadzki");
 
         // Each has at least one account
-        Account a1 = new Account(c1);
-        Account a2 = new Account(c2);
-        Account a3 = new Account(c3);
-        Account a4 = new Account(c4);
-        Account a5 = new Account(c5);
+        Account a1 = new Account(c1, new BigDecimal("1000"));
+        Account a2 = new Account(c2, BigDecimal.ZERO);
+        Account a3 = new Account(c3, BigDecimal.ZERO);
+        Account a4 = new Account(c4, BigDecimal.ZERO);
+        Account a5 = new Account(c5, BigDecimal.ZERO);
 
         // some have more than one
-        Account a6 = new Account(c1);
-        Account a7 = new Account(c1);
-        Account a8 = new Account(c1);
+        Account a6 = new Account(c1, new BigDecimal("1500"));
+        Account a7 = new Account(c1, new BigDecimal("5000"));
+        Account a8 = new Account(c1, new BigDecimal("10000"));
 
-        Account a9 = new Account(c2);
+        Account a9 = new Account(c2, BigDecimal.ZERO);
 
-        Account a10 = new Account(c3);
-        Account a11 = new Account(c3);
+        Account a10 = new Account(c3, BigDecimal.ZERO);
+        Account a11 = new Account(c3, BigDecimal.ZERO);
 
-//        Client.getExtension().forEach(System.out::println);
 
-        // depositing and withdrawing money
+        //deposit and withdraw
+        System.out.println("Deposit and withdraw:");
         a1.deposit(new BigDecimal("1000"));
-        a1.withdraw(new BigDecimal("100"));
+        a1.withdraw(new BigDecimal("500"));
+        System.out.println("1000-500: " + a1.getBalance() + "\n");
 
-        System.out.println(a1.getBalance()); // 900
+        //transfer
+        System.out.println("Transfer:");
+        a1.transfer(a2, new BigDecimal("100"));
+        System.out.println("1000-500-100: " + a1.getBalance());
+        System.out.println("0+100: " + a2.getBalance() + "\n");
 
-        // transfering money
-        a1.transfer(a2.getNumber(), new BigDecimal("100"));
+        //Credit
+        System.out.println("Interest:");
+        a1.withdraw(new BigDecimal("500"));
+        // balance wynosi -100
+        // credit wynosi 1000 - 100 czyli 900
+        System.out.println(a1.getBalance());
+        System.out.println(a1.getCredit() + "\n");
 
-        System.out.println(a1.getBalance()); // 800
-        System.out.println(a2.getBalance()); // 100
+        //interest
+        Account.checkForInterest(); // ta funkcja jesli sprawia ze jesli ktos ma ujemny balans to nalicza odsetki
+        System.out.println(a1.getBalance());
+        System.out.println(a1.getCredit() + "\n");
+        // wczesniej na a1 bylo -100zl balance i 900zl credit a teraz jest -105zl balance i 895zl credit
 
+        //taxing the rich
+        System.out.println("Taxing the rich:");
+        a8.deposit(new BigDecimal("1000000"));
+        System.out.println("Przed: "+a8.getBalance());
+        Account.taxTheRich(); // ta funkcja sprawia ze jesli ktos ma wiecej niz 1000000zl to zabiera mu 10% z tego co ma
+        System.out.println("Po "+a8.getBalance()+"\n");
+
+        //find account with the most money
+        System.out.println("Account with the most money:");
+        System.out.println(Account.findAccountWithTheMostMoney(Account.getExtension()) + "\n");
+
+        //find account with the most transactions
+        System.out.println("Account with the most transactions:");
+        System.out.println(Account.accountWithMostTransactions(Account.getExtension()) + "\n");
+
+        //find all accounts with negative balance
+        a7.withdraw(new BigDecimal("700"));
+        System.out.println("Accounts with negative balance:");
+        System.out.println(Account.accountsWithDebt(Account.getExtension()) + "\n");
     }
 }
