@@ -84,5 +84,9 @@ public class Main {
         a7.withdraw(new BigDecimal("700"));
         System.out.println("Accounts with negative balance:");
         System.out.println(Account.accountsWithDebt(Account.getExtension()) + "\n");
+
+        // show all transactions from one account:
+        System.out.println("Transactions from one account:");
+        System.out.println(a1.getTransactions() + "\n");
     }
 }

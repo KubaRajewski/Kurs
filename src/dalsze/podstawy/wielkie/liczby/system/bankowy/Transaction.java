@@ -38,4 +38,15 @@ public class Transaction {
     public Account getTargetAccount() {
         return targetAccount;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transactionType=" + transactionType +
+                ", sourceAccount=" + sourceAccount +
+                ", targetAccount=" + targetAccount +
+                ", amount=" + amount +
+                ", date=" + date +
+                '}';
+    }
 }

@@ -12,10 +12,11 @@ public class Account {
     private final BigDecimal number;
     private BigDecimal balance;
     private BigDecimal credit;
+    private List<Transaction> transactions = new ArrayList<>();
+
     private final static int NUMBER_OF_DIGITS_IN_ACCOUNT = 12;
     private final static double STANDARD_INTEREST_RATE = 0.05;
     private final static double PREMIUM_INTEREST_RATE = 0.1;
-    private List<Transaction> transactions = new ArrayList<>();
 
     public static List<Account> extension = new ArrayList<>();
 
@@ -53,18 +54,29 @@ public class Account {
 
     public void transfer(Account targetAccount, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalArgumentException("amount is less than or equal to zero");
+            throw new IllegalArgumentException("Amount is less than or equal to zero");
         }
 
         if (amount.compareTo(balance) > 0) {
-            throw new IllegalArgumentException("amount is greater than balance");
+            BigDecimal deficit = amount.subtract(balance);
+
+            if (deficit.compareTo(credit) > 0) {
+                throw new IllegalArgumentException("Amount is greater than balance and credit");
+            }
+
+            balance = BigDecimal.ZERO;
+            credit = credit.subtract(deficit);
+        } else {
+            balance = balance.subtract(amount);
         }
+
         transactions.add(new Transaction(this, targetAccount, TransactionType.TRANSFER, amount));
-        withdraw(amount, true);
-        targetAccount.deposit(amount, true);
+
+        targetAccount.balance = targetAccount.balance.add(amount);
     }
 
-    public void deposit(BigDecimal amount, boolean isTransfer) {
+
+    public void deposit(BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("amount is less than or equal to zero");
         }
@@ -73,7 +85,7 @@ public class Account {
         balance = balance.add(amount);
     }
 
-    public void withdraw(BigDecimal amount, boolean isTransfer) {
+    public void withdraw(BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("amount is less than or equal to zero");
         }
@@ -85,17 +97,14 @@ public class Account {
             }
             else {
                 System.out.println("credit used");
-                if (!isTransfer){
-                    transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
-                }
+
+                transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
                 credit = balance.add(credit).subtract(amount);
                 balance = balance.subtract(amount);
             }
         }
         else {
-            if (!isTransfer){
-                transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
-            }
+            transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
             balance = balance.subtract(amount);
         }
     }
