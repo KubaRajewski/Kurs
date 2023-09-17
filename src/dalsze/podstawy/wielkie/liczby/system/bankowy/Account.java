@@ -8,15 +8,18 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Account {
+
     private final static int NUMBER_OF_DIGITS_IN_ACCOUNT = 12;
     private final static double STANDARD_INTEREST_RATE = 0.05;
     private final static double PREMIUM_INTEREST_RATE = 0.1;
-    public static List<Account> extension = new ArrayList<>();
+
     private final Client client;
     private final BigDecimal number;
     private BigDecimal balance;
     private BigDecimal credit;
     private List<Transaction> transactions = new ArrayList<>();
+
+    public static List<Account> extension = new ArrayList<>();
 
     public Account(Client client, BigDecimal credit) {
         this.client = client;
@@ -197,10 +200,6 @@ public class Account {
 
     public List<Transaction> getTransactions() {
         return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
     }
 
     @Override
