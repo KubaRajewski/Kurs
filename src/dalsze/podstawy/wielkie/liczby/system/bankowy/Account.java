@@ -15,7 +15,7 @@ public class Account {
     private final static int NUMBER_OF_DIGITS_IN_ACCOUNT = 12;
     private final static double STANDARD_INTEREST_RATE = 0.05;
     private final static double PREMIUM_INTEREST_RATE = 0.1;
-    private int numberOfTransactions;
+    private List<Transaction> transactions = new ArrayList<>();
 
     public static List<Account> extension = new ArrayList<>();
 
@@ -24,7 +24,6 @@ public class Account {
         this.number = generateNewAccountNumber(NUMBER_OF_DIGITS_IN_ACCOUNT);
         this.balance = BigDecimal.ZERO;
         this.credit = credit;
-        this.numberOfTransactions = 0;
 
         extension.add(this);
         client.getAccounts().add(this);
@@ -60,22 +59,21 @@ public class Account {
         if (amount.compareTo(balance) > 0) {
             throw new IllegalArgumentException("amount is greater than balance");
         }
-
-        numberOfTransactions++;
-        withdraw(amount);
-        targetAccount.deposit(amount);
+        transactions.add(new Transaction(this, targetAccount, TransactionType.TRANSFER, amount));
+        withdraw(amount, true);
+        targetAccount.deposit(amount, true);
     }
 
-    public void deposit(BigDecimal amount) {
+    public void deposit(BigDecimal amount, boolean isTransfer) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("amount is less than or equal to zero");
         }
 
-        numberOfTransactions++;
+        transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
         balance = balance.add(amount);
     }
 
-    public void withdraw(BigDecimal amount) {
+    public void withdraw(BigDecimal amount, boolean isTransfer) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("amount is less than or equal to zero");
         }
@@ -87,13 +85,17 @@ public class Account {
             }
             else {
                 System.out.println("credit used");
-                numberOfTransactions++;
+                if (!isTransfer){
+                    transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
+                }
                 credit = balance.add(credit).subtract(amount);
                 balance = balance.subtract(amount);
             }
         }
         else {
-            numberOfTransactions++;
+            if (!isTransfer){
+                transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
+            }
             balance = balance.subtract(amount);
         }
     }
@@ -103,8 +105,8 @@ public class Account {
             throw new IllegalArgumentException("interest is less than or equal to zero");
         }
 
-        numberOfTransactions++;
         if (balance.compareTo(BigDecimal.ZERO) < 0) {
+            transactions.add(new Transaction(this, null, TransactionType.TAX, balance.multiply(interest)));
             credit = credit.add(balance.multiply(interest));
             balance = balance.add(balance.multiply(interest));
         }
@@ -121,6 +123,7 @@ public class Account {
     public static void taxTheRich(){
         for (Account account : extension) {
             if (account.balance.compareTo(BigDecimal.valueOf(1000000)) >= 0) {
+                account.transactions.add(new Transaction(account, null, TransactionType.TAX, account.balance.multiply(BigDecimal.valueOf(PREMIUM_INTEREST_RATE))));
                 account.balance = account.balance.subtract(account.balance.multiply(BigDecimal.valueOf(PREMIUM_INTEREST_RATE)));
             }
         }
@@ -129,7 +132,7 @@ public class Account {
     public static Account findAccountWithTheMostMoney(List<Account> accounts){
         Account richestAccount = accounts.get(0);
         for (Account account : accounts) {
-            if (account.balance.compareTo(richestAccount.balance) > 0) {
+            if (account.getBalance().compareTo(richestAccount.getBalance()) > 0) {
                 richestAccount = account;
             }
         }
@@ -139,7 +142,7 @@ public class Account {
     public static Account accountWithMostTransactions(List<Account> extension) {
         Account account = extension.get(0);
         for (Account a : extension) {
-            if (a.numberOfTransactions > account.numberOfTransactions) {
+            if (a.getTransactions().size() > account.getTransactions().size()) {
                 account = a;
             }
         }
@@ -153,7 +156,7 @@ public class Account {
 
         List<Account> accountsWithDebt = new ArrayList<>();
         for (Account a : list) {
-            if (a.balance.compareTo(BigDecimal.ZERO) < 0) {
+            if (a.getBalance().compareTo(BigDecimal.ZERO) < 0) {
                 accountsWithDebt.add(a);
             }
         }
@@ -184,12 +187,12 @@ public class Account {
         this.credit = credit;
     }
 
-    public int getNumberOfTransactions() {
-        return numberOfTransactions;
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setNumberOfTransactions(int numberOfTransactions) {
-        this.numberOfTransactions = numberOfTransactions;
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
     public static List<Account> getExtension() {
