@@ -6,7 +6,7 @@ import java.time.Period;
 public class Main {
     public static void main(String[] args) {
         LocalDate date = LocalDate.now();
-        LocalDate date1 = LocalDate.of(2003, 3,28);
+        LocalDate date1 = LocalDate.of(2003, 3, 28);
 
         Period period = Period.between(date1, date);
         int years = period.getYears();

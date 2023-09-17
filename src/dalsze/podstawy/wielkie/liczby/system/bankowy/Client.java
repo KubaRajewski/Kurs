@@ -8,14 +8,12 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Client {
+    private final static int NUMBER_OF_DIGITS_IN_ID = 3;
+    private static List<Client> extension = new ArrayList<>();
     private final String name;
     private final String surname;
     private final BigDecimal id;
-    private final static int NUMBER_OF_DIGITS_IN_ID = 3;
-
     private List<Account> accounts = new ArrayList<>();
-
-    private static List<Client> extension = new ArrayList<>();
 
     public Client(String name, String surname) {
         if (name == null || surname == null) {
@@ -27,6 +25,10 @@ public class Client {
         this.id = generateNewId();
 
         extension.add(this);
+    }
+
+    public static List<Client> getExtension() {
+        return extension;
     }
 
     private BigDecimal generateNewId() {
@@ -43,7 +45,7 @@ public class Client {
         idNumber = idNumber.setScale(0, RoundingMode.DOWN);
 
         for (Client c : extension) {
-            if(Objects.equals(c.getId(), idNumber)) {
+            if (Objects.equals(c.getId(), idNumber)) {
                 return generateNewId();
             }
         }
@@ -69,10 +71,6 @@ public class Client {
 
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
-    }
-
-    public static List<Client> getExtension() {
-        return extension;
     }
 
     @Override

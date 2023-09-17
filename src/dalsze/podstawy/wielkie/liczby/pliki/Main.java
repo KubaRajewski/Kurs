@@ -36,8 +36,6 @@ public class Main {
         }
 
 
-
-
         //TODO Wczytaj liczby z pliku i oblicz ich iloczyn
         String plikWejsciowy = "src/dalsze/podstawy/wielkie/liczby/pliki/liczby.txt";
         String plikWyjsciowy = "src/dalsze/podstawy/wielkie/liczby/pliki/wynik.txt";
@@ -63,7 +61,6 @@ public class Main {
             e.printStackTrace();
         }
     }
-
 
 
     public static BigInteger generujLosowaLiczbe(int liczbaCyfr) {

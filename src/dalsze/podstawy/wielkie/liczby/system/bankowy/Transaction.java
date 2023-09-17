@@ -11,7 +11,7 @@ public class Transaction {
     private final BigDecimal amount;
     private final LocalDateTime date;
 
-    public Transaction(Account sourceAccount,Account targetAccount, TransactionType transactionType, BigDecimal amount) {
+    public Transaction(Account sourceAccount, Account targetAccount, TransactionType transactionType, BigDecimal amount) {
         this.sourceAccount = sourceAccount;
         this.targetAccount = targetAccount;
         this.transactionType = transactionType;

@@ -17,27 +17,11 @@ public class Main {
 
         Client c1 = new Client("Jan", "Kowalski");
         Client c2 = new Client("Anna", "Nowak");
-        Client c3 = new Client("Andrzej", "Wisniewski");
-        Client c4 = new Client("Maria", "Dabrowska");
-        Client c5 = new Client("Piotr", "Zawadzki");
 
-        // Each has at least one account
         Account a1 = new Account(c1, new BigDecimal("1000"));
-        Account a2 = new Account(c2, BigDecimal.ZERO);
-        Account a3 = new Account(c3, BigDecimal.ZERO);
-        Account a4 = new Account(c4, BigDecimal.ZERO);
-        Account a5 = new Account(c5, BigDecimal.ZERO);
-
-        // some have more than one
-        Account a6 = new Account(c1, new BigDecimal("1500"));
-        Account a7 = new Account(c1, new BigDecimal("5000"));
-        Account a8 = new Account(c1, new BigDecimal("10000"));
-
-        Account a9 = new Account(c2, BigDecimal.ZERO);
-
-        Account a10 = new Account(c3, BigDecimal.ZERO);
-        Account a11 = new Account(c3, BigDecimal.ZERO);
-
+        Account a2 = new Account(c1, new BigDecimal("10000"));
+        Account a3 = new Account(c1, new BigDecimal("5000"));
+        Account a4 = new Account(c2, BigDecimal.ZERO);
 
         //deposit and withdraw
         System.out.println("Deposit and withdraw:");
@@ -47,9 +31,9 @@ public class Main {
 
         //transfer
         System.out.println("Transfer:");
-        a1.transfer(a2, new BigDecimal("100"));
+        a1.transfer(a4, new BigDecimal("100"));
         System.out.println("1000-500-100: " + a1.getBalance());
-        System.out.println("0+100: " + a2.getBalance() + "\n");
+        System.out.println("0+100: " + a4.getBalance() + "\n");
 
         //Credit
         System.out.println("Interest:");
@@ -67,10 +51,10 @@ public class Main {
 
         //taxing the rich
         System.out.println("Taxing the rich:");
-        a8.deposit(new BigDecimal("1000000"));
-        System.out.println("Przed: "+a8.getBalance());
+        a2.deposit(new BigDecimal("1000000"));
+        System.out.println("Przed: " + a2.getBalance());
         Account.taxTheRich(); // ta funkcja sprawia ze jesli ktos ma wiecej niz 1000000zl to zabiera mu 10% z tego co ma
-        System.out.println("Po "+a8.getBalance()+"\n");
+        System.out.println("Po " + a2.getBalance() + "\n");
 
         //find account with the most money
         System.out.println("Account with the most money:");
@@ -81,7 +65,7 @@ public class Main {
         System.out.println(Account.accountWithMostTransactions(Account.getExtension()) + "\n");
 
         //find all accounts with negative balance
-        a7.withdraw(new BigDecimal("700"));
+        a3.withdraw(new BigDecimal("700"));
         System.out.println("Accounts with negative balance:");
         System.out.println(Account.accountsWithDebt(Account.getExtension()) + "\n");
 
