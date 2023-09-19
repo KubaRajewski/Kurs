@@ -18,6 +18,12 @@ public class Klient {
         ekstensja.add(this);
     }
 
+
+    public void dodajProdukt(Produkt produkt) {
+        produkty.add(produkt);
+        produkt.dodajKlienta(this);
+    }
+
     public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
         if (klienci == null || klienci.isEmpty())
             throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
@@ -28,6 +34,14 @@ public class Klient {
             }
         }
         return max;
+    }
+
+    public double obliczWartoscZakupow() {
+        double wartosc = 0;
+        for (Produkt produkt : produkty) {
+            wartosc += produkt.getCena();
+        }
+        return wartosc;
     }
 
     // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
@@ -53,27 +67,6 @@ public class Klient {
             }
         }
         return kupiliZlegoKondoma;
-    }
-
-    public static List<Klient> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Klient> ekstensja) {
-        Klient.ekstensja = ekstensja;
-    }
-
-    public void dodajProdukt(Produkt produkt) {
-        produkty.add(produkt);
-        produkt.dodajKlienta(this);
-    }
-
-    public double obliczWartoscZakupow() {
-        double wartosc = 0;
-        for (Produkt produkt : produkty) {
-            wartosc += produkt.getCena();
-        }
-        return wartosc;
     }
 
     // TODO 2) napisz metode ktora zwroci liste klientow ktorzy kupili kondoma
@@ -122,6 +115,14 @@ public class Klient {
 
     public void setProdukty(List<Produkt> produkty) {
         this.produkty = produkty;
+    }
+
+    public static List<Klient> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Klient> ekstensja) {
+        Klient.ekstensja = ekstensja;
     }
 
     @Override
