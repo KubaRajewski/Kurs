@@ -1,24 +1,29 @@
+# Pełny kurs Java
 
-#1. Podstawy
+## Rozpiska kursu
+
+
+
+### 1. Podstawy
 
 - Wstęp (zmienne, instrukcja warunkowa, pętle)
 - Tablice, tablice dwuwymiarowe
 - Scanner, JOptionPane
 - Zapis/odczyt z pliku (File, FileWriter, FileReader, BufferedReader)
 
-#2. Metody i kolekcje
+### 2. Metody i kolekcje
 
 - Metody, metody z tablicami
 - Listy, sety, mapy
 - Metody z użyciem kolekcji
-- 
-3. Obiektowość
+
+### 3. Obiektowość
 
 - Podstawy (pola, konstruktory, gettery, settery, toString, ekstensja, hashCode i equals)
 - Asocjacje (binarna, z atrybutem, kompozycja i agregacja)
 - Dziedziczenie
-- 
-4. Dalsze podstawy
+
+### 4. Dalsze podstawy
 
 - Regexy
 - String i StringBuilder
@@ -29,16 +34,16 @@
 - Daty (LocalDate, LocalDateTime, LocalTime, Instant, Duration, Period, formatery)
 - Typy generyczne
 - Lambda wyrażenia, interfejsy funkcyjne i streamy
-- 
-5. Wielowątkowość
+
+### 5. Wielowątkowość
 
 - Thread, Runnable i Callable
 - Race condition, synchronizacja, Locki, klasy Atomic
 - Deadlock
 - Kolejki blokujące
 - Pule wątków
-- 
-6. Rozszerzenie
+
+### 6. Rozszerzenie
 
 - Maven
 - Junit, Mockito, JaCoCo
@@ -50,5 +55,5 @@
 - HTTP
 - JQuery
 - Rest API, Soap API
-Mikroserwisy
-Docker, Jenkins
+- Mikroserwisy
+- Docker, Jenkins
