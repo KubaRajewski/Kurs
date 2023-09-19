@@ -29,6 +29,10 @@ public abstract class Osoba {
         ekstensja.add(this);
     }
 
+    public String getPlec() {
+        return (Integer.parseInt(String.valueOf(getPesel().charAt(10))) % 2 == 0) ? "Kobieta" : "Mezczyzna";
+    }
+
     public static List<Osoba> getEkstensja() {
         return ekstensja;
     }
@@ -38,10 +42,6 @@ public abstract class Osoba {
     }
 
     public abstract double obliczDochod();
-
-    public String getPlec() {
-        return (Integer.parseInt(String.valueOf(getPesel().charAt(10))) % 2 == 0) ? "Kobieta" : "Mezczyzna";
-    }
 
     public String getImie() {
         return imie;

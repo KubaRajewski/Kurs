@@ -79,11 +79,11 @@ public class Main {
 
         // TODO Testy systemu wychowawcow, wynagrodzen i kwalifikacji
         Kwalifikacje kw1 = new Kwalifikacje(true, true, true, true, 15);
-        Kwalifikowany w1 = new Kwalifikowany("Mariusz", "Pudzianowski", "2000-01-01");
+        WychowawcaKwalifikowany w1 = new WychowawcaKwalifikowany("Mariusz", "Pudzianowski", "2000-01-01");
         w1.dodajKwalifikacje(kw1);
 
         Kwalifikacje kw2 = new Kwalifikacje(true, false, false, false, 3);
-        Kwalifikowany w2 = new Kwalifikowany("Marek", "Nowak", "2002-03-15");
+        WychowawcaKwalifikowany w2 = new WychowawcaKwalifikowany("Marek", "Nowak", "2002-03-15");
         w2.dodajKwalifikacje(kw2);
 
         // Mamy dwoch Wychowawcow, jedem ma tylko licencjat a drugi doktorat i dlugi staz pracy, obliczStopien w zaleznosci od kwalifikacji
@@ -93,7 +93,7 @@ public class Main {
         System.out.println("Wychowawca w2: " + w2 + ", Pensja: " + w2.obliczPensje());
 
         // Wychowawcy tymczasowi maja stala pensje niezaleznie od kwalififikacji, obliczPensje zwraca liczbe godzin razy stawka godzinowa
-        Tymczasowy t1 = new Tymczasowy("Anna", "Nowak", "2002-03-15", 130);
+        WychowawcaTymczasowy t1 = new WychowawcaTymczasowy("Anna", "Nowak", "2002-03-15", 130);
         System.out.println("Wychowawca t1: " + t1 + ", Pensja: " + t1.obliczPensje() + "\n");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

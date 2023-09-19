@@ -1,20 +1,16 @@
 package dalsze.podstawy.enumy.wycieczki;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Klient {
-    public static List<Klient> ekstensja = new ArrayList<>();
-    private final String imie;
-    private final String nazwisko;
-    private final String pesel;
-    private Map<Wycieczka, List<Dodatek>> wycieczki = new HashMap<>();
 
-    public static List<Klient> getEkstensja() {
-        return ekstensja;
-    }
+    private String imie;
+    private String nazwisko;
+    private final String pesel;
+    private List<Zakup> zakupy = new ArrayList<>();
+
+    public static List<Klient> ekstensja = new ArrayList<>();
 
     public Klient(String imie, String nazwisko, String pesel) {
 
@@ -38,52 +34,43 @@ public class Klient {
     }
 
 
-    public void dodajWycieczke(Wycieczka wycieczka, List<Dodatek> dodatki) {
-        wycieczki.put(wycieczka, dodatki);
-        wycieczka.getKlienci().add(this);
-        wycieczka.setWybraneDodatki(dodatki);
+    public void dodajZakup(Wycieczka wycieczka, List<Dodatek> dodatki) {
+        Zakup zakup = new Zakup(wycieczka, this);
+        zakupy.add(zakup);
+        zakup.setKlient(this);
+        zakup.setDodatki(dodatki);
     }
 
-
-    //TODO  Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
-    public static Klient wydalNajwiecej(List<Klient> klienci) {
-        if (klienci == null) {
-            throw new IllegalArgumentException("Lista klientow nie moze byc pusta");
+    public static Klient wydalNajwiecejNaWycieczke(List<Klient> klienci, boolean zDodatkami) {
+        if (klienci == null || klienci.isEmpty()) {
+            throw new IllegalArgumentException("Lista klientow jest pusta");
         }
-
         Klient wydalNajwiecej = klienci.get(0);
 
-        for (Klient klient : klienci) {
-            if (klient.ileNajwiecejWydalNaJednaWycieczke() > wydalNajwiecej.ileNajwiecejWydalNaJednaWycieczke()) {
-                wydalNajwiecej = klient;
+        if (zDodatkami) {
+            for (Klient klient : klienci) {
+                if (wydalNajwiecej.ileNajwiecejWydalNaCalaWycieczke() < klient.ileNajwiecejWydalNaCalaWycieczke()) {
+                    wydalNajwiecej = klient;
+                }
             }
-        }
 
-        return wydalNajwiecej;
+            return wydalNajwiecej;
+        } else {
+            for (Klient klient : klienci) {
+                if (wydalNajwiecej.ileNajwiecejWydalNaDodatki() < klient.ileNajwiecejWydalNaDodatki()){
+                    wydalNajwiecej = klient;
+                }
+            }
+
+            return wydalNajwiecej;
+        }
     }
 
-    //TODO Znadz klienta który wydal najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
-    public static Klient wydalNajwiecejNaDodatki(List<Klient> klienci) {
-        if (klienci == null) {
-            throw new IllegalArgumentException("Lista klientow nie moze byc pusta");
-        }
-
-        Klient wydalNajwiecejNaDodatki = klienci.get(0);
-
-        for (Klient klient : klienci) {
-            if (klient.ileNajwiecejWydalNaDodatki() > wydalNajwiecejNaDodatki.ileNajwiecejWydalNaDodatki()) {
-                wydalNajwiecejNaDodatki = klient;
-            }
-        }
-
-        return wydalNajwiecejNaDodatki;
-    }
-
-    public double ileNajwiecejWydalNaJednaWycieczke() {
+    public double ileNajwiecejWydalNaCalaWycieczke() {
         double max = 0;
-        for (Wycieczka wycieczka : wycieczki.keySet()) {
-            if (wycieczka.obliczCeneWybranychDodatkow() + wycieczka.getCena() > max) {
-                max = wycieczka.obliczCeneWybranychDodatkow() + wycieczka.getCena();
+        for (Zakup zakup : zakupy) {
+            if (zakup.obliczCeneWybranychDodatkow() + zakup.getWycieczka().getCena() > max) {
+                max = zakup.obliczCeneWybranychDodatkow() + zakup.getWycieczka().getCena();
             }
         }
         return max;
@@ -91,28 +78,46 @@ public class Klient {
 
     public double ileNajwiecejWydalNaDodatki() {
         double max = 0;
-        for (Wycieczka wycieczka : wycieczki.keySet()) {
-            if (wycieczka.obliczCeneWybranychDodatkow() > max) {
-                max = wycieczka.obliczCeneWybranychDodatkow();
+        for (Zakup zakup : zakupy) {
+            if (zakup.obliczCeneWybranychDodatkow() > max) {
+                max = zakup.obliczCeneWybranychDodatkow();
             }
         }
         return max;
     }
 
+
+
     public String getImie() {
         return imie;
+    }
+
+    public void setImie(String imie) {
+        this.imie = imie;
     }
 
     public String getNazwisko() {
         return nazwisko;
     }
 
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
+    }
+
     public String getPesel() {
         return pesel;
     }
 
-    public Map<Wycieczka, List<Dodatek>> getWycieczki() {
-        return wycieczki;
+    public List<Zakup> getZakupy() {
+        return zakupy;
+    }
+
+    public void setZakupy(List<Zakup> zakupy) {
+        this.zakupy = zakupy;
+    }
+
+    public static List<Klient> getEkstensja() {
+        return ekstensja;
     }
 
     @Override

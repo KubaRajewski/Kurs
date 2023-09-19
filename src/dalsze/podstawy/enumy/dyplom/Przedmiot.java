@@ -1,5 +1,5 @@
 package dalsze.podstawy.enumy.dyplom;
 
-public enum NazwaPrzedmiotu {
+public enum Przedmiot {
     MATEMATYKA, FIZYKA, CHEMIA, INFORMATYKA, HISTORIA
 }

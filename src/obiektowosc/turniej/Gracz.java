@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class Gracz {
-    private static List<Gracz> ekstensja = new ArrayList<>();
     private String imie;
     private String nazwisko;
     private int sumaPunktow;
     private List<Wynik> wyniki = new ArrayList<>();
+
+    private static List<Gracz> ekstensja = new ArrayList<>();
+
 
     public Gracz(String imie, String nazwisko) {
         this.imie = imie;
@@ -58,14 +60,6 @@ public class Gracz {
         }
 
         return najlepszyGracz;
-    }
-
-    public static List<Gracz> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Gracz> ekstensja) {
-        Gracz.ekstensja = ekstensja;
     }
 
     // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
@@ -132,6 +126,14 @@ public class Gracz {
 
     public void setWyniki(List<Wynik> wyniki) {
         this.wyniki = wyniki;
+    }
+
+    public static List<Gracz> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Gracz> ekstensja) {
+        Gracz.ekstensja = ekstensja;
     }
 
     @Override

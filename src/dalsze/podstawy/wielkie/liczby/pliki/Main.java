@@ -24,8 +24,7 @@ public class Main {
             BufferedWriter writer = new BufferedWriter(new FileWriter(sciezka));
 
             for (int i = 0; i < 100; i++) {
-                BigInteger losowaLiczba = generujLosowaLiczbe(100);
-                writer.write(losowaLiczba.toString());
+                writer.write(generujLosowaLiczbe(100));
                 writer.newLine();
             }
 
@@ -63,16 +62,16 @@ public class Main {
     }
 
 
-    public static BigInteger generujLosowaLiczbe(int liczbaCyfr) {
+    public static String generujLosowaLiczbe(int liczbaCyfr) {
         Random rand = new Random();
         StringBuilder liczba = new StringBuilder();
 
-        liczba.append(rand.nextInt(9) + 1);
+        liczba.append(rand.nextInt(1, 10));
 
         for (int i = 1; i < liczbaCyfr; i++) {
             liczba.append(rand.nextInt(10));
         }
 
-        return new BigInteger(liczba.toString());
+        return liczba.toString();
     }
 }

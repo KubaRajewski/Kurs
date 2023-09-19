@@ -21,6 +21,33 @@ public class Grupa {
         ekstensja.add(this);
     }
 
+    public void dodajDziecko(Dziecko dziecko) {
+        if (dzieci.size() < MAX_LICZBA_DZIECI) {
+            dzieci.add(dziecko);
+            dziecko.setGrupa(this);
+        } else {
+            throw new IllegalArgumentException("Nie można dodać dziecka do grupy " + nazwa + " - grupa jest pełna");
+        }
+    }
+
+    public void dodajWychowawce(Wychowawca wychowawca) {
+        if (this.wychowawca == null && !wychowawca.getGrupy().contains(this)) {
+            this.wychowawca = wychowawca;
+            wychowawca.getGrupy().add(this);
+        } else {
+            throw new IllegalArgumentException("Nie można dodać wychowawcy do grupy " + nazwa + " - grupa ma już wychowawcę");
+        }
+    }
+
+    public void dodajSale(Sala sala) {
+        if (this.sala == null && sala.getGrupa() == null) {
+            this.sala = sala;
+            sala.setGrupa(this);
+        } else {
+            throw new IllegalArgumentException("Nie można dodać sali do grupy " + nazwa + " - grupa ma już swoja sale lub sala jest już zajęta");
+        }
+    }
+
     // TODO  * - zapisz do pliku imiona i nazwiska wszystkich dzieci którzy sa w grupie dla wychowawcy podanego jako parametr
     public static void zapiszDzieciDoPliku(String imie, String nazwisko) {
         for (Grupa g : ekstensja) {
@@ -59,37 +86,6 @@ public class Grupa {
 
     public static List<Grupa> getEkstensja() {
         return ekstensja;
-    }
-
-    public static void setEkstensja(List<Grupa> ekstensja) {
-        Grupa.ekstensja = ekstensja;
-    }
-
-    public void dodajDziecko(Dziecko dziecko) {
-        if (dzieci.size() < MAX_LICZBA_DZIECI) {
-            dzieci.add(dziecko);
-            dziecko.setGrupa(this);
-        } else {
-            throw new IllegalArgumentException("Nie można dodać dziecka do grupy " + nazwa + " - grupa jest pełna");
-        }
-    }
-
-    public void dodajWychowawce(Wychowawca wychowawca) {
-        if (this.wychowawca == null && !wychowawca.getGrupy().contains(this)) {
-            this.wychowawca = wychowawca;
-            wychowawca.getGrupy().add(this);
-        } else {
-            throw new IllegalArgumentException("Nie można dodać wychowawcy do grupy " + nazwa + " - grupa ma już wychowawcę");
-        }
-    }
-
-    public void dodajSale(Sala sala) {
-        if (this.sala == null && sala.getGrupa() == null) {
-            this.sala = sala;
-            sala.setGrupa(this);
-        } else {
-            throw new IllegalArgumentException("Nie można dodać sali do grupy " + nazwa + " - grupa ma już swoja sale lub sala jest już zajęta");
-        }
     }
 
     public String getNazwa() {

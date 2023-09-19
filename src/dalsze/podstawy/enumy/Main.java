@@ -1,10 +1,9 @@
 package dalsze.podstawy.enumy;
 
 import dalsze.podstawy.enumy.dyplom.Dyplom;
-import dalsze.podstawy.enumy.dyplom.NazwaPrzedmiotu;
 import dalsze.podstawy.enumy.dyplom.Ocena;
-import dalsze.podstawy.enumy.dyplom.OcenaEnum;
-import dalsze.podstawy.enumy.kalkulator.KalkulatorStandardowy;
+import dalsze.podstawy.enumy.dyplom.OcenaWartosc;
+import dalsze.podstawy.enumy.dyplom.Przedmiot;
 import dalsze.podstawy.enumy.kalkulator.Operacja;
 import dalsze.podstawy.enumy.osoba.KolorOczu;
 import dalsze.podstawy.enumy.osoba.KolorWlosow;
@@ -16,6 +15,7 @@ import dalsze.podstawy.enumy.wycieczki.Klient;
 import dalsze.podstawy.enumy.wycieczki.Kraj;
 import dalsze.podstawy.enumy.wycieczki.Wycieczka;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,14 +54,17 @@ public class Main {
         // stworz kilka dyplomow, znajdz dyplom z najwieksza srednia
 
         Dyplom dyplom1 = new Dyplom("Jan", "Kowalski", new Date(2023, 4, 15));
-        dyplom1.dodajOcene(new Ocena(NazwaPrzedmiotu.MATEMATYKA, OcenaEnum.BARDZO_DOBRY));
-        dyplom1.dodajOcene(new Ocena(NazwaPrzedmiotu.FIZYKA, OcenaEnum.CELUJACY));
-        dyplom1.dodajOcene(new Ocena(NazwaPrzedmiotu.CHEMIA, OcenaEnum.DOSTATECZNY));
+        Ocena O1 = new Ocena(Przedmiot.MATEMATYKA, OcenaWartosc.BARDZO_DOBRY, dyplom1);
+        Ocena O2 = new Ocena(Przedmiot.FIZYKA, OcenaWartosc.DOSTATECZNY, dyplom1);
+        Ocena O3 = new Ocena(Przedmiot.CHEMIA, OcenaWartosc.DOSTATECZNY, dyplom1);
+        Ocena O4 = new Ocena(Przedmiot.INFORMATYKA, OcenaWartosc.DOBRY, dyplom1);
+
 
         Dyplom dyplom2 = new Dyplom("Anna", "Nowak", new Date(2023, 5, 10));
-        dyplom2.dodajOcene(new Ocena(NazwaPrzedmiotu.MATEMATYKA, OcenaEnum.CELUJACY));
-        dyplom2.dodajOcene(new Ocena(NazwaPrzedmiotu.FIZYKA, OcenaEnum.DOSTATECZNY));
-        dyplom2.dodajOcene(new Ocena(NazwaPrzedmiotu.CHEMIA, OcenaEnum.BARDZO_DOBRY));
+        Ocena O5 = new Ocena(Przedmiot.MATEMATYKA, OcenaWartosc.DOBRY, dyplom2);
+        Ocena O6 = new Ocena(Przedmiot.FIZYKA, OcenaWartosc.DOBRY, dyplom2);
+        Ocena O7 = new Ocena(Przedmiot.CHEMIA, OcenaWartosc.DOSTATECZNY, dyplom2);
+        Ocena O8 = new Ocena(Przedmiot.INFORMATYKA, OcenaWartosc.DOBRY, dyplom2);
 
         System.out.println("\n" + Dyplom.dyplomZNajwiekszaSrednia(Dyplom.getEkstensja()));
 
@@ -73,41 +76,30 @@ public class Main {
          * najwiecej na dodatki do wycieczki nieuwzgledniajac tez ceny wycieczki
          */
 
-        Klient k1 = new Klient("Jan", "Kowalski", "123456789");
-        Klient k2 = new Klient("Anna", "Nowak", "987654321");
-        Klient k3 = new Klient("Janusz", "Kowalski", "123456732");
-        Klient k4 = new Klient("Janina", "Kowalska", "123452289");
+        Klient klient1 = new Klient("Jan", "Kowalski", "12345678911");
+        Klient klient2 = new Klient("Anna", "Nowak", "98765432112");
+        Klient klient3 = new Klient("Janusz", "Kowalski", "12345678921");
 
-        Wycieczka w1 = new Wycieczka("Wycieczka1", Kraj.POLSKA, 1000);
-        Wycieczka w2 = new Wycieczka("Wycieczka2", Kraj.FRANCJA, 2000);
-        Wycieczka w3 = new Wycieczka("Wycieczka3", Kraj.JAPONIA, 1500);
-        Wycieczka w4 = new Wycieczka("Wycieczka4", Kraj.AUSTRALIA, 2500);
+        Wycieczka wycieczka1 = new Wycieczka("Wycieczka do chin", Kraj.CHINY, 10000);
+        Wycieczka wycieczka2 = new Wycieczka("Wycieczka do francji", Kraj.FRANCJA, 5000);
+        Wycieczka wycieczka3 = new Wycieczka("Wycieczka do polski", Kraj.POLSKA, 1000);
 
-        List<Dodatek> d1 = List.of(Dodatek.valueOf("UBEZPIECZENIE"));
-        List<Dodatek> d2 = List.of(Dodatek.valueOf("PIERWSZENSTWO_WEJSCIA"), Dodatek.valueOf("NIEOGRANICZONE_DRINKI"), Dodatek.valueOf("ZWIEDZANIE"));
-        List<Dodatek> d3 = List.of(Dodatek.values());
-        List<Dodatek> d4 = List.of((Dodatek.valueOf("ZWIEDZANIE")));
+        List<Dodatek> pakietStandard = new ArrayList<>(List.of(Dodatek.UBEZPIECZENIE, Dodatek.ZWIEDZANIE));
+        List<Dodatek> pakietPremium = new ArrayList<>(List.of(Dodatek.UBEZPIECZENIE, Dodatek.ZWIEDZANIE, Dodatek.PIERWSZENSTWO_WEJSCIA));
+        List<Dodatek> pakietPremiumPlus = new ArrayList<>(List.of(Dodatek.UBEZPIECZENIE, Dodatek.ZWIEDZANIE, Dodatek.PIERWSZENSTWO_WEJSCIA, Dodatek.NIEOGRANICZONE_DRINKI, Dodatek.WYPOZYCZENIE_ROWERU));
 
-        k1.dodajWycieczke(w1, d1);
-        k2.dodajWycieczke(w2, d2);
-        k3.dodajWycieczke(w3, d3);
-        k4.dodajWycieczke(w4, d4);
+        klient1.dodajZakup(wycieczka1, pakietStandard);
+        klient2.dodajZakup(wycieczka2, pakietPremium);
+        klient3.dodajZakup(wycieczka3, pakietPremiumPlus);
 
-        // Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
-        System.out.println("\n" + Klient.wydalNajwiecej(Klient.getEkstensja()));
+//        // Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
+        System.out.println("\n" + Klient.wydalNajwiecejNaWycieczke(Klient.getEkstensja(), true));
 
-        // Znadz klienta który wydal * najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
-        System.out.println(Klient.wydalNajwiecejNaDodatki(Klient.getEkstensja()) + "\n");
+//        // Znadz klienta który wydal * najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
+        System.out.println(Klient.wydalNajwiecejNaWycieczke(Klient.getEkstensja(), false) + "\n");
 
-        // Napisz kalkulator opierajacy sie o typ wyliczeniowy i metode abstrakcyjna licz(double d1, double d2)
-
-        KalkulatorStandardowy kalkulator = new KalkulatorStandardowy(Operacja.DODAWANIE);
-        double wynik = kalkulator.licz(5.0, 3.0);
-        System.out.println("Wynik dodawania: " + wynik);
-
-        kalkulator = new KalkulatorStandardowy(Operacja.DZIELENIE);
-        wynik = kalkulator.licz(10.0, 0.0); // Przykład dzielenia przez zero
-        System.out.println("Wynik dzielenia: " + wynik);
+//        // Napisz kalkulator opierajacy sie o typ wyliczeniowy i metode abstrakcyjna licz(double d1, double d2)
+        System.out.println(Operacja.DZIELENIE.licz(10,3));
     }
 }
 

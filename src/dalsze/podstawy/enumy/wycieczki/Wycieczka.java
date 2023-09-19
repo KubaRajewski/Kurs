@@ -1,15 +1,14 @@
 package dalsze.podstawy.enumy.wycieczki;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Wycieczka {
     private final String nazwa;
     private final Kraj kraj;
-    private final List<Dodatek> mozliweDodatki;
     private int cena;
-    private List<Dodatek> wybraneDodatki = new ArrayList<>();
-    private List<Klient> klienci = new ArrayList<>();
+    private List<Zakup> zakupy = new ArrayList<>();
 
     private List<Wycieczka> ekstensja = new ArrayList<>();
 
@@ -17,21 +16,16 @@ public class Wycieczka {
         this.nazwa = nazwa;
         this.kraj = kraj;
         this.cena = cena;
-        this.mozliweDodatki = List.of(Dodatek.values());
 
         ekstensja.add(this);
     }
 
-    public double obliczCeneWybranychDodatkow() {
-        double suma = 0;
-        for (Dodatek dodatek : wybraneDodatki) {
-            suma += dodatek.getCena();
-        }
-        return suma;
-    }
-
     public String getNazwa() {
         return nazwa;
+    }
+
+    public Kraj getKraj() {
+        return kraj;
     }
 
     public int getCena() {
@@ -42,31 +36,16 @@ public class Wycieczka {
         this.cena = cena;
     }
 
-    public Kraj getKraj() {
-        return kraj;
+    public List<Zakup> getZakupy() {
+        return zakupy;
     }
 
-    public List<Dodatek> getWybraneDodatki() {
-        return wybraneDodatki;
-    }
-
-    public void setWybraneDodatki(List<Dodatek> wybraneDodatki) {
-        this.wybraneDodatki = wybraneDodatki;
-    }
-
-    public List<Dodatek> getMozliweDodatki() {
-        return mozliweDodatki;
-    }
-
-    public List<Klient> getKlienci() {
-        return klienci;
-    }
-
-    public void setKlienci(List<Klient> klienci) {
-        this.klienci = klienci;
+    public void setZakupy(List<Zakup> zakupy) {
+        this.zakupy = zakupy;
     }
 
     public List<Wycieczka> getEkstensja() {
         return ekstensja;
     }
+
 }

@@ -7,22 +7,20 @@ import java.util.List;
 public class Szkola {
 
     private static int MIN_LICZBA_UCZNIOW = 150;
-    // ekstensja klasy szkola
-    private static List<Szkola> ekstensja = new ArrayList<>();
-    // atrybuty
+
     public final int rokPowstania;
     public String nazwa;
     public String wyroznienie;
     public int numer;
+
     public List<String> profile = new ArrayList<>();
-    // lista sal (kompozycja z sala)
     private List<Sala> sale = new ArrayList<>();
-    // Todo jaka to relacja?
     private List<Klasa> klasy = new ArrayList<>();
-    // asocjacja licznosci * do klasy Uczen
     private List<Uczen> uczniowie = new ArrayList<>();
-    // asocjacja licznosci * do klasy Nauczyciel
     private List<Nauczyciel> nauczyciele = new ArrayList<>();
+
+    private static List<Szkola> ekstensja = new ArrayList<>();
+
 
     public Szkola(int rokPowstania, String nazwa, String wyroznienie, int numer) {
         this.rokPowstania = rokPowstania;
@@ -40,55 +38,10 @@ public class Szkola {
         ekstensja.add(this);
     }
 
-    public static List<Uczen> uczniowieZDanejSzkoly(Szkola s) {
-        return s.uczniowie;
-    }
-
-    public static List<Nauczyciel> nauczycieleZDanejSzkoly(Szkola s) {
-        return s.nauczyciele;
-    }
-
-    public static int getMinLiczbaUczniow() {
-        return MIN_LICZBA_UCZNIOW;
-    }
-
-    public static void setMinLiczbaUczniow(int minLiczbaUczniow) {
-        MIN_LICZBA_UCZNIOW = minLiczbaUczniow;
-    }
-
-//    public void dodajSale(Sala s){
-//        sale.add(s);
-//        s.setSzkola(this);
-//    }
-//
-//    public void usunSale(Sala s){
-//        sale.remove(s);
-//        s.setSzkola(null);
-//    }
-//
-//    public void dodajKlase(Klasa k){
-//        klasy.add(k);
-//        k.setSzkola(this);
-//    }
-//
-//    public void usunKlase(Klasa k){
-//        klasy.remove(k);
-//        k.setSzkola(null);
-//    }
-
-    public static List<Szkola> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Szkola> ekstensja) {
-        Szkola.ekstensja = ekstensja;
-    }
-
     public void dodajUcznia(Uczen u) {
-        // TODO Czy to w mojej implementacji jest potrzebne?, dlaczego wywala błąd?
-//        if (u.getSzkola() != null) {
-//            throw new IllegalArgumentException("uczen juz jest w innej szkole");
-//        }
+        if (u.getSzkola() != null) {
+            throw new IllegalArgumentException("uczen juz jest w innej szkole");
+        }
 
         uczniowie.add(u);
         u.setSzkola(this);
@@ -107,6 +60,26 @@ public class Szkola {
     public void usunNauczyciela(Nauczyciel n) {
         nauczyciele.remove(n);
         n.getSzkoly().remove(this);
+    }
+
+    public static List<Uczen> uczniowieZDanejSzkoly(Szkola s) {
+        return s.uczniowie;
+    }
+
+    public static List<Nauczyciel> nauczycieleZDanejSzkoly(Szkola s) {
+        return s.nauczyciele;
+    }
+
+    public static int getMinLiczbaUczniow() {
+        return MIN_LICZBA_UCZNIOW;
+    }
+
+    public static void setMinLiczbaUczniow(int minLiczbaUczniow) {
+        MIN_LICZBA_UCZNIOW = minLiczbaUczniow;
+    }
+
+    public static List<Szkola> getEkstensja() {
+        return ekstensja;
     }
 
     public void dodajProfil(String profil) {

@@ -7,7 +7,7 @@ public class Klasa {
     private final Szkola szkola;
     private String nazwa;
     private String profil;
-    private List<Uczen> uczniowie = new ArrayList<>(); // Dodaj listę uczniów jako atrybut instancji
+    private List<Uczen> uczniowie;
 
     public Klasa(String nazwa, Szkola szkola, String profil, List<Uczen> uczniowie) {
         if (szkola == null) throw new IllegalArgumentException("Szkola musi istniec");
@@ -16,7 +16,6 @@ public class Klasa {
         this.profil = profil;
         this.uczniowie = uczniowie;
 
-        // informacja zwrotna
         szkola.getKlasy().add(this);
     }
 
@@ -32,7 +31,6 @@ public class Klasa {
         return uczniowie;
     }
 
-    // Setter for uczniowie
     public void setUczniowie(List<Uczen> uczniowie) {
         this.uczniowie = uczniowie;
     }

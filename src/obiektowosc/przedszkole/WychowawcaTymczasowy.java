@@ -3,13 +3,13 @@ package obiektowosc.przedszkole;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tymczasowy extends Wychowawca {
+public class WychowawcaTymczasowy extends Wychowawca {
 
     private static final int STAWKA_GODZINOWA = 35;
-    private static List<Tymczasowy> ekstensja = new ArrayList<>();
+    private static List<WychowawcaTymczasowy> ekstensja = new ArrayList<>();
     private final int liczbaGodzin;
 
-    public Tymczasowy(String imie, String nazwisko, String dataUrodzenia, int liczbaGodzin) {
+    public WychowawcaTymczasowy(String imie, String nazwisko, String dataUrodzenia, int liczbaGodzin) {
         super(imie, nazwisko, dataUrodzenia);
         this.liczbaGodzin = liczbaGodzin;
 

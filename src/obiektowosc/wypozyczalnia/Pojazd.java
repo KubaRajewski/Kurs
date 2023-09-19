@@ -32,6 +32,11 @@ public abstract class Pojazd {
         ekstensja.add(this);
     }
 
+    public void dodajSilnik(Silnik silnik) {
+        this.silnik = silnik;
+        silnik.getPojazdyZDanymSilnikiem().add(this);
+    }
+
     public static List<Pojazd> pojazdyMocniejszeNiz(List<Pojazd> pojazdy, int mocMinimalna) {
         List<Pojazd> mocniejszeNiz = new ArrayList<>();
         for (Pojazd p : pojazdy) {
@@ -48,11 +53,6 @@ public abstract class Pojazd {
 
     public static void setEkstensja(List<Pojazd> ekstensja) {
         Pojazd.ekstensja = ekstensja;
-    }
-
-    public void dodajSilnik(Silnik silnik) {
-        this.silnik = silnik;
-        silnik.getPojazdyZDanymSilnikiem().add(this);
     }
 
     public String getNumerRejestracyjny() {

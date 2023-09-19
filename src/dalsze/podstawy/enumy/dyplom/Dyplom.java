@@ -5,11 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 public class Dyplom {
-    public static List<Dyplom> ekstensja = new ArrayList<>();
     private String imie;
     private String nazwisko;
     private Date dataWystawienia;
     private List<Ocena> oceny;
+
+    public static List<Dyplom> ekstensja = new ArrayList<>();
 
     public Dyplom(String imie, String nazwisko, Date dataWystawienia) {
         this.imie = imie;
@@ -21,34 +22,20 @@ public class Dyplom {
     }
 
     public static Dyplom dyplomZNajwiekszaSrednia(List<Dyplom> dyplomy) {
-        if (dyplomy == null) {
+        if (dyplomy == null || dyplomy.isEmpty()) {
             throw new IllegalArgumentException("Brak dyplomow");
         }
         Dyplom najlepszyDyplom = dyplomy.get(0);
-        double najlepszaSrednia = najlepszyDyplom.sredniaOcen();
 
         for (Dyplom dyplom : dyplomy) {
-            double srednia = dyplom.sredniaOcen();
-            if (srednia > najlepszaSrednia) {
+            if (dyplom.sredniaOcen() > najlepszyDyplom.sredniaOcen()) {
                 najlepszyDyplom = dyplom;
-                najlepszaSrednia = srednia;
             }
         }
         return najlepszyDyplom;
     }
 
-    public static List<Dyplom> getEkstensja() {
-        return ekstensja;
-    }
-
-    public void dodajOcene(Ocena ocena) {
-        oceny.add(ocena);
-    }
-
     public double sredniaOcen() {
-        if (oceny.isEmpty()) {
-            return 0.0;
-        }
         double sumaOcen = 0;
         for (Ocena ocena : oceny) {
             sumaOcen += ocena.getOcena().getWartosc();
@@ -87,6 +74,11 @@ public class Dyplom {
     public void setOceny(List<Ocena> oceny) {
         this.oceny = oceny;
     }
+
+    public static List<Dyplom> getEkstensja() {
+        return ekstensja;
+    }
+
 
     @Override
     public String toString() {

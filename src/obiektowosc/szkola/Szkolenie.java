@@ -13,7 +13,7 @@ public class Szkolenie {
     public Szkolenie(String nazwa, String data) {
         this.nazwa = nazwa;
         this.data = data;
-        this.uczestnicy = new ArrayList<>(); //  TODO Inicjalizuj listę uczestników w UML tego nie ma
+        this.uczestnicy = new ArrayList<>();
 
         ekstensja.add(this);
     }

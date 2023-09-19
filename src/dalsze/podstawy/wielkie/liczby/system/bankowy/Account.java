@@ -22,6 +22,9 @@ public class Account {
     public static List<Account> extension = new ArrayList<>();
 
     public Account(Client client, BigDecimal credit) {
+        if (client == null) {
+            throw new IllegalArgumentException("Client cant be null");
+        }
         this.client = client;
         this.number = generateNewAccountNumber(NUMBER_OF_DIGITS_IN_ACCOUNT);
         this.balance = BigDecimal.ZERO;

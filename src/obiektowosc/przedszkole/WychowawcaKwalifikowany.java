@@ -3,11 +3,11 @@ package obiektowosc.przedszkole;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Kwalifikowany extends Wychowawca {
-    public static List<Kwalifikowany> ekstensja = new ArrayList<>();
+public class WychowawcaKwalifikowany extends Wychowawca {
+    public static List<WychowawcaKwalifikowany> ekstensja = new ArrayList<>();
     private Kwalifikacje kwalifikacje;
 
-    public Kwalifikowany(String imie, String nazwisko, String dataUrodzenia) {
+    public WychowawcaKwalifikowany(String imie, String nazwisko, String dataUrodzenia) {
         super(imie, nazwisko, dataUrodzenia);
 
         ekstensja.add(this);

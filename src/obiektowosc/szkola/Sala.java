@@ -9,7 +9,6 @@ public class Sala {
         this.nazwa = nazwa;
         this.szkola = szkola;
 
-        // informacja zwrotna
         szkola.getSale().add(this);
     }
 

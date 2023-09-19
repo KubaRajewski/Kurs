@@ -1,6 +1,6 @@
 package dalsze.podstawy.enumy.dyplom;
 
-public enum OcenaEnum {
+public enum OcenaWartosc {
     NIEDOSTATECZNY(2.0),
     DOPUSZCZAJACY(3.0),
     DOSTATECZNY(3.5),
@@ -10,7 +10,7 @@ public enum OcenaEnum {
 
     private double wartosc;
 
-    OcenaEnum(double wartosc) {
+    OcenaWartosc(double wartosc) {
         this.wartosc = wartosc;
     }
 

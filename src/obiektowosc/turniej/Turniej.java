@@ -5,11 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class Turniej {
-    private static List<Turniej> ekstensja = new ArrayList<>();
     private String nazwa;
     private String miesiac;
     private List<Gracz> uczestnicy = new ArrayList<>();
     private List<Wynik> wyniki = new ArrayList<>();
+
+    private static List<Turniej> ekstensja = new ArrayList<>();
 
     public Turniej(String nazwa, String miesiac) {
         this.nazwa = nazwa;

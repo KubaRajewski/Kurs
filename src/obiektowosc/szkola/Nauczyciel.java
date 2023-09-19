@@ -7,7 +7,7 @@ public class Nauczyciel extends Osoba {
     private static List<Nauczyciel> ekstensja = new ArrayList<>();
     private String przedmiot;
     private List<Szkola> szkoly = new ArrayList<>();
-    private List<Szkolenie> szkolenia = new ArrayList<>(); // TODO Dlaczego pokazuje ze nie potrzebne?
+    private List<Szkolenie> szkolenia = new ArrayList<>();
 
     public Nauczyciel(String imie, String nazwisko, String adres, String przedmiot) {
         super(imie, nazwisko, adres);

@@ -14,6 +14,26 @@ public class Dziecko extends Osoba {
         ekstensja.add(this);
     }
 
+    public void setGrupa(Grupa grupa) {
+        if (this.grupa == null) {
+            this.grupa = grupa;
+        } else {
+            System.out.println("Dziecko juz jest w innej grupie");
+        }
+    }
+
+    public void dodajOdznake(String nazwa, String opis, String dataWystawienia) {
+        Odznaka odznaka = new Odznaka(nazwa, opis, dataWystawienia, this);
+        uwagi.add(odznaka);
+        Uwaga.getEkstensja().add(odznaka);
+    }
+
+    public void dodajPrzewinienie(String nazwa, String opis, String dataWystawienia) {
+        Przewinienie przewinienie = new Przewinienie(nazwa, opis, dataWystawienia, this);
+        uwagi.add(przewinienie);
+        Uwaga.getEkstensja().add(przewinienie);
+    }
+
     // TODO  * - napisz metode która zwraca dziecko ktore ma najwiecej przewinien
     public static Dziecko najmniejPosluszne() {
         Dziecko najmniejPosluszne = null;
@@ -32,45 +52,6 @@ public class Dziecko extends Osoba {
         return najmniejPosluszne;
     }
 
-    public static List<Dziecko> getEkstensjaDziecko() {
-        return ekstensja;
-    }
-
-    public void dodajOdznake(String nazwa, String opis, String dataWystawienia) {
-        Odznaka odznaka = new Odznaka(nazwa, opis, dataWystawienia, this);
-        uwagi.add(odznaka);
-        Uwaga.getEkstensja().add(odznaka);
-    }
-
-    public void dodajPrzewinienie(String nazwa, String opis, String dataWystawienia) {
-        Przewinienie przewinienie = new Przewinienie(nazwa, opis, dataWystawienia, this);
-        uwagi.add(przewinienie);
-        Uwaga.getEkstensja().add(przewinienie);
-    }
-
-    public boolean czyPosluszne() {
-        return getPrzewinienia().size() <= getOdznaki().size();
-    }
-
-    public List<Uwaga> getUwagi() {
-        return uwagi;
-    }
-
-    public void setUwagi(List<Uwaga> uwagi) {
-        this.uwagi = uwagi;
-    }
-
-    public Grupa getGrupa() {
-        return grupa;
-    }
-
-    public void setGrupa(Grupa grupa) {
-        if (this.grupa == null) {
-            this.grupa = grupa;
-        } else {
-            System.out.println("Dziecko juz jest w innej grupie");
-        }
-    }
 
     public List<Przewinienie> getPrzewinienia() {
         List<Przewinienie> przewinienia = new ArrayList<>();
@@ -91,4 +72,26 @@ public class Dziecko extends Osoba {
         }
         return odznaki;
     }
+
+    public boolean czyPosluszne() {
+        return getPrzewinienia().size() <= getOdznaki().size();
+    }
+
+    public List<Uwaga> getUwagi() {
+        return uwagi;
+    }
+
+    public void setUwagi(List<Uwaga> uwagi) {
+        this.uwagi = uwagi;
+    }
+
+    public Grupa getGrupa() {
+        return grupa;
+    }
+
+    public static List<Dziecko> getEkstensjaDziecko() {
+        return ekstensja;
+    }
+
+
 }

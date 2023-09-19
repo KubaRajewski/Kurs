@@ -18,7 +18,7 @@ public abstract class Wychowawca extends Osoba {
         List<Wychowawca> wychowawcyKwalifikowanyZPensjaWiekszNiz = new ArrayList<>();
 
         for (Wychowawca wychowawca : Wychowawca.getEkstensjaWychowawca()) {
-            if (wychowawca instanceof Kwalifikowany) {
+            if (wychowawca instanceof WychowawcaKwalifikowany) {
                 if (wychowawca.czyZarabiaWiecejNiz(pensja)) {
                     wychowawcyKwalifikowanyZPensjaWiekszNiz.add(wychowawca);
                 }
