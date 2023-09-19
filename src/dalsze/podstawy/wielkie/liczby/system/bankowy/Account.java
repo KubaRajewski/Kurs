@@ -152,12 +152,12 @@ public class Account {
             } else {
                 System.out.println("credit used");
 
-                transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
+                transactions.add(new Transaction(this, null, TransactionType.WITHDRAWAL, amount));
                 credit = balance.add(credit).subtract(amount);
                 balance = balance.subtract(amount);
             }
         } else {
-            transactions.add(new Transaction(this, null, TransactionType.DEPOSIT, amount));
+            transactions.add(new Transaction(this, null, TransactionType.WITHDRAWAL, amount));
             balance = balance.subtract(amount);
         }
     }

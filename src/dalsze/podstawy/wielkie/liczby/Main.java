@@ -129,6 +129,9 @@ public class Main {
     //napisz metode ktora przyjmuje jako parametr Liste BigIntow i zwraca Liste
     // liczb wiekszych od podanego parametru
     public static List<BigInteger> listaLiczbWiekszychNiz(List<BigInteger> lista, BigInteger liczba) {
+        if (lista == null) {
+            throw new IllegalArgumentException("Lista jest pusta");
+        }
         List<BigInteger> listaLiczbWiekszychNiz = new ArrayList<>();
 
         for (BigInteger bigInteger : lista) {
@@ -159,6 +162,9 @@ public class Main {
     }
 
     public static List<BigInteger> znajdzElementyModulo(List<BigInteger> lista, int a, int b) {
+        if (lista == null) {
+            throw new IllegalArgumentException("Lista jest pusta");
+        }
         List<BigInteger> wynik = new ArrayList<>();
 
         for (BigInteger bi : lista) {
@@ -173,6 +179,9 @@ public class Main {
 
     // napisz metode która zwroci wspolne elementy z dwoch list wielkich liczb
     public static List<BigInteger> wspolneElementy(List<BigInteger> lista1, List<BigInteger> lista2) {
+        if (lista1 == null || lista2 == null) {
+            throw new IllegalArgumentException("Lista jest pusta");
+        }
         List<BigInteger> wynik = new ArrayList<>();
 
         for (BigInteger bi : lista1) {
@@ -187,6 +196,10 @@ public class Main {
     // Stworz metode ktora przyjmuje jako parametr liste list big intow :). Z kazdej
     // listy znajdz najwieksza wartosc i oblicz sume najwiekszych wartosci.
     public static BigInteger sumaNajwiekszych(List<List<BigInteger>> listaList) {
+        if (listaList == null) {
+            throw new IllegalArgumentException("Lista jest pusta");
+        }
+
         BigInteger suma = BigInteger.ZERO;
 
         for (List<BigInteger> lista : listaList) {

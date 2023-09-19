@@ -12,6 +12,10 @@ public class Klient {
     private final String pesel;
     private Map<Wycieczka, List<Dodatek>> wycieczki = new HashMap<>();
 
+    public static List<Klient> getEkstensja() {
+        return ekstensja;
+    }
+
     public Klient(String imie, String nazwisko, String pesel) {
 
         if (imie == null || nazwisko == null || pesel == null) {
@@ -33,6 +37,15 @@ public class Klient {
         ekstensja.add(this);
     }
 
+
+    public void dodajWycieczke(Wycieczka wycieczka, List<Dodatek> dodatki) {
+        wycieczki.put(wycieczka, dodatki);
+        wycieczka.getKlienci().add(this);
+        wycieczka.setWybraneDodatki(dodatki);
+    }
+
+
+    //TODO  Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
     public static Klient wydalNajwiecej(List<Klient> klienci) {
         if (klienci == null) {
             throw new IllegalArgumentException("Lista klientow nie moze byc pusta");
@@ -49,6 +62,7 @@ public class Klient {
         return wydalNajwiecej;
     }
 
+    //TODO Znadz klienta który wydal najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
     public static Klient wydalNajwiecejNaDodatki(List<Klient> klienci) {
         if (klienci == null) {
             throw new IllegalArgumentException("Lista klientow nie moze byc pusta");
@@ -65,17 +79,6 @@ public class Klient {
         return wydalNajwiecejNaDodatki;
     }
 
-    public static List<Klient> getEkstensja() {
-        return ekstensja;
-    }
-
-    public void dodajWycieczke(Wycieczka wycieczka, List<Dodatek> dodatki) {
-        wycieczki.put(wycieczka, dodatki);
-        wycieczka.getKlienci().add(this);
-        wycieczka.setWybraneDodatki(dodatki);
-    }
-
-    //TODO  Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
     public double ileNajwiecejWydalNaJednaWycieczke() {
         double max = 0;
         for (Wycieczka wycieczka : wycieczki.keySet()) {
@@ -86,7 +89,6 @@ public class Klient {
         return max;
     }
 
-    //TODO Znadz klienta który wydal najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
     public double ileNajwiecejWydalNaDodatki() {
         double max = 0;
         for (Wycieczka wycieczka : wycieczki.keySet()) {
@@ -111,10 +113,6 @@ public class Klient {
 
     public Map<Wycieczka, List<Dodatek>> getWycieczki() {
         return wycieczki;
-    }
-
-    public void setWycieczki(Map<Wycieczka, List<Dodatek>> wycieczki) {
-        this.wycieczki = wycieczki;
     }
 
     @Override
