@@ -1,8 +1,7 @@
-> # Pełny kurs Java
+# Pełny kurs Java
 
->>## Rozpiska kursu
-
-
+## Rozpiska kursu
+---
 ###  1. [Podstawy](src/podstawy)
 
 - [Wstęp](src/podstawy/wstep) ([zmienne](src/podstawy/wstep/zmienne), [instrukcja warunkowa](src/podstawy/wstep/instrukcja/warunkowa), [pętle](src/podstawy/wstep/petle))
@@ -57,6 +56,6 @@
 - Mikroserwisy
 - Docker, Jenkins
 
->>## [Testy](src/testy)
+## [Testy](src/testy)
 - [Test 1](src/testy/test1) - Metody i kolekcje - 02.09.2023
 - [Test 2](src/testy/test2) - Obiektowość - 13.09.2023
