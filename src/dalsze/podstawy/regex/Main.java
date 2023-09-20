@@ -1,5 +1,6 @@
 package dalsze.podstawy.regex;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -88,34 +89,76 @@ public class Main {
         // stwórz pattern na imie
         // Tomek
         // Tomek Bartek
-
-        Pattern imie = Pattern.compile("[A-Z][a-z]+( [A-Z][a-z]+)?");
+        Pattern imie = Pattern.compile("^[A-Z][a-z]+( [A-Z][a-z]+)?$");
         System.out.println(imie.matcher("Tomek").matches());
         System.out.println(imie.matcher("Tomek Bartek").matches());
+        System.out.println();
 
         // stwórz pattern na imie i nazwisko
         // Tomek Kowalski
         // Tomek Kowalski-Jankowski
         // Tomek Kowalski Jankowski
-        Pattern imieINazwisko = Pattern.compile("[A-Z][a-z]+( [A-Z][a-z]+)( |-)?([A-Z][a-z]+)");
+        Pattern imieINazwisko = Pattern.compile("^[A-Z][a-z]+( [A-Z][a-z]+)?( |-)[A-Z][a-z]+$");
+        System.out.println(imieINazwisko.matcher("Tomek Kowalski").matches());
+        System.out.println(imieINazwisko.matcher("Tomek Kowalski-Jankowski").matches());
+        System.out.println(imieINazwisko.matcher("Tomek Kowalski Jankowski").matches());
+        System.out.println();
 
         //napisz pattern na datę w postaci xx-xx-xxxx
+        Pattern data = Pattern.compile("^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\\d{4})$");
+        System.out.println(data.matcher("12-12-2019").matches());
+        System.out.println(data.matcher("12-13-2039").matches());
+        System.out.println();
 
         //napisz pattern na maila
+        Pattern mail = Pattern.compile("^[a-zA-Z0-9]+([_.-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([_.-][a-zA-Z0-9]+)*\\.[a-zA-Z0-9]+([_.-][a-zA-Z0-9]+)*$");
+
+        System.out.println(mail.matcher("kuba.rajewski0@gmail.com").matches());
+        System.out.println(mail.matcher("kuba.rajewski..$@gmail.com").matches());
+        System.out.println(mail.matcher("gmail.com").matches());
+        System.out.println(mail.matcher("gmail.com@gmail.com").matches());
+        System.out.println();
 
         /*
          * Sprawdz czy liczba  podana przez użytkownika ma poprawny format. Na przykład liczba 123,2341515132135 czy
          * -10 są poprawne ale 18-12 czy 123, już nie,
          */
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj liczbe: ");
+        String liczba = scanner.nextLine();
+        Pattern liczbaPattern = Pattern.compile("^-?\\d+(\\.\\d+)?$");
+        System.out.println(liczbaPattern.matcher(liczba).matches());
+        System.out.println();
+
         /*
          * sprawdz czy numer domu jest w formacie numer\numer.
          * Poprawnym numerem jest 123\2A, 24B\3 czy 12\5, ale już numer abc\cba nie,
          */
+        Pattern numerDomu= Pattern.compile("^\\d+[A-Z]?\\\\\\d+[A-Z]?$");
+        System.out.println(numerDomu.matcher("123\\2A").matches());
+        System.out.println(numerDomu.matcher("24B\\3").matches());
+        System.out.println(numerDomu.matcher("12\\5").matches());
+        System.out.println(numerDomu.matcher("abc\\cba").matches());
+        System.out.println();
+
 
         //napisz pattern na miasto np Warszawa, Bielsko-Biala, Zielona Gora
+        Pattern miasto = Pattern.compile("[A-Z][a-z]+(( |-)[A-Z][a-z]*)?");
+        System.out.println(miasto.matcher("Warszawa").matches());
+        System.out.println(miasto.matcher("Bielsko-Biala").matches());
+        System.out.println(miasto.matcher("Zielona Gora").matches());
+        System.out.println();
+
 
         //stworz pattern na date z nazwami uzywjaac grup + nazywajac je
+
+        Pattern data2 = Pattern.compile("^(?<dzien>0[1-9]|[12][0-9]|3[01])-(?<miesiac>0[1-9]|1[0-2])-(?<rok>\\d{4})$");
+        Matcher matcher9 = data2.matcher("12-12-2019");
+        matcher9.matches();
+        System.out.println(matcher9.group("dzien"));
+        System.out.println(matcher9.group("miesiac"));
+        System.out.println(matcher9.group("rok"));
 
         /*
          * Stworz klase Osoba(imie,nazwisko, pesel, plec)
