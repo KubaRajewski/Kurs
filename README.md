@@ -24,10 +24,10 @@
 
 ### 4. [Dalsze podstawy](src/dalsze/podstawy)
 
-- [Regexy](src\dalsze\podstawy\regex)
+- [Regexy](src/dalsze/podstawy/regex)
 - String i StringBuilder
-- [Enumy](src\dalsze\podstawy\enumy)
-- [Wielkie liczby (BigInteger, BigDecimal)](src\dalsze\podstawy\wielkie\liczby)
+- [Enumy](src/dalsze/podstawy/enumy)
+- [Wielkie liczby (BigInteger, BigDecimal)](src/dalsze/podstawy/wielkie/liczby)
 - Interfejsy
 - Wyjątki
 - Daty (LocalDate, LocalDateTime, LocalTime, Instant, Duration, Period, formatery)
