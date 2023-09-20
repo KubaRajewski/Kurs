@@ -3,7 +3,7 @@
 ## Rozpiska kursu
 
 
-### 1. [Podstawy](srs/podstawy)
+### 1. [Podstawy](src/podstawy)
 
 - Wstęp (zmienne, instrukcja warunkowa, pętle)
 - Tablice, tablice dwuwymiarowe
