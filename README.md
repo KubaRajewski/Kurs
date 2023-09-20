@@ -10,24 +10,24 @@
 - [Scanner](src/podstawy/skaner), [JOptionPane](src/podstawy/joptionpane)
 - [Zapis/odczyt z pliku (File, FileWriter, FileReader, BufferedReader)](src/podstawy/zapis/odczyt)
 
-### 2. Metody i kolekcje
+### 2. [Metody i kolekcje](src/metody/i/kolekcje)
 
-- Metody, metody z tablicami
-- Listy, sety, mapy
-- Metody z użyciem kolekcji
+- [Metody, metody z tablicami](src/metody/i/kolekcje/metody)
+- [Listy](src/metody/i/kolekcje/listy), [sety](src/metody/i/kolekcje/sety), [mapy](src/metody/i/kolekcje/mapy)
+- [Metody z użyciem kolekcji](src/metody/i/kolekcje)
 
-### 3. Obiektowość
+### 3. [Obiektowość](src/obiektowosc)
 
-- Podstawy (pola, konstruktory, gettery, settery, toString, ekstensja, hashCode i equals)
-- Asocjacje (binarna, z atrybutem, kompozycja i agregacja)
-- Dziedziczenie
+- [Podstawy (pola, konstruktory, gettery, settery, toString, ekstensja, hashCode i equals)](src/obiektowosc/podstawy)
+- [Asocjacje (binarna, z atrybutem, kompozycja i agregacja)](src/obiektowosc/podstawy/uml)
+- [Dziedziczenie](src/obiektowosc/podstawy/uml)
 
-### 4. Dalsze podstawy
+### 4. [Dalsze podstawy](src/dalsze/podstawy)
 
-- Regexy
+- [Regexy](src\dalsze\podstawy\regex)
 - String i StringBuilder
-- Enumy
-- Wielkie liczby (BigInteger, BigDecimal)
+- [Enumy](src\dalsze\podstawy\enumy)
+- [Wielkie liczby (BigInteger, BigDecimal)](src\dalsze\podstawy\wielkie\liczby)
 - Interfejsy
 - Wyjątki
 - Daty (LocalDate, LocalDateTime, LocalTime, Instant, Duration, Period, formatery)
