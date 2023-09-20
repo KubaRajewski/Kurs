@@ -1,9 +1,9 @@
-# Pełny kurs Java
+> # Pełny kurs Java
 
 ## Rozpiska kursu
 
 
-### 1. [Podstawy](src/podstawy)
+###  1. [Podstawy](src/podstawy)
 
 - [Wstęp](src/podstawy/wstep) ([zmienne](src/podstawy/wstep/zmienne), [instrukcja warunkowa](src/podstawy/wstep/instrukcja/warunkowa), [pętle](src/podstawy/wstep/petle))
 - [Tablice](src/podstawy/tablice), [tablice dwuwymiarowe](src/podstawy/tablice/dwuwymiarowe)
