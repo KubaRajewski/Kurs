@@ -56,3 +56,7 @@
 - Rest API, Soap API
 - Mikroserwisy
 - Docker, Jenkins
+
+## [Testy](src/testy)
+- [Test 1 - Metody i kolekcje - 02.09.2023](src/testy/test1)
+- [Test 2 - Obiektowość - 13.09.2023](src/testy/test2)
