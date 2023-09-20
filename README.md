@@ -5,7 +5,7 @@
 
 ### 1. [Podstawy](src/podstawy)
 
-- Wstęp (zmienne, instrukcja warunkowa, pętle)
+- [Wstęp](src/podstawy/wstep) ([zmienne](src/podstawy/wstep/zmienne), [instrukcja warunkowa](src/podstawy/wstep/instrukcja/warunkowa), [pętle](src/podstawy/wstep/petle))
 - Tablice, tablice dwuwymiarowe
 - Scanner, JOptionPane
 - Zapis/odczyt z pliku (File, FileWriter, FileReader, BufferedReader)

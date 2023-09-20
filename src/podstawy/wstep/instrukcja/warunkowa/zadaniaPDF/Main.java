@@ -1,4 +1,4 @@
-package podstawy.wstep.instrukcjaWarunkowa.zadaniaPDF;
+package podstawy.wstep.instrukcja.warunkowa.zadaniaPDF;
 
 public class Main {
     public static void main(String[] args) {

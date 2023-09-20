@@ -1,4 +1,4 @@
-package podstawy.wstep.instrukcjaWarunkowa.zadania;
+package podstawy.wstep.instrukcja.warunkowa.zadania;
 
 public class Main {
     public static void main(String[] args) {
