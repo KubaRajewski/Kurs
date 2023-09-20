@@ -2,26 +2,26 @@
 
 ## Rozpiska kursu
 
-###  1. [Podstawy](src/podstawy)
+>###  1. [Podstawy](src/podstawy)
 
 - [Wstęp](src/podstawy/wstep) ([zmienne](src/podstawy/wstep/zmienne), [instrukcja warunkowa](src/podstawy/wstep/instrukcja/warunkowa), [pętle](src/podstawy/wstep/petle))
 - [Tablice](src/podstawy/tablice), [tablice dwuwymiarowe](src/podstawy/tablice/dwuwymiarowe)
 - [Scanner](src/podstawy/skaner), [JOptionPane](src/podstawy/joptionpane)
 - [Zapis/odczyt z pliku (File, FileWriter, FileReader, BufferedReader)](src/podstawy/zapis/odczyt)
 ---
-### 2. [Metody i kolekcje](src/metody/i/kolekcje)
+>### 2. [Metody i kolekcje](src/metody/i/kolekcje)
 
 - [Metody, metody z tablicami](src/metody/i/kolekcje/metody)
 - [Listy](src/metody/i/kolekcje/listy), [sety](src/metody/i/kolekcje/sety), [mapy](src/metody/i/kolekcje/mapy)
 - [Metody z użyciem kolekcji](src/metody/i/kolekcje)
 ---
-### 3. [Obiektowość](src/obiektowosc)
+>### 3. [Obiektowość](src/obiektowosc)
 
 - [Podstawy (pola, konstruktory, gettery, settery, toString, ekstensja, hashCode i equals)](src/obiektowosc/podstawy)
 - [Asocjacje (binarna, z atrybutem, kompozycja i agregacja)](src/obiektowosc/podstawy/uml)
 - [Dziedziczenie](src/obiektowosc/podstawy/uml)
 ---
-### 4. [Dalsze podstawy](src/dalsze/podstawy)
+>### 4. [Dalsze podstawy](src/dalsze/podstawy)
 
 - [Regexy](src/dalsze/podstawy/regex)
 - String i StringBuilder
@@ -33,7 +33,7 @@
 - Typy generyczne
 - Lambda wyrażenia, interfejsy funkcyjne i streamy
 ---
-### 5. Wielowątkowość
+>### 5. Wielowątkowość
 
 - Thread, Runnable i Callable
 - Race condition, synchronizacja, Locki, klasy Atomic
@@ -41,7 +41,7 @@
 - Kolejki blokujące
 - Pule wątków
 ---
-### 6. Rozszerzenie
+>### 6. Rozszerzenie
 
 - Maven
 - Junit, Mockito, JaCoCo
