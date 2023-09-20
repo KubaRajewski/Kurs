@@ -6,9 +6,9 @@
 ### 1. [Podstawy](src/podstawy)
 
 - [Wstęp](src/podstawy/wstep) ([zmienne](src/podstawy/wstep/zmienne), [instrukcja warunkowa](src/podstawy/wstep/instrukcja/warunkowa), [pętle](src/podstawy/wstep/petle))
-- Tablice, tablice dwuwymiarowe
-- Scanner, JOptionPane
-- Zapis/odczyt z pliku (File, FileWriter, FileReader, BufferedReader)
+- [Tablice](src/podstawy/tablice), [tablice dwuwymiarowe](src/podstawy/tablice/dwuwymiarowe)
+- [Scanner](src/podstawy/skaner), [JOptionPane](src/podstawy/joptionpane)
+- [Zapis/odczyt z pliku (File, FileWriter, FileReader, BufferedReader)](src/podstawy/zapis/odczyt)
 
 ### 2. Metody i kolekcje
 

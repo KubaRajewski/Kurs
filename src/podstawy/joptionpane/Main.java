@@ -1,4 +1,4 @@
-package podstawy.JoptionPane;
+package podstawy.joptionpane;
 
 import javax.swing.*;
 
