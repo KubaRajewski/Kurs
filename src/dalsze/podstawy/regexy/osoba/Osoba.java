@@ -1,4 +1,4 @@
-package dalsze.podstawy.regex.osoba;
+package dalsze.podstawy.regexy.osoba;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

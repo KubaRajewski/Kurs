@@ -1,4 +1,4 @@
-package dalsze.podstawy.regex.osoba;
+package dalsze.podstawy.regexy.osoba;
 
 public enum Plec {
     KOBIETA, MEZCZYZNA;
