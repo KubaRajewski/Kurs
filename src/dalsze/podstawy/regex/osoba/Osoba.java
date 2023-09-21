@@ -44,6 +44,7 @@ public class Osoba {
         } else if (!czyCyfraKontrolnaSieZgadza(pesel)) {
             throw new IllegalArgumentException("nie zgadza sie liczba kontrolna");
         }
+
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.pesel = pesel;
@@ -100,7 +101,7 @@ public class Osoba {
         return LocalDate.of(rok, miesiac, dzien);
     }
 
-    public String getformatLocalDate(LocalDate date) {
+    public String formatLocalDate(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return date.format(formatter);
     }
