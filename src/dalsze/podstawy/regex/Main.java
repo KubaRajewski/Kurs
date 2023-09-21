@@ -160,15 +160,7 @@ public class Main {
         System.out.println(matcher9.group("miesiac"));
         System.out.println(matcher9.group("rok"));
 
-        /*
-         * Stworz klase Osoba(imie,nazwisko, pesel, plec)
-         *
-         * 1) Sprawdz czy pesel jest poprawny - czy sklada sie z 11 znakow, samych cyfr itp
-         *
-         * 2) Sprawdz czy pesel odpowiada podanej płci
-         *
-         * 3) Napisz metody które zwracaja z peselu date urodzenia (LocalDAte)
-         */
+
 
         //napisz metode zamien(int ilosc, String waluta) ktora działa jak kantor, pokazuje ile mozesz kupic danej waluty za podana liczbe euro
         //czyli np zamien(100, "PLN") powinno wypluc 439,79
