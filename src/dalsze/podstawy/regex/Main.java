@@ -75,7 +75,7 @@ public class Main {
         Pattern pattern7 = Pattern.compile("\\d+");
         System.out.println(pattern7.matcher("4527982347").matches());
 
-        //grupy oznaczamy ( ) i tworzymy je po to aby moc sie latwo odwolywac do przechwyconcyh wartosci
+        //grupy oznaczamy ( ) i tworzymy je po to aby moc sie latwo odwolywac do przechwyconcyh kursWymianyi
         // | - alternatywa
         // a|b a lub b
         // nazywanie grup (?<nazwa>...)
@@ -154,7 +154,6 @@ public class Main {
 
 
         //stworz pattern na date z nazwami uzywjaac grup + nazywajac je
-
         Pattern data2 = Pattern.compile("^(?<dzien>0[1-9]|[12][0-9]|3[01])-(?<miesiac>0[1-9]|1[0-2])-(?<rok>\\d{4})$");
         Matcher matcher9 = data2.matcher("12-12-2019");
         matcher9.matches();
@@ -170,30 +169,19 @@ public class Main {
                 + "\"CHF\":1.0744,\"SGD\":1.6131,\"PLN\":4.3979,\"BGN\":1.9558,\"TRY\":8.5925,\"CNY\":8.1483,\"NOK\":10.5913,\"NZD\":1.8045,\"ZAR\":20.2977,"
                 + "\"USD\":1.1769,\"MXN\":26.066,\"ILS\":4.0029,\"GBP\":0.89755,\"KRW\":1403.15,\"MYR\":4.9194},\"base\":\"EUR\",\"date\":\"2020-08-21\"}";
 
-        System.out.println(zamien(100, "PLN", kursyDoMapy(kursy)));
+        System.out.println(zamien(100, "PLN", kursy));
     }
-    public static double zamien(int ilosc, String waluta, Map<String, Double> kursyMapa) {
-        if (kursyMapa.containsKey(waluta)) {
-            double kursWymiany = kursyMapa.get(waluta);
+
+    public static double zamien(int ilosc, String waluta, String kursy) {
+        Pattern pattern = Pattern.compile("\"" + waluta + "\":(?<wartosc>\\d+\\.\\d+)");
+        Matcher matcher = pattern.matcher(kursy);
+
+        if (matcher.find()) {
+            double kursWymiany = Double.parseDouble(matcher.group("wartosc"));
             return ilosc * kursWymiany;
         } else {
             System.out.println("Brak kursu wymiany dla waluty: " + waluta);
             return 0.0;
         }
-    }
-
-    public static Map<String, Double> kursyDoMapy(String kursy) {
-        Map<String, Double> kursyMapa = new HashMap<>();
-
-        Pattern pattern = Pattern.compile("\"(\\w{3})\":(\\d+\\.\\d+)");
-        Matcher matcher = pattern.matcher(kursy);
-
-        while (matcher.find()) {
-            String currencyCode = matcher.group(1);
-            double rate = Double.parseDouble(matcher.group(2));
-            kursyMapa.put(currencyCode, rate);
-        }
-
-        return kursyMapa;
     }
 }
