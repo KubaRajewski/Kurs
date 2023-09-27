@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Dodatkowe {
-
 //  Zadanie: Palindrom w StringBuilderze
 //  Napisz funkcję, która sprawdza, czy dany tekst jest palindromem, wykorzystując StringBuilder do odwracania tekstu.
     public static boolean palidrom(String str) {
@@ -89,7 +88,6 @@ public class Dodatkowe {
 
 //  Zadanie: Zamiana formatu daty
 //  Napisz funkcję, która zamienia datę z jednego formatu na inny, wykorzystując StringBuilder do manipulacji tekstem daty.
-
     public static String odwrocDate(String data) {
         StringBuilder sb = new StringBuilder();
         Pattern dataPattern = Pattern.compile("^(?<dzien>0[1-9]|[12][0-9]|3[01])-(?<miesiac>0[1-9]|1[0-2])-(?<rok>\\d{4})$");
@@ -150,12 +148,10 @@ public class Dodatkowe {
         System.out.println(policzWystapienia("ala ma kota", "ala"));
         System.out.println(policzWystapienia("ala ma kota kota", "kota") + "\n");
 
-
         //TODO 4: Szyfrowanie Caesar'a
         System.out.println("Szyfrowanie Cezara");
         System.out.println(szyfruj("ala ma kota", 3));
         System.out.println(odSzyfruj(szyfruj("ala ma kota", 3), 3) + "\n");
-
 
         //TODO 5: Odwracanie słów w zdaniu
         System.out.println("Odwracanie slow w zdaniu");
