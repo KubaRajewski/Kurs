@@ -105,14 +105,14 @@ public class Main {
         System.out.println();
 
         //napisz pattern na datę w postaci xx-xx-xxxx
-        Pattern data = Pattern.compile("^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\\d{4})$");
+        System.out.println("data");
+        Pattern data = Pattern.compile("^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\\d{4})$");
         System.out.println(data.matcher("12-12-2019").matches());
         System.out.println(data.matcher("12-13-2039").matches());
         System.out.println();
 
         //napisz pattern na maila
         Pattern mail = Pattern.compile("^[a-zA-Z0-9]+([_.-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([_.-][a-zA-Z0-9]+)*\\.[a-zA-Z0-9]+([_.-][a-zA-Z0-9]+)*$");
-
         System.out.println(mail.matcher("kuba.rajewski0@gmail.com").matches());
         System.out.println(mail.matcher("kuba.rajewski..$@gmail.com").matches());
         System.out.println(mail.matcher("gmail.com").matches());
@@ -178,8 +178,7 @@ public class Main {
             double kursWymiany = Double.parseDouble(matcher.group("wartosc"));
             return ilosc * kursWymiany;
         } else {
-            System.out.println("Brak kursu wymiany dla waluty: " + waluta);
-            return 0.0;
+            throw new IllegalArgumentException("nie znaleziono waluty do wymiany");
         }
     }
 }

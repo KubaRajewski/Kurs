@@ -24,12 +24,12 @@
 >### 4. [Dalsze podstawy](src/dalsze/podstawy)
 
 - [Regexy](src/dalsze/podstawy/regexy)
-- String i StringBuilder
+- [String i StringBuilder](src/dalsze/podstawy/string/i/stringbuilder)
 - [Enumy](src/dalsze/podstawy/enumy)
 - [Wielkie liczby (BigInteger, BigDecimal)](src/dalsze/podstawy/wielkie/liczby)
 - Interfejsy
 - Wyjątki
-- Daty (LocalDate, LocalDateTime, LocalTime, Instant, Duration, Period, formatery)
+- [Daty (LocalDate, LocalDateTime, LocalTime, Instant, Duration, Period, formatery)](src/dalsze/podstawy/daty)
 - Typy generyczne
 - Lambda wyrażenia, interfejsy funkcyjne i streamy
 ---

@@ -41,15 +41,15 @@ public class Klient {
         zakup.setDodatki(dodatki);
     }
 
-    public static Klient wydalNajwiecejNaWycieczke(List<Klient> klienci, boolean zDodatkami) {
+    public static Klient wydalNajwiecejNaWycieczke(List<Klient> klienci, boolean zCenaWycieczki) {
         if (klienci == null || klienci.isEmpty()) {
             throw new IllegalArgumentException("Lista klientow jest pusta");
         }
         Klient wydalNajwiecej = klienci.get(0);
 
-        if (zDodatkami) {
+        if (zCenaWycieczki) {
             for (Klient klient : klienci) {
-                if (wydalNajwiecej.ileNajwiecejWydalNaCalaWycieczke() < klient.ileNajwiecejWydalNaCalaWycieczke()) {
+                if (wydalNajwiecej.ileWydalNajwiecej(true) < klient.ileWydalNajwiecej(true)) {
                     wydalNajwiecej = klient;
                 }
             }
@@ -57,7 +57,7 @@ public class Klient {
             return wydalNajwiecej;
         } else {
             for (Klient klient : klienci) {
-                if (wydalNajwiecej.ileNajwiecejWydalNaDodatki() < klient.ileNajwiecejWydalNaDodatki()){
+                if (wydalNajwiecej.ileWydalNajwiecej(false) < klient.ileWydalNajwiecej(false)){
                     wydalNajwiecej = klient;
                 }
             }
@@ -66,27 +66,21 @@ public class Klient {
         }
     }
 
-    public double ileNajwiecejWydalNaCalaWycieczke() {
+    public double ileWydalNajwiecej(boolean zCenaWycieczki) {
         double max = 0;
         for (Zakup zakup : zakupy) {
-            if (zakup.obliczCeneWybranychDodatkow() + zakup.getWycieczka().getCena() > max) {
-                max = zakup.obliczCeneWybranychDodatkow() + zakup.getWycieczka().getCena();
+            if (zCenaWycieczki) {
+                if (zakup.obliczCeneWybranychDodatkow() + zakup.getWycieczka().getCena() > max) {
+                    max = zakup.obliczCeneWybranychDodatkow() + zakup.getWycieczka().getCena();
+                }
+            } else {
+                if (zakup.obliczCeneWybranychDodatkow() > max) {
+                    max = zakup.obliczCeneWybranychDodatkow();
+                }
             }
         }
         return max;
     }
-
-    public double ileNajwiecejWydalNaDodatki() {
-        double max = 0;
-        for (Zakup zakup : zakupy) {
-            if (zakup.obliczCeneWybranychDodatkow() > max) {
-                max = zakup.obliczCeneWybranychDodatkow();
-            }
-        }
-        return max;
-    }
-
-
 
     public String getImie() {
         return imie;
