@@ -1,12 +1,11 @@
-package dalsze.podstawy.daty;
+package dalsze.podstawy.daty.dodatkowe;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Dodatkowe {
+public class Parse {
     // Parser ze stringa na localdate
     public static LocalDate parsujDate(String str) {
         Pattern dataPattern = Pattern.compile("^(?<dzien>0[1-9]|[12][0-9]|3[01])-(?<miesiac>0[1-9]|1[0-2])-(?<rok>\\d{4})$");
