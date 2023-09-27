@@ -1,12 +1,9 @@
 package dalsze.podstawy.daty.dodatkowe;
 
 
-//    Tworzenie Daty na Podstawie Timestampu: Stwórz funkcję, która przyjmuje jako argument timestamp (liczbę milisekund od 1970-01-01T00:00:00Z) i konwertuje go na obiekt LocalDateTime lub Instant.
-//    Znajdowanie Następnego/Poprzedniego Dnia Roboczego: Napisz program, który znajduje następny lub poprzedni dzień roboczy (bez weekendów) na podstawie obecnej daty.
-//    Znajdowanie Dnia Tygodnia dla Danej Daty: Stwórz funkcję, która zwraca nazwę dnia tygodnia dla określonej daty (np. "poniedziałek", "wtorek", itp.).
-//    Dodawanie i Odejmowanie Czasu: Napisz funkcję, która dodaje lub odejmuje określoną liczbę dni, godzin, minut lub sekund do/z daty i czasu, wykorzystując metody klasy LocalDateTime.
-//    Przesuwanie Daty i Czasu na Inne Strefy Czasowe: Zaimplementuj funkcję, która przesuwa datę i czas z jednej strefy czasowej do innej, korzystając z ZoneId i ZonedDateTime.
 
+
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -37,6 +34,17 @@ public class Main {
         return date.format(formatter);
     }
 
+    // Tworzenie Daty na Podstawie Timestampu: Stwórz funkcję, która przyjmuje jako argument timestamp (liczbę milisekund od 1970-01-01T00:00:00Z) i konwertuje go na obiekt LocalDateTime lub Instant.
+    public static LocalDate makeDate(Timestamp timestamp){
+        return timestamp.toLocalDateTime().toLocalDate();
+    }
+
+    // Znajdowanie Następnego/Poprzedniego Dnia Roboczego: Napisz program, który znajduje następny lub poprzedni dzień roboczy (bez weekendów) na podstawie obecnej daty.
+    // Znajdowanie Dnia Tygodnia dla Danej Daty: Stwórz funkcję, która zwraca nazwę dnia tygodnia dla określonej daty (np. "poniedziałek", "wtorek", itp.).
+    // Dodawanie i Odejmowanie Czasu: Napisz funkcję, która dodaje lub odejmuje określoną liczbę dni, godzin, minut lub sekund do/z daty i czasu, wykorzystując metody klasy LocalDateTime.
+    // Przesuwanie Daty i Czasu na Inne Strefy Czasowe: Zaimplementuj funkcję, która przesuwa datę i czas z jednej strefy czasowej do innej, korzystając z ZoneId i ZonedDateTime.
+
+
     public static void main(String[] args) {
         //TODO 1) Obliczanie Różnicy Czasu:
         System.out.println(roznicaCzasu(LocalDateTime.of(2003, 03, 28, 12, 36), LocalDateTime.now()) + "\n");
@@ -44,10 +52,10 @@ public class Main {
         //TODO 2) Okres Między Datami:
         System.out.println(okres(LocalDate.of(2003, 03, 28), LocalDate.now()) + "\n");
 
-        //TODO Formatowanie Daty i Czasu:
+        //TODO 3) Formatowanie Daty i Czasu:
         System.out.println(formatter(LocalDateTime.now()) + '\n');
 
-        //TODO Obliczanie Czasu Wykonania Operacji
+        //TODO 4) Obliczanie Czasu Wykonania Operacji
         Instant startTime = Instant.now();
         roznicaCzasu(LocalDateTime.of(2003, 03, 28, 12, 36), LocalDateTime.now());
         okres(LocalDate.of(2003, 03, 28), LocalDate.now());
