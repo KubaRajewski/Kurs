@@ -1,10 +1,10 @@
-package dalsze.podstawy.string.i.stringbuilder;
+package dalsze.podstawy.string.i.stringbuilder.dodatkowe;
 
 import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Dodatkowe {
+public class Main {
 //  Zadanie: Palindrom w StringBuilderze
 //  Napisz funkcję, która sprawdza, czy dany tekst jest palindromem, wykorzystując StringBuilder do odwracania tekstu.
     public static boolean palidrom(String str) {
