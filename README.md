@@ -27,8 +27,8 @@
 - [String i StringBuilder](src/dalsze/podstawy/string/i/stringbuilder)
 - [Enumy](src/dalsze/podstawy/enumy)
 - [Wielkie liczby (BigInteger, BigDecimal)](src/dalsze/podstawy/wielkie/liczby)
-- Interfejsy
-- Wyjątki
+- [Interfejsy](src/dalsze/podstawy/interfejsy)
+- [Wyjątki](src/dalsze/podstawy/wyjatki)
 - [Daty (LocalDate, LocalDateTime, LocalTime, Instant, Duration, Period, formatery)](src/dalsze/podstawy/daty)
 - Typy generyczne
 - Lambda wyrażenia, interfejsy funkcyjne i streamy

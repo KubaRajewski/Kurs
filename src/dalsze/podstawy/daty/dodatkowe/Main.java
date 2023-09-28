@@ -40,9 +40,27 @@ public class Main {
     }
 
     // Znajdowanie Następnego/Poprzedniego Dnia Roboczego: Napisz program, który znajduje następny lub poprzedni dzień roboczy (bez weekendów) na podstawie obecnej daty.
-    // Znajdowanie Dnia Tygodnia dla Danej Daty: Stwórz funkcję, która zwraca nazwę dnia tygodnia dla określonej daty (np. "poniedziałek", "wtorek", itp.).
-    // Dodawanie i Odejmowanie Czasu: Napisz funkcję, która dodaje lub odejmuje określoną liczbę dni, godzin, minut lub sekund do/z daty i czasu, wykorzystując metody klasy LocalDateTime.
+    public static LocalDate nastepnyDzienRoboczy(LocalDate data) {
+        do {
+            data = data.plusDays(1);
+        } while (data.getDayOfWeek() == DayOfWeek.SATURDAY || data.getDayOfWeek() == DayOfWeek.SUNDAY);
+
+        return data;
+    }
+
+    public static LocalDate poprzedniDzienRoboczy(LocalDate data) {
+        do {
+            data = data.minusDays(1);
+        } while (data.getDayOfWeek() == DayOfWeek.SATURDAY || data.getDayOfWeek() == DayOfWeek.SUNDAY);
+
+        return data;
+    }
+
     // Przesuwanie Daty i Czasu na Inne Strefy Czasowe: Zaimplementuj funkcję, która przesuwa datę i czas z jednej strefy czasowej do innej, korzystając z ZoneId i ZonedDateTime.
+    public static ZonedDateTime przesuniecieStrefyCzasowej(LocalDateTime lokalnaDataCzas, ZoneId staraStrefa, ZoneId nowaStrefa) {
+        ZonedDateTime staraZonedDateTime = ZonedDateTime.of(lokalnaDataCzas, staraStrefa);
+        return staraZonedDateTime.withZoneSameInstant(nowaStrefa);
+    }
 
 
     public static void main(String[] args) {
@@ -63,5 +81,18 @@ public class Main {
         Instant endTime = Instant.now();
 
         System.out.println(Duration.between(startTime, endTime));
+
+        //TODO 5) Tworzenie Daty na Podstawie Timestampu:
+        System.out.println(makeDate(new Timestamp(123456789)) + "\n");
+
+        //TODO 6) Znajdowanie Następnego/Poprzedniego Dnia Roboczego:
+        System.out.println(nastepnyDzienRoboczy(LocalDate.now()));
+        System.out.println(poprzedniDzienRoboczy(LocalDate.now()) + "\n");
+
+        //TODO 7) Znajdowanie Dnia Tygodnia dla Danej Daty
+        System.out.println(LocalDate.now().getDayOfWeek() + "\n");
+
+        //TODO 8) Przesuwanie Daty i Czasu na Inne Strefy Czasowe:
+        System.out.println(przesuniecieStrefyCzasowej(LocalDateTime.now(), ZoneId.of("Europe/Warsaw"), ZoneId.of("America/Panama")));
     }
 }
