@@ -1,7 +1,20 @@
 package dalsze.podstawy.interfejsy.dodatkowe.Biblioteka;
 
-public interface Czytelnik {
-    void wypozycz(Ksiazka ksiazka);
-    void zwroc(Ksiazka ksiazka);
-    boolean czyMaZalegleKsiazki();
+public class Czytelnik implements CzytelnikInt{
+
+
+    @Override
+    public void wypozycz(Ksiazka ksiazka) {
+
+    }
+
+    @Override
+    public void zwroc(Ksiazka ksiazka) {
+
+    }
+
+    @Override
+    public boolean czyMaZalegleKsiazki() {
+        return false;
+    }
 }
