@@ -6,9 +6,10 @@ import java.util.List;
 public class Pracownik extends Osoba implements PracownikInt, CzytelnikInt{
     private LocalDate dataRozpoczeciaPracy;
     private double wyplata;
+    private Biblioteka biblioteka;
 
-    public Pracownik(String imie, String nazwisko, List<Ksiazka> wypozyczoneKsiazki, LocalDate dataRozpoczeciaPracy, double wyplata) {
-        super(imie, nazwisko, wypozyczoneKsiazki);
+    public Pracownik(String imie, String nazwisko, LocalDate dataRozpoczeciaPracy, double wyplata) {
+        super(imie, nazwisko);
         this.dataRozpoczeciaPracy = dataRozpoczeciaPracy;
         this.wyplata = wyplata;
     }
@@ -27,6 +28,14 @@ public class Pracownik extends Osoba implements PracownikInt, CzytelnikInt{
 
     public void setWyplata(double wyplata) {
         this.wyplata = wyplata;
+    }
+
+    public Biblioteka getBiblioteka() {
+        return biblioteka;
+    }
+
+    public void setBiblioteka(Biblioteka biblioteka) {
+        this.biblioteka = biblioteka;
     }
 
     @Override

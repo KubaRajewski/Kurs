@@ -8,10 +8,9 @@ public abstract class Osoba {
     private String imie;
     private String nazwisko;
 
-    public Osoba(String imie, String nazwisko, List<Ksiazka> wypozyczoneKsiazki) {
+    public Osoba(String imie, String nazwisko) {
         this.imie = imie;
         this.nazwisko = nazwisko;
-        this.wypozyczoneKsiazki = wypozyczoneKsiazki;
     }
 
     private List<Ksiazka> wypozyczoneKsiazki = new ArrayList<>();

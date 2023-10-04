@@ -1,4 +1,4 @@
-package dalsze.podstawy.regexy.osoba;
+package dalsze.podstawy.regexy.pesel;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -87,17 +87,16 @@ public class Osoba {
         int miesiac = Integer.parseInt(matcher.group("miesiac"));
         int dzien = Integer.parseInt(matcher.group("dzien"));
 
-        if (rok >= 00 && rok <= 99) {
-            if (miesiac >= 81 && miesiac <= 92) {
-                rok += 1800;
-                miesiac -= 80;
-            } else if (miesiac >= 21 && miesiac <= 32) {
-                rok += 2000;
-                miesiac -= 20;
-            } else {
-                rok += 1900;
-            }
+        if (miesiac >= 81 && miesiac <= 92) {
+            rok += 1800;
+            miesiac -= 80;
+        } else if (miesiac >= 21 && miesiac <= 32) {
+            rok += 2000;
+            miesiac -= 20;
+        } else {
+            rok += 1900;
         }
+
         return LocalDate.of(rok, miesiac, dzien);
     }
 

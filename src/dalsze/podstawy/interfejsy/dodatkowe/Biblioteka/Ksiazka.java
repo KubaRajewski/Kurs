@@ -1,5 +1,6 @@
 package dalsze.podstawy.interfejsy.dodatkowe.Biblioteka;
 
+import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +10,17 @@ public class Ksiazka {
     private final String tytul;
     private final String autor;
     private final Rodzaj rodzaj;
-    private final Year rokWydania;
+    private final LocalDate dataWydania;
+    private int ilosc;
 
     public static List<Ksiazka> ekstensja = new ArrayList<>();
 
-    public Ksiazka(String tytul, String autor, Rodzaj rodzaj, Year rokWydania) {
+    public Ksiazka(String tytul, String autor, Rodzaj rodzaj, LocalDate dataWydania, int ilosc) {
         this.tytul = tytul;
         this.autor = autor;
         this.rodzaj = rodzaj;
-        this.rokWydania = rokWydania;
+        this.dataWydania = dataWydania;
+        this.ilosc = ilosc;
 
         ekstensja.add(this);
     }
@@ -34,8 +37,16 @@ public class Ksiazka {
         return rodzaj;
     }
 
-    public Year getRokWydania() {
-        return rokWydania;
+    public int getIlosc() {
+        return ilosc;
+    }
+
+    public void setIlosc(int ilosc) {
+        this.ilosc = ilosc;
+    }
+
+    public LocalDate getRokWydania() {
+        return dataWydania;
     }
 
     public static List<Ksiazka> getEkstensja() {
@@ -46,12 +57,12 @@ public class Ksiazka {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Ksiazka ksiazka)) return false;
-        return Objects.equals(tytul, ksiazka.tytul) && Objects.equals(autor, ksiazka.autor) && rodzaj == ksiazka.rodzaj && Objects.equals(rokWydania, ksiazka.rokWydania);
+        return Objects.equals(tytul, ksiazka.tytul) && Objects.equals(autor, ksiazka.autor) && rodzaj == ksiazka.rodzaj && Objects.equals(dataWydania, ksiazka.dataWydania);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tytul, autor, rodzaj, rokWydania);
+        return Objects.hash(tytul, autor, rodzaj, dataWydania);
     }
 
 

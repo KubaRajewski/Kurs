@@ -1,5 +1,6 @@
 package dalsze.podstawy.regexy;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -176,7 +177,8 @@ public class Main {
 
         if (matcher.find()) {
             double kursWymiany = Double.parseDouble(matcher.group("wartosc"));
-            return ilosc * kursWymiany;
+            double wynik = ilosc * kursWymiany;
+            return Math.round(wynik * 100) / 100.0;
         } else {
             throw new IllegalArgumentException("nie znaleziono waluty do wymiany");
         }

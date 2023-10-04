@@ -1,4 +1,4 @@
-package dalsze.podstawy.wielkie.liczby;
+package dalsze.podstawy.wielkie.liczby.dodatkowe;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
