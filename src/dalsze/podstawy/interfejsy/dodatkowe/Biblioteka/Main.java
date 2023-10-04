@@ -33,18 +33,18 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        LocalDate data = LocalDate.of(2020, 10, 10);
-        LocalDate data2 = LocalDate.of(2010, 10, 10);
-        Biblioteka b1 = new Biblioteka("Biblioteka nr 1", data, 10, 10);
-
-        Ksiazka k1 = new Ksiazka("Pan Tadeusz", "Adam Mickiewicz", Rodzaj.DRAMAT, data, 2);
-        Ksiazka k2 = new Ksiazka("harry potter", "jk rowaling", Rodzaj.FICKJA, data, 10);
-
-        Pracownik p1 = new Pracownik("Jan", "Kowalski", data, 2500);
-
-        b1.dodajPracownika(p1);
-
-        System.out.println(b1);
-        System.out.println(p1);
+//        LocalDate data = LocalDate.of(2020, 10, 10);
+//        LocalDate data2 = LocalDate.of(2010, 10, 10);
+//        Biblioteka b1 = new Biblioteka("Biblioteka nr 1", data, 10, 10);
+//
+//        Ksiazka k1 = new Ksiazka("Pan Tadeusz", "Adam Mickiewicz", Rodzaj.DRAMAT, data, 2);
+//        Ksiazka k2 = new Ksiazka("harry potter", "jk rowaling", Rodzaj.FICKJA, data, 10);
+//
+////        Pracownik p1 = new Pracownik("Jan", "Kowalski", data, 2500);
+//
+//        b1.dodajPracownika(p1);
+//
+//        System.out.println(b1);
+//        System.out.println(p1);
     }
 }

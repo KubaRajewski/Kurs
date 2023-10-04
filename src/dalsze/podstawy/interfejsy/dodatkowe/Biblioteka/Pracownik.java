@@ -1,9 +1,8 @@
 package dalsze.podstawy.interfejsy.dodatkowe.Biblioteka;
 
 import java.time.LocalDate;
-import java.util.List;
 
-public class Pracownik extends Osoba implements PracownikInt, CzytelnikInt{
+public abstract class Pracownik extends Osoba implements PracownikInt, CzytelnikInt{
     private LocalDate dataRozpoczeciaPracy;
     private double wyplata;
     private Biblioteka biblioteka;
@@ -38,15 +37,6 @@ public class Pracownik extends Osoba implements PracownikInt, CzytelnikInt{
         this.biblioteka = biblioteka;
     }
 
-    @Override
-    public void wypozycz(Ksiazka ksiazka) {
-
-    }
-
-    @Override
-    public void zwroc(Ksiazka ksiazka) {
-
-    }
 
     @Override
     public boolean czyMaZalegleKsiazki() {
