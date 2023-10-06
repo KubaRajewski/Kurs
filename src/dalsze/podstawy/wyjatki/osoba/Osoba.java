@@ -1,9 +1,9 @@
 package dalsze.podstawy.wyjatki.osoba;
 
-import java.util.ArrayList;
 import dalsze.podstawy.wyjatki.exceptions.NoWomenExeption;
 import dalsze.podstawy.wyjatki.exceptions.ShopsAreOnlyForWomenException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,19 +20,30 @@ public class Osoba {
 
     public static List<Osoba> ekstensja = new ArrayList<>();
 
-    public Osoba(String imie, String nazwisko, String miasto, Plec plec, int wiek) throws IllegalArgumentException {
+    public Osoba(String imie, String nazwisko, String miasto, Plec plec, int wiek) {
+        if (imie == null || nazwisko == null || miasto == null || plec == null) {
+            throw new IllegalArgumentException("Imie, nazwisko, miasto i plec nie moga byc nullami");
+        }
+
         try {
-            if (wiek < 18) {
-                throw new IllegalArgumentException("Osoba nie moze byc niepelnoletnia");
+            if (wiek >= 18) {
+                this.imie = imie;
+                this.nazwisko = nazwisko;
+                this.miasto = miasto;
+                this.plec = plec;
+                this.wiek = wiek;
+
+                ekstensja.add(this);
+            } else {
+                throw new IllegalArgumentException("Osoba musi miec wiecej niz 18 lat");
             }
         } catch (IllegalArgumentException e) {
-            wiek = 18;
-
+            System.out.println(e.getMessage());
             this.imie = imie;
             this.nazwisko = nazwisko;
             this.miasto = miasto;
             this.plec = plec;
-            this.wiek = wiek;
+            this.wiek = 18;
 
             ekstensja.add(this);
         }
@@ -59,7 +70,7 @@ public class Osoba {
     }
 
     // - metoda co zwraca najstarsza kobiete lub NoWomenException jesli brak kobiet na liscie
-    public static Osoba getOldestWoman(List<Osoba> osoby) throws NoWomenExeption {
+    public static Osoba najstarszaKobieta(List<Osoba> osoby) throws NoWomenExeption {
         if (osoby == null || osoby.isEmpty()) {
             throw new IllegalArgumentException("Lista jest pusta");
         }

@@ -1,13 +1,13 @@
 package dalsze.podstawy.wyjatki.osoba;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Sklep {
     private String nazwa;
     private String miasto;
 
-    private List<Osoba> osoby;
+    private List<Osoba> osoby = new ArrayList<>();
 
     public Sklep(String nazwa, String miasto) {
         this.nazwa = nazwa;
