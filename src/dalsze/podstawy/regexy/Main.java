@@ -1,6 +1,5 @@
 package dalsze.podstawy.regexy;
 
-import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

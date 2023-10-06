@@ -1,9 +1,5 @@
 package dalsze.podstawy.enumy.dyplom;
 
-import dalsze.podstawy.enumy.osoba.KolorOczu;
-import dalsze.podstawy.enumy.osoba.KolorWlosow;
-import dalsze.podstawy.enumy.osoba.Osoba;
-
 import java.util.Date;
 
 public class Main {

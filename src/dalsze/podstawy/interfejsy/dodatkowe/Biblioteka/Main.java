@@ -29,8 +29,6 @@ package dalsze.podstawy.interfejsy.dodatkowe.Biblioteka;
 //        9) Użyj interfejsów do abstrakcji operacji związanych z książkami i czytelnikami,
 //        aby umożliwić elastyczne rozszerzanie systemu w przyszłości.
 
-import java.time.LocalDate;
-
 public class Main {
     public static void main(String[] args) {
 //        LocalDate data = LocalDate.of(2020, 10, 10);

@@ -2,11 +2,7 @@ package dalsze.podstawy.wyjatki;
 
 import dalsze.podstawy.wyjatki.exceptions.SampleException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -32,17 +28,6 @@ public class Main {
         }
 
         System.out.println(result);
-
-        //Stworz program ktory pozwoli odczytac z pliku zawarte informacje.
-        //Jesli plik nie istnieje to obsluz ta sytuacje is tworz go (createNewFile() z klasy FIle tworzy nowy plik)
-        String nazwaPliku = "mojplik.txt";
-        File plik = new File(nazwaPliku);
-
-        // Stwórz liste i dodaj jej 3 eleemtny np Stringi. Losujemy liczbe z zakrezu 0-5
-        // i do zmiennej typu String
-        // przypisujemy wylosowany element listy, obsluz sytuacje gdy wylosowana wartosc
-        // jest poza zakresem listy
-
     }
 
     // napisz metode ktora liczy pensje z parametrem liczbagodzin, sprawdz czy liczba godzin nie jest ujemna, jesli tak to rzuc wyjatkeim
@@ -56,8 +41,4 @@ public class Main {
         if (a == 10) throw new SampleException();
         return a / b;
     }
-
-    //Stworz program ktory pozwoli odczytac z pliku zawarte informacje.
-    //Jesli plik nie istnieje to obsluz ta sytuacje is tworz go (createNewFile() z klasy FIle tworzy nowy plik)
-
 }
