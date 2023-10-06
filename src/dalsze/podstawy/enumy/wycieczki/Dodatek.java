@@ -21,4 +21,10 @@ public enum Dodatek {
         return cena;
     }
 
+    @Override
+    public String toString() {
+        return nazwa + " " + cena;
+    }
+
+
 }

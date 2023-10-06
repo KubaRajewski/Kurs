@@ -172,6 +172,12 @@ public class Main {
     }
 
     public static double zamien(int ilosc, String waluta, String kursy) {
+        if (ilosc < 0) {
+            throw new IllegalArgumentException("ilość nie może być ujemna");
+        } else if (kursy.isEmpty()){
+            throw new IllegalArgumentException("Brak kursów do porówanania");
+        }
+
         Pattern pattern = Pattern.compile("\"" + waluta + "\":(?<wartosc>\\d+\\.\\d+)");
         Matcher matcher = pattern.matcher(kursy);
 

@@ -17,9 +17,9 @@ public class Main {
         Klient klient2 = new Klient("Anna", "Nowak", "98765432112");
         Klient klient3 = new Klient("Janusz", "Kowalski", "12345678921");
 
-        Wycieczka wycieczka1 = new Wycieczka("Wycieczka do chin", Kraj.CHINY, 10000);
-        Wycieczka wycieczka2 = new Wycieczka("Wycieczka do francji", Kraj.FRANCJA, 5000);
-        Wycieczka wycieczka3 = new Wycieczka("Wycieczka do polski", Kraj.POLSKA, 1000);
+        Wycieczka wycieczka1 = new Wycieczka("Wycieczka do Chin", Kraj.CHINY, 10000);
+        Wycieczka wycieczka2 = new Wycieczka("Wycieczka do Francji", Kraj.FRANCJA, 5000);
+        Wycieczka wycieczka3 = new Wycieczka("Wycieczka do Polski", Kraj.POLSKA, 1000);
 
         List<Dodatek> pakietStandard = new ArrayList<>(List.of(Dodatek.UBEZPIECZENIE, Dodatek.ZWIEDZANIE));
         List<Dodatek> pakietPremium = new ArrayList<>(List.of(Dodatek.UBEZPIECZENIE, Dodatek.ZWIEDZANIE, Dodatek.PIERWSZENSTWO_WEJSCIA));
@@ -30,9 +30,9 @@ public class Main {
         klient3.dodajZakup(wycieczka3, pakietPremiumPlus);
 
 //        // Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
-        System.out.println("\n" + Klient.wydalNajwiecejNaWycieczke(Klient.getEkstensja(), true));
+        System.out.println("\n" + Klient.wydalNajwiecejNaDodatki(Klient.getEkstensja(), true));
 
 //        // Znadz klienta który wydal * najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
-        System.out.println(Klient.wydalNajwiecejNaWycieczke(Klient.getEkstensja(), false) + "\n");
+        System.out.println(Klient.wydalNajwiecejNaDodatki(Klient.getEkstensja(), false) + "\n");
     }
 }

@@ -1,6 +1,5 @@
 package obiektowosc.szkola;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Klasa {

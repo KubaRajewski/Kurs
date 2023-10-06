@@ -2,6 +2,7 @@ package dalsze.podstawy.enumy.wycieczki;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Klient {
 
@@ -33,7 +34,6 @@ public class Klient {
         ekstensja.add(this);
     }
 
-
     public void dodajZakup(Wycieczka wycieczka, List<Dodatek> dodatki) {
         Zakup zakup = new Zakup(wycieczka, this);
         zakupy.add(zakup);
@@ -41,7 +41,7 @@ public class Klient {
         zakup.setDodatki(dodatki);
     }
 
-    public static Klient wydalNajwiecejNaWycieczke(List<Klient> klienci, boolean zCenaWycieczki) {
+    public static Klient wydalNajwiecejNaDodatki(List<Klient> klienci, boolean zCenaWycieczki) {
         if (klienci == null || klienci.isEmpty()) {
             throw new IllegalArgumentException("Lista klientow jest pusta");
         }
@@ -49,7 +49,7 @@ public class Klient {
 
         if (zCenaWycieczki) {
             for (Klient klient : klienci) {
-                if (wydalNajwiecej.ileWydalNajwiecej(true) < klient.ileWydalNajwiecej(true)) {
+                if (wydalNajwiecej.ileWydalNajwiecejNaDodatki(true) < klient.ileWydalNajwiecejNaDodatki(true)) {
                     wydalNajwiecej = klient;
                 }
             }
@@ -57,7 +57,7 @@ public class Klient {
             return wydalNajwiecej;
         } else {
             for (Klient klient : klienci) {
-                if (wydalNajwiecej.ileWydalNajwiecej(false) < klient.ileWydalNajwiecej(false)){
+                if (wydalNajwiecej.ileWydalNajwiecejNaDodatki(false) < klient.ileWydalNajwiecejNaDodatki(false)){
                     wydalNajwiecej = klient;
                 }
             }
@@ -66,7 +66,7 @@ public class Klient {
         }
     }
 
-    public double ileWydalNajwiecej(boolean zCenaWycieczki) {
+    public double ileWydalNajwiecejNaDodatki(boolean zCenaWycieczki) {
         double max = 0;
         for (Zakup zakup : zakupy) {
             if (zCenaWycieczki) {
@@ -112,6 +112,18 @@ public class Klient {
 
     public static List<Klient> getEkstensja() {
         return ekstensja;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Klient klient)) return false;
+        return Objects.equals(imie, klient.imie) && Objects.equals(nazwisko, klient.nazwisko) && Objects.equals(pesel, klient.pesel) && Objects.equals(zakupy, klient.zakupy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(imie, nazwisko, pesel, zakupy);
     }
 
     @Override

@@ -3,6 +3,7 @@ package dalsze.podstawy.enumy.wycieczki;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Wycieczka {
     private final String nazwa;
@@ -48,4 +49,26 @@ public class Wycieczka {
         return ekstensja;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Wycieczka wycieczka)) return false;
+        return cena == wycieczka.cena && Objects.equals(nazwa, wycieczka.nazwa) && kraj == wycieczka.kraj && Objects.equals(zakupy, wycieczka.zakupy) && Objects.equals(ekstensja, wycieczka.ekstensja);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nazwa, kraj, cena, zakupy, ekstensja);
+    }
+
+    @Override
+    public String toString() {
+        return "Wycieczka{" +
+                "nazwa='" + nazwa + '\'' +
+                ", kraj=" + kraj +
+                ", cena=" + cena +
+                ", zakupy=" + zakupy +
+                ", ekstensja=" + ekstensja +
+                '}';
+    }
 }
