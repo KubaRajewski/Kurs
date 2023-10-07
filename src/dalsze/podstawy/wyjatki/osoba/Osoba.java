@@ -39,11 +39,13 @@ public class Osoba {
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            wiek = 18;
+        } finally {
             this.imie = imie;
             this.nazwisko = nazwisko;
             this.miasto = miasto;
             this.plec = plec;
-            this.wiek = 18;
+            this.wiek = wiek;
 
             ekstensja.add(this);
         }
@@ -70,22 +72,22 @@ public class Osoba {
     }
 
     // - metoda co zwraca najstarsza kobiete lub NoWomenException jesli brak kobiet na liscie
-    public static Osoba najstarszaKobieta(List<Osoba> osoby) throws NoWomenExeption {
+    public static Osoba najstarszaKobieta(List<Osoba> osoby) {
         if (osoby == null || osoby.isEmpty()) {
             throw new IllegalArgumentException("Lista jest pusta");
         }
 
-        Osoba najstarszaKobieta = osoby.get(0);
-        boolean czySaKobiety = false;
+        Osoba najstarszaKobieta = null;
+
         for (Osoba osoba : osoby) {
             if (osoba.getPlec() == Plec.KOBIETA) {
-                czySaKobiety = true;
-                if (osoba.getWiek() > najstarszaKobieta.getWiek()) {
+                if (najstarszaKobieta == null || osoba.getWiek() > najstarszaKobieta.getWiek()) {
                     najstarszaKobieta = osoba;
                 }
             }
         }
-        if (!czySaKobiety) {
+
+        if (najstarszaKobieta == null) {
             throw new NoWomenExeption("Brak kobiet na liscie");
         }
         return najstarszaKobieta;

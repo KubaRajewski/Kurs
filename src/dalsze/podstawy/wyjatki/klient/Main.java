@@ -14,7 +14,7 @@ public class Main {
         klient.dodajProdukt(produkt1);
         klient.dodajProdukt(null);
 
-        System.out.println("Klient " + klient + " kupił:");
+        System.out.println("\n" + "Klient " + klient + " kupił:");
         klient.getProdukty().forEach(System.out::println);
     }
 }
