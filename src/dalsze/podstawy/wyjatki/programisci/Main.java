@@ -35,18 +35,25 @@ public class Main {
         Programista p4 = new Programista("Jan", "Nowak", new ArrayList<>(List.of(jezyk.PYTHON, jezyk.SWIFT)), 5000);
         Programista p5 = new Programista("Janusz", "Marciński", new ArrayList<>(List.of(jezyk.C, jezyk.RUST)), 4000);
 
-        Kobieta k1 = new Kobieta("Anna", "Kowalska", 100, RozmiarBiustu.A);
-        Kobieta k2 = new Kobieta("Anna", "Nowak", 200, RozmiarBiustu.B);
-        Kobieta k3 = new Kobieta("Anna", "Nowakowska", 300, RozmiarBiustu.C);
+        Kobieta k1 = new Kobieta("Anna", "Kowalska", 140, RozmiarBiustu.B);
+        Kobieta k2 = new Kobieta("Anna", "Nowak", 120, RozmiarBiustu.C);
+        Kobieta k3 = new Kobieta("Anna", "Nowakowska", 70, RozmiarBiustu.D);
+        Kobieta k4 = new Kobieta("Anna", "Kowalska", 60, RozmiarBiustu.G);
 
         // najlepiej zarabiajacy programisci javy
         Programista.topProgramisci(Programista.ekstensja, 2).forEach(System.out::println);
 
-        p1.dodajRandke("randka1", Miejsce.KINO, k1);
-        p2.dodajRandke("randka2", Miejsce.GOKARTY, k2);
+        p1.dodajRandke("randka1", Miejsce.GOKARTY, k1);
+        p2.dodajRandke("randka2", Miejsce.RESTAURACJA, k2);
         p3.dodajRandke("randka3", Miejsce.TEATR, k3);
+        p3.dodajRandke("randka4", Miejsce.TEATR, k4);
 
-        p1.getRandki().forEach(System.out::println);
+
+        //Obliczanie szansy na zaliczenie
+        System.out.println("szanse na zaliczenie randki 1: " + p1.getRandki().get(0).obliczSzanseNaZaliczenie());
+        System.out.println("szanse na zaliczenie randki 2: " + p2.getRandki().get(0).obliczSzanseNaZaliczenie());
+        System.out.println("szanse na zaliczenie randki 3: " + p3.getRandki().get(0).obliczSzanseNaZaliczenie());
+        System.out.println("szanse na zaliczenie randki 4: " + p3.getRandki().get(1).obliczSzanseNaZaliczenie());
 
     }
 }

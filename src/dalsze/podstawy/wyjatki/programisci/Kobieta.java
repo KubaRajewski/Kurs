@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Kobieta extends Osoba {
-    private int iq;
+    private double iq;
     private RozmiarBiustu rozmiarBiustu;
 
     public static List<Kobieta> ekstensja = new ArrayList<>();
 
-    public Kobieta(String imie, String nazwisko, int iq, RozmiarBiustu rozmiarBiustu) {
+    public Kobieta(String imie, String nazwisko, double iq, RozmiarBiustu rozmiarBiustu) {
         super(imie, nazwisko);
         this.iq = iq;
         this.rozmiarBiustu = rozmiarBiustu;
@@ -17,11 +17,11 @@ public class Kobieta extends Osoba {
         ekstensja.add(this);
     }
 
-    public int getIq() {
+    public double getIq() {
         return iq;
     }
 
-    public void setIq(int iq) {
+    public void setIq(double iq) {
         this.iq = iq;
     }
 

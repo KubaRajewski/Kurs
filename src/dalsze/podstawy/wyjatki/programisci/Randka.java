@@ -1,5 +1,8 @@
 package dalsze.podstawy.wyjatki.programisci;
 
+import dalsze.podstawy.wyjatki.exceptions.TragediaExepction;
+import dalsze.podstawy.wyjatki.exceptions.ZaDuzeEgoExeption;
+
 public class Randka {
     private String nazwa;
     private Miejsce miejsce;
@@ -11,6 +14,24 @@ public class Randka {
         this.miejsce = miejsce;
         this.kobieta = kobieta;
         this.programista = programista;
+    }
+
+    public String obliczSzanseNaZaliczenie() {
+        double szansa = getMiejsce().getWartosc() + getKobieta().getRozmiarBiustu().getWartosc() - (getKobieta().getIq() / 10);
+
+        try {
+            if (szansa > 100) {
+                throw new ZaDuzeEgoExeption();
+            } else if (szansa < 0) {
+                throw new TragediaExepction();
+            }
+        } catch (ZaDuzeEgoExeption e) {
+            szansa = 30;
+        } catch (TragediaExepction e) {
+            szansa = 0;
+        }
+
+        return szansa + "%";
     }
 
     public String getNazwa() {
