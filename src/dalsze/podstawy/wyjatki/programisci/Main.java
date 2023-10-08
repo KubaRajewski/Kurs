@@ -24,5 +24,29 @@ package dalsze.podstawy.wyjatki.programisci;
  * moze przyjac on wiadomosc dla programisty od kobiety albo zostac pusty
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
+    public static void main(String[] args) {
+        Programista p1 = new Programista("Jan", "Nowak", new ArrayList<>(List.of(jezyk.JAVA, jezyk.C, jezyk.VISUAL_BASIC)), 8000);
+        Programista p2 = new Programista("Jan", "Kowalski", new ArrayList<>(List.of(jezyk.JAVA, jezyk.KOTLIN, jezyk.C)), 7000);
+        Programista p3 = new Programista("Marcin", "Nowak", new ArrayList<>(List.of(jezyk.JAVA, jezyk.RUBY)), 6000);
+        Programista p4 = new Programista("Jan", "Nowak", new ArrayList<>(List.of(jezyk.PYTHON, jezyk.SWIFT)), 5000);
+        Programista p5 = new Programista("Janusz", "Marciński", new ArrayList<>(List.of(jezyk.C, jezyk.RUST)), 4000);
+
+        Kobieta k1 = new Kobieta("Anna", "Kowalska", 100, RozmiarBiustu.A);
+        Kobieta k2 = new Kobieta("Anna", "Nowak", 200, RozmiarBiustu.B);
+        Kobieta k3 = new Kobieta("Anna", "Nowakowska", 300, RozmiarBiustu.C);
+
+        // najlepiej zarabiajacy programisci javy
+        Programista.topProgramisci(Programista.ekstensja, 2).forEach(System.out::println);
+
+        p1.dodajRandke("randka1", Miejsce.KINO, k1);
+        p2.dodajRandke("randka2", Miejsce.GOKARTY, k2);
+        p3.dodajRandke("randka3", Miejsce.TEATR, k3);
+
+        p1.getRandki().forEach(System.out::println);
+
+    }
 }
