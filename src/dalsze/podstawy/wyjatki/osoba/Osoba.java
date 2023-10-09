@@ -11,7 +11,7 @@ public class Osoba {
     private String imie;
     private String nazwisko;
     private String miasto;
-    private Plec plec;
+    private final Plec plec;
     private int wiek;
 
     private List<Sklep> sklepy = new ArrayList<>();
@@ -21,40 +21,23 @@ public class Osoba {
     public static List<Osoba> ekstensja = new ArrayList<>();
 
     public Osoba(String imie, String nazwisko, String miasto, Plec plec, int wiek) {
-        if (imie == null || nazwisko == null || miasto == null || plec == null) {
-            throw new IllegalArgumentException("Imie, nazwisko, miasto i plec nie moga byc nullami");
+        if (wiek < 18) {
+            throw new IllegalArgumentException(imie + " " + nazwisko + " " + miasto + " " + plec);
         }
 
-        try {
-            if (wiek >= 18) {
-                this.imie = imie;
-                this.nazwisko = nazwisko;
-                this.miasto = miasto;
-                this.plec = plec;
-                this.wiek = wiek;
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.miasto = miasto;
+        this.plec = plec;
+        this.wiek = wiek;
 
-                ekstensja.add(this);
-            } else {
-                throw new IllegalArgumentException("Osoba musi miec wiecej niz 18 lat");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            wiek = 18;
-        } finally {
-            this.imie = imie;
-            this.nazwisko = nazwisko;
-            this.miasto = miasto;
-            this.plec = plec;
-            this.wiek = wiek;
-
-            ekstensja.add(this);
-        }
+        ekstensja.add(this);
     }
 
     public void dodajSklep(Sklep sklep) {
         if (sklep == null) {
             throw new IllegalArgumentException("Sklep nie moze byc nullem");
-        } else if (this.plec == Plec.MEZCZYZNA){
+        } else if (this.plec == Plec.MEZCZYZNA) {
             throw new ShopsAreOnlyForWomenException("Sklepy sa tylko dla kobiet");
         }
 
@@ -77,19 +60,20 @@ public class Osoba {
             throw new IllegalArgumentException("Lista jest pusta");
         }
 
-        Osoba najstarszaKobieta = null;
+        Osoba najstarszaKobieta = osoby.get(0);
 
         for (Osoba osoba : osoby) {
             if (osoba.getPlec() == Plec.KOBIETA) {
-                if (najstarszaKobieta == null || osoba.getWiek() > najstarszaKobieta.getWiek()) {
+                if (osoba.getWiek() > najstarszaKobieta.getWiek()) {
                     najstarszaKobieta = osoba;
                 }
             }
         }
 
-        if (najstarszaKobieta == null) {
-            throw new NoWomenExeption("Brak kobiet na liscie");
+        if (najstarszaKobieta.getPlec() != Plec.KOBIETA) {
+            throw new NoWomenExeption("Brak kobiet na liście");
         }
+
         return najstarszaKobieta;
     }
 

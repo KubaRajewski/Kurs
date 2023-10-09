@@ -1,7 +1,10 @@
 package dalsze.podstawy.wyjatki.programisci;
 
-import dalsze.podstawy.wyjatki.exceptions.TragediaExepction;
 import dalsze.podstawy.wyjatki.exceptions.ZaDuzeEgoExeption;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Randka {
     private String nazwa;
@@ -9,29 +12,25 @@ public class Randka {
     private Kobieta kobieta;
     private Programista programista;
 
+    public static List<Randka> ekstensja = new ArrayList<>();
+
     public Randka(String nazwa, Miejsce miejsce, Kobieta kobieta, Programista programista) {
         this.nazwa = nazwa;
         this.miejsce = miejsce;
         this.kobieta = kobieta;
         this.programista = programista;
+
+        ekstensja.add(this);
     }
 
-    public String obliczSzanseNaZaliczenie() {
+    public double obliczSzanseNaZaliczenie() {
         double szansa = getMiejsce().getWartosc() + getKobieta().getRozmiarBiustu().getWartosc() - (getKobieta().getIq() / 10);
 
-        try {
-            if (szansa > 100) {
-                throw new ZaDuzeEgoExeption();
-            } else if (szansa < 0) {
-                throw new TragediaExepction();
-            }
-        } catch (ZaDuzeEgoExeption e) {
-            szansa = 30;
-        } catch (TragediaExepction e) {
-            szansa = 0;
+        if (szansa > 100) {
+            throw new ZaDuzeEgoExeption();
         }
 
-        return szansa + "%";
+        return szansa;
     }
 
     public String getNazwa() {
@@ -64,6 +63,18 @@ public class Randka {
 
     public void setProgramista(Programista programista) {
         this.programista = programista;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Randka randka)) return false;
+        return Objects.equals(nazwa, randka.nazwa) && miejsce == randka.miejsce && Objects.equals(kobieta, randka.kobieta) && Objects.equals(programista, randka.programista);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nazwa, miejsce, kobieta, programista);
     }
 
     @Override

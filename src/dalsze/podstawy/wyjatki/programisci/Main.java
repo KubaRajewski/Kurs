@@ -24,8 +24,13 @@ package dalsze.podstawy.wyjatki.programisci;
  * moze przyjac on wiadomosc dla programisty od kobiety albo zostac pusty
  */
 
+import dalsze.podstawy.wyjatki.exceptions.BadPlaceForDateException;
+import dalsze.podstawy.wyjatki.exceptions.NoJavaProgrammerHereException;
+import dalsze.podstawy.wyjatki.exceptions.ZaDuzeEgoExeption;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,19 +46,30 @@ public class Main {
         Kobieta k4 = new Kobieta("Anna", "Kowalska", 60, RozmiarBiustu.G);
 
         // najlepiej zarabiajacy programisci javy
-        Programista.topProgramisci(Programista.ekstensja, 2).forEach(System.out::println);
+        try {
+            Programista.topProgramisci(Programista.ekstensja, 2).forEach(System.out::println);
+        } catch (NoJavaProgrammerHereException e) {
+            System.out.println(e.getMessage());
+        }
 
-        p1.dodajRandke("randka1", Miejsce.GOKARTY, k1);
-        p2.dodajRandke("randka2", Miejsce.RESTAURACJA, k2);
-        p3.dodajRandke("randka3", Miejsce.TEATR, k3);
-        p3.dodajRandke("randka4", Miejsce.TEATR, k4);
+        // dodawanie randek
+        try {
+            p1.dodajRandke("randka1", Miejsce.KINO, k1);
+            p2.dodajRandke("randka2", Miejsce.GOKARTY, k2);
+            p3.dodajRandke("randka3", Miejsce.RESTAURACJA, k3);
+            p3.dodajRandke("randka4", Miejsce.TEATR, k4);
+        } catch (BadPlaceForDateException e) {
+            System.out.println(e.getMessage());
 
+        }
 
-        //Obliczanie szansy na zaliczenie
-        System.out.println("szanse na zaliczenie randki 1: " + p1.getRandki().get(0).obliczSzanseNaZaliczenie());
-        System.out.println("szanse na zaliczenie randki 2: " + p2.getRandki().get(0).obliczSzanseNaZaliczenie());
-        System.out.println("szanse na zaliczenie randki 3: " + p3.getRandki().get(0).obliczSzanseNaZaliczenie());
-        System.out.println("szanse na zaliczenie randki 4: " + p3.getRandki().get(1).obliczSzanseNaZaliczenie());
-
+        try {
+            //Obliczanie szansy na zaliczenie
+            for (int i = 0; i < Randka.ekstensja.size(); i++) {
+                System.out.println("Szansa na zaliczenie na randce " + (i + 1) + ": " + Randka.ekstensja.get(i).obliczSzanseNaZaliczenie() + "%");
+            }
+        } catch (ZaDuzeEgoExeption e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

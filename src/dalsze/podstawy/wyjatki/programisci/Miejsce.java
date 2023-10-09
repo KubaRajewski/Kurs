@@ -1,6 +1,7 @@
 package dalsze.podstawy.wyjatki.programisci;
 
 public enum Miejsce {
+
     GOKARTY(0),
     LASER_TAG(10),
     KINO(20),

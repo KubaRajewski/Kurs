@@ -2,8 +2,6 @@ package dalsze.podstawy.wyjatki;
 
 import dalsze.podstawy.wyjatki.exceptions.SampleException;
 
-import java.io.IOException;
-
 public class Main {
     public static void main(String[] args) {
         // https://www.protechtraining.com/static/bookshelf/java_fundamentals_tutorial/images/ExceptionClassHierarchy.png

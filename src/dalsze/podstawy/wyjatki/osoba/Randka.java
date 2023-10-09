@@ -12,7 +12,7 @@ public class Randka {
 
     public Randka(Osoba osoba1, Osoba osoba2, String miejsce) {
         if (osoba1.getPlec() == osoba2.getPlec()) {
-            throw new NoHomoHereException();
+            throw new NoHomoHereException("No homo");
         }
         this.osoba1 = osoba1;
         this.osoba2 = osoba2;

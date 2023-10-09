@@ -10,9 +10,14 @@ public class Main {
         Produkt produkt = new Produkt("Porsche", 200000);
         Produkt produkt1 = new Produkt("ziemniaki", 2);
 
-        klient.dodajProdukt(produkt);
-        klient.dodajProdukt(produkt1);
-        klient.dodajProdukt(null);
+        try {
+            klient.dodajProdukt(produkt);
+            klient.dodajProdukt(produkt1);
+            klient.dodajProdukt(null);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Produkt nie moze byc nullem, Klient " + klient + " zamówił Lamborghini za 10000000");
+            klient.dodajProdukt(new Produkt("Lamborghini", 10000000));
+        }
 
         System.out.println("\n" + "Klient " + klient + " kupił:");
         klient.getProdukty().forEach(System.out::println);

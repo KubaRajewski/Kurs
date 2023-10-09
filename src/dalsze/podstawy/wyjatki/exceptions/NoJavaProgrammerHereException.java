@@ -1,11 +1,11 @@
 package dalsze.podstawy.wyjatki.exceptions;
 
-public class NoJavaProgrammerHere extends RuntimeException{
-    public NoJavaProgrammerHere() {
+public class NoJavaProgrammerHereException extends RuntimeException{
+    public NoJavaProgrammerHereException() {
         super("No Java programmer here!");
     }
 
-    public NoJavaProgrammerHere(String message) {
+    public NoJavaProgrammerHereException(String message) {
         super(message);
     }
 }

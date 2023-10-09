@@ -8,15 +8,12 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/*
+/*todo
  * Stworz klase Osoba(imie,nazwisko, pesel, plec)
- *
  * 1) Sprawdz czy pesel jest poprawny - czy sklada sie z 11 znakow, samych cyfr itp
- *
  * 2) Sprawdz czy pesel odpowiada podanej płci
- *
  * 3) Napisz metody które zwracaja z peselu date urodzenia (LocalDAte)
- */
+*/
 
 public class Osoba {
     private String imie;

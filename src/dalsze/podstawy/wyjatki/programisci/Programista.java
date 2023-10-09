@@ -1,6 +1,7 @@
 package dalsze.podstawy.wyjatki.programisci;
 
-import dalsze.podstawy.wyjatki.exceptions.NoJavaProgrammerHere;
+import dalsze.podstawy.wyjatki.exceptions.BadPlaceForDateException;
+import dalsze.podstawy.wyjatki.exceptions.NoJavaProgrammerHereException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -23,7 +24,14 @@ public class Programista extends Osoba {
     }
 
     public void dodajRandke(String nazwa, Miejsce miejsce, Kobieta kobieta) {
-        randki.add(new Randka(nazwa, miejsce, kobieta, this));
+        if (miejsce != kobieta.getUlubioneMiejsce()) {
+            throw new BadPlaceForDateException();
+        }
+
+        Randka randka = new Randka(nazwa, miejsce, kobieta, this);
+
+        randki.add(randka);
+        kobieta.getRandki().add(randka);
     }
 
     public static List<Programista> topProgramisci(List<Programista> List, int n) {
@@ -40,7 +48,7 @@ public class Programista extends Osoba {
         }
 
         if (programisciJava.isEmpty()) {
-            throw new NoJavaProgrammerHere();
+            throw new NoJavaProgrammerHereException();
         }
 
         programisciJava.sort(Comparator.comparingDouble(Programista::getPensja).reversed());

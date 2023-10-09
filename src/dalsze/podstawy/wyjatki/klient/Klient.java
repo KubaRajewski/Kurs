@@ -15,18 +15,11 @@ public class Klient {
     }
 
     public void dodajProdukt(Produkt produkt) {
-
-        try {
-            if (produkt == null) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Produkt nie może być nullem, ustalamy produkt na Lamboghini");
-            produkt = new Produkt("Lamborghini", 10000000);
-        } finally {
-            produkty.add(produkt);
-            produkt.setKlient(this);
+        if (produkt == null) {
+            throw new IllegalArgumentException();
         }
+        produkty.add(produkt);
+        produkt.setKlient(this);
     }
 
     public String getImie() {

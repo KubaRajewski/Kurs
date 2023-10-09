@@ -14,27 +14,44 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Osoba o = new Osoba("Jan", "Kowalski", "Warszawa", Plec.MEZCZYZNA, 19);
-        Osoba o2 = new Osoba("Gosia", "Nowak", "Warszawa", Plec.KOBIETA, 20);
-        Osoba o3 = new Osoba("Grazyna", "Nowak", "Warszawa", Plec.KOBIETA, 50);
+
+        List<Osoba> osoby = new ArrayList<>();
+
+        try {
+            osoby.add(new Osoba("Jan", "Kowalski", "Warszawa", Plec.MEZCZYZNA, 18));
+            osoby.add(new Osoba("Gosia", "Nowak", "Warszawa", Plec.KOBIETA, 25));
+            osoby.add(new Osoba("Grazyna", "Nowak", "Warszawa", Plec.KOBIETA, 50));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Znaleziono błąd w danych, poprawiamy wiek osoby na 18 lat");
+            String[] osoba = e.getMessage().split(" ");
+            osoby.add(new Osoba(osoba[0], osoba[1], osoba[2], Plec.valueOf(osoba[3]), 18));
+        }
+
+//        osoby.forEach(System.out::println);
+
 
         Sklep sklep1 = new Sklep("Biedronka", "Warszawa");
+        // lista tylko mezczyzn zeby przetestowac czy rzuci wyjatkiem
+        List<Osoba> tylkoMezczyzni = new ArrayList<>();
+        for (Osoba osoba : osoby) {
+            if (osoba.getPlec() == Plec.MEZCZYZNA) {
+                tylkoMezczyzni.add(osoba);
+            }
+        }
 
-        List<Osoba> osoby = new ArrayList<>(List.of(o));
-
-//        System.out.println(Osoba.najstarszaKobieta(osoby)); // rzuci brakiem kobiet na liscie
+//        System.out.println(Osoba.najstarszaKobieta(tylkoMezczyzni)); // rzuci brakiem kobiet na liscie
         System.out.println(Osoba.najstarszaKobieta(Osoba.getEkstensja()));
 
-//        o.dodajSklep(sklep1); // rzuci wyjatkiem bo sklepy sa tylko dla kobiet
-        o2.dodajSklep(sklep1);
+//        osoby.get(0).dodajSklep(sklep1); // rzuci wyjatkiem bo sklepy sa tylko dla kobiet
+        osoby.get(1).dodajSklep(sklep1);
 
         System.out.println(sklep1.getOsoby());
-        System.out.println(o2.getSklepy());
+        System.out.println(osoby.get(1).getSklepy());
 
-        o.dodajRandke(o2, "Kino");
-        System.out.println(o.getRandki());
-        System.out.println(o2.getRandki());
+        osoby.get(0).dodajRandke(osoby.get(1), "Kino");
+        System.out.println(osoby.get(0).getRandki());
+        System.out.println(osoby.get(1).getRandki());
 
-//        o2.dodajRandke(o3, "Kino"); // rzuci wyjatkiem no homo
+//        osoby.get(1).dodajRandke(osoby.get(2), "Kino"); // rzuci wyjatkiem no homo
     }
 }
