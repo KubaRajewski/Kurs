@@ -2,6 +2,7 @@ package dalsze.podstawy.wyjatki.programisci;
 
 import dalsze.podstawy.wyjatki.exceptions.ZaDuzeEgoExeption;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -9,6 +10,7 @@ import java.util.Objects;
 public class Randka {
     private String nazwa;
     private Miejsce miejsce;
+    private final LocalDate data;
     private Kobieta kobieta;
     private Programista programista;
 
@@ -19,6 +21,7 @@ public class Randka {
         this.miejsce = miejsce;
         this.kobieta = kobieta;
         this.programista = programista;
+        this.data = LocalDate.now();
 
         ekstensja.add(this);
     }
@@ -47,6 +50,10 @@ public class Randka {
 
     public void setMiejsce(Miejsce miejsce) {
         this.miejsce = miejsce;
+    }
+
+    public LocalDate getData() {
+        return data;
     }
 
     public Kobieta getKobieta() {

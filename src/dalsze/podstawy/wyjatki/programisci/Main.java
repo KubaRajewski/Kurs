@@ -30,9 +30,8 @@ import dalsze.podstawy.wyjatki.exceptions.ZaDuzeEgoExeption;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class Main {
+public class  Main {
     public static void main(String[] args) {
         Programista p1 = new Programista("Jan", "Nowak", new ArrayList<>(List.of(jezyk.JAVA, jezyk.C, jezyk.VISUAL_BASIC)), 8000);
         Programista p2 = new Programista("Jan", "Kowalski", new ArrayList<>(List.of(jezyk.JAVA, jezyk.KOTLIN, jezyk.C)), 7000);
@@ -60,7 +59,6 @@ public class Main {
             p3.dodajRandke("randka4", Miejsce.TEATR, k4);
         } catch (BadPlaceForDateException e) {
             System.out.println(e.getMessage());
-
         }
 
         try {
