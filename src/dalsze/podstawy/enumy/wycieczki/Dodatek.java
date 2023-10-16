@@ -1,30 +1,21 @@
 package dalsze.podstawy.enumy.wycieczki;
 
 public enum Dodatek {
-    PIERWSZENSTWO_WEJSCIA("Pierwszeństwo wejścia", 100), ZWIEDZANIE("Darmowe zwiedzanie", 45), UBEZPIECZENIE("Ubezpieczenie", 50),
-    NIEOGRANICZONE_DRINKI("Nieograniczone drinki", 150), WYPOZYCZENIE_ROWERU("Darmowe wypożyczenie roweru", 220);
+    PIERWSZENSTWO_WEJSCIA( 100), ZWIEDZANIE(45), UBEZPIECZENIE(50),
+    NIEOGRANICZONE_DRINKI(150), WYPOZYCZENIE_ROWERU(220);
 
-    private final String nazwa;
-    private final int cena;
+    private final double cena;
 
-
-    Dodatek(String nazwa, int cena) {
-        this.nazwa = nazwa;
+    Dodatek(double cena) {
         this.cena = cena;
     }
 
-    public String getNazwa() {
-        return nazwa;
-    }
-
-    public int getCena() {
+    public double getCena() {
         return cena;
     }
 
     @Override
     public String toString() {
-        return nazwa + " " + cena;
+        return Dodatek.this.name().toLowerCase() + " " + cena;
     }
-
-
 }

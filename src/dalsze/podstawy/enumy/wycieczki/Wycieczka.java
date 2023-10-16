@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Wycieczka {
     private final String nazwa;
     private final Kraj kraj;
-    private int cena;
+    private double cena;
     private List<Zakup> zakupy = new ArrayList<>();
 
     private List<Wycieczka> ekstensja = new ArrayList<>();
@@ -29,7 +29,7 @@ public class Wycieczka {
         return kraj;
     }
 
-    public int getCena() {
+    public double getCena() {
         return cena;
     }
 

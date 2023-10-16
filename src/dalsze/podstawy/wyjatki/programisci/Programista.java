@@ -8,14 +8,14 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Programista extends Osoba {
-    private List<jezyk> jezyki;
+    private List<Jezyk> jezyki;
     private double pensja;
 
     public List<Randka> randki = new ArrayList<>();
 
     public static List<Programista> ekstensja = new ArrayList<>();
 
-    public Programista(String imie, String nazwisko, List<jezyk> jezyki, double pensja) {
+    public Programista(String imie, String nazwisko, List<Jezyk> jezyki, double pensja) {
         super(imie, nazwisko);
         this.jezyki = jezyki;
         this.pensja = pensja;
@@ -23,26 +23,32 @@ public class Programista extends Osoba {
         ekstensja.add(this);
     }
 
-    public void dodajRandke(String nazwa, Miejsce miejsce, Kobieta kobieta) {
-        if (miejsce != kobieta.getUlubioneMiejsce()) {
-            throw new BadPlaceForDateException();
+    public static List<Programista> programisciJava(List<Programista> programisci) {
+        if (programisci == null || programisci.isEmpty()) {
+            throw new IllegalArgumentException();
         }
 
-        Randka randka = new Randka(nazwa, miejsce, kobieta, this);
+        List<Programista> programisciJava = new ArrayList<>();
 
-        randki.add(randka);
-        kobieta.getRandki().add(randka);
+        for (Programista programista : programisci) {
+            if (programista.getJezyki().contains(Jezyk.JAVA)) {
+                programisciJava.add(programista);
+            }
+        }
+
+        return programisciJava;
     }
 
-    public static List<Programista> topProgramisci(List<Programista> List, int n) {
-        if (List == null || n < 0 || n > List.size()) {
+    // TODO: metoda pierwsza ktora filtruje programsitow, druga wycaiga top n
+    public static List<Programista> topProgramisci(List<Programista> list, int n) {
+        if (list == null || n < 0 || n > list.size()) {
             throw new IllegalArgumentException("Niepoprawne dane wejściowe");
         }
 
         List<Programista> programisciJava = new ArrayList<>();
 
-        for (Programista programista : List) {
-            if (programista.getJezyki().contains(jezyk.JAVA)) {
+        for (Programista programista : list) {
+            if (programista.getJezyki().contains(Jezyk.JAVA)) {
                 programisciJava.add(programista);
             }
         }
@@ -56,11 +62,11 @@ public class Programista extends Osoba {
         return programisciJava.subList(0, n);
     }
 
-    public List<jezyk> getJezyki() {
+    public List<Jezyk> getJezyki() {
         return jezyki;
     }
 
-    public void setJezyki(List<jezyk> jezyki) {
+    public void setJezyki(List<Jezyk> jezyki) {
         this.jezyki = jezyki;
     }
 

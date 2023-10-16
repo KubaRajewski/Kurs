@@ -18,9 +18,6 @@ public class Klient {
         if (imie == null || nazwisko == null || pesel == null) {
             throw new IllegalArgumentException("Brak danych");
         }
-        if (ekstensja.contains(this)) {
-            throw new IllegalArgumentException("Klient juz istnieje");
-        }
         for (Klient klient : ekstensja) {
             if (klient.getPesel().equals(pesel)) {
                 throw new IllegalArgumentException("Klient o takim peselu juz istnieje");
@@ -34,52 +31,58 @@ public class Klient {
         ekstensja.add(this);
     }
 
-    public void dodajZakup(Wycieczka wycieczka, List<Dodatek> dodatki) {
-        Zakup zakup = new Zakup(wycieczka, this);
-        zakupy.add(zakup);
-        zakup.setKlient(this);
-        zakup.setDodatki(dodatki);
+    //TODO 1 ile wydal na dodatki
+    public double ileWydalNaDodatki(){
+        double ileWydal = 0;
+        for (Zakup zakup : zakupy) {
+            ileWydal += zakup.obliczCenyWydatkow();
+        }
+        return ileWydal;
+    }
+    //TODO 2 ile wydal na wycieczki
+    public double ileWydalNaWycieczki() {
+        double ileWydal = 0;
+        for (Zakup zakup : zakupy) {
+            ileWydal += zakup.getWycieczka().getCena();
+        }
+        return ileWydal;
     }
 
-    public static Klient wydalNajwiecejNaDodatki(List<Klient> klienci, boolean zCenaWycieczki) {
-        if (klienci == null || klienci.isEmpty()) {
-            throw new IllegalArgumentException("Lista klientow jest pusta");
+    //TODO 3 ile wydal na wszystko
+    public double ileWydalNaWszystko(){
+        return ileWydalNaDodatki() + ileWydalNaWycieczki();
+    }
+
+    public static Klient wydalNajwiecejNaDodatki(List<Klient> klienci) {
+        if (klienci == null || klienci.isEmpty()){
+            throw new IllegalArgumentException();
         }
+
+        Klient wydalNajwiecejNaDodatki = klienci.get(0);
+
+        for (Klient klient : klienci) {
+            if (klient.ileWydalNaDodatki() > wydalNajwiecejNaDodatki.ileWydalNaWycieczki()){
+                wydalNajwiecejNaDodatki = klient;
+            }
+        }
+
+        return wydalNajwiecejNaDodatki;
+    }
+
+    public static Klient wydalNajwiecejNaDodatkiIWycieczki(List<Klient> klienci) {
+        if (klienci == null || klienci.isEmpty()){
+            throw new IllegalArgumentException();
+        }
+
         Klient wydalNajwiecej = klienci.get(0);
 
-        if (zCenaWycieczki) {
-            for (Klient klient : klienci) {
-                if (wydalNajwiecej.ileWydalNajwiecejNaDodatki(true) < klient.ileWydalNajwiecejNaDodatki(true)) {
-                    wydalNajwiecej = klient;
-                }
-            }
-
-            return wydalNajwiecej;
-        } else {
-            for (Klient klient : klienci) {
-                if (wydalNajwiecej.ileWydalNajwiecejNaDodatki(false) < klient.ileWydalNajwiecejNaDodatki(false)){
-                    wydalNajwiecej = klient;
-                }
-            }
-
-            return wydalNajwiecej;
-        }
-    }
-
-    public double ileWydalNajwiecejNaDodatki(boolean zCenaWycieczki) {
-        double max = 0;
-        for (Zakup zakup : zakupy) {
-            if (zCenaWycieczki) {
-                if (zakup.obliczCeneWybranychDodatkow() + zakup.getWycieczka().getCena() > max) {
-                    max = zakup.obliczCeneWybranychDodatkow() + zakup.getWycieczka().getCena();
-                }
-            } else {
-                if (zakup.obliczCeneWybranychDodatkow() > max) {
-                    max = zakup.obliczCeneWybranychDodatkow();
-                }
+        for (Klient klient : klienci) {
+            if (klient.ileWydalNaWszystko() > wydalNajwiecej.ileWydalNaWszystko()){
+                wydalNajwiecej = klient;
             }
         }
-        return max;
+
+        return wydalNajwiecej;
     }
 
     public String getImie() {

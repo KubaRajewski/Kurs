@@ -1,5 +1,7 @@
 package dalsze.podstawy.wyjatki.klient;
 
+import dalsze.podstawy.wyjatki.klient.exceptions.ProduktNullException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,10 @@ public class Klient {
 
     public void dodajProdukt(Produkt produkt) {
         if (produkt == null) {
-            throw new IllegalArgumentException();
+            throw new ProduktNullException("Produkt nie moze byc nullem");
+        }
+        if (produkt.getKlient() != null) {
+            throw new IllegalArgumentException("Ten produkt ma juz klienta");
         }
         produkty.add(produkt);
         produkt.setKlient(this);

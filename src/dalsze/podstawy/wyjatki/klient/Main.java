@@ -3,6 +3,8 @@ package dalsze.podstawy.wyjatki.klient;
 //Stworz asocjacje pomiedzy klientem i produktem 1-*. Obsluz sytuacje gdy produkt jest nullem, wtedy automatycznie ustwiamy
 //klientowi ze zamowil lamborghini za 10000000
 
+import dalsze.podstawy.wyjatki.klient.exceptions.ProduktNullException;
+
 public class Main {
     public static void main(String[] args) {
         Klient klient = new Klient("Jan", "Kowalski");
@@ -14,7 +16,7 @@ public class Main {
             klient.dodajProdukt(produkt);
             klient.dodajProdukt(produkt1);
             klient.dodajProdukt(null);
-        } catch (IllegalArgumentException e) {
+        } catch (ProduktNullException e) {
             System.out.println("Produkt nie moze byc nullem, Klient " + klient + " zamówił Lamborghini za 10000000");
             klient.dodajProdukt(new Produkt("Lamborghini", 10000000));
         }

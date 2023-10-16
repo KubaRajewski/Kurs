@@ -1,5 +1,6 @@
 package dalsze.podstawy.wyjatki.programisci;
 
+import dalsze.podstawy.wyjatki.exceptions.BadPlaceForDateException;
 import dalsze.podstawy.wyjatki.exceptions.ZaDuzeEgoExeption;
 
 import java.time.LocalDate;
@@ -17,12 +18,19 @@ public class Randka {
     public static List<Randka> ekstensja = new ArrayList<>();
 
     public Randka(String nazwa, Miejsce miejsce, Kobieta kobieta, Programista programista) {
+        if (miejsce != kobieta.getUlubioneMiejsce()) {
+            throw new BadPlaceForDateException();
+        }
+
         this.nazwa = nazwa;
         this.miejsce = miejsce;
         this.kobieta = kobieta;
         this.programista = programista;
         this.data = LocalDate.now();
 
+
+        kobieta.getRandki().add(this);
+        programista.getRandki().add(this);
         ekstensja.add(this);
     }
 

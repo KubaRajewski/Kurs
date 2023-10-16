@@ -23,6 +23,10 @@ public class Produkt {
         this.klient = klient;
     }
 
+    public Klient getKlient() {
+        return klient;
+    }
+
     @Override
     public String toString() {
         return nazwa + " za: " + cena;

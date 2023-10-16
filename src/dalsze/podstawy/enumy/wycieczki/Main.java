@@ -21,18 +21,22 @@ public class Main {
         Wycieczka wycieczka2 = new Wycieczka("Wycieczka do Francji", Kraj.FRANCJA, 5000);
         Wycieczka wycieczka3 = new Wycieczka("Wycieczka do Polski", Kraj.POLSKA, 1000);
 
+        List<Dodatek> pakietBudget = new ArrayList<>();
         List<Dodatek> pakietStandard = new ArrayList<>(List.of(Dodatek.UBEZPIECZENIE, Dodatek.ZWIEDZANIE));
         List<Dodatek> pakietPremium = new ArrayList<>(List.of(Dodatek.UBEZPIECZENIE, Dodatek.ZWIEDZANIE, Dodatek.PIERWSZENSTWO_WEJSCIA));
         List<Dodatek> pakietPremiumPlus = new ArrayList<>(List.of(Dodatek.UBEZPIECZENIE, Dodatek.ZWIEDZANIE, Dodatek.PIERWSZENSTWO_WEJSCIA, Dodatek.NIEOGRANICZONE_DRINKI, Dodatek.WYPOZYCZENIE_ROWERU));
 
-        klient1.dodajZakup(wycieczka1, pakietStandard);
-        klient2.dodajZakup(wycieczka2, pakietPremium);
-        klient3.dodajZakup(wycieczka3, pakietPremiumPlus);
+        Zakup z1 = new Zakup(wycieczka1, klient1, pakietBudget);
+        Zakup z2 = new Zakup(wycieczka2, klient2, pakietStandard);
+        Zakup z3 = new Zakup(wycieczka3, klient3, pakietPremium);
+        Zakup z4 = new Zakup(wycieczka1, klient3, pakietPremiumPlus);
 
-//        // Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
-        System.out.println("\n" + Klient.wydalNajwiecejNaDodatki(Klient.getEkstensja(), true));
+        // Znadz klienta który wydal najwiecej na dodatki do wycieczki uwzgledniajac tez cene wycieczki
+        System.out.println("\nNajwiecej na dodatki uwzgledniajac cene wycieczki wydał: " +
+                Klient.wydalNajwiecejNaDodatki(Klient.getEkstensja()));
 
-//        // Znadz klienta który wydal * najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
-        System.out.println(Klient.wydalNajwiecejNaDodatki(Klient.getEkstensja(), false) + "\n");
+        // Znadz klienta który wydal * najwiecej na dodatki do wycieczki nieuwzgledniajac ceny wycieczki
+        System.out.println("\nNajwiecej na dodatki nie uwzgledaniajac ceny wycieczki wydał: "
+                + Klient.wydalNajwiecejNaDodatkiIWycieczki(Klient.getEkstensja()) + "\n");
     }
 }

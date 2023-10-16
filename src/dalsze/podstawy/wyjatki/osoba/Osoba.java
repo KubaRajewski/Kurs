@@ -15,7 +15,6 @@ public class Osoba {
     private int wiek;
 
     private List<Sklep> sklepy = new ArrayList<>();
-
     private List<Randka> randki = new ArrayList<>();
 
     public static List<Osoba> ekstensja = new ArrayList<>();
@@ -37,7 +36,8 @@ public class Osoba {
     public void dodajSklep(Sklep sklep) {
         if (sklep == null) {
             throw new IllegalArgumentException("Sklep nie moze byc nullem");
-        } else if (this.plec == Plec.MEZCZYZNA) {
+        }
+        if (plec == Plec.MEZCZYZNA) {
             throw new ShopsAreOnlyForWomenException("Sklepy sa tylko dla kobiet");
         }
 
@@ -45,13 +45,24 @@ public class Osoba {
         sklep.getOsoby().add(this);
     }
 
-    public void dodajRandke(Osoba osoba, String miejsce) {
-        if (osoba == null || miejsce == null) {
-            throw new IllegalArgumentException("Osoba Lub miejsce nie moze byc nullem");
+    public static List<Osoba> listaKobiet(List<Osoba> osoby){
+        if (osoby == null) {
+            throw new IllegalArgumentException("Lista jest pusta");
         }
 
-        randki.add(new Randka(this, osoba, miejsce));
-        osoba.getRandki().add(new Randka(osoba, this, miejsce));
+        List<Osoba> kobiety = new ArrayList<>();
+
+        for (Osoba osoba : osoby) {
+            if (osoba.getPlec() == Plec.KOBIETA) {
+                kobiety.add(osoba);
+            }
+        }
+
+        if (kobiety.isEmpty()) {
+            throw new NoWomenExeption("Brak kobiet na liscie");
+        }
+
+        return kobiety;
     }
 
     // - metoda co zwraca najstarsza kobiete lub NoWomenException jesli brak kobiet na liscie
@@ -60,18 +71,13 @@ public class Osoba {
             throw new IllegalArgumentException("Lista jest pusta");
         }
 
-        Osoba najstarszaKobieta = osoby.get(0);
+        List<Osoba> kobiety = listaKobiet(osoby);
+        Osoba najstarszaKobieta = kobiety.get(0);
 
-        for (Osoba osoba : osoby) {
-            if (osoba.getPlec() == Plec.KOBIETA) {
-                if (osoba.getWiek() > najstarszaKobieta.getWiek()) {
-                    najstarszaKobieta = osoba;
-                }
+        for (Osoba osoba : kobiety) {
+            if (osoba.getWiek() > najstarszaKobieta.getWiek()) {
+                najstarszaKobieta = osoba;
             }
-        }
-
-        if (najstarszaKobieta.getPlec() != Plec.KOBIETA) {
-            throw new NoWomenExeption("Brak kobiet na liście");
         }
 
         return najstarszaKobieta;
@@ -124,6 +130,7 @@ public class Osoba {
     public static List<Osoba> getEkstensja() {
         return ekstensja;
     }
+
 
     @Override
     public boolean equals(Object o) {

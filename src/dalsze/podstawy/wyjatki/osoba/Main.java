@@ -27,10 +27,8 @@ public class Main {
             osoby.add(new Osoba(osoba[0], osoba[1], osoba[2], Plec.valueOf(osoba[3]), 18));
         }
 
-//        osoby.forEach(System.out::println);
-
-
         Sklep sklep1 = new Sklep("Biedronka", "Warszawa");
+
         // lista tylko mezczyzn zeby przetestowac czy rzuci wyjatkiem
         List<Osoba> tylkoMezczyzni = new ArrayList<>();
         for (Osoba osoba : osoby) {
@@ -48,10 +46,10 @@ public class Main {
         System.out.println(sklep1.getOsoby());
         System.out.println(osoby.get(1).getSklepy());
 
-        osoby.get(0).dodajRandke(osoby.get(1), "Kino");
+        Randka r1 = new Randka(osoby.get(0), osoby.get(1), "Kino");
         System.out.println(osoby.get(0).getRandki());
         System.out.println(osoby.get(1).getRandki());
 
-//        osoby.get(1).dodajRandke(osoby.get(2), "Kino"); // rzuci wyjatkiem no homo
+        Randka r2 = new Randka(osoby.get(1), osoby.get(2), "Kino"); // rzuci wyjatkiem nohomo
     }
 }

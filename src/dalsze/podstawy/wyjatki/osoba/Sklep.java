@@ -2,6 +2,7 @@ package dalsze.podstawy.wyjatki.osoba;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Sklep {
     private String nazwa;
@@ -36,6 +37,18 @@ public class Sklep {
 
     public void setOsoby(List<Osoba> osoby) {
         this.osoby = osoby;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Sklep sklep)) return false;
+        return Objects.equals(nazwa, sklep.nazwa) && Objects.equals(miasto, sklep.miasto) && Objects.equals(osoby, sklep.osoby);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nazwa, miasto, osoby);
     }
 
     @Override

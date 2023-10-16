@@ -9,11 +9,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*todo
- * Stworz klase Osoba(imie,nazwisko, pesel, plec)
+ * Stworz klase Osoba(imie,nazwisko, pesel, PLEC)
  * 1) Sprawdz czy pesel jest poprawny - czy sklada sie z 11 znakow, samych cyfr itp
  * 2) Sprawdz czy pesel odpowiada podanej płci
  * 3) Napisz metody które zwracaja z peselu date urodzenia (LocalDAte)
-*/
+ */
 
 public class Osoba {
     private String imie;
@@ -23,7 +23,7 @@ public class Osoba {
 
     public static List<Osoba> ekstensja = new ArrayList<>();
 
-    Pattern peselPattern = Pattern.compile("^(?<rok>\\d{2})(?<miesiac>(0[1-9]|1[0-2])|(2[1-9]|3[0-2]))(?<dzien>[0-2]\\d|3[0-1])(?<porzadkowa>\\d{3})(?<plec>[0-9])(?<kontrolna>\\d)$");
+    Pattern peselPattern = Pattern.compile("(?<ROK>\\d{2})(?<MIESIAC>(0[1-9]|1[0-2])|(2[1-9]|3[0-2]))(?<DZIEN>[0-2]\\d|3[0-1])(?<PORZADKOWA>\\d{3})(?<PLEC>[0-9])(?<KONTROLNA>\\d)");
 
     public Osoba(String imie, String nazwisko, String pesel, Plec plec) {
         for (Osoba osoba : ekstensja) {
@@ -31,16 +31,14 @@ public class Osoba {
                 throw new IllegalArgumentException("Podany pesel jest juz w bazie danych");
             }
         }
-
         if (imie == null || nazwisko == null || pesel == null || plec == null) {
             throw new IllegalArgumentException("Wypełnij wszystkie pola");
         } else if (!peselPattern.matcher(pesel).matches()) {
             throw new IllegalArgumentException("Podany pesel jest niepoprawny");
-        } else if (!czyPlecSieZgadza(pesel, plec)) {
-            throw new IllegalArgumentException("Pleć podana w peselu nie jest zgodna z płcią podana w konstruktorze");
-        } else if (!czyCyfraKontrolnaSieZgadza(pesel)) {
-            throw new IllegalArgumentException("nie zgadza sie liczba kontrolna");
         }
+        czyPeselJestOk(pesel);
+        czyPlecSieZgadza(pesel);
+        czyCyfraKontrolnaSieZgadza(pesel);
 
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -50,17 +48,22 @@ public class Osoba {
         ekstensja.add(this);
     }
 
-    public boolean czyPlecSieZgadza(String pesel, Plec plec) {
-        Matcher matcher = peselPattern.matcher(pesel);
-
-        matcher.matches();
-        String plecZPESEL = matcher.group("plec");
-        int cyfraPlec = Integer.parseInt(plecZPESEL);
-
-        return (plec == Plec.MEZCZYZNA && cyfraPlec % 2 != 0) || (plec == Plec.KOBIETA && cyfraPlec % 2 == 0);
+    public void czyPeselJestOk(String pesel) {
+        if (!pesel.matches("\\d{11}")) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public boolean czyCyfraKontrolnaSieZgadza(String pesel) {
+    public void czyPlecSieZgadza(String pesel) {
+
+        int i = Character.getNumericValue(pesel.charAt(9));
+
+        if ((plec == Plec.MEZCZYZNA && i % 2 == 0) || (plec == Plec.KOBIETA && i % 2 != 0)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void czyCyfraKontrolnaSieZgadza(String pesel) {
 
         int[] wagi = {1, 3, 7, 9, 1, 3, 7, 9, 1, 3};
         int suma = 0;
@@ -73,16 +76,18 @@ public class Osoba {
         int ostatniaCyfra = Character.getNumericValue(pesel.charAt(10));
         int cyfraKontrolna = 10 - (suma % 10);
 
-        return cyfraKontrolna == ostatniaCyfra;
+        if (cyfraKontrolna != ostatniaCyfra) {
+            throw new IllegalArgumentException("Cyfra kontrolna nie zgadza sie z peselem");
+        }
     }
 
     public LocalDate getDataUrodzenia() {
         Matcher matcher = peselPattern.matcher(this.pesel);
 
         matcher.matches();
-        int rok = Integer.parseInt(matcher.group("rok"));
-        int miesiac = Integer.parseInt(matcher.group("miesiac"));
-        int dzien = Integer.parseInt(matcher.group("dzien"));
+        int rok = Integer.parseInt(pesel.substring(0, 2));
+        int miesiac = Integer.parseInt(pesel.substring(2, 4));
+        int dzien = Integer.parseInt(pesel.substring(4, 6));
 
         if (miesiac >= 81 && miesiac <= 92) {
             rok += 1800;

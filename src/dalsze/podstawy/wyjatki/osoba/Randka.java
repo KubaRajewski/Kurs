@@ -3,6 +3,7 @@ package dalsze.podstawy.wyjatki.osoba;
 import dalsze.podstawy.wyjatki.exceptions.NoHomoHereException;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Randka {
     private Osoba osoba1;
@@ -18,6 +19,9 @@ public class Randka {
         this.osoba2 = osoba2;
         this.miejsce = miejsce;
         this.data = LocalDate.now();
+
+        osoba1.getRandki().add(this);
+        osoba2.getRandki().add(this);
     }
 
     public Osoba getOsoba1() {
@@ -50,6 +54,18 @@ public class Randka {
 
     public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Randka randka)) return false;
+        return Objects.equals(osoba1, randka.osoba1) && Objects.equals(osoba2, randka.osoba2) && Objects.equals(miejsce, randka.miejsce) && Objects.equals(data, randka.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(osoba1, osoba2, miejsce, data);
     }
 
     @Override
