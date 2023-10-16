@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Randka {
-    private String nazwa;
     private Miejsce miejsce;
     private final LocalDate data;
     private Kobieta kobieta;
@@ -17,12 +16,11 @@ public class Randka {
 
     public static List<Randka> ekstensja = new ArrayList<>();
 
-    public Randka(String nazwa, Miejsce miejsce, Kobieta kobieta, Programista programista) {
+    public Randka(Miejsce miejsce, Kobieta kobieta, Programista programista) {
         if (miejsce != kobieta.getUlubioneMiejsce()) {
             throw new BadPlaceForDateException();
         }
 
-        this.nazwa = nazwa;
         this.miejsce = miejsce;
         this.kobieta = kobieta;
         this.programista = programista;
@@ -42,14 +40,6 @@ public class Randka {
         }
 
         return szansa;
-    }
-
-    public String getNazwa() {
-        return nazwa;
-    }
-
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
     }
 
     public Miejsce getMiejsce() {
@@ -84,19 +74,19 @@ public class Randka {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Randka randka)) return false;
-        return Objects.equals(nazwa, randka.nazwa) && miejsce == randka.miejsce && Objects.equals(kobieta, randka.kobieta) && Objects.equals(programista, randka.programista);
+        return miejsce == randka.miejsce && Objects.equals(data, randka.data) && Objects.equals(kobieta, randka.kobieta) && Objects.equals(programista, randka.programista);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nazwa, miejsce, kobieta, programista);
+        return Objects.hash(miejsce, data, kobieta, programista);
     }
 
     @Override
     public String toString() {
         return "Randka{" +
-                "nazwa='" + nazwa + '\'' +
-                ", miejsce=" + miejsce +
+                "miejsce=" + miejsce +
+                ", data=" + data +
                 ", kobieta=" + kobieta +
                 ", programista=" + programista +
                 '}';

@@ -53,16 +53,16 @@ public class  Main {
 
         // dodawanie randek
         try {
-            p1.dodajRandke("randka1", Miejsce.KINO, k1);
-            p2.dodajRandke("randka2", Miejsce.GOKARTY, k2);
-            p3.dodajRandke("randka3", Miejsce.RESTAURACJA, k3);
-            p3.dodajRandke("randka4", Miejsce.TEATR, k4);
+            Randka r1 = new Randka(Miejsce.RESTAURACJA, k1, p1);
+            Randka r2 = new Randka(Miejsce.KINO, k2, p2);
+            Randka r3 = new Randka(Miejsce.GOKARTY, k3, p3);
+            Randka r4 = new Randka(Miejsce.TEATR, k4, p4);
         } catch (BadPlaceForDateException e) {
             System.out.println(e.getMessage());
         }
 
+        //Obliczanie szansy na zaliczenie
         try {
-            //Obliczanie szansy na zaliczenie
             for (int i = 0; i < Randka.ekstensja.size(); i++) {
                 System.out.println("Szansa na zaliczenie na randce " + (i + 1) + ": " + Randka.ekstensja.get(i).obliczSzanseNaZaliczenie() + "%");
             }

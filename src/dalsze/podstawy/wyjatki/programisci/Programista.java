@@ -1,6 +1,5 @@
 package dalsze.podstawy.wyjatki.programisci;
 
-import dalsze.podstawy.wyjatki.exceptions.BadPlaceForDateException;
 import dalsze.podstawy.wyjatki.exceptions.NoJavaProgrammerHereException;
 
 import java.util.ArrayList;
@@ -36,27 +35,19 @@ public class Programista extends Osoba {
             }
         }
 
-        return programisciJava;
-    }
-
-    // TODO: metoda pierwsza ktora filtruje programsitow, druga wycaiga top n
-    public static List<Programista> topProgramisci(List<Programista> list, int n) {
-        if (list == null || n < 0 || n > list.size()) {
-            throw new IllegalArgumentException("Niepoprawne dane wejściowe");
-        }
-
-        List<Programista> programisciJava = new ArrayList<>();
-
-        for (Programista programista : list) {
-            if (programista.getJezyki().contains(Jezyk.JAVA)) {
-                programisciJava.add(programista);
-            }
-        }
-
         if (programisciJava.isEmpty()) {
             throw new NoJavaProgrammerHereException();
         }
 
+        return programisciJava;
+    }
+
+    public static List<Programista> topProgramisci(List<Programista> list, int n) {
+        if (n < 0 || n > list.size()) {
+            throw new IllegalArgumentException("Niepoprawne dane wejściowe");
+        }
+
+        List<Programista> programisciJava = programisciJava(list);
         programisciJava.sort(Comparator.comparingDouble(Programista::getPensja).reversed());
 
         return programisciJava.subList(0, n);
