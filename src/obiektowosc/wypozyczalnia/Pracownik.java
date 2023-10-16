@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pracownik extends Osoba {
-    private static List<Pracownik> ekstensja = new ArrayList<>();
     public int pensja;
     public String rodzajUmowy;
     private List<Szkolenie> szkolenia = new ArrayList<>();
     private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
+
+    private static List<Pracownik> ekstensja = new ArrayList<>();
 
     public Pracownik(String imie, String nazwisko, String adres, String numerDowodu, int pensja, String rodzajUmowy) {
         super(imie, nazwisko, adres, numerDowodu);

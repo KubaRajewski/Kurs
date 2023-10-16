@@ -1,4 +1,4 @@
-package kalkulator;
+package podstawy.wstep.zmienne.kalkulator;
 
 import java.util.Scanner;
 

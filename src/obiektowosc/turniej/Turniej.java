@@ -19,14 +19,6 @@ public class Turniej {
         ekstensja.add(this);
     }
 
-    public static List<Turniej> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Turniej> ekstensja) {
-        Turniej.ekstensja = ekstensja;
-    }
-
     public void dodajUczestnika(Gracz gracz) {
         if (uczestnicy.contains(gracz)) {
             System.out.println("Gracz " + gracz + " już jest na liście uczestników");
@@ -65,6 +57,14 @@ public class Turniej {
 
     public void setWyniki(List<Wynik> wyniki) {
         this.wyniki = wyniki;
+    }
+
+    public static List<Turniej> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Turniej> ekstensja) {
+        Turniej.ekstensja = ekstensja;
     }
 
     @Override

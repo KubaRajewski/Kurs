@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dziecko extends Osoba {
-    public static List<Dziecko> ekstensja = new ArrayList<>();
     private Grupa grupa;
     private List<Uwaga> uwagi = new ArrayList<>();
+
+    public static List<Dziecko> ekstensja = new ArrayList<>();
 
     public Dziecko(String imie, String nazwisko, String dataUrodzenia) {
         super(imie, nazwisko, dataUrodzenia);

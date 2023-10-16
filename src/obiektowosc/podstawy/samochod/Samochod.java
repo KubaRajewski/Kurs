@@ -31,6 +31,11 @@ public class Samochod {
         ekstensja.add(this);
     }
 
+    // metoda obiektowa (niestatyczna) wywolujemy ja na konkretnym obiekcie
+    public int obliczWiek() {
+        return LocalDate.now().getYear() - rokProdukcji;
+    }
+
     // metoda klasowa (statyczna) wywolujemy ja na klasie
     // w tego typu metodach nie dzialamy bezposrednio na ekstensji
     public static Samochod najstarszeAuto(List<Samochod> lista) {
@@ -219,11 +224,6 @@ public class Samochod {
 
     public static void setLiczbaKol(int liczbaKol) {
         LICZBA_KOL = liczbaKol;
-    }
-
-    // metoda obiektowa (niestatyczna) wywolujemy ja na konkretnym obiekcie
-    public int obliczWiek() {
-        return LocalDate.now().getYear() - rokProdukcji;
     }
 
     public String getProducent() {

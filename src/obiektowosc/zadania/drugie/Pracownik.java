@@ -16,7 +16,6 @@ public class Pracownik extends Osoba {
         ekstensja.add(this);
     }
 
-
     //TODO 3) Wyswietl 3 top pracownikow z najwieksza pensja (compartor + sortowanie) DODATKOWE
     public static List<Pracownik> najlepiejZarabiajacy(int limit) {
         if (Pracownik.getEkstensja() == null)

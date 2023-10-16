@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Szkolenie {
-    private static List<Szkolenie> ekstensja = new ArrayList<>();
     private String nazwa;
     private String data;
     private List<Pracownik> uczestnicy = new ArrayList<>();
+
+    private static List<Szkolenie> ekstensja = new ArrayList<>();
 
     public Szkolenie(String nazwa, String data) {
         this.nazwa = nazwa;

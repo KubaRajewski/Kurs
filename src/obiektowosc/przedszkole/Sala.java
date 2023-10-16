@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sala {
-    private static List<Sala> ekstensja = new ArrayList<>();
+
     private String nazwa;
     private String kolorScian;
     private Grupa grupa;
+
+    private static List<Sala> ekstensja = new ArrayList<>();
 
     public Sala(String nazwa, String kolorScian) {
         this.nazwa = nazwa;

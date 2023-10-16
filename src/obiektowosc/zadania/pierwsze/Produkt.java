@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Produkt {
-    List<Produkt> ekstensja = new ArrayList<>();
     private String nazwa;
     private double cena;
     private List<Klient> klienci = new ArrayList<>();
+
+    List<Produkt> ekstensja = new ArrayList<>();
 
     public Produkt(String nazwa, double cena) {
         this.nazwa = nazwa;

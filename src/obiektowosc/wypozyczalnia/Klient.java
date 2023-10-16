@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Klient extends Osoba {
-    public static List<Klient> ekstensja = new ArrayList<>();
     private boolean kartaLojalnosciowa;
     private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
+
+    public static List<Klient> ekstensja = new ArrayList<>();
 
     public Klient(String imie, String nazwisko, String adres, String numerDowodu, boolean kartaLojalnosciowa) {
         super(imie, nazwisko, adres, numerDowodu);

@@ -21,7 +21,6 @@ public class Szkola {
 
     private static List<Szkola> ekstensja = new ArrayList<>();
 
-
     public Szkola(int rokPowstania, String nazwa, String wyroznienie, int numer) {
         this.rokPowstania = rokPowstania;
         this.nazwa = nazwa;

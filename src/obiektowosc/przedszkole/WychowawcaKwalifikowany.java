@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WychowawcaKwalifikowany extends Wychowawca {
-    public static List<WychowawcaKwalifikowany> ekstensja = new ArrayList<>();
     private Kwalifikacje kwalifikacje;
+
+    public static List<WychowawcaKwalifikowany> ekstensja = new ArrayList<>();
 
     public WychowawcaKwalifikowany(String imie, String nazwisko, String dataUrodzenia) {
         super(imie, nazwisko, dataUrodzenia);

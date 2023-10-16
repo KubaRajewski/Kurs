@@ -13,6 +13,18 @@ public class Pracownik {
         this.pensja = pensja;
     }
 
+    public String getImie() {
+        return imie;
+    }
+
+    public String getNaziwsko() {
+        return naziwsko;
+    }
+
+    public double getPensja() {
+        return pensja;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -26,15 +38,12 @@ public class Pracownik {
         return Objects.hash(imie, naziwsko, pensja);
     }
 
-    public String getImie() {
-        return imie;
-    }
-
-    public String getNaziwsko() {
-        return naziwsko;
-    }
-
-    public double getPensja() {
-        return pensja;
+    @Override
+    public String toString() {
+        return "Pracownik{" +
+                "imie='" + imie + '\'' +
+                ", naziwsko='" + naziwsko + '\'' +
+                ", pensja=" + pensja +
+                '}';
     }
 }

@@ -6,38 +6,15 @@ import java.util.List;
 import java.util.Set;
 
 public class Klient extends Osoba {
-    private static List<Klient> ekstensja = new ArrayList<>();
     private List<Produkt> koszyk = new ArrayList<>();
+
+    private static List<Klient> ekstensja = new ArrayList<>();
 
     public Klient(String imie, String nazwisko) {
         super(imie, nazwisko);
 
         ekstensja.add(this);
     }
-
-    public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
-        if (klienci == null || klienci.isEmpty())
-            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
-        Klient max = klienci.get(0);
-        for (Klient k : klienci) {
-            if (k.obliczWartoscZakupow() > max.obliczWartoscZakupow()) {
-                max = k;
-            }
-        }
-        return max;
-    }
-
-    // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
-
-    public static List<Klient> getEkstensja() {
-        return ekstensja;
-    }
-
-    public static void setEkstensja(List<Klient> ekstensja) {
-        Klient.ekstensja = ekstensja;
-    }
-
-    ////TODO 2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
 
     public void dodajProdukt(Produkt produkt) {
         koszyk.add(produkt);
@@ -52,6 +29,20 @@ public class Klient extends Osoba {
         return wartosc;
     }
 
+    // TODO 1) Napisz metode ktora znajduje klienta ktory wydal najwiecej.
+    public static Klient ktoWydalNajwiecej(List<Klient> klienci) {
+        if (klienci == null || klienci.isEmpty())
+            throw new IllegalArgumentException("lista nie moze byc nullem lub byc pusta");
+        Klient max = klienci.get(0);
+        for (Klient k : klienci) {
+            if (k.obliczWartoscZakupow() > max.obliczWartoscZakupow()) {
+                max = k;
+            }
+        }
+        return max;
+    }
+
+    ////TODO 2) Wyswietl dla kazdego klienta jego ulubiony produkt (of cuz ulubiony produkt to ma byc atrybut wyliczalny na podstawie zakupow)
     public List<Produkt> ulubioneProdukty() {
         if (koszyk == null)
             throw new IllegalArgumentException("koszyk tego klienta jest pusty");
@@ -94,6 +85,14 @@ public class Klient extends Osoba {
 
     public void setKoszyk(List<Produkt> koszyk) {
         this.koszyk = koszyk;
+    }
+
+    public static List<Klient> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Klient> ekstensja) {
+        Klient.ekstensja = ekstensja;
     }
 
     @Override

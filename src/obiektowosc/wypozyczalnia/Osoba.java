@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Osoba {
-    public static List<Osoba> ekstensja = new ArrayList<>();
     private final String imie;
     private final String nazwisko;
     private final String numerDowodu;
     private String adres;
+
+    public static List<Osoba> ekstensja = new ArrayList<>();
+
 
     public Osoba(String imie, String nazwisko, String adres, String numerDowodu) {
         this.imie = imie;

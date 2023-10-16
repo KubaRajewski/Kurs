@@ -15,6 +15,10 @@ public class Uczen extends Osoba {
         super(imie, nazwisko, adres);
         this.numerIndeksu = numerIndeksu;
     }
+    @Override
+    public double obliczDochod() {
+        return 350;
+    }
 
     public Szkola getSzkola() {
         return szkola;
@@ -22,11 +26,6 @@ public class Uczen extends Osoba {
 
     public void setSzkola(Szkola szkola) {
         this.szkola = szkola;
-    }
-
-    @Override
-    public double obliczDochod() {
-        return 350;
     }
 
     public String getNumerIndeksu() {

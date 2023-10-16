@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Wychowawca extends Osoba {
+    private List<Grupa> grupy = new ArrayList<>();
 
     public static List<Wychowawca> ekstensja = new ArrayList<>();
-    private List<Grupa> grupy = new ArrayList<>();
 
     public Wychowawca(String imie, String nazwisko, String dataUrodzenia) {
         super(imie, nazwisko, dataUrodzenia);

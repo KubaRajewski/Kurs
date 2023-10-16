@@ -5,11 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Uwaga {
-    public static List<Uwaga> ekstensja = new ArrayList<>();
     private final String nazwa;
     private final String opis;
     private final String dataWystawienia;
     private final Dziecko dziecko;
+
+    public static List<Uwaga> ekstensja = new ArrayList<>();
 
     public Uwaga(String nazwa, String opis, String dataWystawienia, Dziecko dziecko) {
         this.nazwa = nazwa;

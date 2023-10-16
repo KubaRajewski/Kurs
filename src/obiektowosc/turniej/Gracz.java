@@ -12,7 +12,6 @@ public class Gracz {
 
     private static List<Gracz> ekstensja = new ArrayList<>();
 
-
     public Gracz(String imie, String nazwisko) {
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -63,7 +62,6 @@ public class Gracz {
     }
 
     // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
-    // ile dany gracz mial punktow z turniejow o danej nazwie
     public int ileGraczMialPunktow(String nazwa) {
         int punkty = 0;
         for (Wynik w : wyniki) {

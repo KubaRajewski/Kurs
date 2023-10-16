@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Samochod {
-    private static List<Samochod> ekstensja = new ArrayList<>();
     private String marka;
     private String model;
     private List<Pracownik> uzytkownicy = new ArrayList<>();
+
+    private static List<Samochod> ekstensja = new ArrayList<>();
 
     public Samochod(String marka, String model) {
         this.marka = marka;

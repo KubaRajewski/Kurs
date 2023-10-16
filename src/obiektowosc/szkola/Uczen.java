@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Uczen extends Osoba {
-    private static List<Uczen> ekstensja = new ArrayList<>();
     private String numerIndeksu;
     private Szkola szkola;
     private Klasa klasa;
     private List<Ocena> oceny = new ArrayList<>();
+
+    private static List<Uczen> ekstensja = new ArrayList<>();
 
     public Uczen(String imie, String nazwisko, String adres, String numerIndeksu, Szkola szkola, Klasa klasa) {
         super(imie, nazwisko, adres);
@@ -29,13 +30,13 @@ public class Uczen extends Osoba {
         ekstensja.add(this);
     }
 
-    public static List<Uczen> getEkstensja() {
-        return ekstensja;
-    }
-
     @Override
     public double obliczDochod() {
         return 100;
+    }
+
+    public static List<Uczen> getEkstensja() {
+        return ekstensja;
     }
 
     public String getNumerIndeksu() {

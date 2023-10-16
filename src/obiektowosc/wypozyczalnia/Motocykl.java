@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Motocykl extends Pojazd {
-    private static List<Motocykl> ekstensja = new ArrayList<>();
     private boolean czyMoznaNaB;
+
+    private static List<Motocykl> ekstensja = new ArrayList<>();
 
     public Motocykl(String numerRejestracyjny, String marka, String model, int rokProdukcji, int pojemnoscBaku, boolean dostepnosc, int cenaWypozyczenia, boolean czyMoznaNaB) {
         super(numerRejestracyjny, marka, model, rokProdukcji, pojemnoscBaku, dostepnosc, cenaWypozyczenia);

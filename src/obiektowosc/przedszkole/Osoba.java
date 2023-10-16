@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Osoba {
-    public static List<Osoba> ekstensja = new ArrayList<>();
     private String imie;
     private String nazwisko;
     private String dataUrodzenia;
+
+    public static List<Osoba> ekstensja = new ArrayList<>();
 
     public Osoba(String imie, String nazwisko, String dataUrodzenia) {
         this.imie = imie;

@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Pojazd {
-    private static List<Pojazd> ekstensja = new ArrayList<>();
     private String numerRejestracyjny;
     private String marka;
     private String model;
     private int rokProdukcji;
     private int pojemnoscBaku;
     private boolean dostepnosc;
-    private int cenaWypozyczenia; // cena za dobę
+    private int cenaWypozyczenia;
     private Silnik silnik;
+
     private List<Wypozyczenie> wypozyczenia = new ArrayList<>();
+
+    private static List<Pojazd> ekstensja = new ArrayList<>();
 
     public Pojazd(String numerRejestracyjny, String marka, String model, int rokProdukcji, int pojemnoscBaku, boolean dostepnosc, int cenaWypozyczenia) {
         if (numerRejestracyjny == null || numerRejestracyjny.isEmpty())

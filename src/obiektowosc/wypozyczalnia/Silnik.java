@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Silnik {
-    private static List<Silnik> ekstensja = new ArrayList<>();
     private final String typ;
     private final int pojemnosc;
     private final int momentObrotowy;
     private final int moc;
-    // relacja z pojazdem 1:* (Silnik jest w wielu pojazdach)
+
     private List<Pojazd> pojazdyZDanymSilnikiem = new ArrayList<>();
+
+    private static List<Silnik> ekstensja = new ArrayList<>();
+
 
     public Silnik(String typ, int pojemnosc, int momentObrotowy, int moc) {
         this.typ = typ;

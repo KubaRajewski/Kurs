@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Klient {
-    public static List<Klient> ekstensja = new ArrayList<>();
+
     private final double rozmiarPenisa;
     private String imie;
     private String nazwisko;
     private List<Produkt> produkty = new ArrayList<>();
+
+    public static List<Klient> ekstensja = new ArrayList<>();
 
     public Klient(String imie, String nazwisko, double rozmiarPenisa) {
         this.imie = imie;

@@ -37,14 +37,6 @@ public class Szkola {
         ekstensja.add(this);
     }
 
-    public static int getMinLiczbaUczniow() {
-        return MIN_LICZBA_UCZNIOW;
-    }
-
-    public static void setMinLiczbaUczniow(int minLiczbaUczniow) {
-        MIN_LICZBA_UCZNIOW = minLiczbaUczniow;
-    }
-
     // metoda tworzaca powiazanie (asocjacje)
     public void dodajUcznia(Uczen u) {
         if (u.getSzkola() != null) {
@@ -58,6 +50,14 @@ public class Szkola {
     public void usunUcznia(Uczen u) {
         uczniowie.remove(u);
         u.setSzkola(null);
+    }
+
+    public static int getMinLiczbaUczniow() {
+        return MIN_LICZBA_UCZNIOW;
+    }
+
+    public static void setMinLiczbaUczniow(int minLiczbaUczniow) {
+        MIN_LICZBA_UCZNIOW = minLiczbaUczniow;
     }
 
     public List<Sala> getSale() {
@@ -104,6 +104,4 @@ public class Szkola {
     public String toString() {
         return nazwa;
     }
-
-
 }

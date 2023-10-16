@@ -9,11 +9,12 @@ import java.util.List;
 
 public class Grupa {
     private static final int MAX_LICZBA_DZIECI = 15;
-    private static List<Grupa> ekstensja = new ArrayList<>();
     private String nazwa;
     private Wychowawca wychowawca;
     private Sala sala;
     private List<Dziecko> dzieci = new ArrayList<>();
+
+    private static List<Grupa> ekstensja = new ArrayList<>();
 
     public Grupa(String nazwa) {
         this.nazwa = nazwa;
