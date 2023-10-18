@@ -5,7 +5,6 @@ import java.util.List;
 
 public interface Figura {
 
-
     double obliczPole();
 
     double obliczObwod();

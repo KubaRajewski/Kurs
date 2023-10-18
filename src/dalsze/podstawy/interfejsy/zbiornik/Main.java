@@ -20,4 +20,12 @@ package dalsze.podstawy.interfejsy.zbiornik;
 //        - pozwalają znaleźć zbiornik w którym było najwięcej operacji danego typu (typ podajemy jako argument metody)
 
 public class Main {
+    public static void main(String[] args) {
+        Zbiornik z = new Zbiornik("mojUlubiony", 200, 0);
+
+        z.dolej(10);
+        System.out.println(z.getStan());
+
+        z.get
+    }
 }

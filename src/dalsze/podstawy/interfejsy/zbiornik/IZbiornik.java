@@ -1,9 +1,7 @@
 package dalsze.podstawy.interfejsy.zbiornik;
 
-import java.math.BigDecimal;
-
 public interface IZbiornik {
-    void dolanieWody(BigDecimal ilosc);
-    void odlanieWody(BigDecimal ilosc);
-    void przelanieWody(Zbiornik zbiornik, BigDecimal ilosc);
+    void dolej(double ilosc);
+    void odlej(double ilosc);
+    void przelej(double ilosc, Zbiornik zbiornik);
 }

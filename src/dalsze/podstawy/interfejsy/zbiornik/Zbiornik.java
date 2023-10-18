@@ -1,42 +1,52 @@
 package dalsze.podstawy.interfejsy.zbiornik;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class Zbiornik implements IZbiornik{
+public class Zbiornik implements IZbiornik {
     private String nazwa;
-    private BigDecimal pojemnosc;
-    private BigDecimal iloscWody;
+    private double pojemnosc;
+    private double stan;
 
-    public static List<Zbiornik> ekstensja = new ArrayList<>();
+    public static List<Operacja> operacje = new ArrayList<>();
 
-    public Zbiornik(String nazwa, BigDecimal pojemnosc) {
+    public Zbiornik(String nazwa, double pojemnosc, double stan) {
         this.nazwa = nazwa;
         this.pojemnosc = pojemnosc;
-        this.iloscWody = BigDecimal.ZERO;
-
-        ekstensja.add(this);
+        this.stan = stan;
     }
 
     @Override
-    public void dolanieWody(BigDecimal ilosc) {
-        if (ilosc.compareTo(pojemnosc) > 0) {
-            throw new IllegalArgumentException("Nie można dolać więcej wody niż wynosi pojemność zbiornika");
+    public void dolej(double ilosc) {
+        try {
+            if (pojemnosc < ilosc || stan + ilosc > pojemnosc) {
+                throw new IllegalArgumentException("Nie można dolać więcej niż pojemność zbiornika");
+            } else if (ilosc <= 0) {
+                throw new IllegalArgumentException("podaj inna wartosc");
+            }
+
+            stan += ilosc;
+            operacje.add(new Operacja(nazwaOperacji(), this, ilosc, true));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            operacje.add(new Operacja(nazwaOperacji(), this, ilosc, false));
         }
+    }
+
+    @Override
+    public void odlej(double ilosc) {
 
     }
 
     @Override
-    public void odlanieWody(BigDecimal ilosc) {
+    public void przelej(double ilosc, Zbiornik zbiornik) {
 
     }
 
-    @Override
-    public void przelanieWody(Zbiornik zbiornik, BigDecimal ilosc) {
-
+    public String nazwaOperacji() {
+        return "Zbiornik: " + nazwa + " Operacja nr: " + (operacje.size() + 1);
     }
+
 
     public String getNazwa() {
         return nazwa;
@@ -46,32 +56,20 @@ public class Zbiornik implements IZbiornik{
         this.nazwa = nazwa;
     }
 
-    public BigDecimal getPojemnosc() {
+    public double getPojemnosc() {
         return pojemnosc;
     }
 
-    public void setPojemnosc(BigDecimal pojemnosc) {
+    public void setPojemnosc(double pojemnosc) {
         this.pojemnosc = pojemnosc;
     }
 
-    public static List<Zbiornik> getEkstensja() {
-        return ekstensja;
+    public double getStan() {
+        return stan;
     }
 
-    public static void setEkstensja(List<Zbiornik> ekstensja) {
-        Zbiornik.ekstensja = ekstensja;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Zbiornik zbiornik)) return false;
-        return Objects.equals(nazwa, zbiornik.nazwa) && Objects.equals(pojemnosc, zbiornik.pojemnosc);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nazwa, pojemnosc);
+    public void setStan(double stan) {
+        this.stan = stan;
     }
 
     @Override
@@ -79,6 +77,7 @@ public class Zbiornik implements IZbiornik{
         return "Zbiornik{" +
                 "nazwa='" + nazwa + '\'' +
                 ", pojemnosc=" + pojemnosc +
+                ", stan=" + stan +
                 '}';
     }
 }
