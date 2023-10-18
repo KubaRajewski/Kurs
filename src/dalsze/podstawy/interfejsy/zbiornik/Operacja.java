@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Operacja {
-    private String nazwa;
-    private LocalDateTime data;
-    private Zbiornik zbiornik;
-    private double ilosc;
-    private boolean czyPowiodloSie;
+    private final TypOperacji typOperacji;
+    private final String nazwa;
+    private final LocalDateTime data;
+    private final Zbiornik zbiornik;
+    private final double ilosc;
+    private final boolean czyPowiodloSie;
 
     public static List<Operacja> ekstensja = new ArrayList<>();
 
-    public Operacja(String nazwa, Zbiornik zbiornik, double ilosc, boolean czyPowiodloSie) {
+    public Operacja(TypOperacji typOperacji, String nazwa, Zbiornik zbiornik, double ilosc, boolean czyPowiodloSie) {
+        this.typOperacji = typOperacji;
         this.nazwa = nazwa;
         this.data = LocalDateTime.now();
         this.zbiornik = zbiornik;
@@ -27,40 +29,24 @@ public class Operacja {
         return nazwa;
     }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
-    }
-
     public LocalDateTime getData() {
         return data;
-    }
-
-    public void setData(LocalDateTime data) {
-        this.data = data;
     }
 
     public Zbiornik getZbiornik() {
         return zbiornik;
     }
 
-    public void setZbiornik(Zbiornik zbiornik) {
-        this.zbiornik = zbiornik;
-    }
-
     public double getIlosc() {
         return ilosc;
-    }
-
-    public void setIlosc(double ilosc) {
-        this.ilosc = ilosc;
     }
 
     public boolean isCzyPowiodloSie() {
         return czyPowiodloSie;
     }
 
-    public void setCzyPowiodloSie(boolean czyPowiodloSie) {
-        this.czyPowiodloSie = czyPowiodloSie;
+    public TypOperacji getTypOperacji() {
+        return typOperacji;
     }
 
     public static List<Operacja> getEkstensja() {
@@ -69,6 +55,9 @@ public class Operacja {
 
     @Override
     public String toString() {
-        return nazwa;
+        if (czyPowiodloSie) {
+            return nazwa + ", powiodla sie";
+        }
+        return nazwa + ", nie powiodla sie";
     }
 }
