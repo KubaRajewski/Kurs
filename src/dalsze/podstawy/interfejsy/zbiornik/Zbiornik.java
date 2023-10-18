@@ -31,10 +31,10 @@ public class Zbiornik implements IZbiornik {
             }
 
             stan += ilosc;
-            operacje.add(new Operacja(TypOperacji.DOLEWANIE, nazwaOperacji(), this, ilosc, true));
+            operacje.add(new Operacja(TypOperacji.DOLEWANIE, generujNazweOperacji(), this, ilosc, true));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            operacje.add(new Operacja(TypOperacji.DOLEWANIE, nazwaOperacji(), this, ilosc, false));
+            operacje.add(new Operacja(TypOperacji.DOLEWANIE, generujNazweOperacji(), this, ilosc, false));
         }
     }
 
@@ -48,10 +48,10 @@ public class Zbiornik implements IZbiornik {
             }
 
             stan -= ilosc;
-            operacje.add(new Operacja(TypOperacji.ODLEWANIE, nazwaOperacji(), this, ilosc, true));
+            operacje.add(new Operacja(TypOperacji.ODLEWANIE, generujNazweOperacji(), this, ilosc, true));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            operacje.add(new Operacja(TypOperacji.ODLEWANIE, nazwaOperacji(), this, ilosc, false));
+            operacje.add(new Operacja(TypOperacji.ODLEWANIE, generujNazweOperacji(), this, ilosc, false));
         }
     }
 
@@ -62,14 +62,18 @@ public class Zbiornik implements IZbiornik {
                 throw new IllegalArgumentException("Nie można przelewać więcej niż jest w zbiorniku");
             } else if (ilosc <= 0) {
                 throw new IllegalArgumentException("podaj inna wartosc");
+            } else if (this.stan + ilosc > this.pojemnosc) {
+                throw new IllegalArgumentException("Nie można przelewać tyle bo woda sie wyleje");
+            } else if (this.equals(zbiornik)) {
+                throw new IllegalArgumentException("Nie można przelewać do tego samego zbiornika");
             }
 
             zbiornik.setStan(zbiornik.getStan() - ilosc);
             stan += ilosc;
-            operacje.add(new Operacja(TypOperacji.PRZELEWANIE, nazwaOperacji(), this, ilosc, true));
+            operacje.add(new Operacja(TypOperacji.PRZELEWANIE, generujNazweOperacji(), this, ilosc, true));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            operacje.add(new Operacja(TypOperacji.PRZELEWANIE, nazwaOperacji(), this, ilosc, false));
+            operacje.add(new Operacja(TypOperacji.PRZELEWANIE, generujNazweOperacji(), this, ilosc, false));
         }
     }
 
@@ -113,8 +117,9 @@ public class Zbiornik implements IZbiornik {
     }
 
     public static List<Zbiornik> getEkstensja() {
-        return ekstensja;
+        return new ArrayList<>(ekstensja);
     }
+
 
     public List<Operacja> getOperacje() {
         return operacje;
@@ -132,7 +137,7 @@ public class Zbiornik implements IZbiornik {
         return Objects.hash(nazwa, pojemnosc, stan, operacje);
     }
 
-    private String nazwaOperacji() {
+    private String generujNazweOperacji() {
         return "Zbiornik: " + nazwa + " Operacja nr: " + (operacje.size() + 1);
     }
 

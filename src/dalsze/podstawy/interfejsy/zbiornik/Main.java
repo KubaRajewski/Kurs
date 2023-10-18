@@ -35,7 +35,7 @@ public class Main {
         // - znalezc wszystkie puste zbiorniki.
 
         System.out.println("najwiecej wody: " + IZbiornik.zNajwiekszaIlosciaWody(Zbiornik.getEkstensja()));
-        System.out.println("najpelniejszu" + IZbiornik.najbardziejZapelniony(Zbiornik.getEkstensja()));
+        System.out.println("najpelniejszu " + IZbiornik.najbardziejZapelniony(Zbiornik.getEkstensja()));
         System.out.println("puste: " + IZbiornik.pusteZbiorniki(Zbiornik.getEkstensja()));
 
         // - zbiornik na którym było najwiecej operacji zakonczonych niepowodzeniem

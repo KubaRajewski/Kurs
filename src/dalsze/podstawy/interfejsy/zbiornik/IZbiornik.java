@@ -5,7 +5,9 @@ import java.util.List;
 
 public interface IZbiornik {
     void dolej(double ilosc);
+
     void odlej(double ilosc);
+
     void przelej(Zbiornik zbiornik, double ilosc);
 
     static Zbiornik zNajwiekszaIlosciaWody(List<Zbiornik> zbiorniki) {
@@ -32,7 +34,7 @@ public interface IZbiornik {
         Zbiornik max = zbiorniki.get(0);
 
         for (Zbiornik zbiornik : zbiorniki) {
-            if (zbiornik.getPojemnosc() / zbiornik.getStan() < max.getPojemnosc() / max.getStan() && zbiornik.getStan() != 0) {
+            if (zbiornik.getStan() / zbiornik.getPojemnosc() > max.getStan() / max.getPojemnosc() && zbiornik.getStan() != 0) {
                 max = zbiornik;
             }
         }
@@ -56,7 +58,7 @@ public interface IZbiornik {
         return pusteZbiorniki;
     }
 
-    static Zbiornik najwiecejZlychOperacji(List<Zbiornik> zbiorniki){
+    static Zbiornik najwiecejZlychOperacji(List<Zbiornik> zbiorniki) {
         if (zbiorniki == null || zbiorniki.isEmpty()) {
             throw new IllegalArgumentException("Lista jest pusta");
         }

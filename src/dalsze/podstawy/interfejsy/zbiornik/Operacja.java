@@ -12,7 +12,7 @@ public class Operacja {
     private final double ilosc;
     private final boolean czyPowiodloSie;
 
-    public static List<Operacja> ekstensja = new ArrayList<>();
+    private static List<Operacja> ekstensja = new ArrayList<>();
 
     public Operacja(TypOperacji typOperacji, String nazwa, Zbiornik zbiornik, double ilosc, boolean czyPowiodloSie) {
         this.typOperacji = typOperacji;
@@ -50,7 +50,7 @@ public class Operacja {
     }
 
     public static List<Operacja> getEkstensja() {
-        return ekstensja;
+        return new ArrayList<>(ekstensja);
     }
 
     @Override
