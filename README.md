@@ -59,4 +59,5 @@
 >### [Testy](src/testy)
 - [Test 1](src/testy/test1) - Metody i kolekcje - 02.09.2023
 - [Test 2](src/testy/test2) - Obiektowość - 13.09.2023
+- [Test 3](src/testy/test3) - Dalsze podstawy - 29.10.2023
 ---
