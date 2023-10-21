@@ -5,9 +5,7 @@ import java.util.List;
 
 public interface IZbiornik {
     void dolej(double ilosc);
-
     void odlej(double ilosc);
-
     void przelej(Zbiornik zbiornik, double ilosc);
 
     static Zbiornik zNajwiekszaIlosciaWody(List<Zbiornik> zbiorniki) {

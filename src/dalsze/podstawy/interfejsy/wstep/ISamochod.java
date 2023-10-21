@@ -7,7 +7,6 @@ public interface ISamochod {
 
     // metody abstrakcyjne
     void hamuj();
-
     void przyspiesz();
 
     // metoda statyczna

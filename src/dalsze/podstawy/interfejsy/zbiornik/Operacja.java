@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Operacja {
+    private final Zbiornik zbiornik;
     private final TypOperacji typOperacji;
     private final String nazwa;
     private final LocalDateTime data;
-    private final Zbiornik zbiornik;
     private final double ilosc;
     private final boolean czyPowiodloSie;
 

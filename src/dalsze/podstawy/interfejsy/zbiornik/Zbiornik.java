@@ -14,6 +14,10 @@ public class Zbiornik implements IZbiornik {
     private static List<Zbiornik> ekstensja = new ArrayList<>();
 
     public Zbiornik(String nazwa, double pojemnosc) {
+        if (pojemnosc <= 0) {
+            throw new IllegalArgumentException("Pojemność musi być większa od 0");
+        }
+
         this.nazwa = nazwa;
         this.pojemnosc = pojemnosc;
         this.stan = 0;

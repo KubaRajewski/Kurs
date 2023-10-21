@@ -36,6 +36,4 @@ public class Samochod implements ISamochod {
     public int getMoc() {
         return moc;
     }
-
-
 }
