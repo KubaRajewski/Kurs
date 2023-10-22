@@ -9,20 +9,30 @@ import java.util.Objects;
 
 public class Magazyn implements IBudynek {
 
+    private static final BigDecimal PROWIZJA_ZA_MAGAZYN = new BigDecimal("0.05");
+
     private final String adres;
     private final int liczbaPieter;
     private final boolean czyJestGaraz;
     private final BigDecimal cena;
     private final Dzialka dzialka;
+    private final BigDecimal powierzchnia;
 
     public static List<Magazyn> ekstensja = new ArrayList<>();
 
-    public Magazyn(String adres, int liczbaPieter, boolean czyJestGaraz, Dzialka dzialka, BigDecimal cena) {
+    public Magazyn(String adres, int liczbaPieter, boolean czyJestGaraz, BigDecimal powiezchnia, Dzialka dzialka, BigDecimal cena) {
         this.adres = adres;
         this.liczbaPieter = liczbaPieter;
         this.czyJestGaraz = czyJestGaraz;
         this.cena = cena;
+        this.powierzchnia = powiezchnia;
+
+        if (!Objects.equals(adres, dzialka.getAdres())) {
+            throw new IllegalArgumentException("Adresy muszą być takie same!");
+        }
+
         this.dzialka = dzialka;
+        dzialka.setBudynek(this);
 
         ekstensja.add(this);
     }
@@ -31,6 +41,11 @@ public class Magazyn implements IBudynek {
     @Override
     public int getLiczbaPieter() {
         return liczbaPieter;
+    }
+
+    @Override
+    public BigDecimal powierzchnia() {
+        return powierzchnia;
     }
 
     @Override
@@ -45,7 +60,7 @@ public class Magazyn implements IBudynek {
 
     @Override
     public BigDecimal obliczCeneNieruchomosci() {
-        return dzialka.getCena().add(cena);
+        return dzialka.getCena().add(cena).multiply(PROWIZJA_ZA_MAGAZYN);
     }
 
     @Override
@@ -86,6 +101,7 @@ public class Magazyn implements IBudynek {
                 ", czyJestGaraz=" + czyJestGaraz +
                 ", cena=" + cena +
                 ", dzialka=" + dzialka +
+                ", powierzchnia=" + powierzchnia +
                 '}';
     }
 }

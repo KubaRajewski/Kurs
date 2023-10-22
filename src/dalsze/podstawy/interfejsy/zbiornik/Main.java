@@ -39,6 +39,8 @@ public class Main {
         System.out.println("puste: " + IZbiornik.pusteZbiorniki(Zbiornik.getEkstensja()));
 
         // - zbiornik na którym było najwiecej operacji zakonczonych niepowodzeniem
+        // - najwięcej operacji danego typu (typ podajemy jako argument metody)
+
         z1.odlej(10000);
         z1.odlej(10000);
         z1.odlej(10000);
@@ -48,8 +50,6 @@ public class Main {
         z2.odlej(500);
 
         System.out.println("najwiecej niepowodzen: " + IZbiornik.najwiecejZlychOperacji(Zbiornik.getEkstensja()));
-
-        // - najwięcej operacji danego typu (typ podajemy jako argument metody)
         System.out.println("najwiecej operacji danego typu: " + IZbiornik.najwiecejOperacjiDanegoTypu(Zbiornik.getEkstensja(), TypOperacji.ODLEWANIE));
 
     }

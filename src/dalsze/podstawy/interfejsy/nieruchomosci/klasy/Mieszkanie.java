@@ -10,6 +10,7 @@ import java.util.Objects;
 public class Mieszkanie implements IMieszkanie {
 
     private final String adres;
+    private final BigDecimal powierzchnia;
     private final int liczbaPokoi;
     private final int liczbaPieter;
     private final boolean czyJestGaraz;
@@ -18,8 +19,9 @@ public class Mieszkanie implements IMieszkanie {
 
     public static List<Mieszkanie> ekstensja = new ArrayList<>();
 
-    public Mieszkanie(String adres, int liczbaPokoi, int liczbaPieter, boolean czyJestGaraz, boolean czyJestBalkon, BigDecimal cena) {
+    public Mieszkanie(String adres, BigDecimal powierzchnia, int liczbaPokoi, int liczbaPieter, boolean czyJestGaraz, boolean czyJestBalkon, BigDecimal cena) {
         this.adres = adres;
+        this.powierzchnia = powierzchnia;
         this.liczbaPokoi = liczbaPokoi;
         this.liczbaPieter = liczbaPieter;
         this.czyJestGaraz = czyJestGaraz;
@@ -45,6 +47,11 @@ public class Mieszkanie implements IMieszkanie {
     }
 
     @Override
+    public BigDecimal powierzchnia() {
+        return powierzchnia;
+    }
+
+    @Override
     public boolean getCzyJestGaraz() {
         return czyJestGaraz;
     }
@@ -64,6 +71,10 @@ public class Mieszkanie implements IMieszkanie {
         return IMieszkanie.super.obliczPodatekNieruchomosci();
     }
 
+    public static List<Mieszkanie> getEkstensja() {
+        return ekstensja;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,7 +90,9 @@ public class Mieszkanie implements IMieszkanie {
     @Override
     public String toString() {
         return "Mieszkanie{" +
-                "liczbaPokoi=" + liczbaPokoi +
+                "adres='" + adres + '\'' +
+                ", powierzchnia=" + powierzchnia +
+                ", liczbaPokoi=" + liczbaPokoi +
                 ", liczbaPieter=" + liczbaPieter +
                 ", czyJestGaraz=" + czyJestGaraz +
                 ", czyJestBalkon=" + czyJestBalkon +

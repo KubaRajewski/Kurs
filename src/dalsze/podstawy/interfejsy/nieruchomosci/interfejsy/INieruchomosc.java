@@ -18,15 +18,15 @@ public interface INieruchomosc {
             throw new IllegalArgumentException();
         }
 
-        INieruchomosc najdrozsza = nieruchomosci.get(0);
+        INieruchomosc max = nieruchomosci.get(0);
 
-        for (INieruchomosc nieruchomosc : nieruchomosci) {
-            if (nieruchomosc.obliczCeneNieruchomosci().compareTo(najdrozsza.obliczCeneNieruchomosci()) > 0) {
-                najdrozsza = nieruchomosc;
+        for (INieruchomosc n : nieruchomosci) {
+            if (n.obliczCeneNieruchomosci().compareTo(max.obliczCeneNieruchomosci()) > 0) {
+                max = n;
             }
         }
 
-        return najdrozsza;
+        return max;
     }
 
     static List<INieruchomosc> nieruchomosciDrozszeNiz(List<INieruchomosc> nieruchomosci, BigDecimal cena) {
@@ -36,9 +36,9 @@ public interface INieruchomosc {
 
         List<INieruchomosc> nieruchomosciDrozszeNiz = new ArrayList<>();
 
-        for (INieruchomosc nieruchomosc : nieruchomosci) {
-            if (nieruchomosc.obliczCeneNieruchomosci().compareTo(cena) < 0) {
-                nieruchomosciDrozszeNiz.add(nieruchomosc);
+        for (INieruchomosc n : nieruchomosci) {
+            if (n.obliczCeneNieruchomosci().compareTo(cena) < 0) {
+                nieruchomosciDrozszeNiz.add(n);
             }
         }
 

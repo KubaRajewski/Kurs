@@ -1,8 +1,11 @@
 package dalsze.podstawy.interfejsy.nieruchomosci.klasy;
 
+import dalsze.podstawy.interfejsy.nieruchomosci.interfejsy.IBudynek;
 import dalsze.podstawy.interfejsy.nieruchomosci.interfejsy.IGrunt;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Dzialka implements IGrunt {
@@ -11,11 +14,19 @@ public class Dzialka implements IGrunt {
     private final double dlugosc;
     private final BigDecimal cena;
 
+    private IBudynek budynek;
+
+    public static List<Dzialka> ekstensja = new ArrayList<>();
+
     public Dzialka(String adres, double szerokosc, double dlugosc, BigDecimal cena) {
         this.adres = adres;
         this.szerokosc = szerokosc;
         this.dlugosc = dlugosc;
         this.cena = cena;
+
+        budynek = null;
+
+        ekstensja.add(this);
     }
 
     @Override
@@ -26,6 +37,11 @@ public class Dzialka implements IGrunt {
     @Override
     public double obliczPowierzchnieGruntu() {
         return szerokosc * dlugosc;
+    }
+
+    @Override
+    public IBudynek getBudynek() {
+        return budynek;
     }
 
     @Override
@@ -50,6 +66,18 @@ public class Dzialka implements IGrunt {
         return cena;
     }
 
+    public void setBudynek(IBudynek budynek) {
+        this.budynek = budynek;
+    }
+
+    public static List<Dzialka> getEkstensja() {
+        return ekstensja;
+    }
+
+    public static void setEkstensja(List<Dzialka> ekstensja) {
+        Dzialka.ekstensja = ekstensja;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,12 +90,13 @@ public class Dzialka implements IGrunt {
         return Objects.hash(szerokosc, dlugosc, cena);
     }
 
+
     @Override
     public String toString() {
         return "Dzialka{" +
-                "szerokosc=" + szerokosc +
+                "adres='" + adres  +
+                ", szerokosc=" + szerokosc +
                 ", dlugosc=" + dlugosc +
-                ", cena=" + cena +
-                '}';
+                ", cena=" + cena;
     }
 }
