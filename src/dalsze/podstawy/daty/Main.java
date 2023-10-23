@@ -1,11 +1,11 @@
 package dalsze.podstawy.daty;
 
 import java.text.SimpleDateFormat;
-
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
 public class Main {
     public static void main(String[] args) {
 
@@ -21,9 +21,6 @@ public class Main {
         System.out.println(sd.format(data));
 
         Calendar calendar = Calendar.getInstance();
-
-
-
 
         // Instant, czyli punkt w czasie
         Instant instant = Instant.now();
