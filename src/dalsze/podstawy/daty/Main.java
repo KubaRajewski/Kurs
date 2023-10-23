@@ -191,27 +191,6 @@ public class Main {
         LocalDateTime now4 = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy HH MM");
         System.out.println(dtf.format(now4));
-
-        /*
-         * Stwórz klasę gracz (imię, nazwisko, nick)
-         * Stworz klasę turniej. Musimy przechowywac nazwe, wpisowe, data, punkty
-         *
-         * Gracz dostaje punkty za dane miejsce w turnieju, w roznych turniejach moga byc rozne ilosci
-         * punktow za rozne miejsca.
-         *
-         *
-         * Napisz metode która znajduje najlepszego gracza z danego miesiąca.
-         * Napisz metode ktora znajduje najlepszego gracza z danego okresu czasu.
-         * Napisz metode ktora znajduje graczy z danego okresu czasu.
-         * Napisz metoda która zwraca liste graczy którzy zajeli 1 miejsce przynajmniej w dwoch roznych miesiącach
-         */
-
-        // dodatek z dat do lekarzy
-        /*
-         *  Wypisz wszystkich pacjentów którzy mieli wizyty od 2000 roku
-         *  Wypisz wszystkich lekarzy którzy mieli wizyty w marcu, czerwcu i grudniu 2007
-         *  Wypisz lekarza ktory miał najwiecej wizyt w okresie podanym jako parametr
-         */
     }
 
     private static void manipulateNumbers() {

@@ -19,6 +19,7 @@ public class Gracz {
         ekstensja.add(this);
     }
 
+    // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
     public static Gracz najlepszyGraczWTurniejachODanejNazwie(List<Gracz> gracze, String nazwa) {
         if (gracze == null || gracze.isEmpty())
             throw new IllegalArgumentException("Lista nie moze byc pusta ani byc nullem");
@@ -34,6 +35,7 @@ public class Gracz {
         return najlepszyGracz;
     }
 
+    // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
     public static Gracz zNajwiekszaIlosciaDanychPozycji(List<Gracz> gracze, int pozycja) {
         Gracz najlepszyGracz = gracze.get(0);
 
@@ -46,6 +48,7 @@ public class Gracz {
         return najlepszyGracz;
     }
 
+    // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdy nie mial 1 miejsca
     public static Gracz najlepszyGraczBezDanejPozycji(List<Gracz> gracze, int pozycja) {
         if (gracze == null || gracze.isEmpty())
             throw new IllegalArgumentException("Lista nie moze byc pusta ani byc nullem");
@@ -61,7 +64,6 @@ public class Gracz {
         return najlepszyGracz;
     }
 
-    // TODO 3) znajdz gracza ktory byl najlepszy w turniejach o danej nazwie, jesli nie ma to rzuc wyjatkiem
     public int ileGraczMialPunktow(String nazwa) {
         int punkty = 0;
         for (Wynik w : wyniki) {
@@ -72,7 +74,6 @@ public class Gracz {
         return punkty;
     }
 
-    // TODO 4) znajdz gracza ktory zodbyl najwiecej 1 miejsc ze wszystkich turniejow
     public int ileMialDanychPozycji(int pozycja) {
         int iloscPozycji = 0;
         for (Wynik wynik : wyniki) {
@@ -83,7 +84,6 @@ public class Gracz {
         return iloscPozycji;
     }
 
-    // TODO 5) znajdz gracza ktory ma najwyzsyz ranking z turrniejow ale nigdy nie mial 1 miejsca
     public int ileGraczMialPunktowBezWygranej(int pozycja) {
         int punkty = 0;
         for (Wynik w : wyniki) {

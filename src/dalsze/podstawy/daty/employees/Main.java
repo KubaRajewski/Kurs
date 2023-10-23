@@ -14,6 +14,9 @@ public class Main {
         Employee e3 = new Employee("Bob", LocalDate.of(1995, 3, 10));
         Employee e4 = new Employee("Eva", LocalDate.of(2004, 9, 30));
 
+        //Znajdz najmlodszego Pracownika
+        System.out.println(Employee.youngestEmployee(Employee.getExtension()));
+
         //Znajdz pracownikow ktorzy sa urodzeni po 11.04.2003
         System.out.println(Employee.employeesBornAfter(Employee.getExtension(), LocalDate.of(2003, 04, 11)));
 

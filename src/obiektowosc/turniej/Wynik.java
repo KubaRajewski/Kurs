@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class Wynik {
-
-    private static List<Wynik> ekstensja = new ArrayList<>();
     private Turniej turniej;
     private Gracz gracz;
     private int pozycja;
     private int punkty;
+
+    private static List<Wynik> ekstensja = new ArrayList<>();
 
     public Wynik(Turniej turniej, Gracz gracz, int pozycja) {
 

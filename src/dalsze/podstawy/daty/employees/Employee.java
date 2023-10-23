@@ -19,7 +19,24 @@ public class Employee {
         extension.add(this);
     }
 
-    // Pracownicy urodzeni po danej dacie:
+    //TODO Znajdz najmlodszego Pracownika
+    public static Employee youngestEmployee(List<Employee> employees) {
+        if (employees == null || employees.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        Employee youngest = employees.get(0);
+
+        for (Employee employee : employees) {
+            if (employee.birthDate.isAfter(youngest.birthDate)) {
+                youngest = employee;
+            }
+        }
+
+        return youngest;
+    }
+
+    //TODO Pracownicy urodzeni po danej dacie:
     public static List<Employee> employeesBornAfter(List<Employee> employees, LocalDate date) {
         if (employees == null) {
             throw new IllegalArgumentException();
@@ -36,11 +53,15 @@ public class Employee {
         return employeesBornAfter;
     }
 
-    // sortowanie po dacie urodzenia
+    //TODO sortowanie po dacie urodzenia
     public static List<Employee> sortedEmployees(List<Employee> employees) {
-        List<Employee> copy = new ArrayList<>(employees);
+        if (employees == null) {
+            throw new IllegalArgumentException();
+        }
 
+        List<Employee> copy = new ArrayList<>(employees);
         Collections.sort(employees, Comparator.comparing(Employee::getBirthDate));
+
         return copy;
     }
 
@@ -58,9 +79,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Worker{" +
-                "name='" + name + '\'' +
-                ", birthDate=" + birthDate +
-                '}';
+        return name +  ", Birthdate: " + birthDate;
     }
 }
