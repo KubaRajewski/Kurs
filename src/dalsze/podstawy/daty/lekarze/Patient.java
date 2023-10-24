@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
+import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
 public class Patient extends Person {
@@ -64,7 +65,7 @@ public class Patient extends Person {
         throw new IllegalArgumentException("Patient with this ID not found: " + patientId);
     }
 
-    // TODO Wypisz wszystkich pacjentów którzy mieli wizyty od 2000 roku
+    // TODO 1) Wypisz wszystkich pacjentów którzy mieli wizyty od 2000 roku
     public static List<Patient> patientsWithVisitsAfterCertainYear(List<Patient> patients, Year year) {
         if (patients == null) {
             throw new IllegalArgumentException();
@@ -73,17 +74,21 @@ public class Patient extends Person {
         List<Patient> list = new ArrayList<>();
 
         for (Patient patient : patients) {
-            for (Visit visit : patient.getVisits()) {
-                if (visit.getDate().getYear() >= year.getValue()) {
-                    if (!list.contains(patient)) {
-                        list.add(patient);
-                    }
-                    break;
-                }
+            if (patient.hadVisitAfterCertainYear(year)){
+                list.add(patient);
             }
         }
 
         return list;
+    }
+
+    public boolean hadVisitAfterCertainYear(Year year){
+        for (Visit visit : visits) {
+            if (visit.getDate().getYear() >= year.getValue()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static List<Patient> getExtension() {

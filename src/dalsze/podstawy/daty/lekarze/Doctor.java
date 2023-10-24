@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.Year;
+import java.time.Period;
 import java.util.*;
 
 public class Doctor extends Person {
@@ -75,60 +75,64 @@ public class Doctor extends Person {
         throw new IllegalArgumentException("Doctor with this ID not found: " + doctorId);
     }
 
-    // TODO Wypisz wszystkich lekarzy którzy mieli wizyty w marcu, czerwcu i grudniu 2007
-    public static Set<Doctor> doctorsWithVisitsInMonthAndYear(Month month, Year year) {
-        Set<Doctor> doctorsInMonth = new HashSet<>();
+    // TODO 2) Wypisz wszystkich lekarzy którzy mieli wizyty w marcu, czerwcu i grudniu 2007
+    public static List<Doctor> doctorsWithVisitsInGivenMonths(List<Doctor> doctors, List<Month> months, int year) {
+        if (doctors == null) {
+            throw new IllegalArgumentException();
+        }
 
-        for (Visit visit : Visit.getExtension()) {
-            if (visit.getDate().getYear() == year.getValue() && visit.getDate().getMonth() == month) {
-                doctorsInMonth.add(visit.getDoctor());
+        List<Doctor> list = new ArrayList<>();
+
+        for (Doctor doctor : doctors) {
+            if (doctor.hadVisitInAllTheseMonthsAndYear(months, year)) {
+                list.add(doctor);
             }
         }
 
-        return doctorsInMonth;
+        return list;
     }
 
-    public static List<Doctor> doctorsWithVisitsInGivenMonths(Year year, List<Month> months) {
-        Map<Doctor, Integer> doctorMonthCount = new HashMap<>();
+    public boolean hadVisitInAllTheseMonthsAndYear(List<Month> months, int year) {
+        Set<Month> requiredMonths = new HashSet<>(months);
 
-        for (Month month : months) {
-            Set<Doctor> doctorsInGivenMonth = doctorsWithVisitsInMonthAndYear(month, year);
-            for (Doctor doctor : doctorsInGivenMonth) {
-                doctorMonthCount.put(doctor, doctorMonthCount.getOrDefault(doctor, 0) + 1);
+        for (Visit visit : visits) {
+            if (visit.getDate().getYear() == year && requiredMonths.contains(visit.getDate().getMonth())) {
+                requiredMonths.remove(visit.getDate().getMonth());
             }
         }
 
-        List<Doctor> resultDoctors = new ArrayList<>();
-        for (Map.Entry<Doctor, Integer> entry : doctorMonthCount.entrySet()) {
-            if (entry.getValue() == months.size()) {
-                resultDoctors.add(entry.getKey());
-            }
-        }
-
-        return resultDoctors;
+        return requiredMonths.isEmpty();
     }
 
-    // TODO Wypisz lekarza ktory miał najwiecej wizyt w okresie podanym jako parametr
-    public static Doctor busiestDoctorInPeriod(LocalDate start, LocalDate end) {
-        Map<Doctor, Integer> doctorVisitsCount = new HashMap<>();
+    // TODO 3) Wypisz lekarza ktory miał najwiecej wizyt w okresie podanym jako parametr
+    public static Doctor busiestDoctorInPeriod(List<Doctor> doctors, LocalDate startDate, LocalDate endDate) {
+        if (doctors == null || doctors.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
 
-        for (Visit visit : Visit.getExtension()) {
-            if (visit.getDate().isAfter(start) && visit.getDate().isBefore(end)) {
-                doctorVisitsCount.put(visit.getDoctor(), doctorVisitsCount.getOrDefault(visit.getDoctor(), 0) + 1);
+        Doctor max = doctors.get(0);
+
+        for (Doctor doctor : doctors) {
+            if (doctor.visitsInPeriod(startDate, endDate) > max.visitsInPeriod(startDate, endDate)) {
+                max = doctor;
             }
         }
 
-        int maxVisits = 0;
-        Doctor busiestDoctor = null;
-        for (Map.Entry<Doctor, Integer> entry : doctorVisitsCount.entrySet()) {
-            if (entry.getValue() > maxVisits) {
-                maxVisits = entry.getValue();
-                busiestDoctor = entry.getKey();
-            }
-        }
-
-        return busiestDoctor;
+        return max;
     }
+
+    public int visitsInPeriod(LocalDate startDate, LocalDate endDate) {
+        int count = 0;
+
+        for (Visit visit : visits) {
+            if (!visit.getDate().isBefore(startDate) && !visit.getDate().isAfter(endDate)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
 
     public static List<Doctor> getExtension() {
         return extension;

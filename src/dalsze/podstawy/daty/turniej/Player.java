@@ -89,7 +89,7 @@ public class Player {
         List<Player> playersCertainPeriod = new ArrayList<>();
 
         for (Player player : players) {
-            if (player.getPointsCertainPeriod(beginning, end) > 0) {
+            if (player.getPointsCertainPeriod(beginning, end) >= 0) {
                 playersCertainPeriod.add(player);
             }
         }
@@ -98,18 +98,6 @@ public class Player {
     }
 
     //TODO Napisz metoda która zwraca liste graczy którzy zajeli 1 miejsce przynajmniej w dwoch roznych miesiącach
-    public static Set<Month> getUniqueMonthsForPlace(Player player, int place) {
-        Set<Month> uniqueMonths = new HashSet<>();
-
-        for (Result result : player.getResults()) {
-            if (result.getPlace() == place) {
-                uniqueMonths.add(result.getTournament().getDate().getMonth());
-            }
-        }
-
-        return uniqueMonths;
-    }
-
     public static List<Player> hadCertainPositionInNDifferentMonths(List<Player> players, int place, int differentMonths) {
         if (players == null) {
             throw new IllegalArgumentException();
@@ -126,11 +114,23 @@ public class Player {
         return List;
     }
 
+    public static Set<Month> getUniqueMonthsForPlace(Player player, int place) {
+        Set<Month> uniqueMonths = new HashSet<>();
+
+        for (Result result : player.getResults()) {
+            if (result.getPlace() == place) {
+                uniqueMonths.add(result.getTournament().getDate().getMonth());
+            }
+        }
+
+        return uniqueMonths;
+    }
+
+    // Druga wersja ze streamem
     public static List<Player> hadCertainPositionInNDifferentMonthsSTREAM(List<Player> players, int place, int differentMonths) {
         if (players == null) {
             throw new IllegalArgumentException();
         }
-
         return players.stream()
                 .filter(player -> player.getResults().stream()
                         .filter(result -> result.getPlace() == place)

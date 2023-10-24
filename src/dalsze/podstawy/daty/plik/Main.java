@@ -9,6 +9,7 @@ package dalsze.podstawy.daty.plik;
 
 import java.io.*;
 import java.math.BigInteger;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -21,15 +22,11 @@ public class Main {
         String wynikPath = "src/dalsze/podstawy/daty/plik/wynik.txt";
 
         Instant poczatek = Instant.now();
-
         zapiszDoPlikuLosoweLiczby(liczbyPath, 100, 100);
         BigInteger iloczyn = obliczIloczyn(liczbyPath);
-
         Instant koniec = Instant.now();
 
-        long czasWykonaniaMillis = poczatek.until(koniec, ChronoUnit.MILLIS);
-
-        zapiszWynikIDuration(wynikPath, iloczyn, czasWykonaniaMillis);
+        zapiszWynikIDuration(wynikPath, iloczyn, Duration.between(poczatek, koniec).toMillis());
     }
 
     public static void zapiszDoPlikuLosoweLiczby(String sciezka, int iloscLinijek, int dlugoscLinijki) throws IOException {
