@@ -32,6 +32,14 @@ public class StringContainer {
         this.duplicatesNotAllowed = duplicatesNotAllowed;
     }
 
+    public Node get(int index) {
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current;
+    }
+
     public void add(String value) {
         if (!pattern.matcher(value).matches()) {
             throw new InvalidStringContainerValueException(value);
@@ -57,15 +65,6 @@ public class StringContainer {
 
         current.next = new Node(value);
         size++;
-    }
-
-
-    public Node get(int index) {
-        Node current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-        return current;
     }
 
     public void remove(int index) {

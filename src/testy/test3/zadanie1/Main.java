@@ -36,7 +36,7 @@ package testy.test3.zadanie1;
 //        st.add("02-495");//powinno rzucic wyjatkiem DuplicatedElementOnListException
 
 //        kazdy element w StringContainer powinien miec date+czas dodania elementu do niego,
-//        nalezy zaimplementowac metode:
+//        TODO nalezy zaimplementowac metode:
 //        StringContainer stBetween = st.getDataBetween(dateFrom, dateTo);
 //        ktora zwroci elementy dodane pomiedzy dateFrom a dateTo
 //        gdzie dateFrom i dateTo to obiekty LocalDateTime i moga byc nullami.
