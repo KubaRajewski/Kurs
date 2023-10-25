@@ -54,7 +54,7 @@ public class StringContainer {
         }
 
         Element current = head;
-        while (current != null) {
+        while (true) {
             if (duplicatesNotAllowed && current.value.equals(value)) {
                 throw new DuplicatedElementOnListException(value);
             }
@@ -181,12 +181,12 @@ public class StringContainer {
         }
     }
 
-    public Pattern getPattern() {
-        return pattern;
-    }
-
     public int getSize() {
         return size;
+    }
+
+    public Pattern getPattern() {
+        return pattern;
     }
 
     @Override

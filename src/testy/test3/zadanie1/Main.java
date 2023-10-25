@@ -8,6 +8,7 @@ public class Main {
         //TODO Kompilacja
         StringContainer st = new StringContainer("\\d{2}[-]\\d{3}"); // Kompiluje sie
 //         StringContainer st2 = new StringContainer("\\d{2[-]\\d{3}"); // InvalidStringContainerPatternException
+        System.out.println("Pattern: " + st.getPattern()); // pattern sie zgadza
 
         // TODO Dodawanie Stringow
         st.add("02-495");
@@ -17,7 +18,7 @@ public class Main {
         // st.add("Ala ma kota"); // invalidStringContainerValueException
 
         // TODO Wyswietlanie wszystkich danych
-        System.out.println("Wszystkie dane:");
+        System.out.println("\nWszystkie dane:");
         for (int i = 0; i < st.getSize(); i++) {
             System.out.println(st.get(i)); // wypisujemy dodane kody pocztowe
         }
