@@ -36,7 +36,7 @@ package testy.test3.zadanie1;
 //        st.add("02-495");//powinno rzucic wyjatkiem DuplicatedElementOnListException
 
 //        kazdy element w StringContainer powinien miec date+czas dodania elementu do niego,
-//        TODO nalezy zaimplementowac metode:
+//        nalezy zaimplementowac metode:
 //        StringContainer stBetween = st.getDataBetween(dateFrom, dateTo);
 //        ktora zwroci elementy dodane pomiedzy dateFrom a dateTo
 //        gdzie dateFrom i dateTo to obiekty LocalDateTime i moga byc nullami.
@@ -45,8 +45,11 @@ package testy.test3.zadanie1;
 //        st.storeToFile("postalCodes.txt"); // powinno zapisac zawartosc
 //        StringContainer fromFile = StringContainer.fromFile("postalCodes.txt"); // powinno wczytac zawartosc z pliku i "fromFile" musi miec te same dane co "st"
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //TODO Kompilacja
         StringContainer st = new StringContainer("\\d{2}[-]\\d{3}"); // Kompiluje sie
@@ -80,8 +83,17 @@ public class Main {
         // st2.add("00-000"); // DuplicatedElementOnListException
 
         // TODO Implementacja dat i czasu do listy:
-        System.out.println("\nSprawdzanie daty dodania elementu: ");
-        System.out.println(st.get(0).getDate());
+        System.out.println("\nSprawdzanie daty dodania elementu:");
+        System.out.println(st + ", Element: " + st.get(0) + ", Data i godzina dodania: " + st.get(0).getDate());
+
+        //TODO Metoda getDataBetween
+        System.out.println("\nMetoda getDataBetween:");
+        LocalDateTime d1 = LocalDateTime.of(2023, 10, 20, 0, 0, 0, 0);
+        LocalDateTime d2 = LocalDateTime.of(2023, 11, 20, 0, 0, 0, 0);
+        StringContainer stBetween = st.getDataBetween(d1, d2);
+        for (int i = 0; i < stBetween.getSize(); i++) {
+            System.out.println(stBetween.get(i)); // wyrzuca cala liste z st
+        }
     }
 }
 

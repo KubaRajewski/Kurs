@@ -4,6 +4,7 @@ import testy.test3.zadanie1.exceptions.DuplicatedElementOnListException;
 import testy.test3.zadanie1.exceptions.InvalidStringContainerPatternException;
 import testy.test3.zadanie1.exceptions.InvalidStringContainerValueException;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -96,6 +97,24 @@ public class StringContainer {
         }
     }
 
+    public StringContainer getDataBetween(LocalDateTime dateFrom, LocalDateTime dateTo) {
+        StringContainer st = new StringContainer(pattern.toString());
+
+        Node current = head;
+        while (current != null) {
+            boolean afterStart = (dateFrom == null || current.getDate().isAfter(dateFrom));
+            boolean beforeEnd = (dateTo == null || current.getDate().isBefore(dateTo));
+
+            if (afterStart && beforeEnd) {
+                st.add(current.value);
+            }
+
+            current = current.next;
+        }
+
+        return st;
+    }
+
     public Pattern getPattern() {
         return pattern;
     }
@@ -118,9 +137,6 @@ public class StringContainer {
 
     @Override
     public String toString() {
-        return "StringContainer{" +
-                "pattern=" + pattern +
-                ", size=" + size +
-                '}';
+        return "StringContainer{" + " Pattern: " + pattern + ", Size: " + size + " }";
     }
 }

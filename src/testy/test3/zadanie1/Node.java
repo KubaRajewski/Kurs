@@ -3,9 +3,9 @@ package testy.test3.zadanie1;
 import java.time.LocalDateTime;
 
 public class Node {
-    public String value;
+    public final String value;
     public Node next;
-    public LocalDateTime date;
+    public final LocalDateTime date;
 
     public Node(String value) {
         this.value = value;
@@ -14,6 +14,10 @@ public class Node {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    public String getValue() {
+        return value;
     }
 
     @Override
