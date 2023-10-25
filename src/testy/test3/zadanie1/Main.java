@@ -45,11 +45,11 @@ package testy.test3.zadanie1;
 //        st.storeToFile("postalCodes.txt"); // powinno zapisac zawartosc
 //        StringContainer fromFile = StringContainer.fromFile("postalCodes.txt"); // powinno wczytac zawartosc z pliku i "fromFile" musi miec te same dane co "st"
 
+import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         //TODO Kompilacja
         StringContainer st = new StringContainer("\\d{2}[-]\\d{3}"); // Kompiluje sie
@@ -88,12 +88,29 @@ public class Main {
 
         //TODO Metoda getDataBetween
         System.out.println("\nMetoda getDataBetween:");
-        LocalDateTime d1 = LocalDateTime.of(2023, 10, 20, 0, 0, 0, 0);
-        LocalDateTime d2 = LocalDateTime.of(2023, 11, 20, 0, 0, 0, 0);
-        StringContainer stBetween = st.getDataBetween(d1, d2);
+        StringContainer stBetween = st.getDataBetween(LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(1));
         for (int i = 0; i < stBetween.getSize(); i++) {
             System.out.println(stBetween.get(i)); // wyrzuca cala liste z st
         }
+
+        System.out.println("\nWersja z nullami: ");
+        StringContainer stBetween2 = st.getDataBetween(null, null);
+        for (int i = 0; i < stBetween2.getSize(); i++) {
+            System.out.println(stBetween2.get(i)); // rowniez wyrzuca cala liste z st
+        }
+
+        StringContainer stBetween3 = st.getDataBetween(null, LocalDateTime.now().minusMinutes(1));
+        for (int i = 0; i < stBetween3.getSize(); i++) {
+            System.out.println(stBetween3.get(i)); // pusta lista
+        }
+
+        StringContainer stBetween4 = st.getDataBetween(LocalDateTime.now().plusMinutes(1), null);
+        for (int i = 0; i < stBetween4.getSize(); i++) {
+            System.out.println(stBetween4.get(i)); // pusta lista
+        }
+
+        // TODO zapisywanie do pliku
+        st.storeToFile("src/testy/test3/zadanie1/file/postalCodes.txt");
     }
 }
 

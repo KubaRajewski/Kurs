@@ -4,6 +4,7 @@ import testy.test3.zadanie1.exceptions.DuplicatedElementOnListException;
 import testy.test3.zadanie1.exceptions.InvalidStringContainerPatternException;
 import testy.test3.zadanie1.exceptions.InvalidStringContainerValueException;
 
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -114,6 +115,42 @@ public class StringContainer {
 
         return st;
     }
+
+    public void storeToFile(String path) {
+        File file = new File(path);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            Node current = head;
+            while (current != null) {
+                writer.write(current.value);
+                writer.newLine();
+                current = current.next;
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static StringContainer fromFile(String path) throws IOException {
+        File file = new File(path);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String patternString = reader.readLine();
+            if (patternString == null) {
+                throw new IOException("The file is empty. Expected a pattern on the first line.");
+            }
+
+            StringContainer container = new StringContainer(patternString);
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                container.add(line);
+            }
+
+            return container;
+        }
+    }
+
 
     public Pattern getPattern() {
         return pattern;
