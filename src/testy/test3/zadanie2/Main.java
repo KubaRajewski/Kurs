@@ -10,7 +10,7 @@ package testy.test3.zadanie2;
 //        peopleFromWarsaw.add(new Person("Waldek", "Monaco", 34));// waldka niedoda, jest z Monaco, wiec tu powinno albo rzucic wyjatkiem,
 //        albo metoda add powinna zwrocic po prostu false - co wybierzesz to twoja decyzja.
 //
-//        do tego ponizej mozesz juz stosowac liste, no bo masz zwrocic liste:)
+//        do tego ponizej mozesz juz stosowac liste, no bo masz zwrocic liste :)
 //        List<Person> females = peopleFromWarsaw.getWithFilter(p -> p.getName().endsWith("a")); // zwraca nam wszystkie osoby spelniajace dany warunek.
 //
 //        peopleFromWarsaw.removeIf(p -> p.getAge() > 50); // powinno nam usuwac ludzi spelniajacy dany warunek w nawiasie.
@@ -26,5 +26,13 @@ package testy.test3.zadanie2;
 //        ObjectContainer<Person> peopleFromWarsawFromFile = ObjectContainer.fromFile("warsawPeople.txt"); //powinno wczytac caly obiekt tak jak zostal zapisay w metodzie storeToFile,
 //        caly stan obiektu powinien byc odwzrowowany
 
+import testy.test3.zadanie2.test.classes.Person;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
+    public static void main(String[] args) {
+//        ObjectContainer<Person> peopleFromWarsaw = new ObjectContainer(p -> p.getCity().equals("Warsaw"));
+    }
 }

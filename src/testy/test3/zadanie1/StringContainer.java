@@ -10,7 +10,7 @@ import java.util.regex.PatternSyntaxException;
 
 public class StringContainer {
     private final Pattern pattern;
-    private Element head;
+    private Node head;
     private int size;
     private final boolean duplicatesNotAllowed;
 
@@ -27,7 +27,7 @@ public class StringContainer {
         this(patternString, false);
     }
 
-    public Element get(int index) {
+    public Node get(int index) {
         if (index < 0 || index >= getSize()) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
@@ -35,7 +35,7 @@ public class StringContainer {
             throw new EmptyListException("List is empty.");
         }
 
-        Element current = head;
+        Node current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
@@ -48,19 +48,19 @@ public class StringContainer {
         }
 
         if (head == null) {
-            head = new Element(value);
+            head = new Node(value);
             size++;
             return;
         }
 
-        Element current = head;
+        Node current = head;
         while (true) {
             if (duplicatesNotAllowed && current.value.equals(value)) {
                 throw new DuplicatedElementOnListException(value);
             }
 
             if (current.next == null) {
-                current.next = new Element(value);
+                current.next = new Node(value);
                 size++;
                 return;
             }
@@ -81,7 +81,7 @@ public class StringContainer {
         if (index == 0) {
             head = head.next;
         } else {
-            Element current = head;
+            Node current = head;
             for (int i = 0; i < index - 1; i++) {
                 current = current.next;
             }
@@ -101,7 +101,7 @@ public class StringContainer {
             return;
         }
 
-        Element current = head;
+        Node current = head;
         while (current.next != null && !current.next.value.equals(value)) {
             current = current.next;
         }
@@ -121,7 +121,7 @@ public class StringContainer {
 
         StringContainer st = new StringContainer(pattern.toString());
 
-        Element current = head;
+        Node current = head;
         while (current != null) {
             boolean afterStart = (dateFrom == null || current.getDate().isAfter(dateFrom));
             boolean beforeEnd = (dateTo == null || current.getDate().isBefore(dateTo));
@@ -146,7 +146,7 @@ public class StringContainer {
             writer.write(pattern.toString());
             writer.newLine();
 
-            Element current = head;
+            Node current = head;
             while (current != null) {
                 writer.write(current.value);
                 writer.newLine();

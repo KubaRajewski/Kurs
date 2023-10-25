@@ -66,7 +66,7 @@ public class Main {
 
         // TODO zapisywanie i odczyt z pliku
         st.storeToFile("src/testy/test3/zadanie1/file/postalCodes.txt"); // zapisujemy zawartosc pliku oraz pattern w pierwszje linijce
-        StringContainer fromFile = StringContainer.fromFile("src/testy/test3/zadanie1/file/postalCodes.txt"); // wczytujemy dane z pliku do nowej instancji klasy
+        StringContainer fromFile = StringContainer.fromFile("src/testy/test3/zadanie1/files/postalCodes.txt"); // wczytujemy dane z pliku do nowej instancji klasy
 
         System.out.println("\nWartosci zapisane do StringContainer fromFile z pliku postalCodes.txt: ");
         for (int i = 0; i < fromFile.getSize(); i++) {
@@ -74,7 +74,7 @@ public class Main {
         }
 
         //TODO test dla innych danych
-        StringContainer fromFile2 = StringContainer.fromFile("src/testy/test3/zadanie1/file/test.txt");
+        StringContainer fromFile2 = StringContainer.fromFile("src/testy/test3/zadanie1/files/test.txt");
         System.out.println("\nWartosci zapisane z pliku postalCodes2 do StringContainer fromFile2 z pliku test.txt " +
                 "dla sprawdzenia poprawnosci dzialania programu: ");
         for (int i = 0; i < fromFile2.getSize(); i++) {

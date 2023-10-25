@@ -2,12 +2,12 @@ package testy.test3.zadanie1;
 
 import java.time.LocalDateTime;
 
-public class Element {
+public class Node {
     public final String value;
-    public Element next;
+    public Node next;
     public final LocalDateTime date;
 
-    public Element(String value) {
+    public Node(String value) {
         this.value = value;
         this.date = LocalDateTime.now();
     }
