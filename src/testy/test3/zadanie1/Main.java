@@ -7,7 +7,7 @@ public class Main {
 
         //TODO Kompilacja
         StringContainer st = new StringContainer("\\d{2}[-]\\d{3}"); // Kompiluje sie
-//         StringContainer st2 = new StringContainer("\\d{2[-]\\d{3}"); // InvalidStringContainerPatternException
+        //StringContainer st2 = new StringContainer("\\d{2[-]\\d{3}"); // InvalidStringContainerPatternException
         System.out.println("Pattern: " + st.getPattern()); // pattern sie zgadza
 
         // TODO Dodawanie Stringow

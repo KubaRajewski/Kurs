@@ -114,7 +114,6 @@ public class StringContainer {
         }
     }
 
-
     public StringContainer getDataBetween(LocalDateTime dateFrom, LocalDateTime dateTo) {
         if (dateFrom != null && dateTo != null && dateFrom.isAfter(dateTo)) {
             throw new IllegalArgumentException("Start date is after end date.");
