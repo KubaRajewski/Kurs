@@ -1,8 +1,6 @@
 package testy.test3.zadanie1;
 
-import testy.test3.zadanie1.exceptions.DuplicatedElementOnListException;
-import testy.test3.zadanie1.exceptions.InvalidStringContainerPatternException;
-import testy.test3.zadanie1.exceptions.InvalidStringContainerValueException;
+import testy.test3.zadanie1.exceptions.*;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -12,18 +10,9 @@ import java.util.regex.PatternSyntaxException;
 
 public class StringContainer {
     private final Pattern pattern;
-    private Node head;
+    private Element head;
     private int size;
     private final boolean duplicatesNotAllowed;
-
-    public StringContainer(String patternString) {
-        try {
-            this.pattern = Pattern.compile(patternString);
-        } catch (PatternSyntaxException e) {
-            throw new InvalidStringContainerPatternException(patternString);
-        }
-        this.duplicatesNotAllowed = false;
-    }
 
     public StringContainer(String patternString, boolean duplicatesNotAllowed) {
         try {
@@ -34,8 +23,19 @@ public class StringContainer {
         this.duplicatesNotAllowed = duplicatesNotAllowed;
     }
 
-    public Node get(int index) {
-        Node current = head;
+    public StringContainer(String patternString) {
+        this(patternString, false);
+    }
+
+    public Element get(int index) {
+        if (index < 0 || index >= getSize()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        if (head == null) {
+            throw new EmptyListException("List is empty.");
+        }
+
+        Element current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
@@ -48,32 +48,40 @@ public class StringContainer {
         }
 
         if (head == null) {
-            head = new Node(value);
+            head = new Element(value);
             size++;
             return;
         }
 
-        Node current = head;
-        if (duplicatesNotAllowed && current.value.equals(value)) {
-            throw new DuplicatedElementOnListException(value);
-        }
-
-        while (current.next != null) {
-            if (duplicatesNotAllowed && current.next.value.equals(value)) {
+        Element current = head;
+        while (current != null) {
+            if (duplicatesNotAllowed && current.value.equals(value)) {
                 throw new DuplicatedElementOnListException(value);
             }
+
+            if (current.next == null) {
+                current.next = new Element(value);
+                size++;
+                return;
+            }
+
             current = current.next;
         }
-
-        current.next = new Node(value);
-        size++;
     }
 
     public void remove(int index) {
+        if (head == null) {
+            throw new EmptyListException("List is empty.");
+        }
+
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+
         if (index == 0) {
             head = head.next;
         } else {
-            Node current = head;
+            Element current = head;
             for (int i = 0; i < index - 1; i++) {
                 current = current.next;
             }
@@ -83,25 +91,38 @@ public class StringContainer {
     }
 
     public void remove(String value) {
+        if (head == null) {
+            throw new NullPointerException("List is empty.");
+        }
+
         if (head.value.equals(value)) {
             head = head.next;
             size--;
             return;
         }
-        Node current = head;
+
+        Element current = head;
         while (current.next != null && !current.next.value.equals(value)) {
             current = current.next;
         }
+
         if (current.next != null) {
             current.next = current.next.next;
             size--;
+        } else {
+            throw new IllegalArgumentException("Value not found in the list: " + value);
         }
     }
 
+
     public StringContainer getDataBetween(LocalDateTime dateFrom, LocalDateTime dateTo) {
+        if (dateFrom != null && dateTo != null && dateFrom.isAfter(dateTo)) {
+            throw new IllegalArgumentException("Start date is after end date.");
+        }
+
         StringContainer st = new StringContainer(pattern.toString());
 
-        Node current = head;
+        Element current = head;
         while (current != null) {
             boolean afterStart = (dateFrom == null || current.getDate().isAfter(dateFrom));
             boolean beforeEnd = (dateTo == null || current.getDate().isBefore(dateTo));
@@ -117,40 +138,48 @@ public class StringContainer {
     }
 
     public void storeToFile(String path) {
-        File file = new File(path);
+        if (path == null || path.trim().isEmpty()) {
+            throw new IllegalArgumentException("Path cannot be null or empty.");
+        }
 
+        File file = new File(path);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            Node current = head;
+            writer.write(pattern.toString());
+            writer.newLine();
+
+            Element current = head;
             while (current != null) {
                 writer.write(current.value);
                 writer.newLine();
                 current = current.next;
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            throw new FileWritingException(path);
         }
     }
 
-    public static StringContainer fromFile(String path) throws IOException {
+    public static StringContainer fromFile(String path) {
+        if (path == null || path.trim().isEmpty()) {
+            throw new IllegalArgumentException("Path cannot be null or empty.");
+        }
+
         File file = new File(path);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String patternString = reader.readLine();
             if (patternString == null) {
-                throw new IOException("The file is empty. Expected a pattern on the first line.");
+                throw new FileReadingException("The file is empty. Expected a pattern on the first line.");
             }
-
             StringContainer container = new StringContainer(patternString);
-
             String line;
             while ((line = reader.readLine()) != null) {
                 container.add(line);
             }
-
             return container;
+        } catch (IOException e) {
+            throw new FileReadingException(path);
         }
     }
-
 
     public Pattern getPattern() {
         return pattern;
