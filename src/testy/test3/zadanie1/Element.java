@@ -16,10 +16,6 @@ public class Element {
         return date;
     }
 
-    public String getValue() {
-        return value;
-    }
-
     @Override
     public String toString() {
         return value;
