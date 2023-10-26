@@ -26,25 +26,48 @@ package testy.test3.zadanie2;
 //        ObjectContainer<Person> peopleFromWarsawFromFile = ObjectContainer.fromFile("warsawPeople.txt"); //powinno wczytac caly obiekt tak jak zostal zapisay w metodzie storeToFile,
 //        caly stan obiektu powinien byc odwzrowowany
 
+
 import testy.test3.zadanie2.test.classes.Person;
 
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        //TODO Utworzenie struktury danych
+        // TODO Utworzenie struktury danych
         ObjectContainer<Person> peopleFromWarsaw = new ObjectContainer<>(p -> p.getCity().equals("Warsaw"));
 
-        //TODO Mozliwosc dodawania obiektow
+        // TODO Mozliwosc dodawania obiektow
         peopleFromWarsaw.add(new Person("Jan", "Warsaw", 30));
-        peopleFromWarsaw.add(new Person("Weronika","Warsaw", 21));
-        peopleFromWarsaw.add(new Person("Gosia","Warsaw", 22));
-        peopleFromWarsaw.add(new Person("Marta","Warsaw", 20));
-//        peopleFromWarsaw.add(new Person("Waldek", "Monaco", 34)); // rzucamy wyjatkiem ConditionNotMatchedException
+        peopleFromWarsaw.add(new Person("Weronika", "Warsaw", 21));
+        peopleFromWarsaw.add(new Person("Gosia", "Warsaw", 22));
+        peopleFromWarsaw.add(new Person("Marta", "Warsaw", 20));
+        peopleFromWarsaw.add(new Person("Marcin", "Warsaw", 60));
+        // peopleFromWarsaw.add(new Person("Waldek", "Monaco", 34)); // rzucamy wyjatkiem ConditionNotMatchedException
 
+        System.out.println("Cala lista: ");
+        for (int i = 0; i < peopleFromWarsaw.getSize(); i++) {
+            System.out.println(peopleFromWarsaw.get(i));
+        }
+
+        // TODO Mozliwosc zwracania obiektow spelniajacych warunek
+        System.out.println("\nTylko kobiety");
         List<Person> females = peopleFromWarsaw.getWithFilter(p -> p.getName().endsWith("a"));
         for (Person female : females) {
-            System.out.println(female);
+            System.out.println(female); // wyrzuci wszystkie osoby z imieniem konczacym sie na "a"
         }
+
+        // TODO Mozliwosc usuwania obiektow spelniajacych warunek
+        System.out.println("\nTylko mlodzi ludzie: ");
+        peopleFromWarsaw.removeIf(p -> p.getAge() > 50); // usuwamy marcina z warszawy bo ma wiecej niz 50 lat
+        for (int i = 0; i < peopleFromWarsaw.getSize(); i++) {
+            System.out.println(peopleFromWarsaw.get(i)); //
+        }
+
+        // TODO Mozliwosc zapisu do pliku
+        // Ponizsza funkcja zapisuje do pliku tylko obiekty spelniajace warunek podany jako drugi parametr, wedlug formatu wskazanego w trzecim parametrze
+        peopleFromWarsaw.storeToFile("src/testy/test3/zadanie2/files/youngPeopleFromWarsaw.txt", p -> p.getAge() < 30, p -> p.getName() + ";" + p.getAge() + ";" + p.getCity());
+
+        // Ta funkcja zapisuje do pliku wszystkie obiekty ze struktury na podstawie toStringa danych obiektow
+        peopleFromWarsaw.storeToFile("src/testy/test3/zadanie2/files/warsawPeople.txt");
     }
 }

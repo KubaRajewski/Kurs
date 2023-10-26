@@ -1,0 +1,4 @@
+Jan, age: 30, from: Warsaw
+Weronika, age: 21, from: Warsaw
+Gosia, age: 22, from: Warsaw
+Marta, age: 20, from: Warsaw

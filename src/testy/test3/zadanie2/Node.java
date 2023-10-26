@@ -1,5 +1,7 @@
 package testy.test3.zadanie2;
 
+import java.util.Objects;
+
 public class Node<T> {
     T data;
     Node<T> next;
@@ -7,5 +9,26 @@ public class Node<T> {
     Node(T data) {
         this.data = data;
         this.next = null;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Node<?> node)) return false;
+        return Objects.equals(data, node.data) && Objects.equals(next, node.next);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(data, next);
+    }
+
+    @Override
+    public String toString() {
+        return data.toString();
     }
 }

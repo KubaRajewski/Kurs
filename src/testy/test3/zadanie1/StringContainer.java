@@ -27,21 +27,6 @@ public class StringContainer {
         this(patternString, false);
     }
 
-    public Node get(int index) {
-        if (index < 0 || index >= getSize()) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
-        if (head == null) {
-            throw new EmptyListException("List is empty.");
-        }
-
-        Node current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-        return current;
-    }
-
     public void add(String value) {
         if (!pattern.matcher(value).matches()) {
             throw new InvalidStringContainerValueException(value);
@@ -80,13 +65,14 @@ public class StringContainer {
 
         if (index == 0) {
             head = head.next;
-        } else {
-            Node current = head;
-            for (int i = 0; i < index - 1; i++) {
-                current = current.next;
-            }
-            current.next = current.next.next;
         }
+
+        Node current = head;
+        for (int i = 0; i < index - 1; i++) {
+            current = current.next;
+        }
+        current.next = current.next.next;
+
         size--;
     }
 
@@ -112,6 +98,21 @@ public class StringContainer {
         } else {
             throw new IllegalArgumentException("Value not found in the list: " + value);
         }
+    }
+
+    public Node get(int index) {
+        if (index < 0 || index >= getSize()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        if (head == null) {
+            throw new EmptyListException("List is empty.");
+        }
+
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current;
     }
 
     public StringContainer getDataBetween(LocalDateTime dateFrom, LocalDateTime dateTo) {

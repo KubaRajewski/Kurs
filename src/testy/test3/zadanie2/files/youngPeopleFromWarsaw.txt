@@ -1,0 +1,3 @@
+Weronika;21;Warsaw
+Gosia;22;Warsaw
+Marta;20;Warsaw
