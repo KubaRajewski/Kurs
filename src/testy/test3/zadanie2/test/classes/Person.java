@@ -7,11 +7,11 @@ import java.util.Objects;
 public class Person {
     private String name;
     private String city;
-    private short age;
+    private int age;
 
     public static List<Person> extension = new ArrayList<>();
 
-    public Person(String name, String city, short age) {
+    public Person(String name, String city, int age) {
         this.name = name;
         this.city = city;
         this.age = age;
@@ -33,7 +33,7 @@ public class Person {
         this.city = city;
     }
 
-    public short getAge() {
+    public int getAge() {
         return age;
     }
 

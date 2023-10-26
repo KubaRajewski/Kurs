@@ -28,11 +28,23 @@ package testy.test3.zadanie2;
 
 import testy.test3.zadanie2.test.classes.Person;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-//        ObjectContainer<Person> peopleFromWarsaw = new ObjectContainer(p -> p.getCity().equals("Warsaw"));
+        //TODO Utworzenie struktury danych
+        ObjectContainer<Person> peopleFromWarsaw = new ObjectContainer<>(p -> p.getCity().equals("Warsaw"));
+
+        //TODO Mozliwosc dodawania obiektow
+        peopleFromWarsaw.add(new Person("Jan", "Warsaw", 30));
+        peopleFromWarsaw.add(new Person("Weronika","Warsaw", 21));
+        peopleFromWarsaw.add(new Person("Gosia","Warsaw", 22));
+        peopleFromWarsaw.add(new Person("Marta","Warsaw", 20));
+//        peopleFromWarsaw.add(new Person("Waldek", "Monaco", 34)); // rzucamy wyjatkiem ConditionNotMatchedException
+
+        List<Person> females = peopleFromWarsaw.getWithFilter(p -> p.getName().endsWith("a"));
+        for (Person female : females) {
+            System.out.println(female);
+        }
     }
 }
