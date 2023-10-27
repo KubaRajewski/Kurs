@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
-
         //TODO Kompilacja
         StringContainer st = new StringContainer("\\d{2}[-]\\d{3}"); // Kompiluje sie
         //StringContainer st2 = new StringContainer("\\d{2[-]\\d{3}"); // InvalidStringContainerPatternException

@@ -11,9 +11,9 @@ public class Car implements Serializable {
     private int year;
     private String brand;
     private String model;
-    private double price;
-    private LocalDate date;
-    private boolean aBoolean;
+    private final double price;
+    private final LocalDate date;
+    private final boolean aBoolean;
 
     public Car(int year, String brand, String model, double price, LocalDate date, boolean aBoolean) {
         this.year = year;

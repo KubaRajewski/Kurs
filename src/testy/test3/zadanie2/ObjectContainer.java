@@ -1,10 +1,15 @@
 package testy.test3.zadanie2;
 
-import testy.test3.exceptions.*;
+import testy.test3.exceptions.ConditionNotMatchedException;
+import testy.test3.exceptions.EmptyListException;
+import testy.test3.exceptions.FileReadingException;
+import testy.test3.exceptions.FileWritingException;
 import testy.test3.zadanie2.interfaces.SerializablePredicate;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 

@@ -1,7 +1,5 @@
 package testy.test3.zadanie2.test.classes;
 
-import testy.test3.zadanie2.interfaces.SerializablePredicate;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
