@@ -1,31 +1,27 @@
 package testy.test3.zadanie2;
 
 import testy.test3.zadanie1.exceptions.EmptyListException;
+import testy.test3.zadanie1.exceptions.FileReadingException;
 import testy.test3.zadanie1.exceptions.FileWritingException;
 import testy.test3.zadanie2.exceptions.ConditionNotMatchedException;
+import testy.test3.zadanie2.interfaces.SerializablePredicate;
 
 import java.io.*;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class ObjectContainer<T> {
+public class ObjectContainer<T> implements Serializable {
     private Node<T> head;
-    private Predicate<T> condition;
     private int size;
+    private transient Predicate<T> condition;
+    private final SerializablePredicate<T> serializableCondition;
 
-    public ObjectContainer(Predicate<T> condition) {
+    public ObjectContainer(SerializablePredicate<T> condition) {
+        this.serializableCondition = condition;
         this.condition = condition;
-    }
-
-    public ObjectContainer() {
-        this.condition = obj -> true;
     }
 
     public void add(T object) {
@@ -146,126 +142,37 @@ public class ObjectContainer<T> {
             throw new IllegalArgumentException("Path cannot be null or empty.");
         }
 
-        File file = new File(path);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            Node<T> current = head;
+        try (FileOutputStream fileOutputStream = new FileOutputStream(path);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 
-            if (current != null) {
-                writer.write(current.data.getClass().getName());
-                writer.newLine();
+            objectOutputStream.writeObject(this);
 
-                Field[] fields = current.data.getClass().getDeclaredFields();
-                for (int i = 0; i < fields.length; i++) {
-                    writer.write(fields[i].getName());
-                    if (i < fields.length - 1) {
-                        writer.write(",");
-                    }
-                }
-                writer.newLine();
-            }
-
-            while (current != null) {
-                Field[] fields = current.data.getClass().getDeclaredFields();
-                for (int i = 0; i < fields.length; i++) {
-                    fields[i].setAccessible(true);
-                    Object value = fields[i].get(current.data);
-                    writer.write(value != null ? value.toString() : "null");
-                    if (i < fields.length - 1) {
-                        writer.write(",");
-                    }
-                }
-                writer.newLine();
-                current = current.next;
-            }
-        } catch (IOException | IllegalAccessException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
             throw new FileWritingException(path);
         }
-    }
 
+    }
 
     public static <T> ObjectContainer<T> fromFile(String path) {
         if (path == null || path.trim().isEmpty()) {
             throw new IllegalArgumentException("Path cannot be null or empty.");
         }
 
-        ObjectContainer<T> container = new ObjectContainer<>();
+        ObjectContainer<T> objectContainer = null;
 
-        File file = new File(path);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String className = reader.readLine();
-            if (className == null) {
-                throw new IllegalStateException("File does not contain class name.");
-            }
+        try (FileInputStream fileInputStream = new FileInputStream(path);
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
 
-            Class<T> clazz = (Class<T>) Class.forName(className);
+            objectContainer = (ObjectContainer<T>) objectInputStream.readObject();
 
-            String headerLine = reader.readLine();
-            if (headerLine == null) {
-                throw new IllegalStateException("File does not contain header.");
-            }
-            String[] headers = headerLine.split(",");
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] values = line.split(",");
-                T obj = createObjectFromCSV(headers, values, clazz);
-                container.add(obj);
-            }
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException("Failed to read from file", e);
+            e.printStackTrace();
+            throw new FileReadingException(path);
         }
 
-        return container;
+        return objectContainer;
     }
-
-
-    private static <T> T createObjectFromCSV(String[] headers, String[] values, Class<T> clazz) {
-        try {
-            Constructor<T> constructor = clazz.getDeclaredConstructor();
-            constructor.setAccessible(true);
-            T instance = constructor.newInstance();
-
-            for (int i = 0; i < headers.length; i++) {
-                Field field = clazz.getDeclaredField(headers[i]);
-                field.setAccessible(true);
-
-                String value = values[i];
-
-                if (field.getType().equals(int.class) || field.getType().equals(Integer.class)) {
-                    int intValue = Integer.parseInt(value);
-                    field.set(instance, intValue);
-                } else if (field.getType().equals(double.class) || field.getType().equals(Double.class)) {
-                    double doubleValue = Double.parseDouble(value);
-                    field.set(instance, doubleValue);
-                } else if (field.getType().equals(long.class) || field.getType().equals(Long.class)) {
-                    long longValue = Long.parseLong(value);
-                    field.set(instance, longValue);
-                } else if (field.getType().equals(short.class) || field.getType().equals(Short.class)) {
-                    short shortValue = Short.parseShort(value);
-                    field.set(instance, shortValue);
-                } else if (field.getType().equals(String.class)) {
-                    field.set(instance, value);
-                } else if (field.getType().equals(LocalDate.class)) {
-                    LocalDate dateValue = LocalDate.parse(value);
-                    field.set(instance, dateValue);
-                } else if (field.getType().equals(LocalDateTime.class)) {
-                    LocalDateTime dateTimeValue = LocalDateTime.parse(value);
-                    field.set(instance, dateTimeValue);
-                } else if (field.getType().equals(char.class) || field.getType().equals(Character.class)) {
-                    char charValue = value.charAt(0);
-                    field.set(instance, charValue);
-                } else if (field.getType().equals(boolean.class) || field.getType().equals(Boolean.class)) {
-                    boolean boolValue = Boolean.parseBoolean(value);
-                    field.set(instance, boolValue);
-                }
-            }
-
-            return instance;
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to create object from CSV", e);
-        }
-    }
-
 
     public Node<T> getHead() {
         return head;
@@ -278,6 +185,18 @@ public class ObjectContainer<T> {
     public int getSize() {
         return size;
     }
+
+    @Serial
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.defaultWriteObject();
+    }
+
+    @Serial
+    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+        ois.defaultReadObject();
+        this.condition = this.serializableCondition;
+    }
+
 
     @Override
     public boolean equals(Object o) {

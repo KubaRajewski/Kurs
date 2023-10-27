@@ -1,8 +1,9 @@
 package testy.test3.zadanie2.test.classes;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Serializable {
     private String name;
     private String city;
     private int age;
@@ -12,8 +13,6 @@ public class Person {
         this.city = city;
         this.age = age;
     }
-
-    public Person() {}
 
     public String getName() {
         return name;

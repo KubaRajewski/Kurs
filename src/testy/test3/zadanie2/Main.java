@@ -2,7 +2,6 @@ package testy.test3.zadanie2;
 
 import testy.test3.zadanie2.test.classes.Car;
 import testy.test3.zadanie2.test.classes.Person;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class Main {
         // Sprawdzmy poprawnosc danych, wypisujemy wszystkie obiekty z peopleFromWarsaw a potem wszystkie obiekty z peopleFromWarsawFromFile
         ObjectContainer<Person> peopleFromWarsawFromFile = ObjectContainer.fromFile("src/testy/test3/zadanie2/files/warsawPeople.txt");
 
-        System.out.println("\nSprawdzanie poprawnosci zapisu / odczytu\n\npeopleFromWarsaw: ");
+        System.out.println("\nSprawdzanie poprawnosci serializacji / deserializacji\n\npeopleFromWarsaw: ");
         for (int i = 0; i < peopleFromWarsaw.getSize(); i++) {
             System.out.println(peopleFromWarsaw.get(i));
         }
@@ -58,8 +57,10 @@ public class Main {
             System.out.println(peopleFromWarsawFromFile.get(i)); //Sprawdzamy poprawsc
         }
 
+        // peopleFromWarsawFromFile.add(new Person("Kuba", "Wroclaw", 20)); // sprawdzamy czy condition zostalo odpowiednio wczytane, ta linia powinna rzucic exception
+
         //TODO Sprawdzanie dzialania zapisu/odczytu danych dla innej klasy:
-        ObjectContainer<Car> cars = new ObjectContainer<>();
+        ObjectContainer<Car> cars = new ObjectContainer<>(p -> true);
         cars.add(new Car(2009, "audi", "a5", 20.4, LocalDate.now(), true));
         cars.add(new Car(2022, "lambo", "huracan", 23.41, LocalDate.now(), false));
         cars.add(new Car(1992, "ferrari", "f40", 234.6, LocalDate.now(), true));
@@ -68,7 +69,12 @@ public class Main {
 
         ObjectContainer<Car> carsfromFile = ObjectContainer.fromFile("src/testy/test3/zadanie2/files/cars.txt");
 
-        System.out.println("\nSprawdzenia dla innej klasy: ");
+        System.out.println("\nSprawdzenia poprawnosci serializacji / deserializacji dla innej klasy: \n\ncars:");
+        for (int i = 0; i < cars.getSize(); i++) {
+            System.out.println(cars.get(i));
+        }
+
+        System.out.println("\ncarsFromFile: ");
         for (int i = 0; i < carsfromFile.getSize(); i++) {
             System.out.println(carsfromFile.get(i));
         }

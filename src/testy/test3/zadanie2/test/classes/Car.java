@@ -1,8 +1,10 @@
 package testy.test3.zadanie2.test.classes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Car {
+public class Car implements Serializable {
+
     private int year;
     private String brand;
     private String model;
@@ -18,8 +20,6 @@ public class Car {
         this.date = date;
         this.aBoolean = aBoolean;
     }
-
-    public Car() {}
 
     public int getYear() {
         return year;

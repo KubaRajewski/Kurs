@@ -1,8 +1,9 @@
 package testy.test3.zadanie2;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Node<T> {
+public class Node<T> implements Serializable {
     T data;
     Node<T> next;
 
