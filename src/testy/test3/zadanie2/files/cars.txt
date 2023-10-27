@@ -1,5 +1,5 @@
-testy.test3.zadanie2.Car
-year,brand,model
-2009,audi,a5
-2022,lambo,huracan
-1992,ferrari,f40
+testy.test3.zadanie2.test.classes.Car
+year,brand,model,price,date,aBoolean
+2009,audi,a5,20.4,2023-10-27,true
+2022,lambo,huracan,23.41,2023-10-27,false
+1992,ferrari,f40,234.6,2023-10-27,true

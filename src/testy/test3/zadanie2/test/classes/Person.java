@@ -1,4 +1,4 @@
-package testy.test3.zadanie2;
+package testy.test3.zadanie2.test.classes;
 
 import java.util.Objects;
 

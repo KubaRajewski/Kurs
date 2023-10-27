@@ -1,15 +1,22 @@
-package testy.test3.zadanie2;
+package testy.test3.zadanie2.test.classes;
+
+import java.time.LocalDate;
 
 public class Car {
     private int year;
     private String brand;
     private String model;
+    private double price;
+    private LocalDate date;
+    private boolean aBoolean;
 
-
-    public Car(int year, String brand, String model) {
+    public Car(int year, String brand, String model, double price, LocalDate date, boolean aBoolean) {
         this.year = year;
         this.brand = brand;
         this.model = model;
+        this.price = price;
+        this.date = date;
+        this.aBoolean = aBoolean;
     }
 
     public Car() {}
@@ -44,6 +51,9 @@ public class Car {
                 "year=" + year +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
+                ", price=" + price +
+                ", date=" + date +
+                ", aBoolean=" + aBoolean +
                 '}';
     }
 }

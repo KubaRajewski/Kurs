@@ -1,4 +1,4 @@
-testy.test3.zadanie2.Person
+testy.test3.zadanie2.test.classes.Person
 name,city,age
 Jan,Warsaw,30
 Weronika,Warsaw,21

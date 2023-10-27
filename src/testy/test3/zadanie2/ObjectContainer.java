@@ -7,6 +7,8 @@ import testy.test3.zadanie2.exceptions.ConditionNotMatchedException;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -227,13 +229,34 @@ public class ObjectContainer<T> {
                 Field field = clazz.getDeclaredField(headers[i]);
                 field.setAccessible(true);
 
+                String value = values[i];
+
                 if (field.getType().equals(int.class) || field.getType().equals(Integer.class)) {
-                    int intValue = Integer.parseInt(values[i]);
+                    int intValue = Integer.parseInt(value);
                     field.set(instance, intValue);
+                } else if (field.getType().equals(double.class) || field.getType().equals(Double.class)) {
+                    double doubleValue = Double.parseDouble(value);
+                    field.set(instance, doubleValue);
+                } else if (field.getType().equals(long.class) || field.getType().equals(Long.class)) {
+                    long longValue = Long.parseLong(value);
+                    field.set(instance, longValue);
+                } else if (field.getType().equals(short.class) || field.getType().equals(Short.class)) {
+                    short shortValue = Short.parseShort(value);
+                    field.set(instance, shortValue);
                 } else if (field.getType().equals(String.class)) {
-                    field.set(instance, values[i]);
-                } else {
-                    field.set(instance, values[i]);
+                    field.set(instance, value);
+                } else if (field.getType().equals(LocalDate.class)) {
+                    LocalDate dateValue = LocalDate.parse(value);
+                    field.set(instance, dateValue);
+                } else if (field.getType().equals(LocalDateTime.class)) {
+                    LocalDateTime dateTimeValue = LocalDateTime.parse(value);
+                    field.set(instance, dateTimeValue);
+                } else if (field.getType().equals(char.class) || field.getType().equals(Character.class)) {
+                    char charValue = value.charAt(0);
+                    field.set(instance, charValue);
+                } else if (field.getType().equals(boolean.class) || field.getType().equals(Boolean.class)) {
+                    boolean boolValue = Boolean.parseBoolean(value);
+                    field.set(instance, boolValue);
                 }
             }
 
@@ -242,6 +265,7 @@ public class ObjectContainer<T> {
             throw new RuntimeException("Failed to create object from CSV", e);
         }
     }
+
 
     public Node<T> getHead() {
         return head;
