@@ -1,0 +1,5 @@
+testy.test3.zadanie2.Car
+year,brand,model
+2009,audi,a5
+2022,lambo,huracan
+1992,ferrari,f40

@@ -4,10 +4,9 @@ import testy.test3.zadanie1.exceptions.EmptyListException;
 import testy.test3.zadanie1.exceptions.FileWritingException;
 import testy.test3.zadanie2.exceptions.ConditionNotMatchedException;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,11 +15,15 @@ import java.util.function.Predicate;
 
 public class ObjectContainer<T> {
     private Node<T> head;
-    private final Predicate<T> condition;
+    private Predicate<T> condition;
     private int size;
 
     public ObjectContainer(Predicate<T> condition) {
         this.condition = condition;
+    }
+
+    public ObjectContainer() {
+        this.condition = obj -> true;
     }
 
     public void add(T object) {
@@ -144,13 +147,99 @@ public class ObjectContainer<T> {
         File file = new File(path);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             Node<T> current = head;
+
+            if (current != null) {
+                writer.write(current.data.getClass().getName());
+                writer.newLine();
+
+                Field[] fields = current.data.getClass().getDeclaredFields();
+                for (int i = 0; i < fields.length; i++) {
+                    writer.write(fields[i].getName());
+                    if (i < fields.length - 1) {
+                        writer.write(",");
+                    }
+                }
+                writer.newLine();
+            }
+
             while (current != null) {
-                writer.write(current.data.toString());
+                Field[] fields = current.data.getClass().getDeclaredFields();
+                for (int i = 0; i < fields.length; i++) {
+                    fields[i].setAccessible(true);
+                    Object value = fields[i].get(current.data);
+                    writer.write(value != null ? value.toString() : "null");
+                    if (i < fields.length - 1) {
+                        writer.write(",");
+                    }
+                }
                 writer.newLine();
                 current = current.next;
             }
-        } catch (IOException e) {
+        } catch (IOException | IllegalAccessException e) {
             throw new FileWritingException(path);
+        }
+    }
+
+
+    public static <T> ObjectContainer<T> fromFile(String path) {
+        if (path == null || path.trim().isEmpty()) {
+            throw new IllegalArgumentException("Path cannot be null or empty.");
+        }
+
+        ObjectContainer<T> container = new ObjectContainer<>();
+
+        File file = new File(path);
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String className = reader.readLine();
+            if (className == null) {
+                throw new IllegalStateException("File does not contain class name.");
+            }
+
+            Class<T> clazz = (Class<T>) Class.forName(className);
+
+            String headerLine = reader.readLine();
+            if (headerLine == null) {
+                throw new IllegalStateException("File does not contain header.");
+            }
+            String[] headers = headerLine.split(",");
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(",");
+                T obj = createObjectFromCSV(headers, values, clazz);
+                container.add(obj);
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException("Failed to read from file", e);
+        }
+
+        return container;
+    }
+
+
+    private static <T> T createObjectFromCSV(String[] headers, String[] values, Class<T> clazz) {
+        try {
+            Constructor<T> constructor = clazz.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            T instance = constructor.newInstance();
+
+            for (int i = 0; i < headers.length; i++) {
+                Field field = clazz.getDeclaredField(headers[i]);
+                field.setAccessible(true);
+
+                if (field.getType().equals(int.class) || field.getType().equals(Integer.class)) {
+                    int intValue = Integer.parseInt(values[i]);
+                    field.set(instance, intValue);
+                } else if (field.getType().equals(String.class)) {
+                    field.set(instance, values[i]);
+                } else {
+                    field.set(instance, values[i]);
+                }
+            }
+
+            return instance;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create object from CSV", e);
         }
     }
 

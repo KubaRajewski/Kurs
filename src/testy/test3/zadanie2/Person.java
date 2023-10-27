@@ -1,7 +1,5 @@
-package testy.test3.zadanie2.test.classes;
+package testy.test3.zadanie2;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Person {
@@ -9,13 +7,13 @@ public class Person {
     private String city;
     private int age;
 
-    public static List<Person> extension = new ArrayList<>();
-
     public Person(String name, String city, int age) {
         this.name = name;
         this.city = city;
         this.age = age;
     }
+
+    public Person() {}
 
     public String getName() {
         return name;
@@ -41,10 +39,6 @@ public class Person {
         this.age = age;
     }
 
-    public static List<Person> getExtension() {
-        return extension;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,6 +53,10 @@ public class Person {
 
     @Override
     public String toString() {
-        return name + ", age: " + age + ", from: " + city;
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

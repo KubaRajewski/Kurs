@@ -27,8 +27,6 @@ package testy.test3.zadanie2;
 //        caly stan obiektu powinien byc odwzrowowany
 
 
-import testy.test3.zadanie2.test.classes.Person;
-
 import java.util.List;
 
 public class Main {
@@ -69,5 +67,35 @@ public class Main {
 
         // Ta funkcja zapisuje do pliku wszystkie obiekty ze struktury na podstawie toStringa danych obiektow
         peopleFromWarsaw.storeToFile("src/testy/test3/zadanie2/files/warsawPeople.txt");
+
+
+        System.out.println("\n\n\n\n\n");
+        System.out.println("ChujkurwaJebac");
+        for (int i = 0; i < peopleFromWarsaw.getSize(); i++) {
+            System.out.println(peopleFromWarsaw.get(i));
+        }
+
+        System.out.println();
+
+        // TODO wczytywanie danych z pliku
+        ObjectContainer<Person> peopleFromWarsawFromFile = ObjectContainer.fromFile("src/testy/test3/zadanie2/files/warsawPeople.txt");
+
+        for (int i = 0; i < peopleFromWarsawFromFile.getSize(); i++) {
+            System.out.println(peopleFromWarsawFromFile.get(i));
+        }
+
+
+        ObjectContainer<Car> cars = new ObjectContainer<>();
+        cars.add(new Car(2009, "audi", "a5"));
+        cars.add(new Car(2022, "lambo", "huracan"));
+        cars.add(new Car(1992, "ferrari", "f40"));
+
+        cars.storeToFile("src/testy/test3/zadanie2/files/cars.txt");
+
+        ObjectContainer<Car> carsfromFile = ObjectContainer.fromFile("src/testy/test3/zadanie2/files/cars.txt");
+
+        for (int i = 0; i < carsfromFile.getSize(); i++) {
+            System.out.println(carsfromFile.get(i));
+        }
     }
 }
