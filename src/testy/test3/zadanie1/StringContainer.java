@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-public class StringContainer {
+public class StringContainer implements Serializable {
     private final Pattern pattern;
     private Node head;
     private int size;
@@ -65,20 +65,20 @@ public class StringContainer {
 
         if (index == 0) {
             head = head.next;
+        } else {
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            current.next = (current.next != null) ? current.next.next : null;
         }
-
-        Node current = head;
-        for (int i = 0; i < index - 1; i++) {
-            current = current.next;
-        }
-        current.next = current.next.next;
 
         size--;
     }
 
     public void remove(String value) {
         if (head == null) {
-            throw new NullPointerException("List is empty.");
+            throw new EmptyListException("List is empty.");
         }
 
         if (head.value.equals(value)) {
@@ -99,6 +99,7 @@ public class StringContainer {
             throw new IllegalArgumentException("Value not found in the list: " + value);
         }
     }
+
 
     public Node get(int index) {
         if (index < 0 || index >= getSize()) {
@@ -142,18 +143,13 @@ public class StringContainer {
             throw new IllegalArgumentException("Path cannot be null or empty.");
         }
 
-        File file = new File(path);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write(pattern.toString());
-            writer.newLine();
+        try (FileOutputStream fileOutputStream = new FileOutputStream(path);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 
-            Node current = head;
-            while (current != null) {
-                writer.write(current.value);
-                writer.newLine();
-                current = current.next;
-            }
+            objectOutputStream.writeObject(this);
+
         } catch (IOException e) {
+            e.printStackTrace();
             throw new FileWritingException(path);
         }
     }
@@ -163,22 +159,18 @@ public class StringContainer {
             throw new IllegalArgumentException("Path cannot be null or empty.");
         }
 
-        File file = new File(path);
+        StringContainer stringContainer = null;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String patternString = reader.readLine();
-            if (patternString == null) {
-                throw new FileReadingException("The file is empty. Expected a pattern on the first line.");
-            }
-            StringContainer container = new StringContainer(patternString);
-            String line;
-            while ((line = reader.readLine()) != null) {
-                container.add(line);
-            }
-            return container;
-        } catch (IOException e) {
+        try (FileInputStream fileInputStream = new FileInputStream(path);
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+
+            stringContainer = (StringContainer) objectInputStream.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
             throw new FileReadingException(path);
         }
+        return stringContainer;
     }
 
     public int getSize() {

@@ -1,8 +1,9 @@
 package testy.test3.zadanie1;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Node {
+public class Node implements Serializable {
     public final String value;
     public Node next;
     public final LocalDateTime date;
