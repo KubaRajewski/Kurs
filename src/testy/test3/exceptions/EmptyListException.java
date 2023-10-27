@@ -1,4 +1,4 @@
-package testy.test3.zadanie2.exceptions;
+package testy.test3.exceptions;
 
 public class EmptyListException extends RuntimeException {
     public EmptyListException() {

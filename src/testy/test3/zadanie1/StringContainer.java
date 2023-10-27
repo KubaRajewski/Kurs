@@ -1,6 +1,6 @@
 package testy.test3.zadanie1;
 
-import testy.test3.zadanie1.exceptions.*;
+import testy.test3.exceptions.*;
 
 import java.io.*;
 import java.time.LocalDateTime;

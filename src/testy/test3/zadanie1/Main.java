@@ -65,8 +65,8 @@ public class Main {
         }
 
         // TODO Serializacja i deserializacja do pliku
-        st.storeToFile("testy/test3/zadanie1/files/postalCodes.txt"); // zapisujemy zawartosc pliku oraz pattern w pierwszje linijce
-        StringContainer fromFile = StringContainer.fromFile("testy/test3/zadanie1/files/postalCodes.txt"); // wczytujemy dane z pliku do nowej instancji klasy
+        st.storeToFile("src/testy/test3/zadanie1/files/postalCodes.txt"); // zapisujemy zawartosc pliku oraz pattern w pierwszje linijce
+        StringContainer fromFile = StringContainer.fromFile("src/testy/test3/zadanie1/files/postalCodes.txt"); // wczytujemy dane z pliku do nowej instancji klasy
 
         System.out.println("\nWartosci zapisane do StringContainer fromFile z pliku postalCodes.txt: ");
         for (int i = 0; i < fromFile.getSize(); i++) {

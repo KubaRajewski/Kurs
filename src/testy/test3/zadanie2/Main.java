@@ -42,25 +42,25 @@ public class Main {
         // Ponizsza funkcja zapisuje do pliku tylko obiekty spelniajace warunek podany jako drugi parametr, wedlug formatu wskazanego w trzecim parametrze
         peopleFromWarsaw.storeToFile("src/testy/test3/zadanie2/files/youngPeopleFromWarsaw.txt", p -> p.getAge() < 30, p -> p.getName() + ";" + p.getAge() + ";" + p.getCity());
 
-        // Ta funkcja zapisuje do pliku wszystkie obiekty ze struktury na podstawie toStringa danych obiektow
+        // Ta funkcja serializuje caly obiekt i zapisuje dane do pliku podanego jako parametr
         peopleFromWarsaw.storeToFile("src/testy/test3/zadanie2/files/warsawPeople.txt");
 
         // TODO wczytywanie danych z pliku
-        // Sprawdzmy poprawnosc danych, wypisujemy wszystkie obiekty z peopleFromWarsaw a potem wszystkie obiekty z peopleFromWarsawFromFile
+        // Sprawdzmy poprawnosc danych, wypisujemy wszystkie obiekty ze struktury danych peopleFromWarsaw a potem wszystkie obiekty z zserializowanego pliku
         ObjectContainer<Person> peopleFromWarsawFromFile = ObjectContainer.fromFile("src/testy/test3/zadanie2/files/warsawPeople.txt");
 
         System.out.println("\nSprawdzanie poprawnosci serializacji / deserializacji\n\npeopleFromWarsaw: ");
         for (int i = 0; i < peopleFromWarsaw.getSize(); i++) {
             System.out.println(peopleFromWarsaw.get(i));
         }
-        System.out.println("\npeopleFromWarsawFromFile: ");
+        System.out.println("\nwarsawPeople.txt: ");
         for (int i = 0; i < peopleFromWarsawFromFile.getSize(); i++) {
-            System.out.println(peopleFromWarsawFromFile.get(i)); //Sprawdzamy poprawsc
+            System.out.println(peopleFromWarsawFromFile.get(i)); // Sprawdzamy poprawnosc, dane powinny byc identyczne do tych powyzej
         }
 
-         peopleFromWarsawFromFile.add(new Person("Kuba", "Wroclaw", 20)); // sprawdzamy czy condition zostalo odpowiednio wczytane, ta linia powinna rzucic exception
+        // peopleFromWarsawFromFile.add(new Person("Kuba", "Wroclaw", 20)); // sprawdzamy czy condition zostalo odpowiednio wczytane, ta linia powinna rzucic ConditionNotMatchedException
 
-        //TODO Sprawdzanie dzialania zapisu/odczytu danych dla innej klasy:
+        //TODO DODATKOWO Sprawdzanie dzialania zapisu/odczytu danych dla innej klasy:
         ObjectContainer<Car> cars = new ObjectContainer<>(p -> true);
         cars.add(new Car(2009, "audi", "a5", 20.4, LocalDate.now(), true));
         cars.add(new Car(2022, "lambo", "huracan", 23.41, LocalDate.now(), false));

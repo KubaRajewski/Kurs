@@ -1,6 +1,6 @@
-package testy.test3.zadanie2.exceptions;
+package testy.test3.exceptions;
 
-public class ConditionNotMatchedException extends RuntimeException {
+public class ConditionNotMatchedException extends RuntimeException{
     public ConditionNotMatchedException() {
     }
 

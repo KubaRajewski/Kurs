@@ -1,4 +1,4 @@
-package testy.test3.zadanie1.exceptions;
+package testy.test3.exceptions;
 
 public class InvalidStringContainerPatternException extends RuntimeException {
     public InvalidStringContainerPatternException() {
