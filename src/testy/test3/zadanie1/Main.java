@@ -64,7 +64,7 @@ public class Main {
             System.out.println(stBetween4.get(i)); // pusta lista
         }
 
-        // TODO zapisywanie i odczyt z pliku
+        // TODO Serializacja i deserializacja do pliku
         st.storeToFile("testy/test3/zadanie1/files/postalCodes.txt"); // zapisujemy zawartosc pliku oraz pattern w pierwszje linijce
         StringContainer fromFile = StringContainer.fromFile("testy/test3/zadanie1/files/postalCodes.txt"); // wczytujemy dane z pliku do nowej instancji klasy
 

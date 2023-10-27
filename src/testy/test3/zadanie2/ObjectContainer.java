@@ -7,9 +7,7 @@ import testy.test3.zadanie2.exceptions.ConditionNotMatchedException;
 import testy.test3.zadanie2.interfaces.SerializablePredicate;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -98,11 +96,11 @@ public class ObjectContainer<T> implements Serializable {
     }
 
     public List<T> getWithFilter(Predicate<T> condition) {
-        if (head == null) {
-            throw new EmptyListException();
-        }
-
         List<T> withFilter = new ArrayList<>();
+
+        if (head == null) {
+            return withFilter;
+        }
 
         Node<T> current = head;
         while (current != null) {
@@ -121,6 +119,14 @@ public class ObjectContainer<T> implements Serializable {
             throw new IllegalArgumentException("Path cannot be null or empty.");
         }
 
+        if (condition == null) {
+            throw new IllegalArgumentException("Condition cannot be null.");
+        }
+
+        if (formatter == null) {
+            throw new IllegalArgumentException("Formatter cannot be null.");
+        }
+
         File file = new File(path);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             Node<T> current = head;
@@ -136,6 +142,7 @@ public class ObjectContainer<T> implements Serializable {
             throw new FileWritingException(path);
         }
     }
+
 
     public void storeToFile(String path) {
         if (path == null || path.trim().isEmpty()) {

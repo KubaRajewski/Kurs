@@ -58,7 +58,7 @@ public class Main {
             System.out.println(peopleFromWarsawFromFile.get(i)); //Sprawdzamy poprawsc
         }
 
-        // peopleFromWarsawFromFile.add(new Person("Kuba", "Wroclaw", 20)); // sprawdzamy czy condition zostalo odpowiednio wczytane, ta linia powinna rzucic exception
+         peopleFromWarsawFromFile.add(new Person("Kuba", "Wroclaw", 20)); // sprawdzamy czy condition zostalo odpowiednio wczytane, ta linia powinna rzucic exception
 
         //TODO Sprawdzanie dzialania zapisu/odczytu danych dla innej klasy:
         ObjectContainer<Car> cars = new ObjectContainer<>(p -> true);
