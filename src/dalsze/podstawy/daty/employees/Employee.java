@@ -28,7 +28,7 @@ public class Employee {
         Employee youngest = employees.get(0);
 
         for (Employee employee : employees) {
-            if (employee.birthDate.isAfter(youngest.birthDate)) {
+            if (employee.getBirthDate().isAfter(youngest.getBirthDate())) {
                 youngest = employee;
             }
         }
@@ -45,7 +45,7 @@ public class Employee {
         List<Employee> employeesBornAfter = new ArrayList<>();
 
         for (Employee employee : employees) {
-            if (employee.birthDate.isAfter(date)){
+            if (employee.getBirthDate().isAfter(date)){
                 employeesBornAfter.add(employee);
             }
         }
@@ -60,7 +60,7 @@ public class Employee {
         }
 
         List<Employee> copy = new ArrayList<>(employees);
-        Collections.sort(employees, Comparator.comparing(Employee::getBirthDate));
+        copy.sort(Comparator.comparing(Employee::getBirthDate));
 
         return copy;
     }

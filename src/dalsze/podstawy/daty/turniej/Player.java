@@ -68,16 +68,30 @@ public class Player {
         return bestPlayer;
     }
 
+    // 1.01.2023 - 31.12.2023
     private int getPointsCertainPeriod(LocalDate beginning, LocalDate end) {
         int points = 0;
 
         for (Result result : results) {
-            if (result.getTournament().getDate().isAfter(beginning) && result.getTournament().getDate().isBefore(end)) {
+            if (result.getTournament().getDate().isAfter(beginning.minusDays(1)) &&
+                    result.getTournament().getDate().isBefore(end.plusDays(1))) {
                 points += result.getPoints();
             }
         }
 
         return points;
+    }
+
+    private boolean playedInDates(LocalDate beginning, LocalDate end) {
+
+        for (Result result : results) {
+            if (result.getTournament().getDate().isAfter(beginning.minusDays(1)) &&
+                    result.getTournament().getDate().isBefore(end.plusDays(1))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     //TODO Napisz metode ktora znajduje wszystkich graczy z danego okresu czasu.
@@ -89,7 +103,7 @@ public class Player {
         List<Player> playersCertainPeriod = new ArrayList<>();
 
         for (Player player : players) {
-            if (player.getPointsCertainPeriod(beginning, end) >= 0) {
+            if (player.playedInDates(beginning, end)) {
                 playersCertainPeriod.add(player);
             }
         }
@@ -103,30 +117,33 @@ public class Player {
             throw new IllegalArgumentException();
         }
 
-        List<Player> List = new ArrayList<>();
+        List<Player> list = new ArrayList<>();
 
         for (Player player : players) {
-            if (getUniqueMonthsForPlace(player, place).size() >= differentMonths) {
-                List.add(player);
+//            if (getUniqueMonthsForPlace(player, place).size() >= differentMonths) {
+//                List.add(player);
+//            }
+            if (player.hasPlaceInNMonths(place, differentMonths)) {
+                list.add(player);
             }
         }
 
-        return List;
+        return list;
     }
 
-    public static Set<Month> getUniqueMonthsForPlace(Player player, int place) {
+    public boolean hasPlaceInNMonths(int place, int months) {
         Set<Month> uniqueMonths = new HashSet<>();
 
-        for (Result result : player.getResults()) {
+        for (Result result : results) {
             if (result.getPlace() == place) {
                 uniqueMonths.add(result.getTournament().getDate().getMonth());
             }
         }
 
-        return uniqueMonths;
+        return uniqueMonths.size() >= months;
     }
 
-    // Druga wersja ze streamem
+    //TODO Druga wersja ze streamem
     public static List<Player> hadCertainPositionInNDifferentMonthsSTREAM(List<Player> players, int place, int differentMonths) {
         if (players == null) {
             throw new IllegalArgumentException();

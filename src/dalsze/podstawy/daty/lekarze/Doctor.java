@@ -125,7 +125,7 @@ public class Doctor extends Person {
         int count = 0;
 
         for (Visit visit : visits) {
-            if (!visit.getDate().isBefore(startDate) && !visit.getDate().isAfter(endDate)) {
+            if (visit.getDate().isAfter(startDate) && visit.getDate().isBefore(endDate)) {
                 count++;
             }
         }

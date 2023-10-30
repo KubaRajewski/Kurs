@@ -34,7 +34,7 @@ public class Main {
         // TODO Brak mozliwosci dodania duplikatow
         StringContainer st3 = new StringContainer("\\d{2}[-]\\d{3}", true);
         st3.add("00-000");
-        // st2.add("00-000"); // DuplicatedElementOnListException
+        // st3.add("00-000"); // DuplicatedElementOnListException
 
         // TODO Implementacja dat i czasu do listy:
         System.out.println("\nSprawdzanie daty dodania elementu:");

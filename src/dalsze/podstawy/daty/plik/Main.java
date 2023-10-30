@@ -67,7 +67,7 @@ public class Main {
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 
         String line;
-        BigInteger iloczyn = BigInteger.ONE;  // używaj BigInteger
+        BigInteger iloczyn = BigInteger.ONE;
 
         while ((line = reader.readLine()) != null) {
             String[] parts = line.split(" - ");

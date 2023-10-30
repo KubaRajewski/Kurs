@@ -206,7 +206,6 @@ public class ObjectContainer<T> implements Serializable {
         this.condition = this.serializableCondition;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

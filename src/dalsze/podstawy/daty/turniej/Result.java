@@ -13,30 +13,20 @@ public class Result {
     public static List<Result> extension = new ArrayList<>();
 
     public Result(Player player, Tournament tournament, int place, double points) {
-        this.player = player;
-        this.tournament = tournament;
-        this.place = place;
-        this.points = points;
 
         if (player == null || tournament == null) {
             throw new IllegalArgumentException();
         }
 
+        this.player = player;
+        this.tournament = tournament;
+        this.place = place;
+        this.points = points;
+
+
+
         player.getResults().add(this);
         tournament.getResults().add(this);
-    }
-
-    public static List<Result> resultsWithCertainPlace(int place) {
-
-        List<Result> resultsWithCertainPlace = new ArrayList<>();
-
-        for (Result result : extension) {
-            if (result.getPlace() == place) {
-                resultsWithCertainPlace.add(result);
-            }
-        }
-
-        return resultsWithCertainPlace;
     }
 
     public Player getPlayer() {
