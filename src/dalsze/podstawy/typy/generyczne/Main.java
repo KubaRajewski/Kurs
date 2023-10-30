@@ -3,7 +3,6 @@ package dalsze.podstawy.typy.generyczne;
 public class Main {
 
     public static void main(String[] args) {
-        //Napisz klase Osoba która ma 2 parametry ktore moga byc roznymi typami, np String int, String String.
 
         // https://sdkp.pjwstk.edu.pl/html/staskshtml/S_GENERICS/S_GENERICS.html
 

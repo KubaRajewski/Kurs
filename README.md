@@ -30,7 +30,7 @@
 - [Interfejsy](src/dalsze/podstawy/interfejsy)
 - [Wyjątki](src/dalsze/podstawy/wyjatki)
 - [Daty (LocalDate, LocalDateTime, LocalTime, Instant, Duration, Period, formatery)](src/dalsze/podstawy/daty)
-- Typy generyczne
+- [Typy generyczne](src/dalsze/podstawy/typy/generyczne)
 - Lambda wyrażenia, interfejsy funkcyjne i streamy
 ---
 >### 5. Wielowątkowość
