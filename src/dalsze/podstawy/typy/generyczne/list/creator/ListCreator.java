@@ -28,8 +28,7 @@ public class ListCreator<T> {
     public <S> List<S> mapEvery(Mapper<T, S> mapper) {
         List<S> resultList = new ArrayList<>();
         for (T item : list) {
-            S result = mapper.map(item);
-            resultList.add(result);
+            resultList.add(mapper.map(item));
         }
         return resultList;
     }
