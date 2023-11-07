@@ -19,7 +19,5 @@ public class Main {
         MinMax<Integer> numberMinMax = MinMaxService.getMinAndMax(numbers);
         System.out.println("Number Min: " + numberMinMax.getMin());
         System.out.println("Number Max: " + numberMinMax.getMax());
-
-        List<Oso>
     }
 }

@@ -1,4 +1,4 @@
-package iteracja.pierwsza.tablice.dwuwymiarowe;
+package podstawy.tablice.dwuwymiarowe;
 
 import java.util.Random;
 

@@ -1,5 +1,6 @@
 package dalsze.podstawy.typy.generyczne.list.creator;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,22 +22,20 @@ public class Main {
         List<String> src2 = Arrays.asList("a", "zzzz", "vvvvvvv");
         System.out.println(test2(src2) + "\n");
 
-        List<java.time.LocalDate> dates = transform(
-                Arrays.asList("2020-01-01", "2015-05-05"),
-                date -> java.time.LocalDate.parse(date)
-        );
+        Mapper<String, java.time.LocalDate> dateMapper = LocalDate::parse;
+
+        List<java.time.LocalDate> dates = transform(Arrays.asList("2020-01-01", "2015-05-05"), dateMapper);
         System.out.println(dates);
 
-        List<Integer> numbers = transform(
-                Arrays.asList("1", "2", "3"),
-                Integer::parseInt
-        );
+        Mapper<String, Integer> intMapper = Integer::parseInt;
+
+        List<Integer> numbers = transform(Arrays.asList("1", "2", "3"), intMapper);
         System.out.println(numbers);
     }
 
     public List<Integer> test1(List<Integer> src) {
-        Selector<Integer> sel = item -> item < 10;  // wybiera liczby parzyste
-        Mapper<Integer, Integer> map = item -> item + 10;  // dodaje 10 do każdego elementu
+        Selector<Integer> sel = item -> item < 10;
+        Mapper<Integer, Integer> map = item -> item + 10;
 
         return ListCreator.collectFrom(src).when(sel).mapEvery(map);
     }
