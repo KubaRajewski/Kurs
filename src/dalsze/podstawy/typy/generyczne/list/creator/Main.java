@@ -22,9 +22,10 @@ public class Main {
         List<String> src2 = Arrays.asList("a", "zzzz", "vvvvvvv");
         System.out.println(test2(src2) + "\n");
 
-        Mapper<String, java.time.LocalDate> dateMapper = LocalDate::parse;
 
-        List<java.time.LocalDate> dates = transform(Arrays.asList("2020-01-01", "2015-05-05"), dateMapper);
+        Mapper<String, LocalDate> dateMapper = string -> LocalDate.parse(string);
+
+        List<LocalDate> dates = transform(Arrays.asList("2020-01-01", "2015-05-05"), dateMapper);
         System.out.println(dates);
 
         Mapper<String, Integer> intMapper = Integer::parseInt;
@@ -37,14 +38,20 @@ public class Main {
         Selector<Integer> sel = item -> item < 10;
         Mapper<Integer, Integer> map = item -> item + 10;
 
-        return ListCreator.collectFrom(src).when(sel).mapEvery(map);
+        return ListCreator
+                .collectFrom(src)
+                .when(sel)
+                .mapEvery(map);
     }
 
     public List<Integer> test2(List<String> src) {
         Selector<String> sel = item -> item.length() > 3;
         Mapper<String, Integer> map = item -> item.length() + 10;
 
-        return ListCreator.collectFrom(src).when(sel).mapEvery(map);
+        return ListCreator
+                .collectFrom(src)
+                .when(sel)
+                .mapEvery(map);
     }
 
     public static <T, S> List<S> transform(List<T> sourceList, Mapper<T, S> mapper) {
