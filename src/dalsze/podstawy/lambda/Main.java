@@ -56,6 +56,8 @@ public class Main {
         System.out.println("Mnozenie " + mnozenie.wykonaj(5, 2));
         System.out.println("Dzielenie " + dzielenie.wykonaj(50, 2));
 
+        //////////////////////////////////////////////////////////////////////////
+
         //TODO napisz metode która kazda liczbe z listy zastpeuje liczba 2* wieksza
         List<Integer> integerList = Arrays.asList(1, 2, 3, -4, 5, -6, 7, 8, 9, -10);
         System.out.println("Podwojona list: " + podwojonaLista(integerList));
@@ -135,109 +137,119 @@ public class Main {
 
     public static List<Integer> podwojonaLista(List<Integer> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<Integer> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .map(integer -> integer * 2)
-                .collect(Collectors.toList());
+        newList.replaceAll(integer -> integer * 2);
+
+        return newList;
     }
 
     public static List<Integer> listDoKwadratu(List<Integer> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<Integer> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .map(integer -> integer * integer)
-                .collect(Collectors.toList());
+        newList.replaceAll(integer -> integer ^ 2);
+
+        return newList;
     }
 
     public static List<String> dodajGwiazdke(List<String> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<String> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .map(string -> string + "*")
-                .collect(Collectors.toList());
+        newList.replaceAll(string -> string + "*");
+
+        return newList;
     }
 
     public static List<String> dodajY(List<String> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<String> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .map(string -> "y" + string + "y")
-                .collect(Collectors.toList());
+        newList.replaceAll(string -> "y" + string + "y");
+
+        return newList;
     }
 
     public static List<Integer> dodatniaLista(List<Integer> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<Integer> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .filter(a -> a > 0)
-                .collect(Collectors.toList());
+        newList.removeIf(i -> i > 0);
+
+        return newList;
     }
 
     public static List<Integer> listZNKoncowka(List<Integer> list, int n) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<Integer> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .filter(a -> Math.abs(a) % 10 == n)
-                .collect(Collectors.toList());
+        newList.removeIf(a -> Math.abs(a) % 10 == n);
+
+        return  newList;
     }
 
     public static List<String> potrojonyString(List<String> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<String> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .map(s -> s + s + s)
-                .collect(Collectors.toList());
+        newList.replaceAll(s -> s + s + s);
+
+        return newList;
     }
 
     public static List<String> zamianaNaMaleLitery(List<String> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<String> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .map(string -> string.toLowerCase())
-                .collect(Collectors.toList());
+        newList.replaceAll(String::toLowerCase);
+
+        return newList;
     }
 
-    public static List<String> wyrzucWszystkiLiteryN(List<String> list, char c) {
+    public static List<String> wyrzucWszystkiLiteryN(List<String> list, char litera) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<String> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .map(s -> s.chars()
-                        .filter(ch -> ch != c)
-                        .mapToObj(ch -> String.valueOf((char) ch))
-                        .collect(Collectors.joining()))
-                .collect(Collectors.toList());
+        newList.replaceAll(s -> s.replaceAll("(?i)" + litera, ""));
+
+        return newList;
     }
 
     public static List<Integer> wyrzucZListyLiczbyZPrzedzialu(List<Integer> list, int a, int b) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<Integer> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .filter(x -> x < a || x > b)
-                .collect(Collectors.toList());
+        newList.removeIf(x -> x < a || x > b);
+
+        return newList;
     }
 
     public static List<String> zawierajaLitereN(List<String> list, String a) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<String> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .filter(string -> string.contains(a))
-                .collect(Collectors.toList());
+        newList.removeIf(string -> string.contains(a));
+
+        return newList;
     }
 
     public static List<Integer> sortujListeRosnaco(List<Integer> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<Integer> newList = new ArrayList<>(List.copyOf(list));
 
-        List<Integer> listSorted = list;
-        listSorted.sort(Comparator.comparing(Integer::intValue));
-        return listSorted;
+        newList.sort(Comparator.comparing(Integer::intValue));
+
+        return newList;
     }
 
     public static List<Double> zwrocListePierwiastkow(List<Double> list) {
         Objects.requireNonNull(list, "Lista nie może być null");
+        List<Double> newList = new ArrayList<>(List.copyOf(list));
 
-        return list.stream()
-                .map(d -> Math.sqrt(d))
-                .collect(Collectors.toList());
+        newList.replaceAll(Math::sqrt);
+
+        return newList;
     }
 
     public static <T> void wyswietlElementyListy(List<T> list) {
@@ -249,17 +261,19 @@ public class Main {
     public static void zwiekszOWartosc(Map<String, Integer> mapa, String klucz) {
         mapa.merge(klucz, 100, Integer::sum);
     }
+
     public static void ustawWartosc(Map<String, Integer> mapa, String klucz) {
         mapa.putIfAbsent(klucz, 5000);
     }
 
-    public static String podwojString(String input) {
-        return input.transform(s -> s + s);
+    public static String podwojString(String string) {
+        return string.transform(s -> s + s);
     }
 
     public static List<String> napisDoListy(String napis) {
-        return Arrays.stream(napis.split(","))
-                .map(String::trim)
-                .collect(Collectors.toList());
+        List<String> list = Arrays.asList(napis.split(","));
+        list.replaceAll(String::trim);
+
+        return list;
     }
 }
