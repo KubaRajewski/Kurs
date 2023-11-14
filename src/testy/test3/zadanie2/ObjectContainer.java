@@ -160,7 +160,6 @@ public class ObjectContainer<T> implements Serializable {
             e.printStackTrace();
             throw new FileWritingException(path);
         }
-
     }
 
     public static <T> ObjectContainer<T> fromFile(String path) {
@@ -174,7 +173,6 @@ public class ObjectContainer<T> implements Serializable {
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
 
             objectContainer = (ObjectContainer<T>) objectInputStream.readObject();
-
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             throw new FileReadingException(path);
