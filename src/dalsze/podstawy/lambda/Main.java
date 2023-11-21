@@ -14,7 +14,7 @@ public class Main {
         System.out.println("Wynik dodawania: " + dodawanie.wykonaj(5, 3));
 
         //// napisz interfejs + lambda wyrazenie ktore sprawdza czy liczba jest parzysta
-        SprawdzLiczbe czyParzysta = (a) -> a % 2 == 0;
+        SprawdzLiczbe czyParzysta = a -> a % 2 == 0;
         System.out.println("Czy parzysta: " + czyParzysta.sprawdz(5));
 
         //// napisz wyrazenie ktore sprawdza czy liczba jest wieksza od 5
@@ -32,16 +32,12 @@ public class Main {
 
         //// Oblicz sume dlugosci wszystkich stringow na liscie
         List<String> stringList = Arrays.asList("Java", "Lambda", "Wyrazenia", "Bardzo Dlugi Napis Dlugi");
-        int sumaDlugosci = stringList.stream()
-                .mapToInt(String::length)
-                .sum();
+        int sumaDlugosci = stringList.stream().mapToInt(String::length).sum();
         System.out.println(sumaDlugosci);
 
         //// znajdz najdluzszego stringa na liscie
-        String najdluzszyString = stringList.stream()
-                .max(Comparator.comparing(String::length))
-                .orElse(null);
-        System.out.println("Najdluzszy string: " + najdluzszyString);
+        stringList.sort(Comparator.comparing(String::length));
+        System.out.println("Najdluzszy string: " + stringList.get(0));
 
         //// Napisz program który za pomocą wyrażeń lambda wykona działania jak kalkulator
         // czyli dodawanie, odejmowanie, mnożenie i dzielenie.
@@ -118,7 +114,7 @@ public class Main {
 
         newList.removeIf(a -> Math.abs(a) % 10 == n);
 
-        return  newList;
+        return newList;
     }
 
     //// napisz metode ktora kazdego danego stringa z listy zastapi go potrojonym
@@ -228,7 +224,7 @@ public class Main {
         return list;
     }
 
-    public static void testyCzescDruga(){
+    public static void testyCzescDruga() {
         List<Integer> integerList = Arrays.asList(1, 2, 3, -4, 5, -6, 7, 8, 9, -10);
         List<String> stringList = Arrays.asList("Java", "Lambda", "Wyrazenia", "Bardzo Dlugi Napis Dlugi");
         System.out.println("Podwojona list: " + podwojonaLista(integerList));

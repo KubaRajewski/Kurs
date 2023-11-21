@@ -21,8 +21,7 @@ public class ListCreator<T> {
                 newList.add(t);
             }
         }
-        this.list = newList;
-        return this;
+        return new ListCreator<>(newList);
     }
 
     public <S> List<S> mapEvery(Mapper<T, S> mapper) {

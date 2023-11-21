@@ -23,19 +23,25 @@ public class Main {
         System.out.println(test2(src2) + "\n");
 
 
-        Mapper<String, LocalDate> dateMapper = string -> LocalDate.parse(string);
+        Mapper<String, LocalDate> dateMapper = LocalDate::parse;
 
         List<LocalDate> dates = transform(Arrays.asList("2020-01-01", "2015-05-05"), dateMapper);
         System.out.println(dates);
 
         Mapper<String, Integer> intMapper = Integer::parseInt;
 
-        List<Integer> numbers = transform(Arrays.asList("1", "2", "3"), intMapper);
+        List<Integer> numbers = transform(Arrays.asList("1", "2", "3"), Integer::parseInt);
         System.out.println(numbers);
     }
 
     public List<Integer> test1(List<Integer> src) {
-        Selector<Integer> sel = item -> item < 10;
+        Selector<Integer> sel = new Selector<Integer>() {
+            @Override
+            public boolean select(Integer integer) {
+                return integer < 10;
+            }
+        };
+
         Mapper<Integer, Integer> map = item -> item + 10;
 
         return ListCreator

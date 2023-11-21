@@ -1,4 +1,4 @@
 package dalsze.podstawy.typy.generyczne.uml;
 
-public abstract class Pracownik extends Osoba{
+public  class Pracownik extends Osoba{
 }
