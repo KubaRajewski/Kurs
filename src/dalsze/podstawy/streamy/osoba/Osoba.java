@@ -1,10 +1,5 @@
 package dalsze.podstawy.streamy.osoba;
 
-// Stwórz klase osoba, osoba ma imie, miasto, wiek i napisz ponizsze metody
-
-
-
-
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;

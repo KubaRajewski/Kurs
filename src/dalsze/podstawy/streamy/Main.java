@@ -260,6 +260,7 @@ public class Main {
         return Optional.ofNullable(list)
                 .orElseGet(Collections::emptyList)
                 .stream()
+                .filter(Objects::nonNull)
                 .filter(s -> s.startsWith(str))
                 .distinct()
                 .count();
@@ -267,8 +268,9 @@ public class Main {
 
     public static long numberOfStringsStartingWith2(List<String> list, String str) {
         return Optional.ofNullable(list)
-                .orElse(new ArrayList<>())
+                .orElseGet(Collections::emptyList)
                 .stream()
+                .filter(Objects::nonNull)
                 .filter(s -> s.startsWith(str))
                 .distinct()
                 .count();
@@ -278,20 +280,73 @@ public class Main {
     // tym ze of nullable akceptuje wartosc null, w momencie w ktorym element jest pusty optional zwroci pusty optional
     // optional.of nie akceptuje null i w razie w ktorym wartosc jest rowna null rzuci nullPointerException
 
-    ////napisz metode ktora znajduje najmniejszy lub najwiekszy element z tablicy zaleznie od parametru metody
+    // napisz metode ktora znajduje najmniejszy lub najwiekszy element z tablicy zaleznie od parametru metody
+        public static int findMaxOrMin(List<Integer> list, boolean findMax) {
+            return Optional.ofNullable(list)
+                    .orElseGet(Collections::emptyList)
+                    .stream()
+                    .filter(Objects::nonNull)
+                    .min(findMax ? Comparator.reverseOrder() : Comparator.naturalOrder())
+                    .orElseThrow(IllegalArgumentException::new);
+        }
 
-    ////napisz z pomoca Stream.iterate metorde ktora zwraca liste elementow od 1 do n
+    //napisz z pomoca Stream.iterate metorde ktora zwraca liste elementow od 1 do n
+    public static List<Integer> numbersFromOneToN(int n) {
+        return Stream
+                .iterate(1, i -> i + 1)
+                .limit(n)
+                .collect(Collectors.toList());
+    }
+    // napisz metode która generuje 100 liczb parzystych lub nieparzystych w zaleznosci od parametru :)
+    public static List<Integer> generateNumbers(boolean even) {
+        return IntStream.iterate(even ? 0 : 1, i -> i + 2)
+                .limit(100)
+                .boxed()
+                .collect(Collectors.toList());
+    }
 
-    //// napisz metode która generuje 100 liczb parzystych lub nieparzystych w zaleznosci od parametru :)
+    // napisz metode która stworzy dany ciag geometryczny
+    public static List<Double> generateGeometricSequence(double first, double ratio, int n) {
+        return Stream.iterate(first, x -> x * ratio)
+                .limit(n)
+                .collect(Collectors.toList());
+    }
 
-    //// napisz metode która stworzy dany ciag geometryczny
+    // napisz metode która stworzy dany ciag arytmetyczny
+    public static List<Double> generateArithmeticSequence(double first, double difference, int n) {
+        return Stream.iterate(first, x -> x + difference)
+                .limit(n)
+                .collect(Collectors.toList());
+    }
 
-    //// napisz metode która stworzy dany ciag arytmetyczny
+    // napisz za pomoca streamow generator fibonaciego
+    public static List<Long> generateFibonacci(int n) {
+        return Stream.iterate(new long[]{0, 1}, f -> new long[]{f[1], f[0] + f[1]})
+                .limit(n)
+                .map(f -> f[0])
+                .collect(Collectors.toList());
+    }
 
-    //// napisz za pomoca streamow generator fibonaciego
+    // napisz metode liczaca sume n elementow fibo
+    public static long sumOfFibonacci(int n) {
+        return Stream.iterate(new long[]{0, 1}, f -> new long[]{f[1], f[0] + f[1]})
+                .limit(n)
+                .mapToLong(f -> f[0])
+                .sum();
+    }
 
-    //// napisz metode liczaca sume n elementow fibo
+    // napisz metoda ktora zwraca liczby pierwsze z podanej listy
+    private static boolean isPrime(int number) {
+        return number >= 2 && IntStream.rangeClosed(2, (int) Math.sqrt(number))
+                .noneMatch(n -> number % n == 0);
+    }
 
-    //// napisz metoda ktora zwraca liczby pierwsze z podanej listy
-
+    public static List<Integer> primeNumbers(List<Integer> list) {
+        return Optional.ofNullable(list)
+                .orElseGet(Collections::emptyList)
+                .stream()
+                .filter(Objects::nonNull)
+                .filter(Main::isPrime)
+                .toList();
+    }
 }
