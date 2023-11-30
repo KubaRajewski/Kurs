@@ -1,0 +1,55 @@
+
+d
+java:S1192¨"HDefine a constant instead of duplicating this literal "bla bla" 3 times.(­òæÊıÿÿÿÿ
+T
+java:S1854">Remove this useless assignment to local variable "randomInts".(æû²
+N
+java:S1854"8Remove this useless assignment to local variable "ints".(‚Ûš¶
+V
+java:S1854";Remove this useless assignment to local variable "doubles".(¡ó–»ÿÿÿÿÿ
+U
+java:S1854":Remove this useless assignment to local variable "stream".(¶²¥Ñşÿÿÿÿ
+X
+java:S1854"=Remove this useless assignment to local variable "intStream".(àòİçøÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(Š¥âñ
+E	java:S106"+Replace this use of System.out by a logger.(ÈÖĞöüÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+I
+java:S1481".Remove this unused "intStream" local variable.(àòİçøÿÿÿÿ
+F
+java:S1481"+Remove this unused "stream" local variable.(¶²¥Ñşÿÿÿÿ
+G
+java:S1481",Remove this unused "doubles" local variable.(¡ó–»ÿÿÿÿÿ
+?
+java:S1481")Remove this unused "ints" local variable.(‚Ûš¶
+E
+java:S1481"/Remove this unused "randomInts" local variable.(æû²
+E	java:S106$"+Replace this use of System.out by a logger.(ƒûòÜşÿÿÿÿ
+E	java:S106%"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+@	java:S106("+Replace this use of System.out by a logger.(ñÃ©…
+E	java:S106)"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+@	java:S106+"+Replace this use of System.out by a logger.(§»ğò
+E	java:S106,"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+@	java:S106G"+Replace this use of System.out by a logger.(Ó¶–÷
+@	java:S106L"+Replace this use of System.out by a logger.(Ãã°‡
+E	java:S106P"+Replace this use of System.out by a logger.(şŸü™ûÿÿÿÿ
+@	java:S106S"+Replace this use of System.out by a logger.(ÓÛ¨õ
+@	java:S106U"+Replace this use of System.out by a logger.(»À×Ì
+R	java:S125§"<This block of commented-out lines of code should be removed.(¥ºÌ³
+R	java:S125²"<This block of commented-out lines of code should be removed.(¥ºÌ³
+D
+java:S1172á"(Remove this unused method parameter "n".(µêÖıÿÿÿÿ
+i
+java:S6204ª"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+i
+java:S6204±"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+i
+java:S6204¸"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+i
+java:S6204¿"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+i
+java:S6204Ç"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+N
+java:S1128"8Remove this unused import 'java.util.function.Function'.(»³Í
+O
+java:S1128"9Remove this unused import 'java.util.function.Predicate'.(ïÍ–¶

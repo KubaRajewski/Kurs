@@ -1,0 +1,121 @@
+
+e
+java:S1192©"GDefine a constant instead of duplicating this literal "banana" 4 times.(±‘öç8ÚªÕ„Â1
+
+java:S11921"]Define a constant instead of duplicating this literal "List cannot be null or empty" 3 times.(ŠÎ¢ûÿÿÿÿ8ÚªÕ„Â1
+d
+java:S1192©"FDefine a constant instead of duplicating this literal "apple" 4 times.(±‘öç8ÚªÕ„Â1
+b
+java:S1612)"EReplace this lambda with method reference 'Double.class::isInstance'.(â˜ŠÎ8Õ«Õ„Â1
+o
+java:S6204J"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ü«Õ„Â1
+o
+java:S6204l"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ã«Õ„Â1
+o
+java:S6204v"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8æ«Õ„Â1
+o
+java:S6204~"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ï«Õ„Â1
+p
+java:S6204Ÿ"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ô«Õ„Â1
+p
+java:S6204ª"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ö«Õ„Â1
+p
+java:S6204µ"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8‚¬Õ„Â1
+p
+java:S6204Ã"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8¤¬Õ„Â1
+p
+java:S6204á"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8´¬Õ„Â1
+i
+java:S1612ú"FReplace this lambda with method reference 'Integer.class::isInstance'.(“é“şÿÿÿÿ8¬Õ„Â1
+i
+java:S1612„"FReplace this lambda with method reference 'Integer.class::isInstance'.(“é“şÿÿÿÿ8¬Õ„Â1
+i
+java:S1612"FReplace this lambda with method reference 'Integer.class::isInstance'.(“é“şÿÿÿÿ8”¬Õ„Â1
+h
+java:S1612š"EReplace this lambda with method reference 'Double.class::isInstance'.(üêüùúÿÿÿÿ8˜¬Õ„Â1
+f
+java:S6201¦"HReplace this instanceof check and cast with 'instanceof Integer integer'(³²Òù8¬Õ„Â1
+p
+java:S6204Å"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8·¬Õ„Â1
+i
+java:S1612Î"FReplace this lambda with method reference 'Integer.class::isInstance'.(Ãèòúÿÿÿÿ8©¬Õ„Â1
+h
+java:S1612Ø"EReplace this lambda with method reference 'Number.class::isInstance'.(ó°ÌÆøÿÿÿÿ8®¬Õ„Â1
+h
+java:S1612ä"EReplace this lambda with method reference 'Number.class::isInstance'.(ó°ÌÆøÿÿÿÿ8²¬Õ„Â1
+p
+java:S6204ô"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ä¬Õ„Â1
+i
+java:S1612ğ"FReplace this lambda with method reference 'Integer.class::isInstance'.(“é“şÿÿÿÿ8¶¬Õ„Â1
+p
+java:S6204ı"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Æ¬Õ„Â1
+i
+java:S1612…"FReplace this lambda with method reference 'Integer.class::isInstance'.(ßåúÿÿÿÿÿ8½¬Õ„Â1
+p
+java:S6204¥"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8È¬Õ„Â1
+p
+java:S6204¯"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ê¬Õ„Â1
+p
+java:S6204¹"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ô¬Õ„Â1
+p
+java:S6204Â"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ş¬Õ„Â1
+i
+java:S1612Ê"FReplace this lambda with method reference 'Integer.class::isInstance'.(“é“şÿÿÿÿ8Î¬Õ„Â1
+c
+java:S1612à"EReplace this lambda with method reference 'Double.class::isInstance'.(â˜ŠÎ8Ò¬Õ„Â1
+p
+java:S6204í"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8åšİ„Â1
+i
+java:S1612’"FReplace this lambda with method reference 'Integer.class::isInstance'.(Ûÿ®Åúÿÿÿÿ8İ¬Õ„Â1
+p
+java:S6204¢"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8ûšİ„Â1
+M	java:S106±"+Replace this use of System.out by a logger.(ñøÓ¼ùÿÿÿÿ8å¬Õ„Â1
+M	java:S106²"+Replace this use of System.out by a logger.(Ïàï¨ûÿÿÿÿ8å¬Õ„Â1
+M	java:S106³"+Replace this use of System.out by a logger.(ÒŠÿãùÿÿÿÿ8æ¬Õ„Â1
+H	java:S106´"+Replace this use of System.out by a logger.(•à¯ñ8ç¬Õ„Â1
+H	java:S106µ"+Replace this use of System.out by a logger.(¤¼„Î8ç¬Õ„Â1
+H	java:S106¶"+Replace this use of System.out by a logger.(ˆ„‹–8è¬Õ„Â1
+H	java:S106·"+Replace this use of System.out by a logger.(€¤à¼8è¬Õ„Â1
+H	java:S106¸"+Replace this use of System.out by a logger.(€ã’ç8é¬Õ„Â1
+M	java:S106¹"+Replace this use of System.out by a logger.(œã÷¿ıÿÿÿÿ8é¬Õ„Â1
+H	java:S106º"+Replace this use of System.out by a logger.(·ìÑü8ê¬Õ„Â1
+M	java:S106»"+Replace this use of System.out by a logger.(—¸…¦ıÿÿÿÿ8ê¬Õ„Â1
+M	java:S106¼"+Replace this use of System.out by a logger.(ŸÏÜ—ıÿÿÿÿ8ë¬Õ„Â1
+H	java:S106½"+Replace this use of System.out by a logger.(ÿ×²‘8ë¬Õ„Â1
+H	java:S106¾"+Replace this use of System.out by a logger.(›ÿáè8ì¬Õ„Â1
+H	java:S106¿"+Replace this use of System.out by a logger.(¾ºü²8í¬Õ„Â1
+H	java:S106À"+Replace this use of System.out by a logger.(·ìÑü8í¬Õ„Â1
+M	java:S106Á"+Replace this use of System.out by a logger.(ÍÈª™ÿÿÿÿÿ8î¬Õ„Â1
+M	java:S106Â"+Replace this use of System.out by a logger.(Ø¤º§ÿÿÿÿÿ8î¬Õ„Â1
+H	java:S106Ã"+Replace this use of System.out by a logger.(àá×8ï¬Õ„Â1
+M	java:S106Ä"+Replace this use of System.out by a logger.(«¬†ªûÿÿÿÿ8ğ¬Õ„Â1
+H	java:S106Å"+Replace this use of System.out by a logger.(®ç¬÷8ğ¬Õ„Â1
+G	java:S106Æ"+Replace this use of System.out by a logger.(ËÎ8ğ¬Õ„Â1
+H	java:S106Ç"+Replace this use of System.out by a logger.(ŞĞ§™8ñ¬Õ„Â1
+H	java:S106È"+Replace this use of System.out by a logger.(¯«ş8ñ¬Õ„Â1
+M	java:S106É"+Replace this use of System.out by a logger.(ôœˆÓùÿÿÿÿ8ò¬Õ„Â1
+M	java:S106Ê"+Replace this use of System.out by a logger.(ŞËÔ‚şÿÿÿÿ8ò¬Õ„Â1
+M	java:S106Ë"+Replace this use of System.out by a logger.(È©ıŠøÿÿÿÿ8ó¬Õ„Â1
+G	java:S106Ì"+Replace this use of System.out by a logger.(áŞû8õ¬Õ„Â1
+H	java:S106Í"+Replace this use of System.out by a logger.(©ç¯á8õ¬Õ„Â1
+M	java:S106Î"+Replace this use of System.out by a logger.(µå½Ãüÿÿÿÿ8ö¬Õ„Â1
+M	java:S106Ï"+Replace this use of System.out by a logger.(‡¥·°ûÿÿÿÿ8ö¬Õ„Â1
+H	java:S106Ğ"+Replace this use of System.out by a logger.(ô­«ö8÷¬Õ„Â1
+H	java:S106Ñ"+Replace this use of System.out by a logger.(É¤Í8÷¬Õ„Â1
+G	java:S106Ò"+Replace this use of System.out by a logger.(ºÃp8ø¬Õ„Â1
+M	java:S106Ó"+Replace this use of System.out by a logger.(ûçÓäüÿÿÿÿ8ø¬Õ„Â1
+M	java:S106Ô"+Replace this use of System.out by a logger.(ñ¾²Ÿşÿÿÿÿ8ù¬Õ„Â1
+M	java:S106Õ"+Replace this use of System.out by a logger.(ñÑ¤ııÿÿÿÿ8ù¬Õ„Â1
+M	java:S106Ö"+Replace this use of System.out by a logger.(×Âèüùÿÿÿÿ8ú¬Õ„Â1
+M	java:S106×"+Replace this use of System.out by a logger.(÷«³¬ùÿÿÿÿ8ú¬Õ„Â1
+M	java:S106Ø"+Replace this use of System.out by a logger.(‰Å÷Ğşÿÿÿÿ8û¬Õ„Â1
+H	java:S106Ù"+Replace this use of System.out by a logger.(ãîÚÜ8û¬Õ„Â1
+M	java:S106Ú"+Replace this use of System.out by a logger.(ª÷£Îıÿÿÿÿ8ü¬Õ„Â1
+M	java:S106Û"+Replace this use of System.out by a logger.(³ÄŠşÿÿÿÿ8ı¬Õ„Â1
+H	java:S106Ü"+Replace this use of System.out by a logger.(ÚÎ®­8ı¬Õ„Â1
+M	java:S106İ"+Replace this use of System.out by a logger.(¦¤Ø‹ÿÿÿÿÿ8ş¬Õ„Â1
+H	java:S106Ş"+Replace this use of System.out by a logger.(î®”8ÿ¬Õ„Â1
+H	java:S106ß"+Replace this use of System.out by a logger.(ÔßÙ§8ÿ¬Õ„Â1
+M	java:S106à"+Replace this use of System.out by a logger.(‚Ãı°øÿÿÿÿ8€­Õ„Â1
+v
+java:S1128"TRemove this unused import 'dalsze.podstawy.streamy.zadania.klasy.pomocnicze.Person'.(Òîó…úÿÿÿÿ8¸›İ„Â1

@@ -1,0 +1,90 @@
+
+a
+java:S1192"FDefine a constant instead of duplicating this literal "white" 3 times.(¨µĞüÿÿÿÿ
+b
+java:S1192"GDefine a constant instead of duplicating this literal "silver" 3 times.(ƒÊÊêûÿÿÿÿ
+a
+java:S1192"FDefine a constant instead of duplicating this literal "black" 5 times.(äªÅ…úÿÿÿÿ
+L
+java:S1854$"7Remove this useless assignment to local variable "s20".(ìú¶i
+M
+java:S1854#"7Remove this useless assignment to local variable "s19".(çâ ã
+M
+java:S1854""7Remove this useless assignment to local variable "s18".(ºâªÏ
+R
+java:S1854!"7Remove this useless assignment to local variable "s17".(‹„øµÿÿÿÿÿ
+R
+java:S1854 "7Remove this useless assignment to local variable "s16".(¾‹Ã¯üÿÿÿÿ
+M
+java:S1854"7Remove this useless assignment to local variable "s15".(á³ºò
+M
+java:S1854"7Remove this useless assignment to local variable "s14".(ÅŸÊ„
+R
+java:S1854"7Remove this useless assignment to local variable "s13".(ò‹ìİıÿÿÿÿ
+M
+java:S1854"7Remove this useless assignment to local variable "s12".(®»ˆ
+M
+java:S1854"7Remove this useless assignment to local variable "s11".(ÅãŠÜ
+M
+java:S1854"7Remove this useless assignment to local variable "s10".(ÕÇë
+L
+java:S1854"6Remove this useless assignment to local variable "s9".(—¥‚ƒ
+Q
+java:S1854"6Remove this useless assignment to local variable "s8".(ƒÊÊêûÿÿÿÿ
+L
+java:S1854"6Remove this useless assignment to local variable "s7".(úï¨
+L
+java:S1854"6Remove this useless assignment to local variable "s6".(íĞ­ı
+Q
+java:S1854"6Remove this useless assignment to local variable "s5".(¨µĞüÿÿÿÿ
+Q
+java:S1854"6Remove this useless assignment to local variable "s4".(Úå›òıÿÿÿÿ
+Q
+java:S1854"6Remove this useless assignment to local variable "s2".(¹Šî©ûÿÿÿÿ
+B
+java:S1481"'Remove this unused "s2" local variable.(¹Šî©ûÿÿÿÿ
+B
+java:S1481"'Remove this unused "s4" local variable.(Úå›òıÿÿÿÿ
+B
+java:S1481"'Remove this unused "s5" local variable.(¨µĞüÿÿÿÿ
+=
+java:S1481"'Remove this unused "s6" local variable.(íĞ­ı
+=
+java:S1481"'Remove this unused "s7" local variable.(úï¨
+B
+java:S1481"'Remove this unused "s8" local variable.(ƒÊÊêûÿÿÿÿ
+=
+java:S1481"'Remove this unused "s9" local variable.(—¥‚ƒ
+>
+java:S1481"(Remove this unused "s10" local variable.(ÕÇë
+>
+java:S1481"(Remove this unused "s11" local variable.(ÅãŠÜ
+>
+java:S1481"(Remove this unused "s12" local variable.(®»ˆ
+C
+java:S1481"(Remove this unused "s13" local variable.(ò‹ìİıÿÿÿÿ
+>
+java:S1481"(Remove this unused "s14" local variable.(ÅŸÊ„
+>
+java:S1481"(Remove this unused "s15" local variable.(á³ºò
+C
+java:S1481 "(Remove this unused "s16" local variable.(¾‹Ã¯üÿÿÿÿ
+C
+java:S1481!"(Remove this unused "s17" local variable.(‹„øµÿÿÿÿÿ
+>
+java:S1481""(Remove this unused "s18" local variable.(ºâªÏ
+>
+java:S1481#"(Remove this unused "s19" local variable.(çâ ã
+=
+java:S1481$"(Remove this unused "s20" local variable.(ìú¶i
+@	java:S106'"+Replace this use of System.out by a logger.(Úà£‰
+E	java:S106("+Replace this use of System.out by a logger.(ùèÂèøÿÿÿÿ
+@	java:S106)"+Replace this use of System.out by a logger.(é³Ô
+E	java:S106*"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+E	java:S106-"+Replace this use of System.out by a logger.(Ñ¹‹ûÿÿÿÿ
+E	java:S106."+Replace this use of System.out by a logger.(…ô“Öøÿÿÿÿ
+E	java:S106/"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+@	java:S106L"+Replace this use of System.out by a logger.(”¤ìˆ
+V	java:S1252"<This block of commented-out lines of code should be removed.(òÔÅîıÿÿÿÿ
+E	java:S106M"+Replace this use of System.out by a logger.(£ˆÆşúÿÿÿÿ
+@	java:S106N"+Replace this use of System.out by a logger.(”¤ìˆ
